@@ -540,7 +540,7 @@
 % \DescribeEnv{denotation}
 % 主要符号表环境，单独在文件\file{front/denotation.tex}中。
 % 跟据\PGR\
-% 示例中要求，我工符号表是table环境，示例文件如下，由于我工要求博士论文图表标题是双语，所以任何对单个标题的全局格式调整都会影响到双语标题，所以这里使用\cs{vspace}，具体见实现细节中的描述。
+% 示例中要求，我校符号表是table环境，示例文件如下，由于我校要求博士论文图表标题是双语，所以任何对单个标题的全局格式调整都会影响到双语标题，所以这里使用\cs{vspace}，具体见实现细节中的描述。
 % \begin{latex}
 % \begin{denotation}
 % \begin{table}[h]%此处最好是h
@@ -738,7 +738,7 @@
 % \medskip
 % \noindent\framebox[\linewidth][l]{{\heiti 胡说~1.1~~~} % {契丹武士要来中原夺武林秘笈。—— 慕容博}}
 % \subsubsection{算法}
-% 我工算法不在规范中要求且一千个评审老师有一千个算法格式喜好。详见
+% 我校算法不在规范中要求且一千个评审老师有一千个算法格式喜好。详见
 % \href{https://github.com/PlutoThesis/PlutoThesis#%E6%B2%A1%E6%9C%89%E6%98%8E%E7%A1%AE%E8%A6%81%E6%B1%82%E7%9A%84%E6%A0%BC%E5%BC%8F}{PlutoThesis}
 % 中的各个实验室算法喜好举例。在此多说无益。
 % \subsubsection{引用参考文献}
@@ -851,7 +851,7 @@
 %
 % \subsubsection{索引}
 % \DescribeEnv{ceindex}
-% 我工要求中英文双语索引。后文中的自动索引实际上不需要用户干预。
+% 我校要求中英文双语索引。后文中的自动索引实际上不需要用户干预。
 %\begin{latex}
 % \begin{ceindex}
 %   %如果想要手动加索引，注释掉以下这一样，用wordlist环境
@@ -3807,7 +3807,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 \fi
 \fi
 %    \end{macrocode}
-%    设置版芯，由于窝工版芯歧义。
+%    设置版芯，由于我校版芯歧义。
 % \changes{v2.0.0}{2018/6/14}{此处添加geometry选项}
 %    \begin{macrocode}
 \newif\ifheu@english
@@ -3970,7 +3970,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 \fi
 %    \end{macrocode}
 % \changes{v1.0.2}{2017/08/27}{添加了思源字体说明}
-% 设置字体。由于宋体没有粗体，且我工模板的标题要求使用粗宋体，于是面临CTeX的经典
+% 设置字体。由于宋体没有粗体，且我校模板的标题要求使用粗宋体，于是面临CTeX的经典
 % 的伪粗体bug：“首次出现伪粗体字体之后的正常字体无法复制”。但如果使用自带宋体的
 % 思源字体，那么不必使用伪粗体。模板只给出了新windows字体的思源字体设置，且思源
 % 字体版本为Adobe版。
@@ -4140,7 +4140,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \begin{macrocode}
 \urlstyle{same}
 %    \end{macrocode}
-% 根据窝工2021年的“四月革命”，引用文献标准更新到GBT2015
+% 根据我校2021年的“四月革命”，引用文献标准更新到GBT2015
 % \changes{v3.0.15}{2020/5/21}{添加参考文献GBT2015}
 %    \begin{macrocode}
 \RequirePackage[sort&compress]{gbt7714}
@@ -4148,7 +4148,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 %
 % \subsection{页面设置}
 % \label{sec:layout}
-% 本来这部分应该是最容易设置的，但根据我工\PGR\ 的3.8,3.4,3.2节的版芯矛盾，此处
+% 本来这部分应该是最容易设置的，但根据我校\PGR\ 的3.8,3.4,3.2节的版芯矛盾，此处
 % 设置两种版芯。
 %    \begin{macrocode}
 \ifheu@debug\RequirePackage[showframe]{geometry}\else\RequirePackage{geometry}\fi
@@ -4235,7 +4235,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 \newindex[]{english}
 %</bookcls>
 %    \end{macrocode}
-%    我工要求的索引格式。
+%    我校要求的索引格式。
 % \changes{v1.0.10}{2018/02/19}{修改了索引的间距，使其更符合规范中的示例}
 %    \begin{macrocode}
 %<*ist>
@@ -4303,8 +4303,8 @@ delim_1 "\\hspace*{\\fill}"
   \pagenumbering{Roman}
   \pagestyle{heu@empty}
 %    \end{macrocode}
-% 窝工青岛模板范例，一行34个字
-% \changes{v3.0.11}{2020/10/29}{窝工青岛模板范例，一行34个字}
+% 我校青岛模板范例，一行34个字
+% \changes{v3.0.11}{2020/10/29}{我校青岛模板范例，一行34个字}
 % 添加33行字选项
 % \changes{v3.0.13}{2020/11/10}{添加33行字选项}
 %    \begin{macrocode}
@@ -4360,7 +4360,7 @@ delim_1 "\\hspace*{\\fill}"
 % \subsubsection{字体}
 % \label{sec:font}
 % \begin{macro}{\normalsize}
-% 根据我工规定，正文小四号 (12bp) 字，行距为固定值3--4mm。
+% 根据我校规定，正文小四号 (12bp) 字，行距为固定值3--4mm。
 %    \begin{macrocode}
 %<*bookcls>
 %    \end{macrocode}
@@ -4538,9 +4538,9 @@ delim_1 "\\hspace*{\\fill}"
         \fi
         \ifheu@qingdao
 %    \end{macrocode}
-% 根据窝工2020年青岛校区新规定，mainmatter之前都用正文内容作为页眉，之后都用哈尔
+% 根据我校2020年青岛校区新规定，mainmatter之前都用正文内容作为页眉，之后都用哈尔
 % 滨工业大学作为页眉
-% \changes{v3.0.10}{2020/10/28}{根据窝工2020年青岛校区新规定，mainmatter之前都用正文内容作为页眉，之后都用哈尔
+% \changes{v3.0.10}{2020/10/28}{根据我校2020年青岛校区新规定，mainmatter之前都用正文内容作为页眉，之后都用哈尔
 % 滨工业大学作为页眉}
 %    \begin{macrocode}
           \if@mainmatter
@@ -4564,8 +4564,8 @@ delim_1 "\\hspace*{\\fill}"
       \ifheu@yantai
         \ifheu@bachelor
 %    \end{macrocode}
-% 此处设置烟台本科页眉与本部一样，窝工三个校区规范怎么这么乱？？？
-% \changes{v3.0.1}{2020/06/06}{此处设置烟台本科页眉与本部一样，窝工三个校区规范怎么这么乱？？？}
+% 此处设置烟台本科页眉与本部一样，我校三个校区规范怎么这么乱？？？
+% \changes{v3.0.1}{2020/06/06}{此处设置烟台本科页眉与本部一样，我校三个校区规范怎么这么乱？？？}
 %    \begin{macrocode}
           \fancyhead[C]{\songti\xiaowu[0]\heu@cschoolname\heu@bachelor@cxuewei\heu@bachelor@cthesisname}%
         \else
@@ -4937,12 +4937,12 @@ delim_1 "\\hspace*{\\fill}"
 \renewcommand{\bottomfraction}{0.65}
 \renewcommand{\floatpagefraction}{0.60}
 %    \end{macrocode}
-% 由于我工的双标题，导致标题之下多出一空白字符的距离，去除。
+% 由于我校的双标题，导致标题之下多出一空白字符的距离，去除。
 % \changes{v2.0.4}{2018/12/04}{更新图段后空白距离}
 % \changes{v2.0.4}{2018/12/04}{删除表段后空白距离}
 % \changes{v2.0.5}{2018/12/05}{删除图段后空白距离}
 %    \begin{macro}{\@makecaption}
-%    根据我工规范，本科和硕博的图题序号之后的空格不一样。
+%    根据我校规范，本科和硕博的图题序号之后的空格不一样。
 %    \begin{heurgu}[\PGR][2.13.1]
 % 每个图均应有图题（由图序和图名组成），图题不宜有标点符号，图名在图序之后空1个
 % 半角字符排写。
@@ -4951,8 +4951,8 @@ delim_1 "\\hspace*{\\fill}"
 % 每个图均应有图题（由图序和图名组成），图题不宜有标点符号，图名在图序之后空1个
 % 字符排写。
 %    \end{heurgu}
-%    我工规范中没有明确规定是否标题是否居中对齐，这里给出一个居中选项自行调整。
-% 注意，我工只规定：“居中书写”。此处不额外添加悬挂处理。
+%    我校规范中没有明确规定是否标题是否居中对齐，这里给出一个居中选项自行调整。
+% 注意，我校只规定：“居中书写”。此处不额外添加悬挂处理。
 % \changes{v1.0.6}{2017/10/25}{此处更改了选项的名称}
 % \changes{v1.0.7}{2017/11/4}{优化了最后一行居中算法，使其两边对齐、单词内部断行}
 %    \begin{macrocode}
@@ -5042,7 +5042,7 @@ delim_1 "\\hspace*{\\fill}"
 \renewcommand{\thesubtable}{(\alph{subtable})}
 \renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}%使图编号为 7-1 的格式 %\protect{~}
 %    \end{macrocode}
-% \changes{v3.0.15}{2020/5/21}{根据窝工2021“四月革命”之精神，修改字图为双括号} 
+% \changes{v3.0.15}{2020/5/21}{根据我校2021“四月革命”之精神，修改字图为双括号} 
 %    \begin{macrocode}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}%使子图编号为 a)的格式
 \renewcommand{\p@subfigure}{\thefigure~} %使子图引用为 7-1 a) 的格式，母图编号和子图编号之间用~加一个空格
@@ -5185,7 +5185,7 @@ delim_1 "\\hspace*{\\fill}"
        \or December\fi\unskip,\ \ \the\year}
 %</bookcfg>
 %    \end{macrocode}
-% 按照我工要求，页面中标题之下不少于一行。
+% 按照我校要求，页面中标题之下不少于一行。
 %    \begin{macrocode}
 %<*bookcls>
 \def\heu@title@font{%
@@ -6450,7 +6450,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 添加英文toc控制
 % \changes{v3.0.0}{2020/05/21}{添加英文toc控制}
-%    按照我工要求的目录格式。
+%    按照我校要求的目录格式。
 %    \begin{macrocode}
 \ifheu@arialtoc
   \def\heu@toc@font{\sffamily}
@@ -6762,7 +6762,7 @@ delim_1 "\\hspace*{\\fill}"
 % 此文件声明不在规范中要求的格式所使用的宏包。
 % （所以，格式基本上是自由发挥的。）
 
-% 根据窝工规范中对数字书写规范的规定（6）：
+% 根据我校规范中对数字书写规范的规定（6）：
 % 凡4位或4位以上的数都从个位起每3位数空半个数码(1/4汉字)。
 % 注意此处，除此任何空格都是错误的（包括\:\;\ 等）
 \RequirePackage{xeCJKfntef}
@@ -6792,7 +6792,7 @@ delim_1 "\\hspace*{\\fill}"
 
 
 % 算法的宏包，注意宏包兼容性，先后顺序为float、hyperref、algorithm(2e)，否则无法
-% 生成算法列表。我工算法混乱问题详见heuthesis文档。各个实验室设置具体方法详见
+% 生成算法列表。我校算法混乱问题详见heuthesis文档。各个实验室设置具体方法详见
 % heuthesis文档或者示例中给出的地址。
 \RequirePackage[algoruled,linesnumbered,algochapter]{algorithm2e}
 \SetAlCapSty{}
