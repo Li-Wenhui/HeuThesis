@@ -105,6 +105,15 @@
 \makecover
 \input{front/denotation}%物理量名称表,符合规范为主，有要求添加
 \tableofcontents %目录
+
+%%----------  插图目录, 如不需要可用 % 注释掉下面两行
+\listoffigures
+\cleardoublepage
+
+%%----------  表格目录, 如不需要可用 % 注释掉下面两行
+\listoftables
+\cleardoublepage
+
 \mainmatter
 \include{body/regu}
 \include{body/introduction}
@@ -123,12 +132,10 @@
 \include{back/publications}    % 所发文章
 \include{back/ceindex}    % 索引, 根据自己的情况添加或者不添加，选择自动添加或者手工添加。
 \include{back/acknowledgements} %致谢
-\include{back/resume}          % 博士学位论文有个人简介
+\include{back/resume}          % 个人简介
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % 本科书序为：
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% \authorization %授权
-% % \authorization[scan.pdf] %添加扫描页的命令，与上互斥
 % \include{back/acknowledgements} %致谢
 % \begin{appendix}%附录
 % \input{back/appendix01}%本科生翻译论文
@@ -139,7 +146,7 @@
 % \include{back/acknowledgements} %致谢
 % \include{back/doctorpublications}    % 所发文章
 % \include{back/publications}    % 所发文章
-% \include{back/resume}          % 博士学位论文有个人简介
+% \include{back/resume}          % 个人简介
 % \include{back/correspondingaddr} %通信地址
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \end{document}
