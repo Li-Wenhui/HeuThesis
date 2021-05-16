@@ -1,11 +1,11 @@
-# Makefile for hithesis document
+# Makefile for heuthesis document
 
 METHOD = xelatex
 # Set opts for latexmk if you use it
 LATEXMKOPTS = -xelatex
 # Basename of thesis
 
-PACKAGE=hithesis
+PACKAGE=heuthesis
 SOURCES=$(PACKAGE).ins $(PACKAGE).dtx
 
 CLSFILES=dtx-style.sty
