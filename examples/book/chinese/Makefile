@@ -26,7 +26,7 @@ endif
 .PHONY: clean cleanall thesis viewthesis
 
 viewthesis: thesis
-	$(OPEN) $(THESISMAIN).pdf
+#	$(OPEN) $(THESISMAIN).pdf
 
 thesis: $(THESISMAIN).pdf
 

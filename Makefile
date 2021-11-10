@@ -26,7 +26,7 @@ all: doc
 cls: $(CLSFILES)
 
 $(CLSFILES): $(SOURCES)
-	latex $(PACKAGE).ins
+	lualatex $(PACKAGE).ins
 
 viewdoc: doc
 	$(OPEN) $(PACKAGE).pdf

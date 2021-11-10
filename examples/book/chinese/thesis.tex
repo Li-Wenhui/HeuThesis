@@ -16,7 +16,7 @@
 %      `\\//`   \\   \./    \\ /     //    \\./   \\   //   \\ |/ /
 %     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[fontset=fandol,type=doctor,campus=harbin]{heuthesisbook}
+\documentclass[fontset=fandol,type=master,profdegree=false,campus=harbin]{heuthesisbook}
 % 此处选项中不要有空格
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 必填选项
@@ -26,6 +26,9 @@
 % 需求）
 % campus=qingdao|yantai|harbin
 %   含义：校区选项，默认harbin
+% profdegree=true|false
+%   含义：是否为专业学位，缺省值为false。专业学位和同等学力等，要在cover中设置类
+%   型，封面中不同格式
 % glue=true|false
 %   含义：由于我校规范中要求字体行距在一个闭区间内，这个选项为true表示tex自
 %   动选择，为false表示区间内一个最接近版心要求行数的要求的默认值，缺省值为
@@ -44,17 +47,9 @@
 % chapterhang=true|false
 %   含义：目录的章标题是否悬挂居中，规范中要求章标题少于15字，所以这个选项
 %   有无没什么用，除了特殊需求。缺省值为true。
-% fulltime=true|false
-%   含义：是否全日制，缺省值为true。非全日制如同等学力等，要在cover中设置类
-%   型，封面中不同格式
 % subtitle=true|false
 %   含义：论文题目是否含有副标题，缺省值为false，如果有要在cover中设置副标
 %   题内容，封面中显示。
-% newgeometry=one|two|no
-%   含义：规范中的自相矛盾之处，版芯是否包含页眉页脚，旧方法是按照包含页眉
-%   页脚来设置。该选项是多选选项，如果设置为no，则版新为旧模板的版芯设置方法，
-%   如果设置该选项one或two，分别对应两种页眉页码对应版芯线的相对位置。第一种
-%   是严格按照规范要求，难看。第二种微调了页眉页码位置，好一点。默认two。
 % debug=true|false
 %   含义：是否显示版芯框和行号，用来调试。默认否。
 % openright=true|false
