@@ -323,12 +323,14 @@
 % \subsubsection{密级}
 % \label{sec:setup-secret}
 % \DescribeMacro{statesecrets}
+% \DescribeMacro{cnumber}
 % \DescribeMacro{natclassifiedindex}
 % \DescribeMacro{intclassifiedindex}
 % 定义秘密级别和国内国际索引号。
 % \begin{latex}
 % \heusetup{
 % statesecrets={公开},
+% cnumber={no9527},
 % natclassifiedindex={TM301.2},
 % intclassifiedindex={62-5},
 % }
@@ -403,7 +405,7 @@
 % \begin{latex}
 % \heusetup{
 %  csubject={动力工程},
-%  esubject={Power Energy},
+%  esubject={Engineering of Power Energy},
 % }
 % \end{latex}
 %
@@ -411,11 +413,15 @@
 % \myentry{导师}
 % \DescribeMacro{csupervisor}
 % \DescribeMacro{esupervisor}
+% \DescribeMacro{cprofessional}
+% \DescribeMacro{creviewer}
 % 直接导师。
 % \begin{latex}
 % \heusetup{
 %   csupervisor={导师~教授},
-%   esupervisor={Supervisor}
+%   esupervisor={Supervisor},
+%   cprofessional={职称（本科）},
+%   creviewer={论文评语人}
 % }
 % \end{latex}
 %
@@ -444,12 +450,16 @@
 % \subsubsection{成文日期}
 % \myentry{日期}
 % \DescribeMacro{cdate}
+% \DescribeMacro{csubmitdate}
+% \DescribeMacro{coralexdate}
 % \DescribeMacro{edate}
 % 默认为当前时间，也可以自己指定。
 % \begin{latex}
 % \heusetup{
 %   cdate={中文日期},
-%   edate={English Date},
+%   csubmitdate={论文提交日期},
+%   coralexdate={论文答辩日期},
+%   edate={English Date}
 % }
 % \end{latex}
 %
@@ -4688,8 +4698,7 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@natclassifiedindextitle{分类号}
 \def\heu@internatclassifiedindextitle{ＵＤＣ}
 \def\heu@secretlevel{密级}
-\def\heu@schoolidtitle{编号}
-\def\heu@schoolid{10213}
+\def\heu@cnumbertitle{编号}
 \newcommand{\heu@authorsig}{作者签名：}
 \newcommand{\heu@teachersig}{导师签名：}
 \newcommand{\heu@frontdate}{日期：}
@@ -4730,7 +4739,7 @@ delim_1 "\\hspace*{\\fill}"
 \end{enumerate}
 }
 \newcommand{\heu@datefill}{\hspace{2.5em}年\hspace{1.5em}月\hspace{1.5em}日}
-\def\heu@hi{嗨！thesis}
+\def\heu@hi{大工至善，大学至臻}
 \def\heuthesis{\textsc{heu}\-\textsc{Thesis}}
 %</artcfg>
 %    \end{macrocode}
@@ -5378,6 +5387,7 @@ delim_1 "\\hspace*{\\fill}"
   \csname #1\endcsname{}}
 
 \heu@def@term{statesecrets} %密级
+\heu@def@term{cnumber} %编号
 \heu@def@term{natclassifiedindex}  %国内图书分类号
 \heu@def@term{intclassifiedindex}  %国际图书分类号
 
@@ -5396,7 +5406,6 @@ delim_1 "\\hspace*{\\fill}"
 \heu@def@term{csubmitdate}%论文提交日期
 \heu@def@term{coralexdate}%论文答辩日期
 \heu@def@term{cdate}
-\heu@def@term{cnumber}
 \heu@def@term{cpositionname}
 %    \end{macrocode}
 % 添加博后封皮选项
@@ -5609,8 +5618,7 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@natclassifiedindextitle{分类号}
 \def\heu@internatclassifiedindextitle{ＵＤＣ}
 \def\heu@secretlevel{密级}
-\def\heu@schoolidtitle{编号}
-\def\heu@schoolid{10213}
+\def\heu@cnumbertitle{编号}
 
 \ifheu@postdoc
 \def\heu@conclusion@ctitle{结论}
@@ -5664,7 +5672,7 @@ delim_1 "\\hspace*{\\fill}"
 }
 \newcommand{\heu@yantai@schoolbottommark}{
 	\begin{center}
-		\songti\sanhao\textbf{哈工程（青岛）制}
+		\songti\sanhao\textbf{哈工程（烟台）制}
 	\end{center}
 	\begin{center}
 		\songti\sanhao\textbf{二〇二〇年三月}
@@ -5724,7 +5732,7 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@datefill}{\hspace{2.5em}年\hspace{1.5em}月\hspace{1.5em}日}
 \newcommand{\heu@publication@etitle}{Papers published in the period of Ph.D. education}
 \def\heu@index@etitle{Index}
-\def\heu@hi{嗨！thesis}
+\def\heu@hi{大工至善，大学至臻}
 \def\heu@cbraceleft{（}
 \def\heu@cbraceright{）}
 \def\heu@ebraceleft{(}
@@ -5951,7 +5959,7 @@ delim_1 "\\hspace*{\\fill}"
   {\songti \xiaosi
 	\begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
 	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &   \\
-	\heu@schoolidtitle & \underline{\makebox[2.5cm]{\heu@schoolid}} &  
+	\heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &  
 	\end{tabular}}
   
   \vspace*{2.0cm}
@@ -5995,7 +6003,7 @@ delim_1 "\\hspace*{\\fill}"
     {\songti \xiaosi
       \begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
 	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &   \\
-	\heu@schoolidtitle & \underline{\makebox[2.5cm]{\heu@schoolid}} &  
+	\heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &  
     \end{tabular}}
   \parbox[t][3.2cm][t]{\textwidth}{\begin{center} \end{center} }
     \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1]
@@ -6036,9 +6044,9 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\emultiline}[2][c]{\renewcommand{\arraystretch}{1}\begin{tabular}[#1]{@{}l@{}}#2\end{tabular} \renewcommand{\arraystretch}{1.3}}
 \newcommand{\heu@engcover}{
   {\songti \xiaosi
-	\begin{tabular}{@{\qquad}@{}r@{: }l@{}l@{\qquad}}
-	Classified Index & \heu@natclassifiedindex & \\
-	U.D.C & \heu@intclassifiedindex & 
+	\begin{tabular}{@{\qquad}l@{}l@{\qquad}}
+	Classified Index:\ \heu@natclassifiedindex & \\
+	U.D.C:\ \heu@intclassifiedindex & 
 	\end{tabular}}\hfill
   {\songti \xiaosi
 	\begin{tabular}{@{}r@{ }l@{}l@{\qquad}}
@@ -6432,7 +6440,7 @@ delim_1 "\\hspace*{\\fill}"
   \IfNoValueTF{#1}{%
   	% 本科不需要原创性和授权页，删掉
     %\ifheu@bachelor\heu@authorization@bachelor\else\heu@authorization@other\fi
-    \ifheu@bachelor\heu@empty\else\heu@authorization@other\fi
+    \ifheu@bachelor heu@empty\else\heu@authorization@other\fi
     }{%
     \ifheu@openright\cleardoublepage\else\clearpage\fi%
     \includepdf[fitpaper=true,pagecommand={%
