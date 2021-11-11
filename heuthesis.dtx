@@ -6430,15 +6430,18 @@ delim_1 "\\hspace*{\\fill}"
 
 \NewDocumentCommand{\authorization}{o}{%
   \IfNoValueTF{#1}{%
-    \ifheu@bachelor\heu@authorization@bachelor\else\heu@authorization@other\fi
+  	% 本科不需要原创性和授权页，删掉
+    %\ifheu@bachelor\heu@authorization@bachelor\else\heu@authorization@other\fi
+    \ifheu@bachelor\heu@empty\else\heu@authorization@other\fi
     }{%
     \ifheu@openright\cleardoublepage\else\clearpage\fi%
     \includepdf[fitpaper=true,pagecommand={%
 	\thispagestyle{heu@empty}%
-	\phantomsection\addcontentsline{toc}{chapter}{\ifheu@bachelor\heu@declarename@bachelor\else\heu@authorization@ctitle\fi}%
-	\ifheu@doctor%
-      \addcontentsline{toe}{chapter}{\texorpdfstring{\bfseries \heu@authorization@etitle}{\heu@authorization@etitle}}%
-	\fi%
+	% 原创性和授权页不加到目录
+	%\phantomsection\addcontentsline{toc}{chapter}{\ifheu@bachelor\heu@declarename@bachelor\else\heu@authorization@ctitle\fi}%
+	%\ifheu@doctor%
+    %  \addcontentsline{toe}{chapter}{\texorpdfstring{\bfseries \heu@authorization@etitle}{\heu@authorization@etitle}}%
+	%\fi%
     }]{#1}%
   }%
 }
@@ -6535,6 +6538,13 @@ delim_1 "\\hspace*{\\fill}"
 \RequirePackage{mathrsfs}
 % 支持彩色
 \RequirePackage{xcolor}
+
+% 数学模式中重定义\d为微分算符
+% 
+\def\dif{\mathop{}\hphantom{\mskip-\thinmuskip}\mathrm{d}}%
+\let\daccent\d
+\let\d\relax
+\newcommand\d{\ifmmode\dif\else\expandafter\daccent\fi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  set global color theme of thesis  %
