@@ -3049,10 +3049,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \heu@def@fontsize{bahao}{5bp}
 
 
-
-
-
-
 %-- 设置字号 --%
 \ctexset{%
   section={
@@ -3086,7 +3082,6 @@ EXECUTE {end.bib}                                 %   end_bib();
   subparagraph/afterindent=true
 }
 
-
 \let\heu@section\section
 \RenewDocumentCommand\section{s o m s}{%
   \IfBooleanF{#4}{\noindent\tikz[overlay] \draw (-5mm,0mm) -- (155mm,0mm);}%
@@ -3102,8 +3097,6 @@ EXECUTE {end.bib}                                 %   end_bib();
     {\heu@section[#2]{#3}}%
   }
 }
-
-
 
 \def\heu@def@term#1{%
   \define@key{heu}{#1}{\csname #1\endcsname{##1}}
@@ -3126,7 +3119,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \heu@def@term{csubmitdate}
 \heu@def@term{cdate}
 \heu@def@term{cenrolldate}
-
 
 \def\heu@parse@keywords#1{
   \define@key{heu}{#1}{\csname #1\endcsname{##1}}
@@ -3175,12 +3167,8 @@ EXECUTE {end.bib}                                 %   end_bib();
          \hline
        \end{tabular}\renewcommand{\arraystretch}{1}
      \end{center}
+   }
 }
-}
-
-
-
-
 
 
 \def\makecover{
@@ -3200,11 +3188,6 @@ EXECUTE {end.bib}                                 %   end_bib();
   \renewcommand{\footrulewidth}{0pt}
   \fancyfoot[C]{\xiaowu-~\thepage~-}
 }
-
-
-
-
-
 
 
 \newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
@@ -3324,7 +3307,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 {
   \MessageBreak This document class does not support midterm report for doctor
   in qingdao campus.
-  \MessageBreak please use \string\documentclass{heuthesisartplus} 
+  \MessageBreak please use \string\documentclass{heuthesisartplus}
 }
 \fi
 \fi
@@ -3437,11 +3420,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \RequirePackage[subfigure]{ccaption} % 支持双语标题
 \RequirePackage{xltxtra}
 
-%    \end{macrocode}
-% 
-% 
-%    \begin{macrocode}
-
 \renewcommand\normalsize{%
   \@setfontsize\normalsize{12bp}{20.50398bp}%
   \abovedisplayskip=8pt
@@ -3472,10 +3450,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \heu@def@fontsize{qihao}{5.5bp}
 \heu@def@fontsize{bahao}{5bp}
 
-%    \end{macrocode}
-% 
-% 
-%    \begin{macrocode}
 
 %-- 设置字号 --%
 \ctexset{%
@@ -3511,8 +3485,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 }
 
 
-
-
 \def\heu@def@term#1{%
   \define@key{heu}{#1}{\csname #1\endcsname{##1}}
   \expandafter\gdef\csname #1\endcsname##1{%
@@ -3545,7 +3517,6 @@ EXECUTE {end.bib}                                 %   end_bib();
       \expandafter\csname heu@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
 
 \def\heusetup{\kvsetkeys\{heu}}
-
 
 
 \newcommand{\heu@report@titlepage@graduate}{
@@ -3654,15 +3625,11 @@ EXECUTE {end.bib}                                 %   end_bib();
 }
 
 
-
-
 \newcommand{\heu@report@backpage@bachelor}{
   \thispagestyle{empty}
   \noindent\parbox[t][6.5cm][t]{\textwidth}{\heu@bachelor@teachercomment}
   \noindent\parbox[b][6cm][t]{\textwidth}{\heu@bachelor@teachersign\underline{\makebox[3cm]{}}\hfill\heu@bachelor@checkdate\underline{\makebox[3cm]{}}}
 }
-
-
 
 \renewcommand\tableofcontents{%
   \thispagestyle{empty}
@@ -3774,8 +3741,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 \ifheu@english\relax\else
 \heu@chinesetrue
 \fi
-%    \end{macrocode}
-%    \begin{macrocode}
+
 \define@key{heu}{newgeometry}{%
   \expandafter\csname heu@geometrynew#1true\endcsname}
 %    \end{macrocode}
@@ -3939,9 +3905,6 @@ EXECUTE {end.bib}                                 %   end_bib();
                     {Please specify thesis type in option: \MessageBreak
                       type=[bachelor | master | doctor | postdoc]}{}
       \fi
-%    \end{macrocode}
-% 添加博后选项
-%    \begin{macrocode}
     \fi
   \fi
 \fi
@@ -4442,9 +4405,6 @@ delim_1 "\\hspace*{\\fill}"
     \vskip 0.797872pt
     \hrule\@height2.127659pt\@width\headwidth
     }
-%    \end{macrocode}
-% 添加一校三区的学校名
-%    \begin{macrocode}
   \fi
   % 此处可能和word模板不一致
   % 页眉中小五汉字，0行距时，占用9bt，页眉高度为14pt, 所以以下数字之和要保持等于14pt-9bt=4.96634pt
@@ -4894,9 +4854,9 @@ delim_1 "\\hspace*{\\fill}"
 \begin{list}{[\arabic{pubctr}]} %%标签格式
     {
      \usecounter{pubctr}
-     \setlength{\leftmargin}{1.7em}     % 左边界 \leftmargin =\itemindent + \labelwidth + \labelsep
+     \setlength{\leftmargin}{1.7em}   % 左边界 \leftmargin =\itemindent + \labelwidth + \labelsep
      \setlength{\itemindent}{0em}     % 标号缩进量
-     \setlength{\labelsep}{0.5em}       % 标号和列表项之间的距离,默认0.5em
+     \setlength{\labelsep}{0.5em}     % 标号和列表项之间的距离,默认0.5em
      \setlength{\rightmargin}{0em}    % 右边界
      \setlength{\topsep}{0ex}         % 列表到上下文的垂直距离
      \setlength{\parsep}{0ex}         % 段落间距
@@ -5378,7 +5338,7 @@ delim_1 "\\hspace*{\\fill}"
 % \subsubsection{定义封面}
 % \label{sec:cov}
 % 封面信息。
-% 
+%
 %    \begin{macrocode}
 \def\heu@def@term#1{%
   \define@key{heu}{#1}{\csname #1\endcsname{##1}}
@@ -5539,13 +5499,12 @@ delim_1 "\\hspace*{\\fill}"
 %    \begin{macrocode}
 
 
-
 \def\heu@bachelor@caffiltitle{学院（系）名称}
 %</bookcfg>
 %    \end{macrocode}
 % 此处添加青岛校区设置
 %    \begin{macrocode}
-%<*bookcfg>      
+%<*bookcfg>
 \def\heu@bachelor@caffiltitleqd{学院}
 \def\heu@bachelor@caffiltitleyt{学院}
 \def\heu@bachelor@cstudentidtitle{学号}
@@ -5562,9 +5521,7 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@bachelor@teachersign}{指导教师签字：}
 \newcommand{\heu@bachelor@checkdate}{检查日期：}
 
-
 \def\heu@cthesistitleprefix{题\hspace{\ccwd}目}
-
 
 \def\heu@graduate@caffiltitle{院\hspace{3\ccwd}（系）}
 \def\heu@graduate@cmajortitle{学\hspace{4\ccwd}科}
@@ -5585,7 +5542,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 此处添加青岛校区设置
 %    \begin{macrocode}
-%<*bookcfg>      
+%<*bookcfg>
 \def\heu@qingdaocampus{（青岛）}
 \def\heu@yantaicampus{（烟台）}
 \def\heu@harbincampus{（哈尔滨）}
@@ -5653,8 +5610,6 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@authorization@ctitle{论文原创性与授权声明}
 \def\heu@authorization@etitle{Statement of copyright and Letter of authorization}
 
-
-
 \newcommand{\heu@authorsig}{作者签名：}
 \newcommand{\heu@teachersig}{导师签名：}
 \newcommand{\heu@frontdate}{日期：}
@@ -5693,7 +5648,6 @@ delim_1 "\\hspace*{\\fill}"
    \end{center}
 }
 
-
 \newcommand{\heu@qingdao@doctor@midterm@note}{
 \thispagestyle{empty}
 {\begin{center}
@@ -5713,7 +5667,6 @@ delim_1 "\\hspace*{\\fill}"
 % 添加青岛中期报告内容
 %    \begin{macrocode}
 
-
 \ifheu@english
 \newcommand{\heu@publication@ctitle}{Author's Publications}
 \else
@@ -5727,7 +5680,6 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 博后和英文版附录title
 %    \begin{macrocode}
-
 
 \newcommand{\heu@datefill}{\hspace{2.5em}年\hspace{1.5em}月\hspace{1.5em}日}
 \newcommand{\heu@publication@etitle}{Papers published in the period of Ph.D. education}
@@ -5815,7 +5767,7 @@ delim_1 "\\hspace*{\\fill}"
   \vspace*{1.2cm}
   \begin{center}
     \parbox[t][8cm][t]{\textwidth}{
-      \begin{center}\songti\sanhao[2]\heu@ctitlecover\end{center} 
+      \begin{center}\songti\sanhao[2]\heu@ctitlecover\end{center}
       \vspace*{16bp}
       \begin{center}\sihao[2]\MakeUppercase{\heu@etitle}\end{center}
     }
@@ -5831,7 +5783,7 @@ delim_1 "\\hspace*{\\fill}"
           \heu@postdoc@startdate & \heu@cstartdate \\
           \heu@postdoc@enddate & \heu@cenddate \\
         \end{tabularx}
-      \end{center} 
+      \end{center}
     }
   \end{center}
   \vfill
@@ -5863,12 +5815,12 @@ delim_1 "\\hspace*{\\fill}"
   {\songti \xiaosi
 	\begin{tabular}{@{\qquad\qquad}@{}r@{}l@{}l@{\qquad}}
 	 &  & \\
-	 &  &  
+	 &  &
 	\end{tabular}}\hfill
   {\songti \xiaosi
 	\begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
 	\heu@bachelor@cstudentidtitle & \underline{\makebox[2.5cm]{\heu@cstudentid}} & \\
-	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &  
+	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &
 	\end{tabular}}
   \parbox[t][2.0cm][t]{\textwidth}{\begin{center} \end{center} }
   \parbox[t][1.2cm][t]{\textwidth}{
@@ -5891,7 +5843,7 @@ delim_1 "\\hspace*{\\fill}"
   \parbox[t][1.4cm][t]{\textwidth}{
   \begin{center}\kaishu\xiaoer{\heu@cschoolname}\end{center}}
   {\songti\xiaosan{\heu@cdate}}
-  \end{center}  
+  \end{center}
 }
 
 %    \end{macrocode}
@@ -5904,12 +5856,12 @@ delim_1 "\\hspace*{\\fill}"
   {\songti \xiaosi
 	\begin{tabular}{@{\qquad\qquad}@{}r@{}l@{}l@{\qquad}}
 	&  & \\
-	&  &  
+	&  &
 	\end{tabular}}\hfill
   {\songti \xiaosi
 	\begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
 	\heu@bachelor@cstudentidtitle & \underline{\makebox[2.5cm]{\heu@cstudentid}} & \\
-	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &  
+	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &
 	\end{tabular}}
   \vspace*{1.5cm}
   \begin{center}
@@ -5954,14 +5906,14 @@ delim_1 "\\hspace*{\\fill}"
   {\songti \xiaosi
 	\begin{tabular}{@{\qquad}@{}r@{：}l@{}l@{\qquad}}
 	\heu@natclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@natclassifiedindex}} & \\
-	\heu@internatclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@intclassifiedindex}} & 
+	\heu@internatclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@intclassifiedindex}} &
 	\end{tabular}}\hfill
   {\songti \xiaosi
 	\begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
 	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &   \\
-	\heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &  
+	\heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &
 	\end{tabular}}
-  
+
   \vspace*{2.0cm}
   \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1]
   \begin{center}\xiaoer[1]\songti{\heu@cdegree\heu@cthesisname}\end{center}}
@@ -5998,12 +5950,12 @@ delim_1 "\\hspace*{\\fill}"
     {\songti \xiaosi
       \begin{tabular}{@{\qquad}@{}r@{：}l@{}l@{\qquad}}
 	\heu@natclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@natclassifiedindex}} & \\
-	\heu@internatclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@intclassifiedindex}} & 
+	\heu@internatclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@intclassifiedindex}} &
     \end{tabular}}\hfill
     {\songti \xiaosi
       \begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
 	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &   \\
-	\heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &  
+	\heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &
     \end{tabular}}
   \parbox[t][3.2cm][t]{\textwidth}{\begin{center} \end{center} }
     \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1]
@@ -6046,12 +5998,12 @@ delim_1 "\\hspace*{\\fill}"
   {\songti \xiaosi
 	\begin{tabular}{@{\qquad}l@{}l@{\qquad}}
 	Classified Index:\ \heu@natclassifiedindex & \\
-	U.D.C:\ \heu@intclassifiedindex & 
+	U.D.C:\ \heu@intclassifiedindex &
 	\end{tabular}}\hfill
   {\songti \xiaosi
 	\begin{tabular}{@{}r@{ }l@{}l@{\qquad}}
 	 &  &   \\
-	 &  &  
+	 &  &
 	\end{tabular}}
   \vspace*{1em}
   \begin{center}
@@ -6195,7 +6147,6 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 只有英文版用到，且需要clearpage
 %    \begin{macrocode}
-
 
 \renewcommand\listoffigures{\heu@listof{figure}{\listfigureename}}
 \renewcommand*\l@figure{\addvspace{6bp}\@dottedtocline{1}{0em}{4em}}
@@ -6369,7 +6320,6 @@ delim_1 "\\hspace*{\\fill}"
 % 博后用到的通讯页面
 %    \begin{macrocode}
 
-
 \newenvironment{resume}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
   \heu@appendix@chapter*{\heu@resume@ctitle}[\heu@resume@etitle]}{}
@@ -6538,7 +6488,7 @@ delim_1 "\\hspace*{\\fill}"
 
 \RequirePackage{siunitx}
 \sisetup{group-minimum-digits=4, group-separator= \hspace{0.25em}}
-\sisetup{detect-weight,detect-mode,detect-family} 
+\sisetup{detect-weight,detect-mode,detect-family}
 
 % 处理数学公式中的黑斜体的宏包
 \RequirePackage{bm}
@@ -6548,7 +6498,7 @@ delim_1 "\\hspace*{\\fill}"
 \RequirePackage{xcolor}
 
 % 数学模式中重定义\d为微分算符
-% 
+%
 \def\dif{\mathop{}\hphantom{\mskip-\thinmuskip}\mathrm{d}}%
 \let\daccent\d
 \let\d\relax
@@ -6564,7 +6514,6 @@ delim_1 "\\hspace*{\\fill}"
 \definecolor{colorthree}{rgb}{0, 1, 0}
 % 图形和表格的控制旋转
 \RequirePackage{rotating}
-
 
 
 % 算法的宏包，注意宏包兼容性，先后顺序为float、hyperref、algorithm(2e)，否则无法
@@ -6622,8 +6571,6 @@ breaklines=true
 \newacronym{esvm}{SVM}{Support Vector Machine}
 \newacronym{eml}{ML}{Machine Learning}
 \newacronym{eco}{CO}{Convex Optimization}
-
-
 
 \newacronym{tssbp}{树结构折筷过程}{树结构折筷过程（Tree-structured Stick-breaking process）}
 \def\gtssbp{\gls{tssbp}\sindex[china]{shu!树结构折筷过程}\sindex[english]{Tree-structured Stick-breaking process}}
