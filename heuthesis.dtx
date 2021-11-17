@@ -3616,15 +3616,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \define@key{heu}{newgeometry}{%
   \expandafter\csname heu@geometrynew#1true\endcsname}
 %    \end{macrocode}
-% 设置字距选项，因为word和规范不一致
-%    \begin{macrocode}
-\newif\ifheu@zijvregu
-\newif\ifheu@zijvword
-\define@key{heu}{zijv}{%
-  \heu@zijvregufalse
-  \heu@zijvwordfalse
-  \expandafter\csname heu@zijv#1true\endcsname}
-%    \end{macrocode}
 % 目录中英文是否用 Arial 字体（默认关闭）。
 %    \begin{macrocode}
 \DeclareBoolOption[false]{arialtoc}
@@ -3778,14 +3769,6 @@ EXECUTE {end.bib}                                 %   end_bib();
       \fi
     \fi
   \fi
-\fi
-%    \end{macrocode}
-% 设置字距默认选项
-%    \begin{macrocode}
-\ifheu@zijvregu\relax\else
-\ifheu@zijvword\relax\else
-\heu@zijvregutrue
-\fi
 \fi
 %    \end{macrocode}
 %
@@ -4025,17 +4008,10 @@ delim_1 "\\hspace*{\\fill}"
   \pagenumbering{Roman}
   \pagestyle{heu@empty}
 %    \end{macrocode}
-% 青岛模板范例，一行34个字
-% 添加33行字选项
+% 设置字距
 %    \begin{macrocode}
 \ifheu@openright\cleardoublepage\else\clearpage\fi
-\ifheu@zijvword
-\ziju{0.05416667}
-\else
-\ifheu@zijvregu
 \ziju{0.05580808}
-\fi
-\fi
 }
 %    \end{macrocode}
 % \end{macro}
