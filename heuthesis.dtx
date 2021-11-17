@@ -3624,10 +3624,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \begin{macrocode}
 \DeclareBoolOption[false]{arialtitle}
 %    \end{macrocode}
-% 中文本科模板中章标题是否加粗，默认是
-%    \begin{macrocode}
-\DeclareBoolOption[true]{chapterbold}
-%    \end{macrocode}
 % \option{raggedbottom} 选项（默认开启）。如果不开启这个选项，会出现一页中尽量上
 % 下对齐，段的间距大。如果开启，尽量使段间距保持一致，页面底部出现空白。
 %    \begin{macrocode}
@@ -4957,10 +4953,7 @@ delim_1 "\\hspace*{\\fill}"
       beforeskip={28.34646bp},%一个空行 1.57481 × 18
       afterskip={28.74646bp},%0.8应该不计算间距 0.8 × 18 + 0.57481×18
       aftername=\enspace,
-%    \end{macrocode}
-% 添加本科生章标题加粗选项
-%    \begin{macrocode}
-      format={\centering\heu@title@font\xiaoer[1.57481]\ifheu@chapterbold\ifheu@bachelor\bfseries\fi\fi},%\center 会影响之后全局
+      format={\centering\heu@title@font\xiaoer[1.57481]},%\center 会影响之后全局
       nameformat=\relax,
       numberformat=\relax,
       titleformat=\heu@chapter@titleformat,
@@ -6046,12 +6039,8 @@ delim_1 "\\hspace*{\\fill}"
       \advance\leftskip\@tempdima
       \hskip -\leftskip
       % numberline is called here, and it uses \@tempdima
-%    \end{macrocode}
-% 修改本科生论文目录格式
-% 本科目录添加加粗
-%    \begin{macrocode}
       {\ifheu@bachelor\rmfamily\else\csname
-        heu@toc@font\endcsname\fi\heiti\ifheu@postdoc\bfseries\fi\ifheu@chapterbold\ifheu@bachelor\bfseries\fi\fi\ifheu@english\bfseries\fi #1}
+        heu@toc@font\endcsname\fi\heiti\ifheu@postdoc\bfseries\fi\ifheu@english\bfseries\fi #1}
 %    \end{macrocode}
 % 博后和英文版需要加粗
 %    \begin{macrocode}
