@@ -3134,61 +3134,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 
 \def\heusetup{\kvsetkeys{heu}}
 
-\newcommand{\heu@report@titlepage@graduate}{
-  \ifthenelse%
-  {\equal{\heu@fontset}{siyuan}}%
-  {\xiaosi[1]\vspace*{0.65em}}%
-  {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@hi}}}%
-  \vspace*{10mm}
-  \begin{center}
-    \songti\erhao\textbf{\heu@cschoolname\ifheu@qingdao\heu@qingdaocampus\fi}
-  \end{center}
-  \begin{center}
-    \songti\erhao\textbf{\heu@cthesismidtermcheck}
-  \end{center}
-   \vspace{66bp}
-     \parbox[b][3cm][t]{\textwidth}{
-       \begin{center}\songti\sihao
-       \renewcommand{\arraystretch}{1.67}
-       \begin{tabular}{l@{\ \ }c}
-         \textbf{\heu@graduate@studenttitle} & \textbf{\heu@cauthor}\\
-         \hline
-         \textbf{\heu@graduate@enrolldate} & \textbf{\heu@cenrolldate}\\
-         \hline
-         \textbf{\heu@graduate@thesistitle} & \textbf{\heu@ctitleone}\\
-         \hline
-         &\textbf{\heu@ctitletwo}\\
-         \hline
-         \textbf{\heu@graduate@cafflimajor} & \textbf{\heu@csubject}\\
-         \hline
-         \textbf{\heu@graduate@datetitle} & \textbf{\heu@cdate}\\
-         \hline
-         \textbf{\heu@graduate@supervisor} & \textbf{\heu@csupervisor}\\
-         \hline
-       \end{tabular}\renewcommand{\arraystretch}{1}
-     \end{center}
-   }
-}
-
-
-\def\makecover{
-  \begin{titlepage}
-    \heu@report@titlepage@graduate
-    \clearpage
-    \heu@qingdao@doctor@midterm@note
-  \end{titlepage}
-  \AddToShipoutPicture{%
-    \begin{tikzpicture}[remember picture,overlay]
-      \draw ($(current page text area.south west)+(-5mm,0mm)$) rectangle ($(current page text area.north east)+(5mm,2mm)$);
-    \end{tikzpicture}
-  }
-  \pagestyle{fancy}
-  \fancyhead{}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
-  \fancyfoot[C]{\xiaowu-~\thepage~-}
-}
-
 
 \newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
 \newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{\heu@inline@sep}}
@@ -3519,61 +3464,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \def\heusetup{\kvsetkeys\{heu}}
 
 
-\newcommand{\heu@report@titlepage@graduate}{
-  \ifthenelse%
-  {\equal{\heu@fontset}{siyuan}}%
-  {\xiaosi[1]\vspace*{0.65em}}%
-  {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@hi}}}%
-  \vspace*{10mm}
-  \begin{center}
-    \kaishu\xiaoer\textbf{\heu@cschoolname\ifheu@qingdao\heu@qingdaocampus\fi}
-  \end{center}
-  \vspace{5mm}
-  \begin{center}
-    \songti\erhao\textbf{\heu@cdegree\heu@cthesisname
-      \ifheu@opening
-      \heu@stage@opening
-      \else
-      \ifheu@midterm
-      \heu@stage@midterm
-      \fi
-      \fi
-      \heu@stage@doctype
-    }
-  \end{center}
-   \vspace{10mm}
-   \parbox[t][3cm][t]{\textwidth}{
-     \begin{center}
-       \songti\xiaoer\textbf{\heu@cthesistitleprefix\heu@title@csep\heu@ctitlecover}
-     \end{center}
-   }
-     \parbox[b][3cm][t]{\textwidth}{
-       \begin{center}\songti\sanhao
-       \renewcommand{\arraystretch}{2.1}
-       \begin{tabular}{l@{\ \ }c}
-         \textbf{\heu@graduate@caffiltitle} & \underline{\makebox[6.1cm]{\textbf{\heu@caffil}}}\\
-         \textbf{\heu@graduate@cmajortitle} & \underline{\makebox[6.1cm]{\textbf{\heu@csubject}}}\\
-         \textbf{\heu@graduate@supervisor} & \underline{\makebox[6.1cm]{\textbf{\heu@csupervisor}}}\\
-         \textbf{\heu@graduate@studenttitle} & \underline{\makebox[6.1cm]{\textbf{\heu@cauthor}}}\\
-         \textbf{\heu@graduate@studentid} & \underline{\makebox[6.1cm]{\textbf{\heu@cstudentid}}}\\
-         \textbf{\heu@graduate@datetitle} & \underline{\makebox[6.1cm]{\textbf{\heu@cdate}}}\\
-       \end{tabular}\renewcommand{\arraystretch}{1}
-     \end{center}
-     }
-   \vfill
-   \ifheu@harbin
-   \heu@harbin@schoolbottommark
-   \else
-   \ifheu@qingdao
-   \heu@qingdao@schoolbottommark
-   \else
-   \ifheu@qingdao
-   \heu@yantai@schoolbottommark
-   \fi
-   \fi
-   \fi
-}
-
 \newcommand{\heu@report@titlepage@bachelor}{
    \ifthenelse%
    {\equal{\heu@fontset}{siyuan}}%
@@ -3636,25 +3526,6 @@ EXECUTE {end.bib}                                 %   end_bib();
   \normalsize\@starttoc{toc}
 }
 
-
-\def\makecover{
-  \begin{titlepage}
-    \ifheu@bachelor
-    \heu@report@titlepage@bachelor
-    \else
-    \heu@report@titlepage@graduate
-    \fi
-    \clearpage
-    \ifheu@toc
-    \tableofcontents
-    \clearpage
-    \fi
-  \end{titlepage}
-}
-\def\makebackcover{
-    \clearpage
-    \heu@report@backpage@bachelor
-}
 
 
 \newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
@@ -4629,20 +4500,9 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@bachelor@teachersign}{指导教师签字：}
 \newcommand{\heu@bachelor@checkdate}{检查日期：}
 \def\heu@cthesistitleprefix{题\hspace{\ccwd}目}
-\def\heu@graduate@caffiltitle{院\hspace{3\ccwd}（系）}
-\def\heu@graduate@cmajortitle{学\hspace{4\ccwd}科}
-\def\heu@graduate@supervisor{导\hspace{4\ccwd}师}
-\def\heu@graduate@studenttitle{研\hspace{1.5\ccwd}究\hspace{1.5\ccwd}生}
-\def\heu@graduate@studentid{学\hspace{4\ccwd}号}
-\def\heu@graduate@datetitle{\ifheu@opening\heu@stage@opening
-\else\ifheu@midterm\heu@stage@midterm\fi\fi\heu@stage@doctype 日期}
-\def\heu@graduate@enrolldate{入\hspace{0.6666666\ccwd}学\hspace{0.6666666\ccwd}时\hspace{0.6666666\ccwd}间}
-\def\heu@graduate@thesistitle{论\hspace{0.6666666\ccwd}文\hspace{0.6666666\ccwd}题\hspace{0.6666666\ccwd}目}
-\def\heu@graduate@cafflimajor{学\hspace{0.6666666\ccwd}科\hspace{0.6666666\ccwd}专\hspace{0.6666666\ccwd}业}
 \def\heu@cschoolname{哈尔滨工程大学}
 \def\heu@qingdaocampus{（青岛）}
 \def\heu@cthesisname{学位论文}
-\def\heu@cthesismidtermcheck{博\hspace{.125\ccwd}士\hspace{.125\ccwd}学\hspace{.125\ccwd}位\hspace{.125\ccwd}论\hspace{.125\ccwd}文\hspace{.125\ccwd}中\hspace{.125\ccwd}期\hspace{.125\ccwd}检\hspace{.125\ccwd}查\hspace{.125\ccwd}报\hspace{.125\ccwd}告}
 \def\heu@yantaicampus{（烟台）}
 \def\heu@cschoolnametitle{学位授予单位}
 \def\heu@csubmitdatatitle{论文提交日期}
@@ -5522,19 +5382,6 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@bachelor@checkdate}{检查日期：}
 
 \def\heu@cthesistitleprefix{题\hspace{\ccwd}目}
-
-\def\heu@graduate@caffiltitle{院\hspace{3\ccwd}（系）}
-\def\heu@graduate@cmajortitle{学\hspace{4\ccwd}科}
-\def\heu@graduate@supervisor{导\hspace{4\ccwd}师}
-\def\heu@graduate@studenttitle{研\hspace{1.5\ccwd}究\hspace{1.5\ccwd}生}
-\def\heu@graduate@studentid{学\hspace{4\ccwd}号}
-
-
-\def\heu@graduate@datetitle{\ifheu@opening\heu@stage@opening
-\else\ifheu@midterm\heu@stage@midterm\fi\fi\heu@stage@doctype 日期}
-\def\heu@graduate@enrolldate{入\hspace{0.6666666\ccwd}学\hspace{0.6666666\ccwd}时\hspace{0.6666666\ccwd}间}
-\def\heu@graduate@thesistitle{论\hspace{0.6666666\ccwd}文\hspace{0.6666666\ccwd}题\hspace{0.6666666\ccwd}目}
-\def\heu@graduate@cafflimajor{学\hspace{0.6666666\ccwd}科\hspace{0.6666666\ccwd}专\hspace{0.6666666\ccwd}业}
 
 
 \def\heu@cschoolname{哈尔滨工程大学}
