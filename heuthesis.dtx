@@ -552,7 +552,7 @@
 % 。
 % \begin{heurgu}
 % 每个图均应有图题（由图序和图名组成），图题不宜有标点符号，图名在图序之后空1个
-% 半角字符排写。图序按章编排，如第1章第一个插图的图号为“图1-1”。图题置于图下，硕
+% 半角字符排写。图序按章编排，如第1章第一个插图的图号为“图1.1”。图题置于图下，硕
 % 士论文只用中文，博士论文用中、英两种文字，居中书写，中文在上，要求中文用宋体5
 % 号字，英文用Times New Roman 5号字。有图注或其它说明时应置于图题之上。引用图应
 % 注明出处，在图题右上角加引用文献号。图中若有分图时，分图题置于分图之下或图题之
@@ -4322,7 +4322,10 @@ delim_1 "\\hspace*{\\fill}"
 \allowdisplaybreaks[4]
 \predisplaypenalty=0  %公式之前可以换页，公式出现在页面顶部
 \postdisplaypenalty=0
-\renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
+%    \end{macrocode}
+% \changes{v1.0.1}{2021/11/20}{修改公式编号分割符-为.}
+%    \begin{macrocode}
+\renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter.\fi\@arabic\c@equation}
 %    \end{macrocode}
 % 设置公式前后随意断页
 % 公式距前后文的距离由 4 个参数控制，参见 \cs{normalsize} 的定义。
@@ -4558,9 +4561,12 @@ delim_1 "\\hspace*{\\fill}"
 % 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面，
 % 也可以防止在很大空白的浮动页上放置很小的图形。
 %    \begin{macrocode}
-\g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
-\g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
-\g@addto@macro\appendix{\renewcommand*{\theequation}{\thechapter-\arabic{equation}}}
+%    \end{macrocode}
+% \changes{v1.0.1}{2021/11/20}{修改图标编号分割符-为.}
+%    \begin{macrocode}
+\g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter.\arabic{figure}}}
+\g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter.\arabic{table}}}
+\g@addto@macro\appendix{\renewcommand*{\theequation}{\thechapter.\arabic{equation}}}
 \renewcommand{\textfraction}{0.15}
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.65}
@@ -4662,13 +4668,19 @@ delim_1 "\\hspace*{\\fill}"
 %    图表名称及格式。
 %    \begin{macrocode}
 \renewcommand{\thesubtable}{(\alph{subtable})}
-\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}}%使图编号为 7-1 的格式 %\protect{~}
+%    \end{macrocode}
+% \changes{v1.0.1}{2021/11/20}{修改图标编号分割符-为.}
+%    \begin{macrocode}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}%使图编号为 7.1 的格式 %\protect{~}
 %    \end{macrocode}
 % 修改字图为双括号
 %    \begin{macrocode}
+%    \end{macrocode}
+% \changes{v1.0.1}{2021/11/20}{修改图标编号分割符-为.}
+%    \begin{macrocode}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}%使子图编号为 a)的格式
-\renewcommand{\p@subfigure}{\thefigure~} %使子图引用为 7-1 a) 的格式，母图编号和子图编号之间用~加一个空格
-\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}%使表编号为 7-1 的格式
+\renewcommand{\p@subfigure}{\thefigure~} %使子图引用为 7.1 a) 的格式，母图编号和子图编号之间用~加一个空格
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}%使表编号为 7.1 的格式
 %    \end{macrocode}
 %    调整罗列环境、浮动格式、间距。
 %    \begin{macrocode}
@@ -5945,8 +5957,11 @@ delim_1 "\\hspace*{\\fill}"
   \ifheu@openright\cleardoublepage\else\clearpage\fi
   \heu@appendix@chapter*{\heu@denotation@ctitle}[\heu@denotation@etitle]
 \setcounter{table}{0}
+%    \end{macrocode}
+% \changes{v1.0.1}{2021/11/20}{修改图标编号分割符-为.}
+%    \begin{macrocode}
 \renewcommand{\thetable}{\arabic{table}}%使表编号为 1 的格式
-  }{\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}%使表编号为 7-1 的格式
+  }{\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}%使表编号为 7.1 的格式
 \setcounter{table}{0}}%
 %    \end{macrocode}
 % 定义索引、目录格式
