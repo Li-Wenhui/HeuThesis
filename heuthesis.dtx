@@ -353,8 +353,8 @@
 %   etitle={Thesis English Title},
 %   csubtitle={论文中文副题目（如果有）},
 %   esubtitle={Thesis English Sub-Title (if necessary)},
-%   ctitleone={本科生论文中文题目上部分},
-%   ctitletwo={本科生论文中文题目下部分},
+%   ctitleone={博后中文题目上部分},
+%   ctitletwo={博后中文题目下部分},
 % }
 % \end{latex}
 %
@@ -5541,10 +5541,11 @@ delim_1 "\\hspace*{\\fill}"
       \heu@postdoc@classifiedindex&\underline{\makebox[6\ccwd]{\heu@natclassifiedindex}}&\heu@postdoc@secretlevel&\underline{\makebox[6\ccwd]{\heu@statesecrets}}&\\
       \heu@postdoc@UDC&\underline{\makebox[6\ccwd]{\heu@intclassifiedindex}}&\heu@postdoc@number&\underline{\makebox[6\ccwd]{\heu@cnumber}}&\\
     \end{tabular}\renewcommand{\arraystretch}{1}}
+  \vspace*{0.5cm}
   \parbox[t][5cm][b]{\textwidth}{\begin{center}\heiti\xiaoer[2]\heu@cschoolname\par
       \heu@postdoc@documenttitle\end{center}}
   \parbox[b][4cm][b]{\textwidth}{
-    \songti\xiaosan[2]\renewcommand{\arraystretch}{1.5}
+    \songti\xiaoer[2]\renewcommand{\arraystretch}{1.5}
     \begin{center}
       \begin{tabular}{c}
         \makebox[9cm]{\heu@ctitleone}\\
@@ -5602,14 +5603,12 @@ delim_1 "\\hspace*{\\fill}"
     \parbox[t][5cm][t]{\textwidth}{
       \begin{center}\songti\sihao[2]
         \begin{tabularx}{0.6\linewidth}{l@{\heu@postdoc@separator}l}
-          \heu@postdoc@authorname & \heu@cauthor \\
-          \heu@postdoc@supervisor & \heu@csupervisor \\
-          \heu@postdoc@positionname & \heu@cpositionname \\
-          \heu@postdoc@major & \heu@csubject \\
-        \end{tabularx}
-        \begin{tabularx}{0.6\linewidth}{l@{\heu@postdoc@separator}l}
-          \heu@postdoc@startdate & \heu@cstartdate \\
-          \heu@postdoc@enddate & \heu@cenddate \\
+          \makebox[9em][s]{\heu@postdoc@authorname} & \heu@cauthor \\
+          \makebox[9em][s]{\heu@postdoc@supervisor} & \heu@csupervisor \\
+          \makebox[9em][s]{\heu@postdoc@positionname} & \heu@cpositionname \\
+          \makebox[9em][s]{\heu@postdoc@major} & \heu@csubject \\
+          \makebox[9em][s]{\heu@postdoc@startdate} & \heu@cstartdate \\
+          \makebox[9em][s]{\heu@postdoc@enddate} & \heu@cenddate \\
         \end{tabularx}
       \end{center}
     }
@@ -5665,7 +5664,7 @@ delim_1 "\\hspace*{\\fill}"
 	{\songti \heu@put@title{\heu@bachelor@caffiltitle}}	&	\heu@caffil \\
 	{\songti \heu@put@title{\heu@bachelor@cmajortitle}}	&	\heu@csubject \\
 	{\songti \heu@put@title{\heu@bachelor@cstudenttitle}}	&	\heu@cauthor\\
-	{\songti \heu@put@title{\heu@bachelor@csupervisortitle}}	&	\heu@csupervisor
+	{\songti \heu@put@title{\heu@bachelor@csupervisortitle}}	&	\heu@csupervisor\quad\heu@cprofessional
 	\end{tabular} \renewcommand{\arraystretch}{1}
 	\end{center}}}
   \parbox[t][1.4cm][t]{\textwidth}{
@@ -5677,8 +5676,6 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 本科封二
 %    \begin{macrocode}
-\newlength{\heu@ctitleonelength}%
-\newlength{\heu@ctitletwolength}%
 \newcommand{\heu@second@titlepage@bachelor}{
   \vspace*{0.5cm}
   {\songti \xiaosi
