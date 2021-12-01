@@ -556,7 +556,7 @@
 % 士论文只用中文，博士论文用中、英两种文字，居中书写，中文在上，要求中文用宋体5
 % 号字，英文用Times New Roman 5号字。有图注或其它说明时应置于图题之上。引用图应
 % 注明出处，在图题右上角加引用文献号。图中若有分图时，分图题置于分图之下或图题之
-% 下，可以只用中文书写，分图号用a)、b)等表示。图中各部分说明应采用中文（引用的外
+% 下，可以只用中文书写，分图号用(a)、(b)等表示。图中各部分说明应采用中文（引用的外
 % 文图除外）或数字符号，各项文字说明置于图题之上（有分图时，置于分图题之上）。图
 % 中文字用宋体、Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5号字
 % ，以清晰表达为原则，但在一个插图内字号要统一）。同一图内使用文字应统一。图表中
@@ -4526,7 +4526,6 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@bachelor@cstudentidtitle{学\hspace{2\ccwd}号}
 \def\heu@bachelor@cclass{班\hspace{2\ccwd}号}
 \def\heu@bachelor@caffiltitle{学院（系）名称}
-\def\heu@bachelor@caffiltitleqd{学院}
 \def\heu@bachelor@caffiltitleya{学院}
 \def\heu@bachelor@csupervisortitle{指导教师}
 \def\heu@bachelor@cdatetitle{日\hspace{2\ccwd}期}
@@ -4737,8 +4736,8 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % \changes{v1.0.1}{2021/11/20}{修改图标编号分割符-为.}
 %    \begin{macrocode}
-\renewcommand{\thesubfigure}{(\alph{subfigure})}%使子图编号为 a)的格式
-\renewcommand{\p@subfigure}{\thefigure~} %使子图引用为 7.1 a) 的格式，母图编号和子图编号之间用~加一个空格
+\renewcommand{\thesubfigure}{(\alph{subfigure})}%使子图编号为 (a) 的格式
+\renewcommand{\p@subfigure}{\thefigure~} %使子图引用为 7.1(a) 的格式，母图编号和子图编号之间用~加一个空格
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}%使表编号为 7.1 的格式
 %    \end{macrocode}
 %    调整罗列环境、浮动格式、间距。
@@ -5388,7 +5387,6 @@ delim_1 "\\hspace*{\\fill}"
 
 \def\heu@bachelor@cxuewei{本科}
 \def\heu@bachelor@cthesisname{毕业论文}
-
 \def\heu@bachelor@cmajortitle{专\hspace{2\ccwd}业}
 \def\heu@bachelor@cstudenttitle{学\hspace{2\ccwd}生}
 \def\heu@bachelor@cstudentidtitle{学\hspace{2\ccwd}号}
@@ -5405,8 +5403,6 @@ delim_1 "\\hspace*{\\fill}"
 % 此处添加青岛校区设置
 %    \begin{macrocode}
 %<*bookcfg>
-\def\heu@bachelor@caffiltitleqd{学院}
-\def\heu@bachelor@caffiltitleyt{学院}
 \def\heu@bachelor@cstudentidtitle{学号}
 \def\heu@bachelor@cmajortitle{专业名称}
 \def\heu@bachelor@csupervisortitle{指导教师}
@@ -5441,10 +5437,13 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@csubmitdatatitle{论文提交日期}
 \def\heu@coralexdatetitle{论文答辩日期}
 \def\heu@caffiltitle{所在单位}
+\def\heu@ccolegetitle{所在学院}
 \def\heu@csubjecttitle{学科、专业}
+\def\heu@cprodrgreetitle{学位类别}
+\def\heu@cprosubjecttile{专业类别}
 \def\heu@cdegreetitle{申请学位}
 \def\heu@csupervisortitle{指导教师}
-\def\heu@cassosupervisortitle{副导师}
+\def\heu@cassosupervisortitle{校外导师}
 \def\heu@ccosupervisortitle{联合导师}
 \def\heu@creviewertitle{论文主审人}
 \def\heu@title@csep{：}
@@ -5454,11 +5453,13 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@ecosupervisortitle{Co Supervisor}
 \def\heu@edegreetitle{Academic Degree Applied for}
 \def\heu@esubjecttitle{Specialty}
-\def\heu@eaffiltitle{Affiliation}
+\def\heu@eaffiltitle{College}
+\def\heu@ecategorytitle{Professional category}
+\def\heu@esubmitdatetitle{Date of Submission}
 \def\heu@eoralexdatetitle{Date of Oral Examination}
 \def\heu@eschoolnametitle{University}
 \def\heu@eschoolname{Harbin Engineering University}
-\def\heu@title@esep{:}
+\def\heu@title@esep{: }
 \def\heu@natclassifiedindextitle{分类号}
 \def\heu@internatclassifiedindextitle{ＵＤＣ}
 \def\heu@secretlevel{密级}
@@ -5755,8 +5756,8 @@ delim_1 "\\hspace*{\\fill}"
       \ifheu@subtitle\begin{center}\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\end{center}\fi
     \begin{center}%
       \settowidth{\heu@etitlelength}{\erhao\heu@etitle\ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}%
-      \textbf{\MakeUppercase{\heu@etitle}%
-        \ifheu@subtitle\heu@title@esep\MakeUppercase{\heu@esubtitle}\fi}
+      \textbf{\heu@etitle%
+        \ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}
     \end{center}
     }
   \parbox[t][9.8cm][b]{\textwidth}
@@ -5802,8 +5803,7 @@ delim_1 "\\hspace*{\\fill}"
   \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1]
   \begin{center}\xiaoer[1]\songti{\heu@cdegree\heu@cthesisname}\end{center}}
 % 修改第二行标题：学术类型
-  \parbox[t][1.2cm][t]{\textwidth}{
-  \ifheu@profdegree\begin{center}\xiaoer[1]\songti{\heu@cbraceleft\heu@cstudenttype\heu@cbraceright}\end{center}\else\qquad \fi}
+  \parbox[t][1.2cm][t]{\textwidth}{\quad}
     \parbox[t][7.8cm][t]{\textwidth}{%
   \begin{center}\erhao\heiti\heu@ctitlecover\end{center}
   \ifheu@subtitle\begin{center}\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\end{center}\fi}
@@ -5812,12 +5812,14 @@ delim_1 "\\hspace*{\\fill}"
     \setlength{\heu@title@width}{6em}
     \begin{center} \renewcommand{\arraystretch}{1.62} \songti
 	\begin{tabular}{l@{\heu@title@csep}l}
-      {\songti \heu@put@title{\heu@cauthortitle}}	&	\heu@cauthor\\
-      {\songti \heu@put@title{\heu@csupervisortitle}}	&	\heu@csupervisor\\
-	  {\songti \heu@put@title{\heu@csubjecttitle}}	&	\heu@csubject \\
-      \ifx\heu@creviewer\@empty\else%
-        {\heu@put@title{\heu@creviewertitle}}&	\heu@creviewer
-      \fi
+    {\songti \heu@put@title{\heu@cauthortitle}}	&	\heu@cauthor\\
+    {\songti \heu@put@title{\heu@csupervisortitle}}	&	\heu@csupervisor\\
+    \ifheu@profdegree%
+      {\songti \heu@put@title{\heu@cassosupervisortitle}} &	\heu@cassosupervisor \\
+	    {\songti \heu@put@title{\heu@cprodrgreetitle}}	&	\heu@cstudenttype \\
+    \else%
+      {\songti \heu@put@title{\heu@csubjecttitle}}	&	\heu@csubject \\
+    \fi
 	\end{tabular} \renewcommand{\arraystretch}{1}
   \end{center}}}
     \parbox[t][1.4cm][t]{\textwidth}{
@@ -5845,27 +5847,26 @@ delim_1 "\\hspace*{\\fill}"
     \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1]
   \begin{center}\songti\heu@cdegree\heu@cthesisname\end{center}}
 % 修改第二行标题：学术类型
-  \parbox[t][1.2cm][t]{\textwidth}{
-  \ifheu@profdegree\begin{center}\xiaoer[1]\songti{\heu@cbraceleft\heu@cstudenttype\heu@cbraceright}\end{center}\else\qquad \fi}
+  \parbox[t][1.2cm][t]{\textwidth}{\quad}
 	\parbox[t][5cm][t]{\textwidth}{\erhao
   \begin{center}\heiti\heu@ctitlecover\end{center}
-\ifheu@subtitle\begin{center}\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\end{center}\fi}
+    \ifheu@subtitle\begin{center}\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\end{center}\fi}
     \parbox[t][9.8cm][b]{\textwidth}
     {\sihao
       \setlength{\heu@title@width}{6em}
-      \begin{center} \renewcommand{\arraystretch}{1.62} \songti
-	\begin{tabular}{l@{\heu@title@csep}l}
+      \begin{center} \renewcommand{\arraystretch}{1.5} \songti
+  	\begin{tabular}{l@{\heu@title@csep}l}
 	  \textbf{\heu@put@title{\heu@cauthortitle}}	&	\heu@cauthor\\
 	  \textbf{\heu@put@title{\heu@csupervisortitle}}	&	\heu@csupervisor\\
-        \ifx\heu@cassosupervisor\@empty\else%
-	  \textbf{\heu@put@title{\heu@cassosupervisortitle}}&	\heu@cassosupervisor\\
-        \fi
-        \ifx\heu@ccosupervisor\@empty\else%
-	  \textbf{\heu@put@title{\heu@ccosupervisortitle}}	&	\heu@ccosupervisor\\
-        \fi
-	  \textbf{\heu@put@title{\heu@cdegreetitle}}	&	\heu@cdegree\\
+    \ifheu@profdegree%
+    \textbf{\heu@put@title{\heu@cassosupervisortitle}}&	\heu@cassosupervisor\\
+    \textbf{\heu@put@title{\heu@cprosubjecttile}}	&	\heu@csubject\\
+	  \textbf{\heu@put@title{\heu@ccolegetitle}}		&	\heu@caffil\\
+    \else%
+    \textbf{\heu@put@title{\heu@cdegreetitle}}	&	\heu@cdegree\\
 	  \textbf{\heu@put@title{\heu@csubjecttitle}}	&	\heu@csubject\\
 	  \textbf{\heu@put@title{\heu@caffiltitle}}		&	\heu@caffil\\
+    \fi
 	  \textbf{\heu@put@title{\heu@csubmitdatatitle}}		&	\heu@csubmitdate\\
 	  \textbf{\heu@put@title{\heu@coralexdatetitle}}		&	\heu@coralexdate\\
 	  \textbf{\heu@put@title{\heu@cschoolnametitle}}	&	\heu@cschoolname
@@ -5873,7 +5874,6 @@ delim_1 "\\hspace*{\\fill}"
     \end{center} }
   \end{center}
 }
-
 %    \end{macrocode}
 % 硕博论文英文内封
 %    \begin{macrocode}
@@ -5895,33 +5895,32 @@ delim_1 "\\hspace*{\\fill}"
   \parbox[t][1.6cm][t]{\textwidth}{\begin{center} \end{center} }
     \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1]
       \begin{center}
-        \ifheu@profdegree A Dissertation for the Professional Degree of {\heu@exuewei}
+        \ifheu@profdegree A Thesis for the Degree of {\heu@estudenttype}
         \else A Dissertation for the Degree of {\heu@exueweier}
         \fi
       \end{center}}
-    \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1]
-      \ifheu@profdegree\begin{center}\heu@ebraceleft\heu@estudenttype\heu@ebraceright\end{center}\else\qquad \fi}
+    \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1] \qquad}
     \parbox[t][7cm][t]{\textwidth}{%
    \begin{center}%
     \settowidth{\heu@etitlelength}{\erhao\heu@etitle\ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}%
     \ifdim\heu@etitlelength>450mm\xiaoer\else\erhao\fi%
-    \textbf{\MakeUppercase{\heu@etitle}%
-   \ifheu@subtitle\heu@title@esep\MakeUppercase{\heu@esubtitle}\fi}\end{center}}
-    {\sihao\renewcommand{\arraystretch}{1.3}
+    \textbf{\heu@etitle%
+   \ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}\end{center}}
+    {\xiaosi\renewcommand{\arraystretch}{1.3}
       \begin{tabular}{@{}r@{~}l@{}}
-	\textbf{\heu@eauthortitle\heu@title@esep}		&	\heu@eauthor\\
-	\textbf{\heu@esupervisortitle\heu@title@esep}	&	\heu@esupervisor\\
-      \ifx\heu@eassosupervisor\@empty\else%
-	\textbf{\heu@eassosupervisortitle\heu@title@esep}	&	\heu@eassosupervisor\\
-      \fi
-      \ifx\heu@ecosupervisor\@empty\else%
-	\textbf{\heu@ecosupervisortitle\heu@title@esep}	&	\heu@ecosupervisor\\
-      \fi
-	\textbf{\heu@edegreetitle\heu@title@esep}		&	\heu@edegree\\
+	    \textbf{\heu@eauthortitle\heu@title@esep}		&	\heu@eauthor\\
+	    \textbf{\heu@esupervisortitle\heu@title@esep}	&	\heu@esupervisor\\
+      \ifheu@profdegree%
+      \textbf{\heu@eassosupervisortitle\heu@title@esep}	&	\heu@eassosupervisor\\
+      \textbf{\heu@ecategorytitle\heu@title@esep}	&	\heu@esubject\\
+      \textbf{\heu@eaffiltitle\heu@title@esep}	&	\heu@eaffil\\
+      \else%
+	    \textbf{\heu@edegreetitle\heu@title@esep}		&	\heu@edegree\\
       \textbf{\heu@esubjecttitle\heu@title@esep}		&\heu@esubject\\
-	%\textbf{\heu@eaffiltitle\heu@title@esep}		&\heu@eaffil\\
-	\textbf{\heu@eoralexdatetitle\heu@title@esep}		&	\heu@eoralexdate\\
-	\textbf{\heu@eschoolnametitle\heu@title@esep}	&	\heu@eschoolname
+      \fi
+      \textbf{\heu@esubmitdatetitle\heu@title@esep}		&	\heu@esubmitdate\\
+      \textbf{\heu@eoralexdatetitle\heu@title@esep}		&	\heu@eoralexdate\\
+      \textbf{\heu@eschoolnametitle\heu@title@esep}	&	\heu@eschoolname
     \end{tabular}\renewcommand{\arraystretch}{1}}
   \end{center}
 }
