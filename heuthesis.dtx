@@ -4164,12 +4164,14 @@ delim_1 "\\hspace*{\\fill}"
 % \begin{macro}{\heu@empty}
 % \begin{macro}{\heu@plain}
 % \begin{macro}{\heu@headings}
+% \begin{macro}{\heu@titleheadings}
 % 定义三种页眉页脚格式：
 % \begin{itemize}
 % \item \texttt{heu@empty}：页眉页脚都没有
 % \item \texttt{heu@plain}：只显示页脚的页码。\cs{chapter} 自动调用
 % \cs{thispagestyle\{heu@plain\}}。
-% \item \texttt{heu@headings}：页眉页脚同时显示
+% \item \texttt{heu@headings}：页眉页脚同时显示，奇数页显示章节
+% \item \texttt{heu@titleheadings}：页眉页脚同时显示，奇数页显示论文题目
 % \end{itemize}
 %    \begin{macrocode}
 %<*bookcls>
@@ -4187,7 +4189,10 @@ delim_1 "\\hspace*{\\fill}"
   \fancyhf{}
   \ifheu@english
     \fancyhead[C]{\wuhao[0]\leftmark}
-    \fancyfoot[C]{\wuhao-~\thepage~-}
+%    \end{macrocode}
+% \changes{v1.0.4}{2021/12/01}{根据最新要求修改页码格式}
+%    \begin{macrocode}
+    \fancyfoot[C]{\wuhao\thepage}
     \renewcommand{\headrule}{
       \vskip 0.5mm
       \hrule\@height0.5mm\@width\headwidth
@@ -4241,7 +4246,10 @@ delim_1 "\\hspace*{\\fill}"
         \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@yantaicampus\heu@bachelor@cxuewei\heu@bachelor@cthesisname}
       \fi
     \fi
-    \fancyfoot[C]{\wuhao-~\thepage~-}
+%    \end{macrocode}
+% \changes{v1.0.4}{2021/12/01}{根据最新要求修改页码格式}
+%    \begin{macrocode}
+    \fancyfoot[C]{\wuhao\thepage}
     \renewcommand{\headrule}{
     \vskip 1.634877pt
     \hrule\@height1.329787pt\@width\headwidth
@@ -4249,17 +4257,68 @@ delim_1 "\\hspace*{\\fill}"
     \hrule\@height2.127659pt\@width\headwidth
     }
   \fi
-  % 此处可能和word模板不一致
-  % 页眉中小五汉字，0行距时，占用9bt，页眉高度为14pt, 所以以下数字之和要保持等于14pt-9bt=4.96634pt
-  % 根据PlutoThesis模板中rule宽度定义为2.25， 0.75， 保持粗线和细线之间的间距为细线宽度。
-  % 如果页眉是多行的情况，rule向下溢出
   \renewcommand{\footrulewidth}{0pt}
+}
+%    \end{macrocode}
+% \changes{v1.0.4}{2021/12/01}{根据最新要求修改摘要和目录页的页眉页脚}
+%    \begin{macrocode}
+% 从这里，是摘要和目录页的页眉页脚
+\fancypagestyle{heu@titleheadings}%
+{%
+  \fancyhead{} %
+  \fancyhead[CO]{\songti\wuhao[0]\heu@ctitle}
+  \ifheu@postdoc
+    \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@postdoc@documenttitlenospace}
+  \fi
+  \ifheu@doctor
+    \ifheu@harbin
+      \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@cdegree\heu@cthesisname}
+    \fi
+    \ifheu@qingdao
+      \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@qingdaocampus\heu@cdegree\heu@cthesisname}
+    \fi
+    \ifheu@yantai
+      \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@yantaicampus\heu@cdegree\heu@cthesisname}
+    \fi
+  \fi
+  \ifheu@master
+    \ifheu@harbin
+      \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@cdegree\heu@cthesisname}
+    \fi
+    \ifheu@qingdao
+      \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@qingdaocampus\heu@cthesisname}
+    \fi
+    \ifheu@yantai
+      \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@yantaicampus\heu@cdegree\heu@cthesisname}
+    \fi
+  \fi
+  \ifheu@bachelor
+    \ifheu@harbin
+      \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@bachelor@cxuewei\heu@bachelor@cthesisname}
+    \fi
+    \ifheu@qingdao
+      \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@qingdaocampus\heu@bachelor@cxuewei\heu@bachelor@cthesisname}%
+    \fi
+    \ifheu@yantai
+      \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@yantaicampus\heu@bachelor@cxuewei\heu@bachelor@cthesisname}
+    \fi
+  \fi
+  \fancyfoot[C]{\wuhao\thepage}       % 只显示号码
+  \renewcommand{\headrulewidth}{0pt}  % 页眉线粗细
+  \renewcommand{\footrulewidth}{0pt}  % 页脚线粗细
+  \renewcommand{\headrule}{
+    \vskip 1.634877pt
+    \hrule\@height1.329787pt\@width\headwidth
+    \vskip 0.797872pt
+    \hrule\@height2.127659pt\@width\headwidth
+  }
 }
 \AtBeginDocument{%此处解决页眉经典bug
   \pagestyle{heu@empty}
   \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\enspace#1}{}}}
 %</bookcls>
 %    \end{macrocode}
+% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
@@ -5932,10 +5991,15 @@ delim_1 "\\hspace*{\\fill}"
   \fi
 %    \end{macrocode}
 % 英文版目录之前有page行
+% \changes{v1.0.4}{2021/12/01}{根据最新要求修改摘要页眉}
 %    \begin{macrocode}
-  \heu@appendix@chapter*{\cabstractcname}[\cabstractename]
-  \pagestyle{heu@headings}
+%  \heu@appendix@chapter*{\cabstractcname}[\cabstractename]
+  \pagestyle{heu@titleheadings}
   \pagenumbering{Roman}
+  \begin{center}
+    ~\\
+    \xiaoer\heiti\cabstractcname
+  \end{center}\par
   \heu@cabstract
   \vskip12bp
   \heu@put@keywords{\ifheu@postdoc\bfseries\fi\heiti\heu@ckeywords@title}{\heu@ckeywords}
@@ -5943,7 +6007,14 @@ delim_1 "\\hspace*{\\fill}"
 % 博后关键字加粗
 %    \begin{macrocode}
   \ifheu@openright\cleardoublepage\else\clearpage\fi
-  \heu@appendix@chapter*{\eabstractcname}[\eabstractename]
+%    \end{macrocode}
+% \changes{v1.0.4}{2021/12/01}{根据最新要求修改摘要页眉}
+%    \begin{macrocode}
+%  \heu@appendix@chapter*{\eabstractcname}[\eabstractename]
+  \begin{center}
+    ~\\
+    \xiaoer\heiti\eabstractcname
+  \end{center}\par
   \heu@eabstract
   \vskip12bp
   \heu@put@keywords{\textbf{Keywords:\enskip}}{\heu@ekeywords}}
@@ -5970,7 +6041,14 @@ delim_1 "\\hspace*{\\fill}"
   \let\numberline\oldnumberline}
 \def\heu@listof#1#2{% #1: float type
   \ifheu@openright\cleardoublepage\else\clearpage\fi
-  \heu@appendix@chapter*[\csname list#1name\endcsname]{\csname list#1name\endcsname}[#2]
+%    \end{macrocode}
+% \changes{v1.0.4}{2021/12/01}{根据最新要求修改索引页眉}
+%    \begin{macrocode}
+%  \heu@appendix@chapter*[\csname list#1name\endcsname]{\csname list#1name\endcsname}[#2]
+  \begin{center}
+    ~\\
+    {\xiaoer\heiti{\csname list#1name\endcsname}}
+  \end{center}\par
   \heu@starttoc{#1}}
 %    \end{macrocode}
 % 只有英文版用到，且需要clearpage
@@ -6001,7 +6079,14 @@ delim_1 "\\hspace*{\\fill}"
 \ifheu@openright\cleardoublepage\else\clearpage\fi
 \phantomsection
 \markboth{\contentsname}{ccontent}
-\heu@chapter*{\contentsname}
+%    \end{macrocode}
+% \changes{v1.0.4}{2021/12/01}{根据最新要求修改摘要页眉}
+%    \begin{macrocode}
+%\heu@chapter*{\contentsname}
+\begin{center}
+  ~\\
+  \xiaoer\heiti\contentsname
+\end{center}\par
 \pdfbookmark[0]{\contentsname}{ccontent}
 \normalsize\@starttoc{toc}
 \ifheu@doctor
