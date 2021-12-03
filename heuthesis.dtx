@@ -421,7 +421,7 @@
 %   csupervisor={导师~教授},
 %   esupervisor={Supervisor},
 %   cprofessional={职称（本科）},
-%   creviewer={论文评语人}
+%   creviewer={论文主审人}
 % }
 % \end{latex}
 %
@@ -2990,6 +2990,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 \RequirePackage[perpage,hang]{footmisc}
 \RequirePackage{xeCJKfntef}
 
+\RequirePackage{diagbox}
 \RequirePackage{longtable}
 \RequirePackage{booktabs}
 \RequirePackage[sort&compress,numbers]{natbib}
@@ -3360,6 +3361,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \begin{macrocode}
 \RequirePackage{xeCJKfntef}
 
+\RequirePackage{diagbox}
 \RequirePackage{longtable}
 \RequirePackage{booktabs}
 \RequirePackage[sort&compress,numbers]{natbib}
@@ -3923,6 +3925,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 
 % 表格控制
 %    \begin{macrocode}
+\RequirePackage{diagbox}
 \RequirePackage{longtable}
 %    \end{macrocode}
 % 使用三线表：\cs{toprule}，\cs{midrule}，\cs{bottomrule}。
@@ -4622,7 +4625,7 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@csupervisortitle{指导教师}
 \def\heu@cassosupervisortitle{副导师}
 \def\heu@ccosupervisortitle{联合导师}
-\def\heu@creviewertitle{论文主审人}
+\def\heu@creviewertitle{学位论文主审人}
 \def\heu@title@csep{：}
 \def\heu@natclassifiedindextitle{分类号}
 \def\heu@internatclassifiedindextitle{ＵＤＣ}
@@ -5521,7 +5524,7 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@csupervisortitle{指导教师}
 \def\heu@cassosupervisortitle{校外导师}
 \def\heu@ccosupervisortitle{联合导师}
-\def\heu@creviewertitle{论文主审人}
+\def\heu@creviewertitle{学位论文主审人}
 \def\heu@title@csep{：}
 \def\heu@eauthortitle{Candidate}
 \def\heu@esupervisortitle{Supervisor}
@@ -5841,13 +5844,10 @@ delim_1 "\\hspace*{\\fill}"
   \begin{center}
     \parbox[t][8.0cm][t]{\textwidth}
     {\heiti\xiaosan
-	\begin{center}\erhao\heiti\heu@ctitlecover\end{center}
+	    \begin{center}\erhao\heiti\heu@ctitlecover\end{center}
       \ifheu@subtitle\begin{center}\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\end{center}\fi
-    \begin{center}%
-      \settowidth{\heu@etitlelength}{\erhao\heu@etitle\ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}%
-      \textbf{\heu@etitle%
-        \ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}
-    \end{center}
+      \begin{center}\erhao\textbf{\heu@etitle}\end{center}
+      \begin{center}\xiaoer\textbf{\ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}\end{center}
     }
   \parbox[t][9.8cm][b]{\textwidth}
   {\heiti\xiaosan
@@ -5871,7 +5871,6 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 硕博论文封面
 %    \begin{macrocode}
-\newlength{\heu@etitlelength}%
 \newcommand{\heu@first@titlepage@other}{
 \ifthenelse%
 {\equal{\heu@fontset}{siyuan}}%
@@ -5893,25 +5892,28 @@ delim_1 "\\hspace*{\\fill}"
   \begin{center}\xiaoer[1]\songti{\heu@cdegree\heu@cthesisname}\end{center}}
 % 修改第二行标题：学术类型
   \parbox[t][1.2cm][t]{\textwidth}{\quad}
-    \parbox[t][7.8cm][t]{\textwidth}{%
+    \parbox[t][6.0cm][t]{\textwidth}{%
   \begin{center}\erhao\heiti\heu@ctitlecover\end{center}
   \ifheu@subtitle\begin{center}\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\end{center}\fi}
     \parbox[t][7.4cm][t]{\textwidth}{
     {\xiaosan
-    \setlength{\heu@title@width}{6em}
+    \setlength{\heu@title@width}{7em}
     \begin{center} \renewcommand{\arraystretch}{1.62} \songti
 	\begin{tabular}{l@{\heu@title@csep}l}
     {\songti \heu@put@title{\heu@cauthortitle}}	&	\heu@cauthor\\
     {\songti \heu@put@title{\heu@csupervisortitle}}	&	\heu@csupervisor\\
     \ifheu@profdegree%
       {\songti \heu@put@title{\heu@cassosupervisortitle}} &	\heu@cassosupervisor \\
-	    {\songti \heu@put@title{\heu@cprodrgreetitle}}	&	\heu@cstudenttype \\
+	  {\songti \heu@put@title{\heu@cprodrgreetitle}}	&	\heu@cstudenttype \\
     \else%
       {\songti \heu@put@title{\heu@csubjecttitle}}	&	\heu@csubject \\
     \fi
+    \ifx\heu@creviewer\@empty\else%
+      {\songti \heu@put@title{\heu@creviewertitle}}	&	\heu@creviewer
+    \fi
 	\end{tabular} \renewcommand{\arraystretch}{1}
   \end{center}}}
-    \parbox[t][1.4cm][t]{\textwidth}{
+    \parbox[t][3.0cm][b]{\textwidth}{
   \begin{center}\kaishu\xiaoer{\heu@cschoolname}\end{center}}
     {\songti\xiaosan{\heu@cdate}}
 \end{center}
@@ -5932,7 +5934,7 @@ delim_1 "\\hspace*{\\fill}"
 	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &   \\
 	\heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &
     \end{tabular}}
-  \parbox[t][3.2cm][t]{\textwidth}{\begin{center} \end{center}}
+  \parbox[t][2.0cm][t]{\textwidth}{\begin{center} \end{center}}
     \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1]
   \begin{center}\songti\heu@cdegree\heu@cthesisname\end{center}}
 % 修改第二行标题：学术类型
@@ -5991,11 +5993,8 @@ delim_1 "\\hspace*{\\fill}"
       \end{center}}
     \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1] \qquad}
     \parbox[t][7cm][t]{\textwidth}{%
-   \begin{center}%
-    \settowidth{\heu@etitlelength}{\erhao\heu@etitle\ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}%
-    \ifdim\heu@etitlelength>450mm\xiaoer\else\erhao\fi%
-    \textbf{\heu@etitle%
-   \ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}\end{center}}
+    \begin{center}\erhao\textbf{\heu@etitle}\end{center}
+    \begin{center}\xiaoer\textbf{\ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}\end{center}}
     {\xiaosi\renewcommand{\arraystretch}{1.3}
       \begin{tabular}{@{}r@{~}l@{}}
 	    \textbf{\heu@eauthortitle\heu@title@esep}		&	\heu@eauthor\\
