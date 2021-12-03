@@ -24,15 +24,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 选填选项（选填选项的缺省值已经尽可能满足了大多数需求，除非明确知道自己有什么
 % 需求）
-% campus=qingdao|yantai|harbin
-%   含义：校区选项，默认harbin
-% profdegree=true|false
-%   含义：是否为专业学位，缺省值为false。专业学位和同等学力等，要在cover中设置类
-%   型，封面中不同格式
-%   注意：当当 profdegree=true 必须设置下面的 research 选项
-% research=productdevelopment|projectdplanning|projectdesign|applicationResearch
-%   含义：专业学位论文研究类型，产品设计|工程规划|工程设计|应用研究
-%   注意：当 profdegree=true 时必须设置此选项
 % tocfour=true|false
 %   含义：是否添加第四级目录，只对本科文科个别要求四级目录有效，缺省值为
 %   false
@@ -46,7 +37,7 @@
 %   翻页，将这个选项设置为false，然后在目标位置添加`\cleardoublepage`命令即
 %   可。
 % engtoc=true|false
-%   含义：非博士生需要添加英文目录的，手动添加，如果是博士，此开关无效
+%   含义：是否需要添加英文目录
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{heuthesis}
 
@@ -54,10 +45,10 @@
 
 \begin{document}
 \frontmatter
-\input{front/cover} % 封面
+\input{front/cover} % 封面和摘要
 \makecover
 
-\tableofcontents %目录
+\tableofcontents %论文目录
 
 %%----------  插图目录, 如不需要可用 % 注释掉下面两行
 \listoffigures
@@ -67,21 +58,30 @@
 \listoftables
 \cleardoublepage
 
+%%----------  论文主体，可以根据需要添加章节
 \mainmatter
-\include{body/regu}
-\include{body/introduction}
+\include{body/chap01}
+\include{body/chap02}
+\include{body/chap03}
+\include{body/chap04}
+\include{body/chap05}
+\include{body/chap07}
+\include{body/chap08}
+
+%%----------  论文结论、参考文献、附录等部分
 \backmatter
 \include{back/conclusion}   % 结论
+
 \bibliographystyle{gbt7714-numerical}
 \bibliography{reference}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 硕博书序
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \include{back/publications}    % 所发文章
 \include{back/acknowledgements} %致谢
 \include{back/resume}          % 个人简介
+
 \begin{appendix}%附录
   \input{back/AppendixA.tex}
+  \input{back/regu.tex}
 \end{appendix}
 
 \end{document}

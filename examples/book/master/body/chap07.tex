@@ -1,0 +1,86 @@
+%! TEX program = xelatex
+%! TEX root = ../main.tex
+%! TEX encoding = utf-8
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  哈尔滨工程大学学位论文 XeLaTeX 模版 —— 正文文件 chap04.tex
+%
+%  版本：1.0.0
+%  最后更新：
+%  修改者：Leo LiWenhui lwh@hrbeu.edu.cn
+%  修订者：
+%  编译环境1：Ubuntu 12.04 + TeXLive 2013/2014
+%  编译环境2：Windows 7/8  + TeXLive 2013/2014
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{参考文献}
+\label{chap07}
+
+\section{参考文献的引用}
+
+参考文献的引用一般有两种方式，即行间引用和上标引用。
+
+行间引用使用~\verb|\inlinecite{引用词}|~语句实现，其显示效果是这样的：例如文献\inlinecite{DXM2005}论述了什么什么，而文献\inlinecite{OJP1999,kelton2002,strawderman2001,LQL1999}则对这个那个进行了研究。
+
+上标引用使用~\verb|\cite{引用词}|~语句实现，下面这段文字是普通的上标引用格式
+
+我们的一切知识都是从经验开始\cite{LQL1999}，这是没有任何怀疑的\cite{DXM2005}\cite{DXM2000}；
+因为，如果不是对象激动我们的感官，一则由它们自己引起表象，一则使我们的知性活动运作起来，对这些表象加
+以比较，把它们粘结或分开\cite{OJP1999,OJP1991}，这样把感性印象的原始素材加工成称之为经验的对象
+知识，那么知识能力又该由什么来唤起活动呢\cite{braun2007,kelton2002,strawderman2001,LQL1999}？所以
+按照时间，我们没有任何知识是先行于经验的，一切知识都是从经验开始的。
+
+对于\cite{DXM2005}参考文献\cite{OJP1999}，bib文件中文献定义是这样的：
+\begin{lstlisting}
+  @article{ LQL1999 ,
+    title={ 康德何以步安瑟尔谟的后尘? },
+    author={ 李秋零 },
+    journal={ 中国人民大学学报 },
+    volume={2},
+    year={1999}
+  }
+\end{lstlisting}
+
+\section{~BibTeX~文献文件的写法}
+
+用在~\LaTeX~中的~\textsc{Bib}\kern-.08em\TeX~文献文件的扩展名为~bib，此模板中，该文件即为~reference.bib。bibtex.exe 命令根据~GBT7714-2015~文件定义的文献格式，将~reference.bib 中的文献数据转换为输出文档中的文献列表。
+
+bib~文件的编写方法可参考模板中已给出的例子，也可参考~\href{http://bbs.ctex.org/attachment.php?aid=MTk3OTd8NjY1ODc5OGV8MTMyNTY0MTEyMnxhZGZkYWpsa0I2RGZwNDR5Z1lyeStjb1dKRS8rTnJub3lvT2FkNDNJbHl1UWVkVQ\%3D\%3D}{GBT7714-2015.bst 说明文档} 中所给出的例子。
+
+
+heuthesis.bst 对于国标~GB/T 7714-2015 的文献分类如表~\ref{tab:entrytypes} 所示。对于每种文献类型的缺省类型，已经设置好相应的文献标识码，因此不需要输入相应的文献
+标识码。
+\begin{table}[htbp]
+\bicaption[tab:entrytypes]{}{GBT7714-2005.bst 的分类方式}{Table$\!$}{Classification method of GBT7714-2005.bst}
+\vspace{0.5em}\centering\wuhao
+\begin{tabular}{llll}
+\toprule[1.5pt]
+文献类型 & 缺省类型 & 扩展类型（需要手 & 主要特征\\
+ &  & 工加入文献标识码） & \\
+\midrule[1pt]
+article & 文章[J] & 报纸中的析出文献[N] & 年,卷(期):页码\\
+ &  & 在线文章[J/OL] & \\
+book & 书[M] & 论文集、会议录[C] & \\
+ &  & 在线书[M/OL] & \\
+ &  & 汇编[G] & \\
+inbook & 书的某几页[M] &  & \\
+incollection & 书中析出的文章[M] & 汇编的析出文献[G] & 析出文献[文献标识码]\\
+ &  & 标准的析出文献[S] & \\
+proceedings &  &  & \\
+inproceedings & 论文集、会议录中的 & 在线论文集、 & 析出文献[文献标识码]\\
+/conference & 析出文献[C] & 会议录[C/OL] & \\
+mastersthesis & 毕业论文[D] &  & 类似book类\\
+phdthesis & 毕业论文[D] &  & 类似book类\\
+techreport & 科技报告[R] &  & 类似book类\\
+misc &  & 杂项[]，例如:专利[P] & 此类一般是网上文件，\\
+ &  & 网上专利[P/OL] & 按照国标规定顺序\\
+ &  & 网上电子公告[EB/OL] & 编码制时不输出年份\\
+ &  & 磁盘[CP/DK] & \\
+\bottomrule[1.5pt]
+\end{tabular}
+\end{table}
+
+\section*{本章小结}
+参考文献排版方法介绍。

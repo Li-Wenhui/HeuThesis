@@ -1,0 +1,62 @@
+如何用LaTeX使摘要和目录页的页眉不同于正文页眉 并且可以自己设置格式？
+
+
+以下答案基于正文使用 fancy 格式的页眉页脚。
+
+\usepackage{fancyhdr} % 引入 fancy 页眉页脚
+\usepackage{afterpage}  % \afterpage 命令
+\usepackage{tocloft} % 定制目录样式
+
+% 以下这些都是正文页眉页脚的设计，根据实际情况进行修改
+\fancyhf{} 
+\fancyhead[CO]{\thesection} % 分了奇偶页
+\fancyhead[CE]{数学建模}
+\fancyfoot[RO,LE]{\thepage}
+\pagestyle{fancy} %
+
+% 从这里，是摘要和目录页的页眉页脚
+\fancypagestyle{plain} % 定义一个名为 plain 的页眉页脚样式
+{%
+\fancyhead{} %
+\fancyfoot[RO,LE]{123456} % 只显示号码，RO LE 根据情况进行修改
+\renewcommand{\headrulewidth}{0pt}  % 页眉线粗细
+\renewcommand{\footrulewidth}{0pt}  % 页脚线粗细
+}
+
+之后在摘要和目录页的地方使用：
+\tocloftpagestyle{plain}
+\tableofcontents
+\thispagestyle{plain}
+\afterpage{\thispagestyle{plain}} % 防止多页目录时后面格式不正确
+
+正文之前使用 \setcounter{page}{0} 重新计数
+
+
+
+
+提问于： 2020-09-20 10:09
+浏览数： 1476
+## 编译环境 操作系统 * 
+[x] Windows 7/8/10 * 
+[ ] macOS * 
+[ ] Linux `
+若需勾选，请把[ ]改成[x]` Tex发行版 * 
+[ ] TexLive `年份` * 
+[ ] MikTeX `版本号` * 
+[x] CTeX `
+若需勾选，请把[ ]改成[x]` 
+
+## 我的问题 设置奇数页为章节名称，格式为五号宋体字，但是参考文献页的页眉与正文中的参考文献四字格式一致，也就是黑体三号。 并且之后添加致谢页，页眉也为参考文献。 
+
+ `%%%%%------------页眉页脚设置----------%%%%% 
+\pagestyle{fancy} 
+\renewcommand{\sectionmark}[1]{\markboth{第 \chinese{section} 章\quad #1}{}} %
+\renewcommand{\headrulewidth}{0pt} %\fancyfoot[C]{-\,\thepage\,-} %
+\renewcommand{\footrulewidth}{0pt} %
+\let\ps@oldplain\ps@fancy % 清除旧格式，使用新格式 
+\fancyhf{} \fancyhead[CO]{\zihao{5} \songti 郑州轻工业大学硕士学位论文} 
+\fancyhead[CE]{\zihao{5} \songti\leftmark} % 偶数页页眉为文章标题 
+\fancyfoot[C]{\zihao{-5} \thepage} 
+\setlength{\footskip}{10pt} ` ` 
+\newpage 
+\phantomsection \addcontentsline{toc}{section}{参考文献} \bibliography{ref}`

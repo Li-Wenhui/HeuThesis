@@ -7,54 +7,51 @@
   %   2. 不需要的配置信息可以删除
   %******************************
   %
-  %=====
-  % 秘级
-  %=====
-  statesecrets={公开},
-  cnumber={no9527}, %编号
-  natclassifiedindex={TM301.2},
-  intclassifiedindex={62-5},
+  %=========
+  % 秘级编号
+  %=========
+  statesecrets={公开},          %密级
+  cnumber={no9527},             %编号
+  natclassifiedindex={TM301.2}, %分类号
+  intclassifiedindex={62-5},    %UDC编号
   %
   %=========
   % 中文信息
   %=========
-  ctitlecover={船用低速双燃料发动机控制策略\\研究及仿真分析},%放在封面中使用，自由断行
-  ctitle={船用低速双燃料发动机控制策略研究及仿真分析},%
-  cxueke={工学}, %学位类型：工学/专业学位
-  csubject={动力工程},
-  caffil={动力与能源工程学院},
-  cauthor={马冬梅},
-  csupervisor={孔夫子\ 教授},
-  cassosupervisor={丹丘生\ 研究员}, % 副指导老师/专业学位企业导致
-  %ccosupervisor={某某某 教授}, % 联合指导老师
-  %creviewer={某某某\ 教授}, %论文主审人，硕士学位封面
+  ctitlecover={基于~\LaTeX~的哈尔滨工程大学本硕博论文模板\\使用说明}, %放在封面中使用，在需要换行的地方插入\\
+  ctitle={基于~\LaTeX~的哈尔滨工程大学本硕博论文模板使用说明},        %页眉使用论文标题，不换行
+  cxueke={工学},                    %学位类型：工学/专业学位/工商管理/……
+  csubject={动力工程},              %专业
+  caffil={动力与能源工程学院},      %所在单位/学院
+  cauthor={马冬梅},                 %论文作者
+  csupervisor={孔夫子\ 教授},       %指导老师
+  cassosupervisor={丹丘生\ 研究员}, % 副指导老师/专业学位企业导师
+  creviewer={岑夫子\ 教授},         %论文主审人，硕士学位封面，不需要可注释掉
   % 日期自动使用当前时间，若需指定按如下方式修改：
-  %cdate={超新星纪元}, %封面日期
+  %cdate={超新星纪元}, %封面日期，不指定使用当前日期
   csubmitdate={20XX年XX月}, %提交日期
   coralexdate={20XX年XX月}, %答辩日期
-  cstudentid={202103123},
-  cstudenttype={工程硕士}, %专业学位类型
-  %（同等学力人员）、（工程硕士）、（工商管理硕士）、
-  %（高级管理人员工商管理硕士）、（公共管理硕士）、（中职教师）、（高校教师）等
+  cstudentid={202103123},   %学号
+  cstudenttype={工程硕士},  %专业学位类型
   %
   %
   %=========
   % 英文信息
   %=========
-  etitle={Research on key technologies of partial porous externally pressurized gas bearing},
-  exueke={Engineering},
-  esubject={Power Engineering},
-  eaffil={College of Power and Energy Engineering},
-  eauthor={Ma Dongmei},
-  esupervisor={KONG Fuzi},
-  eassosupervisor={DAN Qingsheng},
-  esubmitdate={August, 20XX}, %提交日期
-  eoralexdate={December, 20XX}, %答辩日期
+  etitle={Manual of~ \LaTeX ~Thesis Template of\\ Harbin Engineering University}, %论文题目（英文），在需要换行的地方插入\\
+  exueke={Engineering}, %学科名称（英文）
+  esubject={Power Engineering}, %专业名称（英文）
+  eaffil={College of Power and Energy Engineering}, %学院名称（英文）
+  eauthor={Ma Dongmei},    %作者名称（英文）
+  esupervisor={KONG Fuzi}, %导师名称（英文）
+  eassosupervisor={DAN Qingsheng}, %企业导师名称（英文）
   % 日期自动生成，若需指定按如下方式修改：
-  edate={December, 2017},
-  estudenttype={Master of Engineering},
+  % edate={December, 2017},
+  esubmitdate={August, 20XX},  %提交日期（英文）
+  eoralexdate={December, 20XX}, %答辩日期（英文）
+  estudenttype={Master of Engineering}, %专业学位类型（英文）
   %
-  % 关键词用“英文逗号（,）”分割
+  % 中英文关键词，用“英文逗号（,）”分割
   ckeywords={\TeX, \LaTeX, 论文, 模板},
   ekeywords={\TeX, \LaTeX, template, thesis},
 }

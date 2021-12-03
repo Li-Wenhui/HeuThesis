@@ -1,0 +1,167 @@
+%! TEX program = xelatex
+%! TEX root = ../main.tex
+%! TEX encoding = utf-8
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  哈尔滨工程大学学位论文 XeLaTeX 模版 —— 正文文件 chap02.tex
+%
+%  版本：1.0.0
+%  最后更新：
+%  修改者：Leo LiWenhui lwh@hrbeu.edu.cn
+%  修订者：
+%  编译环境1：Ubuntu 12.04 + TeXLive 2013/2014
+%  编译环境2：Windows 7/8  + TeXLive 2013/2014
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{XeLaTeX环境配置}
+\label{chap02}
+
+\TeX{}~可以在Windows、Linux以及MacOS等操作系统下运行，鉴于大部分人都是使用Windows或Linux类操作系统，本文主要介绍着两类操作系统下的 \TeX{} 工作环境配置。
+
+\section{Windows~操作系统}
+
+\subsection{安装配置}
+在Windows下可以使用的 \TeX{}套件有很多种，常用的有C \TeX{}和 \TeX{}Live。建议选择这两个套件中的一个使用。其中C \TeX{}只能在Windows系统下使用，而 \TeX{}Live则可以在Windows或Linux系统下使用。这两个套件都可以在网上免费下载到，建议大家下载最新的完整版本安装，因为本论文模板使用的某些宏包比较新，不然可能会造成编译错误。
+
+\subsection{编译运行}
+如果使用C \TeX{}套件的完整版，安装程序会自动配置好必须的环境变量，安装结束就可以直接使用了。
+
+默认的，C \TeX{}安装包中会带有WinEdt软件，这是一个非常不错的 \TeX{}编辑工具。
+
+需要注意的是，在WinEdt中必须在每个tex文件的开始添加如下的两行：
+\begin{lstlisting}
+  % !TEX TS-program = XeLaTeX
+  % !TEX encoding = utf-8
+\end{lstlisting}
+否则文件会变成乱码。
+
+除了WinEdt之外，还有很多其他优秀的编辑器可用于tex文件的编辑，例如TeXStudio。
+
+以本模版为例，在Windows下的编译过程是这样的：
+\begin{enumerate}
+\item 打开main.tex文件；
+\item 先点击WinEdt工具栏上的\XeLaTeX{}按钮(可能在Acrobat Reader按钮的下拉菜单
+  中)；
+\item 再点击WinEdt工具栏上的Bib\TeX{}按钮；
+\item 再点击WinEdt工具栏上的\XeLaTeX{}按钮两到三遍；
+\item 最后点击WinEdt工具栏上的Acrobat Reader按钮就可以看到输出的PDF文档了。
+\end{enumerate}
+
+\section{Linux~操作系统(以~Ubuntu~为例)}
+First things first，首先的工作是安装一个合适的\XeTeX{}编译系统。这个问题
+并不难解决，现在主流的\LaTeX{}编译系统均已经包含了对\XeTeX{}的支持（包
+括xeCJK中文宏包），并不需要自己额外再进行安装。在Linux下推荐使
+用\TeX{}Live，目前最新版本为\TeX{}Live 2021。下面以在Ubuntu下的本地安装为
+例，简要的说明\TeX{}Live的安装及配置过程，高玩们请主动绕行：
+
+\begin{enumerate}
+\item 下载\TeX{}live 2021镜像，点击\href{http://ftp.ctex.org/mirrors/CTAN/systems/texlive/Images/}{这里}进
+  入下载列表。如果你有检查文件完整性的习惯的话，这个列表还提供了md5和sha256校验值；
+\item 安装perl-tk包，以便使用图形界面进行安装。在终端中输入命
+  令\texttt{\footnotesize sudo apt-get install perl-tk}；
+\item 挂载下载好的iso镜像，\texttt{\footnotesize sudo mkdir
+    /mnt/texlive}（在~{/mnt}~下创建texlive文件夹
+  ），\texttt{\footnotesize sudo mount -o loop texlive2021.iso
+    /mnt/texlive}（挂载texlive2021.iso）。进入~/mnt/texlive~目录，输入命
+  令~\texttt{\footnotesize sudo ./install-tl -gui}~之后出现图形界面。之后
+  的操作就比较简单了，可以去掉不用的语言包以节省磁盘空间，注意选择最后一
+  项Create symlinks in system directories，让安装程序自动创建语法链接。确
+  定安装，耐心等待进度条到头；
+\item 配置环境变量。在终端中输入~\texttt{\footnotesize sudo gedit
+    /etc/bash.bashrc}，在此文件末尾添加
+
+  \begin{lstlisting}
+    PATH=/usr/local/texlive/2021/bin/i386-linux: $PATH;
+    export PATH
+    MANPATH=/usr/local/texlive/2021/texmf/doc/man: $MANPATH;
+    export MANPATH
+    INFOPATH=/usr/local/texlive/2021/texmf/doc/info: $INFOPATH;
+    export INFOPATH
+  \end{lstlisting}
+
+  在~{/etc/manpath.config}~文件的~\texttt{\footnotesize\# set up PATH to
+    MANPATH mapping}~这行下面的列表后增加一条：
+  \begin{lstlisting}
+    MANPATH_MAP /usr/local/texlive/2021/bin/i386-linux
+    /usr/local/texlive/2021/texmf/doc/man
+  \end{lstlisting}
+
+  在~{/etc/manpath.config}~文件的~\texttt{\footnotesize\# set up PATH to
+    MANPATH mapping}~这行下面的列表后增加一条：
+  \begin{lstlisting}
+    MANPATH_MAP /usr/local/texlive/2021/bin/i386-linux
+    /usr/local/texlive/2021/texmf/doc/man
+  \end{lstlisting}
+\end{enumerate}
+至此安装过程结束。
+
+如果是在Windows系统下，可直接将Texlive可执行文件加入系统 PATH 环境变量中。
+
+以上\TeX{}Live安装过程摘自某位筒子的博客文摘，原始链接位于wordpress空间，
+访问有问题，不过
+\href{http://hi.baidu.com/skubuntu/blog/item/89e8de2f73a465e08a1399a3.html}{
+  百度空间}有转载，虽然百度搜不着什么玩意。
+
+接下来我们需要安装一套中文字体，你可以使用Windows下的方正、华文或者中易字
+体，但要注意选择的字体最好是包含宋体、黑体、楷体和仿宋的完整套装。如果想获得
+更好的显示效果，也可以使用Adobe等其他中文字体。字体的安装及配置过程如下：
+
+\begin{enumerate}
+\item 下载Adobe中文字体，点
+  击
+  \href{http://forum.ubuntu.org.cn/viewtopic.php?f=35&t=180987&start=0}{
+    这里}进入下载页面；
+\item 将下载的字体拷至~{/usr/share/fonts/truetype/adobe}~目录，如果没有请
+  以管理员身份新建；
+\item 刷新字体缓存，在终端中输入~\texttt{\footnotesize sudo fc-cache -fv }。这时，你可以通过~\texttt{\footnotesize fc-list :lang=zh-cn |sort}~命令来查看字体是否安装成功，注意fc-list后有个空格；
+\item 你可能还需要在终端中运行~\texttt{\footnotesize sudo apt-get
+    install poppler-data cmap-adobe-cns1 cmap-adobe-gb1}命令来解决Adobe中
+  文字体在PDF文件中不显示的情况。
+\end{enumerate}
+
+这样，我们就配置好了中文字体，当然这没什么特别的，网上教程一大把。
+
+之后我们需要一个类似于WinEdt或TeXStudio的集成编译环境。在Ubuntu软件中心中，我们能很
+容易的安装\TeX{}maker和\TeX{}works，两者功能差不多，\TeX{}maker更强大一些。
+当然，你也可以自己配置VIM下的\LaTeX{}编译环境。在Windows环境下，可以在网上下载免费的
+TeXStudio软件进行tex文件编辑。
+
+\subsection{编译运行}
+
+在安装并配置好编译环境之后，接下来的工作就是如何编译\XeLaTeX{}文件，生成
+所需的PDF文档了。
+
+任何文本编辑工具都可以用来编写论文，当然Linux下也有很多免费的集成编辑工具可以使用。
+
+以本模版为例，在\TeX{}works编译过程是这样的：
+\begin{enumerate}
+\item 打开main.tex文件；
+\item 将工具栏上的编译命令切换至\XeLaTeX{}后，点击运行；
+\item 再将工具栏上的编译命令切换至Bib\TeX{}后，点击运行；
+\item 再将工具栏上的编译命令切换至\XeLaTeX{}后，点击运行，这里需要运行两
+  到三遍；
+\item 如果编译没有错误，就可以看到输出的PDF文件了。
+\end{enumerate}
+
+对于\TeX{}maker，首先需要在【选项】【配置\TeX{}maker】【命令】中将第一行
+的latex改成xelatex，之后用\LaTeX{}作为\XeLaTeX{}命令执行即可，其他的和上
+面类似。
+
+对于熟悉Linux软件开发编译流程的同学，可以为编译过程编写一个makefile后使用make工具进行处理，
+对于在Windows系统下使用tex撰写论文的同学，也可以使用模板提供的build.bat批处理文件生产PDF文件。
+
+除了正常的论文模板之外，还附带了论文书脊定义和A3封面生成工具。在生成封面前，需要编辑书脊定义spine.tex文件，将其中的论文题目和作者信息进行修改，然后执行make\_cover.bat批处理文件即可生成a3cover.pdf论文
+装订用A3封皮。
+
+模板目录中的authorization.pdf为论文原创性和授权声明，可以在生成论文前使用签字后扫描的pdf文件进行替换。
+
+\section{字体}
+
+可以使用Windows系统字体或者Adobe字体\footnote，但要注意选择的字体最好是包含宋体、黑体、楷体和仿宋的完整套装。
+
+本模板默认是使用Windows库，如果使用其他字库，在使用此模板撰写论文前，应该安装相应的字库。在Windows操作系统下，只要把字库文件复制的Windows \textbackslash Fonts文件夹下即可，而对于Linux系统，可通过右键点击字库文件然后选择【安装字库】菜单选项进行安装。Linux对于系统新安装的字库，需要使用命令~sudo fc-cache -fsv：刷新缓存后才可以使用。
+
+\section*{本章小结}
+\LaTeX{}~工作环境安装与配置简介。

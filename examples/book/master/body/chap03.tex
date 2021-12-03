@@ -1,0 +1,190 @@
+%! TEX program = xelatex
+%! TEX root = ../main.tex
+%! TEX encoding = utf-8
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  哈尔滨工程大学学位论文 XeLaTeX 模版 —— 正文文件 chap03.tex
+%
+%  版本：1.0.0
+%  最后更新：
+%  修改者：Leo LiWenhui lwh@hrbeu.edu.cn
+%  修订者：
+%  编译环境1：Ubuntu 12.04 + TeXLive 2013/2014
+%  编译环境2：Windows 7/8  + TeXLive 2013/2014
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{模版使用说明}
+\label{chap03}
+
+\section{个人信息}
+使用模版的第一步当然是修改您的个人信息。与个人信息有关的内容位
+于~{/front/cover.tex}~文件中。对照着模版内容改就好了，没有什么难度。填
+写专业、姓名和导师的时候注意添加适当空格，也就是$\sim$字符，以保持段落对齐。
+这里默认论文提交日期为最后一次编译~main.tex~的日期，论文提交日期和答辩日期需要手工设置。
+
+\section{模版设置}
+
+模板设置包括选择论文的学位类型、学科类型、汉字库和打印方式等，
+这些内容的设置在~main.tex~文件中通过修改~\verb|\documentclass[]|~配置选项实现。
+
+\subsubsection{学位论文类型选择}
+
+学位论文类型可以是：~Doctor~（博士）、~Master~（硕士）和~Bachelor（学士）。
+如论文选择“硕士”论文模板，则学位论文类型选择定义为：
+\verb|\documentclass[type=master]{heuthesisbook}|
+
+对于专业学位硕士研究生，还需要声明专业学位选项并设置专业学位论文类型，例如：
+\verb|\documentclass[type=master,profdegree=true,research=applicationResearch]{heuthesisbook}|
+
+详细设置方法与选项定义可以参考main.tex文件中的说明。
+
+\subsubsection{打印方式选择}
+论文打印方式包括~oneside~（单面打印）和~twoside~（双面打印）。
+如选择双面打印方式,则打印方式选择定义为：
+\verb|\def\oneortwoside{twoside}|
+
+\section{中英文摘要、关键字}
+中英文摘要和关键字也位于~{/front/cover.tex}~文件中定义，将相应位置的内容替换成自己的即可。
+
+这里附上研究生院对摘要和关键字的要求：
+\begin{itemize}
+\item “摘要”是摘要部分的标题，不可省略。论文摘要是学位论文的缩影，文字
+  要简练、明确。内容要包括目的、方法、结果和结论。单位制一律换算成国际标
+  准计量单位制，除特殊情况外，数字一律用阿拉伯数码。文中不允许出现插图，
+  重要的表格可以写入；
+\item 关键词请尽量用《汉语主题词表》等词表提供的规范词。关键词之间用全角
+  分号间隔，末尾不加标点；
+\item 英文摘要和中文摘要对应，但不要逐字翻译。英文关键字使用半角分号间隔，
+  末尾同样不加标点。
+\end{itemize}
+
+\section{正文}
+
+正文部分包括了绪论（chap01.tex）、正文内容章节
+（chap02.tex、chap03.tex、chap04.tex、……）等部分，
+均位于body文件夹中。
+
+正文内容章节可以以chapXX.tex形式为文件名，从01开始计数，使得文件名序号即为章
+节序号。当然使用其他符合系统文件命名要求的格式进行命名也可以，比如章节名称。
+这些正文内容章节需要依次写入main.tex文件中，格式
+为~\verb|\include{body/texfilename}| 。
+
+所有的图片放在figure文件夹中。
+
+下面是研究生院对正文的要求：
+
+“正文”不可省略。
+
+正文是硕士学位论文的主体，要着重反映研究生自己的工作，要突出新的见解，例
+如新思想、新观点、新规律、新研究方法、新结果等。正文一般可包括：理论分析；
+试验装置和测试方法；对试验结果的分析讨论及理论计算结果的比较等。
+
+正文要求论点正确，推理严谨，数据可靠，文字精练，条理分明，文字图表清晰整
+齐，计算单位采用国务院颁布的《统一公制计量单位中文名称方案》中规定和名称。
+各类单位、符号必须在论文中统一使用，外文字母必须注意大小写，正斜体。简化
+字采用正式公布过的，不能自造和误写。利用别人研究成果必须附加说明。引用前
+人材料必须引证原著文字。在论文的行文上，要注意语句通顺，达到科技论文所必
+须具备的“正确、准确、明确”的要求。
+
+\section{其他}
+
+除正文之外，结论、致谢等其他内容位于back文件夹中，可根据需要进行修改、增删，
+并根据实际情况对main.tex中的文件包含内容进行调整。
+
+\section{格式设置}
+一般来说，采用本模板后不需要另外使用字体、字号、颜色等文字格式设置操作，
+模板会根据内容自动选用合适的格式。但在某些情况下，如果需要特殊设置字体、
+字号与颜色，那么可以使用下面这些方法进行设置。
+
+\subsection{字体设置}
+本模板预定义的汉字字体包括：{\songti 宋体}、{\heiti 黑体}、{\kaishu 楷体}和{\fangsong 仿宋}，
+每种字体还包括正体、斜体、粗体，而且可以实现复合效果，例如：
+
+{\songti 宋体 \textbf{加粗宋体} \textsl{斜体宋体} \textbf{\textsl{加粗斜体宋体}}} \\
+{\heiti 黑体 \textbf{加粗黑体} \textsl{斜体黑体} \textbf{\textsl{加粗斜体黑体}}} \\
+{\kaishu 楷体 \textbf{加粗楷体} \textsl{斜体楷体} \textbf{\textsl{加粗斜体楷体}}} \\
+{\fangsong 仿宋 \textbf{加粗仿宋} \textsl{斜体仿宋} \textbf{\textsl{加粗斜体仿宋}}} \\
+
+设置字体的方法是在需要修改字体的文字前面加入字体定义指令，格式为\textbackslash~font，
+其中\textbackslash~songti~表示宋体，\textbackslash~heiti~表示黑体，\textbackslash~kaishu~表示楷体，
+\textbackslash~fangsong~表示仿宋。粗体的格式化指令为\textbackslash~textbf，
+斜体的格式化指令为\textbackslash~textsl。
+另外，可以用\{~~\}限定字体的设置范围，及将字体格式化指令和文字内容都放到\{~~\}内，
+这样括号外面的内容格式自动恢复为以前的格式。
+
+上面字体显示效果的实现代码为：
+
+\begin{lstlisting}
+{\songti 宋体 \textbf{加粗宋体} \textsl{斜体宋体} \textbf{\textsl{加粗斜体宋体}}} \\
+{\heiti 黑体 \textbf{加粗黑体} \textsl{斜体黑体} \textbf{\textsl{加粗斜体黑体}}} \\
+{\kai书 楷体 \textbf{加粗楷体} \textsl{斜体楷体} \textbf{\textsl{加粗斜体楷体}}} \\
+{\fangsong 仿宋 \textbf{加粗仿宋} \textsl{斜体仿宋} \textbf{\textsl{加粗斜体仿宋}}} \\
+\end{lstlisting}
+
+\subsection{字号设置}
+设置字号的方法为：
+\begin{lstlisting}
+\xiaowu   \textbackslash xiaowu~  小五，默认单倍行距 \\
+\wuhao    \textbackslash wuhao~   五号，默认单倍行距 \\
+\xiaosi   \textbackslash xiaosi~  小四，默认1.25倍行距 \\
+\sihao    \textbackslash sihao~   四号，默认1.25倍行距 \\
+\xiaosan  \textbackslash xiaosan~ 小三，默认1.25 倍行距 \\
+\sanhao   \textbackslash sanhao~  三号，默认1.25 倍行距 \\
+\xiaoer   \textbackslash xiaoer~  小二，默认1.25 倍行距 \\
+\erhao    \textbackslash erhao~   二号，默认1.25 倍行距 \\
+\xiaoyi   \textbackslash xiaoyi~  小一，默认1.25 倍行距 \\
+\yihao    \textbackslash yihao~   一号，默认1.5  倍行距 \\
+\end{lstlisting}
+
+打印效果如下：
+
+ \begin{flushleft}
+ {
+\xiaowu   \textbackslash xiaowu~  小五，默认单倍行距 \\
+\wuhao    \textbackslash wuhao~   五号，默认单倍行距 \\
+\xiaosi   \textbackslash xiaosi~  小四，默认1.25倍行距 \\
+\sihao    \textbackslash sihao~   四号，默认1.25倍行距 \\
+\xiaosan  \textbackslash xiaosan~ 小三，默认1.25 倍行距 \\
+\sanhao   \textbackslash sanhao~  三号，默认1.25 倍行距 \\
+\xiaoer   \textbackslash xiaoer~  小二，默认1.25 倍行距 \\
+\erhao    \textbackslash erhao~   二号，默认1.25 倍行距 \\
+\xiaoyi   \textbackslash xiaoyi~  小一，默认1.25 倍行距 \\
+\yihao    \textbackslash yihao~   一号，默认1.5  倍行距 \\
+}
+\end{flushleft}
+
+\subsection{颜色设置}
+设置文字颜色的方法为：
+\begin{lstlisting}
+\definecolor {myrgb}{rgb}{0.25, 0.5, 0.25}
+\definecolor {mycmyk}{cmyk}{1, 0.8, 0.2, 0.1}
+
+\heiti \textcolor{black}  {这是预定义颜色－黑色 balck}  \\
+\heiti \textcolor{red}    {这是预定义颜色－红色 red}  \\
+\heiti \textcolor{blue}   {这是预定义颜色－蓝色 blue}  \\
+\heiti \textcolor{yellow} {这是预定义颜色－黄色 yellow} \\
+\heiti \textcolor{myrgb}  {这是自定义RGB颜色 myrgb}  \\
+\heiti \textcolor{mycmyk} {这是自定义CMYK颜色 mycmyk} \\
+\end{lstlisting}
+
+
+文字颜色设置打印效果：
+\begin{flushleft}
+\xiaosan
+{
+    \definecolor {myrgb}{rgb}{0.25, 0.5, 0.25}
+    \definecolor {mycmyk}{cmyk}{1, 0.8, 0.2, 0.1}
+
+    \heiti \textcolor{black}  {这是预定义颜色－黑色 balck}  \\
+    \heiti \textcolor{red}    {这是预定义颜色－红色 red}  \\
+    \heiti \textcolor{blue}   {这是预定义颜色－蓝色 blue}  \\
+    \heiti \textcolor{yellow} {这是预定义颜色－黄色 yellow} \\
+    \heiti \textcolor{myrgb}  {这是自定义RGB颜色 myrgb}  \\
+    \heiti \textcolor{mycmyk} {这是自定义CMYK颜色 mycmyk} \\
+}
+\end{flushleft}
+
+\section*{本章小结}
+简单介绍模板使用方法和文字格式化方法。
