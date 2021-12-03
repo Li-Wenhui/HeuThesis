@@ -1,6 +1,7 @@
 % !Mode:: "TeX:UTF-8"
 
 \chapter{示例文档}[Example]
+\label{ch_example}
 
 这是 \heuthesis\ 的示例文档，基本上覆盖了模板中所有格式的设置。建议大家在使用模
 板之前，除了阅读《\heuthesis\:哈尔滨工程大学学位论文模板》\footnote{即
@@ -108,23 +109,23 @@
 引用文献中的图时，除在正文文字中标注参考文献序号以外
 ，还必须在中、英文表题的右上角标注参考文献序号。
 
+\subsection{硕士毕业论文双语题注}[Master picture example]
 
-\subsection{本硕论文题注}[Other picture example]
 每个图均应有图题（由图序和图名组成），图题不宜有标点符号，图名在图序之后空1个半
-角字符排写。图序按章编排，如第1章第一个插图的图号为“图1.1”。图题置于图下，本科和硕士论
+角字符排写。图序按章编排，如第1章第一个插图的图号为“图1-1”。图题置于图下，硕士论
 文只用中文，博士论文用中、英两种文字，居中书写，中文在上，要求中文用宋体5号字，
 英文用Times New Roman 5号字。有图注或其它说明时应置于图题之上。引用图应注明出处
 ，在图题右上角加引用文献号。图中若有分图时，分图题置于分图之下或图题之下，可以只
-用中文书写，分图号用（a）、（b）等表示。图中各部分说明应采用中文（引用的外文图除外）或
+用中文书写，分图号用a)、b)等表示。图中各部分说明应采用中文（引用的外文图除外）或
 数字符号，各项文字说明置于图题之上（有分图时，置于分图题之上）。图中文字用宋体、
 Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5号字，以清晰表达为原
 则，但在一个插图内字号要统一）。同一图内使用文字应统一。图表中物理量、符号用斜体
 。
 
-\begin{figure}[h]
+\begin{figure}[htpb]
   \centering
   \includegraphics[width = 0.4\textwidth]{golfer}
-  \caption{打高尔夫球的人}
+  \bicaption[golfer1]{}{打高尔夫球球的人（博士论文双语题注）}{Fig.$\!$}{The person playing golf (Doctoral thesis)}
 \end{figure}
 
 \subsection{并排图和子图}[Abreast-picture and Sub-picture example]
@@ -139,13 +140,13 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
   \begin{minipage}{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth]{golfer}
-    \caption{打高尔夫球的人}
+    \bicaption[golfer2]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
   \end{minipage}
   \centering
   \begin{minipage}{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth]{golfer}
-    \caption{打高尔夫球的人。注意，这里默认居中}
+    \bicaption[golfer3]{}{打高尔夫球的人。注意，这里默认居中}{Fig.$\!$}{The person playing golf. Please note that, it is vertically center aligned by default.}
   \end{minipage}
 \end{figure}
 
@@ -154,13 +155,13 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
   \begin{minipage}[t]{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth]{golfer}
-    \caption{打高尔夫球的人}
+    \bicaption[golfer5]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
   \end{minipage}
   \centering
   \begin{minipage}[t]{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth]{golfer}
-    \caption{打高尔夫球的人。注意，此图是顶部对齐}
+    \bicaption[golfer8]{}{打高尔夫球的人。注意，此图是顶部对齐}{Fig.$\!$}{The person playing golf. Please note that, it is vertically top aligned.}
   \end{minipage}
 \end{figure}
 
@@ -169,13 +170,13 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
   \begin{minipage}[t]{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth,height=\textwidth]{golfer}
-    \caption{打高尔夫球的人。注意，此图对齐方式是图片底部对齐}
+    \bicaption[golfer9]{}{打高尔夫球的人。注意，此图对齐方式是图片底部对齐}{Fig.$\!$}{The person playing golf. Please note that, it is vertically bottom aligned for figure.}
   \end{minipage}
   \centering
   \begin{minipage}[t]{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth]{golfer}
-    \caption{打高尔夫球的人}
+    \bicaption[golfer6]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
   \end{minipage}
 \end{figure}
 
@@ -193,22 +194,22 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
   \begin{minipage}{\textwidth}
     \centering
     \subfigure{\label{golfer41}}\addtocounter{subfigure}{-2}
-    \subfigure{\subfigure[打高尔夫球的人~1]{\includegraphics[width=0.4\textwidth]{golfer}}}
+    \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~1]{\includegraphics[width=0.4\textwidth]{golfer}}}
     \hspace{2em}
     \subfigure{\label{golfer42}}\addtocounter{subfigure}{-2}
-    \subfigure[打高尔夫球的人~2]{\includegraphics[width=0.4\textwidth]{golfer}}
+    \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~2]{\includegraphics[width=0.4\textwidth]{golfer}}}
   \end{minipage}
   \centering
   \begin{minipage}{\textwidth}
     \centering
     \subfigure{\label{golfer43}}\addtocounter{subfigure}{-2}
-    \subfigure[打高尔夫球的人~3]{\includegraphics[width=0.4\textwidth]{golfer}}
+    \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~3]{\includegraphics[width=0.4\textwidth]{golfer}}}
     \hspace{2em}
     \subfigure{\label{golfer44}}\addtocounter{subfigure}{-2}
-    \subfigure[打高尔夫球的人~4]{\includegraphics[width=0.4\textwidth]{golfer}}
+    \subfigure[The person playing golf. Here, 'hang indent' and 'center last line' are not stipulated in the regulation.]{\subfigure[打高尔夫球的人~4。注意，规范中没有明确规定要悬挂缩进、最后一行居中。]{\includegraphics[width=0.4\textwidth]{golfer}}}
   \end{minipage}
   \vspace{0.2em}
-  \caption{打高尔夫球的人}
+  \bicaption[golfer4]{}{打高尔夫球的人}{Fig.$\!$}{The person playing gol}
 \end{figure}
 
 \begin{figure}[t]
@@ -225,9 +226,38 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
       \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~2]{\includegraphics[width=0.4\textwidth]{golfer}}}
     \end{minipage}
     \vspace{0.2em}
-    \bicaption[golfer51]{}{打高尔夫球的人（双语标题）}{Fig.$\!$}{The person playing golf}
+    \bicaption[golfer47]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf.}
   \end{minipage}
 \end{figure}
+
+\begin{figure}[t]
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.3\textwidth]{golfer}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+      \node at (0.3,0.5) {a)};
+      \node at (0.8,0.2) {b)};
+    \end{scope}
+  \end{tikzpicture}
+  \bicaption[golfer0]{}{打高尔夫球球的人（硕士论文双语题注）}{Fig.$\!$}{The person playing golf (Master thesis)}
+  \vskip -0.4em
+  \hspace{2em}
+  \begin{minipage}[t]{0.3\textwidth}
+    \wuhao \setlist[description]{font=\normalfont}
+    \begin{description}
+      \item[(a)]a点说明
+    \end{description}
+  \end{minipage}
+  \hspace{2em}
+  \begin{minipage}[t]{0.3\textwidth}
+    \wuhao \setlist[description]{font=\normalfont}
+    \begin{description}
+      \item[(b)]b点说明
+      \item[(b)]Note of Point b
+    \end{description}
+  \end{minipage}
+\end{figure}
+
 
 \begin{figure}[!h]
   \centering
@@ -241,7 +271,7 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
       \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
       \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
       \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
-      \caption{打高尔夫球的人（多图组合）}
+      \bicaption[golfer7]{}{打高尔夫球的人（多图组合）}{Fig.$\!$}{The person playing golf (Many pictures arrange)}
     \end{minipage}
   \end{sideways}
 \end{figure}
@@ -296,7 +326,7 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
     \wuhao 图中，带有箭头的淡蓝色箭头表示肿瘤子种群的进化方向。一般地，从肿瘤组织中取用于进行二代测序的样本中含有一定程度的正常细胞污染，因此肿瘤的样本中含有正常细胞和肿瘤细胞。每一个子种群的基因组的模拟过程是把生殖细胞变异和体细胞变异加入到参考基因组中。
     \vspace{0.6em}
   \end{minipage}
-  \caption{肿瘤组织中各个子种群的进化示意图}
+  \bicaption[tumor]{}{肿瘤组织中各个子种群的进化示意图}{Fig.$\!$}{The diagram of tumor subpopulation evolution process}
 \end{figure}
 
 \section{表格}
@@ -309,12 +339,11 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
 明了，尽量不用斜线。表头中可采用化学符号或物理量符号。
 
 
-\subsection{通表格的绘制方法}
+\subsection{普通表格的绘制方法}[Methods of drawing normal tables]
 
-表格应具有三线表格式，因此需要调用~booktabs~宏包，其标准格式如表~\ref{tab:table1}~所示。
+表格应具有三线表格式，因此需要调用~booktabs~宏包，其标准格式如表~\ref{table1}~所示。
 \begin{table}[htbp]
-  \caption{符合研究生院绘图规范的表格}
-  \label{tab:table1}
+  \bicaption[table1]{}{符合研究生院绘图规范的表格}{Table$\!$}{Table in agreement of the standard from graduate school}
   \vspace{0.5em}\centering\wuhao
   \begin{tabular}{ccccc}
     \toprule[1.5pt]
@@ -339,12 +368,10 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
 。
 \subsubsection{表格内某单元格内容过长的情况}[The condition when the contents in
   some cells of tables are too long]
-首先给出这种情况下的一个例子如表~\ref{tab:table3}~所示。
+首先给出这种情况下的一个例子如表~\ref{table3}~所示。
 \begin{table}[htbp]
   \centering
-  \caption{最小的三个正整数的英文表示法}
-  \label{tab:table3}
-  \vspace{0.5em}\wuhao
+  \bicaption[table3]{}{最小的三个正整数的英文表示法}{Table$\!$}{The English construction of the smallest three positive integral numbers}\vspace{0.5em}\wuhao
   \begin{tabularx}{0.7\textwidth}{llX}
     \toprule[1.5pt]
     Value & Name  & Alternate names, and names for sets of the given size                                                                                           \\\midrule[1pt]
@@ -353,7 +380,6 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
     3     & Three & deuce-ace, leash, set, tercet, ternary, ternion, terzetto, threesome, tierce, trey, triad, trine, trinity, trio, triplet, troika, hat-trick     \\\bottomrule[1.5pt]
   \end{tabularx}
 \end{table}
-
 tabularx环境共有两个必选参数：第1个参数用来确定表格的总宽度，第2个参数用来确定每
 列格式，其中标为X的项表示该列的宽度可调，其宽度值由表格总宽度确定。标为X的列一般
 选为单元格内容过长而无法置于一行的列，这样使得该列内容能够根据表格总宽度自动分行
@@ -388,14 +414,13 @@ tabularx环境共有两个必选参数：第1个参数用来确定表格的总�
 拆分为两个\verb|tabularx|环境。
 
 \subsubsection{排版横版表格的举例}[An example of landscape table]
-由于版面设置方向调整，使用横版排版的表格必须另起一页，例如表~\ref{tab:hbtable}。
+由于版面设置方向调整，使用横版排版的表格必须另起一页，例如表~\ref{table4}。
 
 \begin{table}[p]
   \centering
   \begin{sideways}
     \begin{minipage}{\textheight}
-      \caption{不在规范中规定的横版表格}
-      \label{tab:hbtable}
+      \bicaption[table4]{}{不在规范中规定的横版表格}{Table$\!$}{A table style which is not stated in the regulation}
       \vspace{0.5em}\centering\wuhao
       \begin{tabular}{ccccc}
         \toprule[1.5pt]

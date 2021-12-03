@@ -48,18 +48,20 @@
 
 \tableofcontents %论文目录
 
-%%----------  插图目录, 如不需要可用 % 注释掉下面两行
-\listoffigures
+\listoffigures%%----------  插图目录, 如不需要可用 % 注释掉下面两行
+\listoftables%%----------  表格目录, 如不需要可用 % 注释掉下面两行
 \cleardoublepage
 
-%%----------  表格目录, 如不需要可用 % 注释掉下面两行
-\listoftables
-\cleardoublepage
 
 %%----------  论文主体，可以根据需要添加章节
 \mainmatter
-\include{body/ch1-regu}
-\include{body/ch2-demo}
+\include{body/chap01}
+\include{body/chap02}
+\include{body/chap03}
+\include{body/chap04}
+\include{body/chap05}
+\include{body/chap07}
+\include{body/chap08}
 
 %%----------  论文结论、参考文献、附录等部分
 \backmatter
@@ -68,18 +70,13 @@
 \bibliographystyle{gbt7714-numerical}
 \bibliography{reference}
 
-\include{back/publications}     % 所发文章
-\include{back/acknowledgements} % 致谢
-\include{back/resume}           % 个人简介
+\include{back/publications}    % 所发文章
+\include{back/acknowledgements} %致谢
+\include{back/resume}          % 个人简介
 
-\begin{appendix} %附录
+\begin{appendix}%附录
   \input{back/AppendixA.tex}
+  \input{back/regu.tex}
 \end{appendix}
 
-%%\input{back/ceindex.tex}  % 索引
-
 \end{document}
-
-% Local Variables:
-% TeX-engine: xetex
-% End:

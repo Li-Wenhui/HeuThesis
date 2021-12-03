@@ -57,18 +57,20 @@
 
 \tableofcontents %论文目录
 
-%%----------  插图目录, 如不需要可用 % 注释掉下面两行
-\listoffigures
+\listoffigures%%----------  插图目录, 如不需要可用 % 注释掉下面两行
+\listoftables%%----------  表格目录, 如不需要可用 % 注释掉下面两行
 \cleardoublepage
 
-%%----------  表格目录, 如不需要可用 % 注释掉下面两行
-\listoftables
-\cleardoublepage
 
 %%----------  论文主体，可以根据需要添加章节
 \mainmatter
-\include{body/ch1-regu}
-\include{body/ch2-demo}
+\include{body/chap01}
+\include{body/chap02}
+\include{body/chap03}
+\include{body/chap04}
+\include{body/chap05}
+\include{body/chap07}
+\include{body/chap08}
 
 %%----------  论文结论、参考文献、附录等部分
 \backmatter
@@ -83,10 +85,7 @@
 
 \begin{appendix}%附录
   \input{back/AppendixA.tex}
+  \input{back/regu.tex}
 \end{appendix}
 
 \end{document}
-
-% Local Variables:
-% TeX-engine: xetex
-% End:

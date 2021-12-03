@@ -29,10 +29,9 @@
 % profdegree=true|false
 %   含义：是否为专业学位，缺省值为false。专业学位和同等学力等，要在cover中设置类
 %   型，封面中不同格式
-% glue=true|false
-%   含义：由于我校规范中要求字体行距在一个闭区间内，这个选项为true表示tex自
-%   动选择，为false表示区间内一个最接近版心要求行数的要求的默认值，缺省值为
-%   false。
+% research=productdevelopment|projectdplanning|projectdesign|applicationResearch
+%   含义：专业学位论文研究类型，产品设计|工程规划|工程设计|应用研究
+%   注意：当 profdegree=true 时必须设置此选项
 % tocfour=true|false
 %   含义：是否添加第四级目录，只对本科文科个别要求四级目录有效，缺省值为
 %   false
@@ -42,8 +41,6 @@
 %   ubuntu 默认分别是华文和思源字库，理论上用什么字库都行。后两种开源字库的安装
 %   方法到谷歌上百度一下什么都有了。Linux非ubuntu发行版、非x86架构机器等如何运行
 %   可到github issue上讨论。
-% tocblank=true|false
-%   含义：目录中第一章之前，是否加一行空白。缺省值为true。
 % chapterhang=true|false
 %   含义：目录的章标题是否悬挂居中，规范中要求章标题少于15字，所以这个选项
 %   有无没什么用，除了特殊需求。缺省值为true。
@@ -94,24 +91,30 @@
 
 \begin{document}
 \frontmatter
-\input{front/cover} % 封面
+\input{front/cover} % 封面和摘要
 \makecover
 
-\tableofcontents %目录
+\tableofcontents %论文目录
 
-%%----------  插图目录, 如不需要可用 % 注释掉下面两行
-\listoffigures
+\listoffigures%%----------  插图目录, 如不需要可用 % 注释掉下面两行
+\listoftables%%----------  表格目录, 如不需要可用 % 注释掉下面两行
 \cleardoublepage
 
-%%----------  表格目录, 如不需要可用 % 注释掉下面两行
-\listoftables
-\cleardoublepage
 
+%%----------  论文主体，可以根据需要添加章节
 \mainmatter
-\include{body/regu}
-\include{body/introduction}
+\include{body/chap01}
+\include{body/chap02}
+\include{body/chap03}
+\include{body/chap04}
+\include{body/chap05}
+\include{body/chap07}
+\include{body/chap08}
+
+%%----------  论文结论、参考文献、附录等部分
 \backmatter
 \include{back/conclusion}   % 结论
+
 \bibliographystyle{gbt7714-numerical}
 \bibliography{reference}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,8 +123,10 @@
 \include{back/publications}    % 所发文章
 \include{back/acknowledgements} %致谢
 \include{back/resume}          % 个人简介
+
 \begin{appendix}%附录
   \input{back/AppendixA.tex}
+  \input{back/regu.tex}
 \end{appendix}
 \include{back/ceindex}    % 索引, 根据自己的情况添加或者不添加，选择自动添加或者手工添加。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -141,7 +146,3 @@
 % \include{back/correspondingaddr} %通信地址
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
-
-% Local Variables:
-% TeX-engine: xetex
-% End:

@@ -150,7 +150,7 @@
 % heuthesis.bst & 参考文献样式文件\\\midrule
 % heuthesis.ist & 索引样式文件\\\midrule
 % reference.bib & 文档参考文献\\
-% thesis.tex & 示例文档主文件\\
+% main.tex & 示例文档主文件\\
 % front/ & 正文之前内容\\
 % body/ & 正文内容\\
 % back/ & 正文之后内容\\
@@ -167,7 +167,7 @@
 % \item \file{heuthesisbook.cls} 和 \file{heuthesisbook.cfg} 可由 \file{heuthesis.ins}
 %   和 \file{heuthesis.dtx} 生成。
 % \item 使用前阅读文档：\file{heuthesis.pdf}。
-% \item 默认的生成的论文中含有丰富的格式示例，使用前请仔细阅读\file{thesis.pdf}。
+% \item 默认的生成的论文中含有丰富的格式示例，使用前请仔细阅读\file{main.pdf}。
 % \end{itemize}
 %
 % \subsection{生成模板}
@@ -175,7 +175,7 @@
 % 模板解压缩后生成文件夹 \file{heuthesis-vX.Y.Z}\footnote{\texttt{vX.Y.Z} 为版本号。}，
 % 其中包括：模板源文件（\file{heuthesis.ins} 和 \file{heuthesis.dtx}），参考文献
 % 样式 \file{heuthesis.bst}，示例文档
-% （\file{thesis.tex}，\file{shuji.tex}，\file{heuthesis.sty}\footnote{可能用到的包
+% （\file{main.tex}，\file{shuji.tex}，\file{heuthesis.sty}\footnote{可能用到的包
 % 以及一些命令定义都放在这里，以免 \file{heuthesisbook.cls} 过分臃
 % 肿。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
 % 板文件和配置文件（具体命令细节请参考 \file{README.md} 和 \file{Makefile}）：
@@ -204,16 +204,16 @@
 % 释），首先来看推荐的 \texttt{xelatex} 方式：
 % \begin{shell}
 % # 1. 发现里面的引用关系，文件后缀 .tex 可以省略
-% $ xelatex thesis
+% $ xelatex main
 %
 % # 2. 编译参考文件源文件，生成 bbl 文件
-% $ bibtex thesis
+% $ bibtex main
 %
 % # 3. 下面解决引用
-% $ xelatex thesis
-% $ xelatex thesis   # 如果不需要生成索引此时生成完整的 pdf 文件
-% $ splitindex thesis -- -s heuthesis.ist  # 自动生成索引
-% $ xelatex thesis.tex
+% $ xelatex main
+% $ xelatex main   # 如果不需要生成索引此时生成完整的 pdf 文件
+% $ splitindex main -- -s heuthesis.ist  # 自动生成索引
+% $ xelatex main.tex
 % \end{shell}
 %
 % \subsubsection{latexmk}
@@ -223,7 +223,7 @@
 % \texttt{latexmk} 调用 \texttt{xelatex} 生成最终文档的示例：
 % \begin{shell}
 % # 一句话就够了！
-% $ latexmk -xelatex thesis
+% $ latexmk -xelatex main
 % \end{shell}
 %
 % \subsubsection{make}
@@ -236,7 +236,7 @@
 % $ make clean
 % $ make cls       # 生成 heuthesisbook.cls 和 heuthesisbook.cfg
 % $ make doc       # 生成说明文档 heuthesis.pdf
-% $ make thesis    # 生成示例文档 thesis.pdf
+% $ make main      # 生成示例文档 main.pdf
 % \end{shell}
 %
 % \heuthesis\ 的 \file{Makefile} 默认用 \texttt{latexmk} 调用\texttt{xelatex} 编
@@ -271,17 +271,17 @@
 % 没有示例文档用户会发现很难下手。所以推荐新用户从模板自带的示例文档入手，里面包
 % 括了论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。
 % 对于不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示
-% 例文档，具体内容可以参考模板附带的 \file{thesis.tex}。
+% 例文档，具体内容可以参考模板附带的 \file{main.tex}。
 %
-% \lstinputlisting[style=lstStyleLaTeX]{examples/book/english/thesis.tex}
-% \lstinputlisting[style=lstStyleLaTeX]{examples/book/chinese/thesis.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{examples/book/english/main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{examples/book/chinese/main.tex}
 % \lstinputlisting[style=lstStyleLaTeX]{examples/art/reports/report.tex}
 % \lstinputlisting[style=lstStyleLaTeX]{examples/art/reportplus/report.tex}
 %
 % \subsection{论文选项}
 % \label{sec:option}
 %
-% 论文选项，就是在\file{thesis.tex}文件的开头，非注释的第一行的方括号中填写的选项，示例见上节。
+% 论文选项，就是在\file{main.tex}文件的开头，非注释的第一行的方括号中填写的选项，示例见上节。
 % 各个选项的含义说明已经在上节中说明，所以这里就不重复了。
 %
 % \subsection{中文字体}
@@ -538,7 +538,7 @@
 % \end{latex}
 %
 % \subsubsection{目录}
-% 目录不需要用户干预，自动生成，具体命令已经写在\file{thesis.tex}中。
+% 目录不需要用户干预，自动生成，具体命令已经写在\file{main.tex}中。
 %
 % \subsection{正文}
 %
@@ -548,7 +548,7 @@
 % 两个题之间的距离具体多少不在\PGR\ 中要求。目前的方法是用户手动调节该距离。
 % 关于图题\PGR\ 和\UGR\ 只规定了居中，并没有规定居中对其。然而评审老师很多喜欢居
 % 中且居中对齐。模板默认选项是居中且居中对齐，如果不喜欢居中对齐，那么需要在
-% \file{thesis.tex}的文档类选项中设置选项capcenterlast=false。详细方法见前文的介绍
+% \file{main.tex}的文档类选项中设置选项capcenterlast=false。详细方法见前文的介绍
 % 。
 % \begin{heurgu}
 % 每个图均应有图题（由图序和图名组成），图题不宜有标点符号，图名在图序之后空1个
@@ -753,7 +753,7 @@
 % }
 % \end{latex}
 %
-% 注意如果不需要引用参考文献，请删除 \file{thesis.tex} 中 \cs{bibliography} 开头的两行，
+% 注意如果不需要引用参考文献，请删除 \file{main.tex} 中 \cs{bibliography} 开头的两行，
 % 以避免可能的编译错误。
 %
 % \subsubsection{列表环境}
@@ -784,7 +784,7 @@
 % \end{latex}
 %
 % \subsubsection{参考文献}
-% 在后文中的参考文献是自动生成的，不需要用户干预，具体命令在\file{thesis.tex}中有
+% 在后文中的参考文献是自动生成的，不需要用户干预，具体命令在\file{main.tex}中有
 % 示例。
 %
 % \subsubsection{附录}
@@ -841,7 +841,7 @@
 % 手工添加索引的方法不推荐，模板中将去除该功能。
 % \subsubsection{授权}
 % \DescribeMacro{\authorization}
-% 授权页中的签名和日期是需要手写，不需要人工干预。具体示例在\file{thesis.tex}中。
+% 授权页中的签名和日期是需要手写，不需要人工干预。
 %\begin{latex}
 % \authorization[authorization.pdf] %添加扫描页的命令，与上互斥
 %\end{latex}
@@ -3353,9 +3353,9 @@ EXECUTE {end.bib}                                 %   end_bib();
 \else
   \RequirePackage[perpage,hang]{footmisc}
 \fi
-%\ifheu@pifootnote
+\ifheu@pifootnote
   \RequirePackage{pifont}
-%\fi
+\fi
 %    \end{macrocode}
 % CJKfntef包不再自动加载xeCJKfntef
 %    \begin{macrocode}
@@ -3512,7 +3512,7 @@ EXECUTE {end.bib}                                 %   end_bib();
       \expandafter\expandafter\expandafter\g@addto@macro%
       \expandafter\csname heu@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
 
-\def\heusetup{\kvsetkeys\{heu}}
+\def\heusetup{\kvsetkeys{heu}}
 
 
 \newcommand{\heu@report@titlepage@bachelor}{
@@ -3577,6 +3577,25 @@ EXECUTE {end.bib}                                 %   end_bib();
   \normalsize\@starttoc{toc}
 }
 
+
+\def\makecover{
+  \begin{titlepage}
+    \ifheu@bachelor
+    \heu@report@titlepage@bachelor
+    \else
+    \heu@report@titlepage@graduate
+    \fi
+    \clearpage
+    \ifheu@toc
+    \tableofcontents
+    \clearpage
+    \fi
+  \end{titlepage}
+}
+\def\makebackcover{
+    \clearpage
+    \heu@report@backpage@bachelor
+}
 
 
 \newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
@@ -3673,8 +3692,13 @@ EXECUTE {end.bib}                                 %   end_bib();
 \ifheu@english\relax\else
 \heu@chinesetrue
 \fi
-
+\newif\ifheu@geometrynewone
+\newif\ifheu@geometrynewtwo
+\newif\ifheu@geometrynewno
 \define@key{heu}{newgeometry}{%
+  \heu@geometrynewonefalse
+  \heu@geometrynewtwofalse
+  \heu@geometrynewnofalse
   \expandafter\csname heu@geometrynew#1true\endcsname}
 %    \end{macrocode}
 % 目录中英文是否用 Arial 字体（默认关闭）。
@@ -3702,9 +3726,9 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \begin{macrocode}
 \DeclareBoolOption[false]{tocfour}
 %    \end{macrocode}
-% 目录中“目录”位置是否空行（默认开启）。
+% 目录中“目录”位置是否空行（默认否）。
 %    \begin{macrocode}
-\DeclareBoolOption[true]{tocblank}
+\DeclareBoolOption[false]{tocblank}
 %    \end{macrocode}
 % 章标题是否悬挂居中（默认开启）
 %    \begin{macrocode}
@@ -3846,6 +3870,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 \fi}
 \fi
 %    \end{macrocode}
+%
 % \subsection{装载宏包}
 % \label{sec:loadpackage}
 %
@@ -3913,9 +3938,9 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \end{macrocode}
 % 脚注格式。
 %    \begin{macrocode}
-%\ifheu@pifootnote
+\ifheu@pifootnote
   \RequirePackage{pifont}
-%\fi
+\fi
 %    \end{macrocode}
 % 利用 \pkg{xeCJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
 % \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
@@ -4605,7 +4630,8 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@bachelor@cstudentidtitle{学\hspace{2\ccwd}号}
 \def\heu@bachelor@cclass{班\hspace{2\ccwd}号}
 \def\heu@bachelor@caffiltitle{学院（系）名称}
-\def\heu@bachelor@caffiltitleya{学院}
+\def\heu@bachelor@caffiltitleyt{烟台学院}
+\def\heu@bachelor@caffiltitleqd{青岛学院}
 \def\heu@bachelor@csupervisortitle{指导教师}
 \def\heu@bachelor@cdatetitle{日\hspace{2\ccwd}期}
 \newcommand{\heu@bachelor@teachercomment}{指导教师评语：}
@@ -4673,6 +4699,7 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@datefill}{\hspace{2.5em}年\hspace{1.5em}月\hspace{1.5em}日}
 \def\heu@hi{大工至善，大学至臻}
 \def\heuthesis{\textsc{heu}\-\textsc{Thesis}}
+\def\heu{哈尔滨工程大学}
 %</artcfg>
 %    \end{macrocode}
 % \subsubsection{浮动对象以及表格}
@@ -5482,6 +5509,8 @@ delim_1 "\\hspace*{\\fill}"
 % 此处添加青岛校区设置
 %    \begin{macrocode}
 %<*bookcfg>
+\def\heu@bachelor@caffiltitleqd{青岛学院}
+\def\heu@bachelor@caffiltitleya{烟台学院}
 \def\heu@bachelor@cstudentidtitle{学号}
 \def\heu@bachelor@cmajortitle{专业名称}
 \def\heu@bachelor@csupervisortitle{指导教师}
@@ -5790,6 +5819,7 @@ delim_1 "\\hspace*{\\fill}"
 \ifthenelse%
   {\equal{\heu@fontset}{siyuan}}%
   {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@hi}}}%
+  \vspace*{0.1cm}
   \begin{center}
   {\songti \xiaosi
 	\begin{tabular}{@{\qquad\qquad}@{}r@{}l@{}l@{\qquad}}
@@ -5875,6 +5905,7 @@ delim_1 "\\hspace*{\\fill}"
 \ifthenelse%
 {\equal{\heu@fontset}{siyuan}}%
 {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@hi}}}%
+ \vspace*{0.1cm}
 \begin{center}
   {\songti \xiaosi
 	\begin{tabular}{@{\qquad}@{}r@{：}l@{}l@{\qquad}}
@@ -6421,6 +6452,7 @@ delim_1 "\\hspace*{\\fill}"
     \let\p@enumiv\@empty
   \renewcommand\theenumiv{\@arabic\c@enumiv}}%
   \sloppy\frenchspacing
+  \flushbottom
   \ifheu@splitbibitem
   \clubpenalty0
   \@clubpenalty \clubpenalty
