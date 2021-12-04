@@ -18,33 +18,33 @@
 \chapter{XeLaTeX环境配置}[Enverioment of XeLaTeX]
 \label{chap02}
 
-\TeX{}~可以在Windows、Linux以及MacOS等操作系统下运行，
-鉴于大部分人都是使用Windows或Linux类操作系统，
+\TeX{}~可以在 Windows 、 Linux 以及 MacOS 等操作系统下运行，
+鉴于大部分人都是使用 Windows 或 Linux 类操作系统，
 本文主要介绍着两类操作系统下的 \TeX{} 工作环境配置。
 
 \section{Windows~操作系统}[Windows System]
 
 \subsection{安装配置}[Install and Config]
-在Windows下可以使用的 \TeX{}套件有很多种，常用的有C \TeX{}和 \TeX{}Live。
-其中C \TeX{}只能在Windows系统下使用，而 \TeX{}Live则可以在Windows或Linux系统下使用。
-这两个套件都可以在网上免费下载到，建议大家下载最新的完整版本的\TeX{}Live 安装，
+在 Windows 下可以使用的 \TeX{}套件有很多种，常用的有 C\TeX{}和 \TeX{}Live。
+其中 C\TeX{}只能在 Windows 系统下使用，而 \TeX{}Live 则可以在 Windows 或 Linux 系统下使用。
+这两个套件都可以在网上免费下载到，建议大家在 \href{https://tug.org/texlive/}{\TeX{}Live官方网站}下载最新版本的 \TeX{}Live 安装，
 如果是使用光盘镜像安装，可以在安装完成后在线升级以更新宏包到最新版本。
 
 \subsection{编译运行}[Compile]
-如果使用C \TeX{}套件的完整版，安装程序会自动配置好必须的环境变量，安装结束就可以直接使用了。
+如果使用 C\TeX{}套件的完整版，安装程序会自动配置好必须的环境变量，安装结束就可以直接使用了。
 
-默认的，C \TeX{}安装包中会带有WinEdt软件，这是一个非常不错的 \TeX{}编辑工具。
+默认的，C\TeX{}安装包中会带有WinEdt软件，这是一个非常不错的 \TeX{}编辑工具。
 
-需要注意的是，在WinEdt中必须在每个tex文件的开始添加如下的两行：
+需要注意的是，在 WinEdt 中需要在每个 tex 文件的开始添加如下的两行：
 \begin{lstlisting}
   % !TEX TS-program = XeLaTeX
   % !TEX encoding = utf-8
 \end{lstlisting}
-否则文件会变成乱码。
+否则文件可能会变成乱码。
 
-除了WinEdt之外，还有很多其他优秀的编辑器可用于tex文件的编辑，例如TeXStudio。
+除了 WinEdt 之外，还有很多其他优秀的编辑器可用于 tex 文件的编辑，例如 TeXStudio 。
 
-以本模版为例，在Windows下的编译过程是这样的：
+以本模版为例，在 Windows 下的编译过程是这样的：
 \begin{enumerate}
 \item[(1)] 打开main.tex文件；
 \item[(2)] 先点击WinEdt工具栏上的\XeLaTeX{}按钮(可能在Acrobat Reader按钮的下拉菜单中)；
@@ -54,16 +54,19 @@
 \end{enumerate}
 
 \section{Linux~操作系统(以~Ubuntu~为例)}[Linux System]
-First things first，首先的工作是安装一个合适的\XeTeX{}编译系统。这个问题
-并不难解决，现在主流的\LaTeX{}编译系统均已经包含了对\XeTeX{}的支持（包
-括xeCJK中文宏包），并不需要自己额外再进行安装。在Linux下推荐使
-用\TeX{}Live，目前最新版本为\TeX{}Live 2021。下面以在Ubuntu下的本地安装为
-例，简要的说明\TeX{}Live的安装及配置过程，高玩们请主动绕行：
+
+\subsection{安装配置}[Install and Config]
+
+First things first，首先的工作是安装一个合适的 \XeTeX{}编译系统。这个问题
+并不难解决，现在主流的 \LaTeX{}编译系统均已经包含了对 \XeTeX{}的支持（包
+括 xeCJK 中文宏包），并不需要自己额外再进行安装。在Linux下推荐使
+用 \TeX{}Live ，目前最新版本为 \TeX{}Live 2021。下面以在 Ubuntu 下的本地安装为
+例，简要的说明 \TeX{}Live 的安装及配置过程，高玩们请主动绕行：
 
 \begin{enumerate}
-\item[(1)] 下载\TeX{}live 2021镜像，点击\href{http://ftp.ctex.org/mirrors/CTAN/systems/texlive/Images/}{这里}进
-  入下载列表。如果你有检查文件完整性的习惯的话，这个列表还提供了md5和sha256校验值；
-\item[(2)] 安装perl-tk包，以便使用图形界面进行安装。在终端中输入命
+\item[(1)] 下载 \TeX{}live 2021 镜像，点击\href{https://tug.org/texlive/}{这里}进
+  入 \TeX{}live 2021 网站选择需要下载的安装文件或文档。
+\item[(2)] 安装 perl-tk 包，以便使用图形界面进行安装。在终端中输入命
   令\texttt{sudo apt-get install perl-tk}；
 \item[(3)] 挂载下载好的iso镜像，\texttt{sudo mkdir
     /mnt/texlive}（在~{/mnt}~下创建texlive文件夹
@@ -71,10 +74,9 @@ First things first，首先的工作是安装一个合适的\XeTeX{}编译系统
     /mnt/texlive}（挂载texlive2021.iso）。进入~/mnt/texlive~目录，输入命
   令~\texttt{sudo ./install-tl -gui}~之后出现图形界面。之后
   的操作就比较简单了，可以去掉不用的语言包以节省磁盘空间，注意选择最后一
-  项Create symlinks in system directories，让安装程序自动创建语法链接。确
+  项 Create symlinks in system directories ，让安装程序自动创建语法链接。确
   定安装，耐心等待进度条到头；
-\item[(4)] 配置环境变量。在终端中输入~\texttt{sudo gedit
-    /etc/bash.bashrc}，在此文件末尾添加
+\item[(4)] 配置环境变量。在终端中输入~\texttt{sudo gedit /etc/bash.bashrc}，在此文件末尾添加
 
   \begin{lstlisting}
     PATH=/usr/local/texlive/2021/bin/i386-linux: $PATH;
@@ -101,11 +103,11 @@ First things first，首先的工作是安装一个合适的\XeTeX{}编译系统
 \end{enumerate}
 至此安装过程结束。
 
-如果是在Windows系统下，可直接将Texlive可执行文件加入系统 PATH 环境变量中。
+如果是在 Windows 系统下，可直接将 Texlive 可执行文件加入系统 PATH 环境变量中。
 
-接下来我们需要安装一套中文字体，你可以使用Windows系统默认字
+接下来我们需要安装一套中文字体，你可以使用 Windows 系统默认字
 体，但要注意选择的字体最好是包含宋体、黑体、楷体和仿宋的完整套装。如果想获得
-更好的显示效果，也可以使用Adobe等其他中文字体。Adobe字体的安装及配置过程如下：
+更好的显示效果，也可以使用 Adobe 等其他中文字体。 Adobe 字体的安装及配置过程如下：
 
 \begin{enumerate}
 \item[(1)] 下载Adobe中文字体，点击\href{http://forum.ubuntu.org.cn/viewtopic.php?f=35&t=180987&start=0}{这里}进入下载页面；
@@ -116,38 +118,38 @@ First things first，首先的工作是安装一个合适的\XeTeX{}编译系统
 
 这样，我们就配置好了中文字体，当然这没什么特别的，网上教程一大把。
 
-之后我们需要一个类似于WinEdt或TeXStudio的集成编译环境。在Ubuntu软件中心中，我们能很
-容易的安装\TeX{}maker和\TeX{}works，两者功能差不多，\TeX{}maker更强大一些。
-当然，你也可以自己配置VIM下的\LaTeX{}编译环境。在Windows环境下，可以在网上下载免费的
-TeXStudio软件进行tex文件编辑。
+之后我们需要一个类似于 WinEdt 或 TeXStudio 的集成编译环境。在 Ubuntu 软件中心中，我们能很
+容易的安装 \TeX{}maker 和 \TeX{}works ，两者功能差不多， \TeX{}maker 更强大一些。
+当然，你也可以自己配置 VIM 下的 \LaTeX{}编译环境。在 Windows 环境下，可以在网上下载免费的
+TeXStudio 软件进行 tex 文件编辑。
 
 \subsection{编译运行}[Compile]
 
-在安装并配置好编译环境之后，接下来的工作就是如何编译\XeLaTeX{}文件，生成
-所需的PDF文档了。
+在安装并配置好编译环境之后，接下来的工作就是如何编译 \XeLaTeX{} 文件，生成
+所需的 PDF 文档了。
 
-任何文本编辑工具都可以用来编写论文，当然Linux下也有很多免费的集成编辑工具可以使用。
+任何文本编辑工具都可以用来编写论文，当然 Linux 下也有很多免费的集成编辑工具可以使用。
 
-以本模版为例，在\TeX{}works编译过程是这样的：
+以本模版为例，在 \TeX{}works 编译过程是这样的：
 \begin{enumerate}
 \item[(1)] 打开main.tex文件；
-\item[(2)] 将工具栏上的编译命令切换至\XeLaTeX{}后，点击运行；
-\item[(3)] 再将工具栏上的编译命令切换至Bib\TeX{}后，点击运行；
-\item[(4)] 再将工具栏上的编译命令切换至\XeLaTeX{}后，点击运行，这里需要运行两
+\item[(2)] 将工具栏上的编译命令切换至 \XeLaTeX{} 后，点击运行；
+\item[(3)] 再将工具栏上的编译命令切换至 Bib\TeX{} 后，点击运行；
+\item[(4)] 再将工具栏上的编译命令切换至 \XeLaTeX{} 后，点击运行，这里需要运行两
   到三遍；
 \item[(5)] 如果编译没有错误，就可以看到输出的PDF文件了。
 \end{enumerate}
 
-对于\TeX{}maker，首先需要在【选项】【配置\TeX{}maker】【命令】中将第一行
-的latex改成xelatex，之后用\LaTeX{}作为\XeLaTeX{}命令执行即可，其他的和上
+对于 \TeX{}maker ，首先需要在【选项】【配置 \TeX{}maker 】【命令】中将第一行
+的 latex 改成 xelatex，之后用 \LaTeX{} 作为 \XeLaTeX{} 命令执行即可，其他的和上
 面类似。
 
-对于熟悉Linux软件开发编译流程的同学，可以为编译过程编写一个makefile后使用make工具进行处理，
-对于在Windows系统下使用tex撰写论文的同学，也可以使用模板提供的build.bat批处理文件生产PDF文件。
+对于熟悉 Linux 软件开发编译流程的同学，可以为编译过程编写一个 makefile 后使用 make 工具进行处理，
+对于在 Windows 系统下使用 tex 撰写论文的同学，也可以使用模板提供的 build.bat 批处理文件生产 PDF 文件。
 
-除了正常的论文模板之外，还附带了论文书脊定义和A3封面生成工具。在生成封面前，
-需要编辑书脊定义spine.tex文件，将其中的论文题目和作者信息进行修改，
-然后执行make\_cover.bat批处理文件即可生成a3cover.pdf论文装订用A3封皮。
+除了正常的论文模板之外，还附带了论文书脊定义和 A3 封面生成工具。在生成封面前，
+需要编辑书脊定义 spine.tex 文件，将其中的论文题目和作者信息进行修改，
+然后执行 make\_cover.bat 批处理文件即可生成 a3cover.pdf 论文装订用 A3 封皮。
 
 模板目录中的authorization.pdf为论文原创性和授权声明，可以在生成论文前使用签字后扫描的pdf文件进行替换。
 
@@ -157,9 +159,9 @@ TeXStudio软件进行tex文件编辑。
 
 本模板默认是使用Windows库，可以不用设置字体选项，如果使用Adobe字体字库，需要设置~\texttt{fontset=adobe}~。
 在使用此模板撰写论文前，应该确保相应的字库已经安装，并且最好是包含宋体、黑体、楷体和仿宋的完整套装。
-在Windows操作系统下，只要把字库文件复制的Windows \textbackslash Fonts文件夹下即可，
-而对于Linux系统，可通过右键点击字库文件然后选择【安装字库】菜单选项进行安装。
-Linux对于系统新安装的字库，需要使用命令~\texttt{sudo fc-cache -fsv}~刷新缓存后才可以使用。
+在 Windows 操作系统下，只要把字库文件复制的 Windows \textbackslash Fonts 文件夹下即可，
+而对于 Linux 系统，可通过右键点击字库文件然后选择【安装字库】菜单选项进行安装。
+Linux 对于系统新安装的字库，需要使用命令~\texttt{sudo fc-cache -fsv}~刷新缓存后才可以使用。
 
 \section*{本章小结}[Brief Summary]
 \LaTeX{}~工作环境安装与配置简介。

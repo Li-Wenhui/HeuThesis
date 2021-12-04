@@ -1,6 +1,7 @@
 % !Mode:: "TeX:UTF-8"
 
 \chapter{示例文档}[Example]
+\label{ch_example}
 
 这是 \heuthesis\ 的示例文档，基本上覆盖了模板中所有格式的设置。建议大家在使用模
 板之前，除了阅读《\heuthesis\:哈尔滨工程大学学位论文模板》\footnote{即
@@ -108,12 +109,7 @@
 引用文献中的图时，除在正文文字中标注参考文献序号以外
 ，还必须在中、英文表题的右上角标注参考文献序号。
 
-\subsection{博士毕业论文双语题注}[Doctoral picture example]
-\begin{figure}[htpb]
-  \centering
-  \includegraphics[width = 0.4\textwidth]{golfer}
-  \bicaption[golfer1]{}{打高尔夫球球的人（博士论文双语题注）}{Fig.$\!$}{The person playing golf (Doctoral thesis)}
-\end{figure}
+\subsection{硕士毕业论文双语题注}[Master picture example]
 
 每个图均应有图题（由图序和图名组成），图题不宜有标点符号，图名在图序之后空1个半
 角字符排写。图序按章编排，如第1章第一个插图的图号为“图1-1”。图题置于图下，硕士论
@@ -125,6 +121,12 @@
 Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5号字，以清晰表达为原
 则，但在一个插图内字号要统一）。同一图内使用文字应统一。图表中物理量、符号用斜体
 。
+
+\begin{figure}[htpb]
+  \centering
+  \includegraphics[width = 0.4\textwidth]{golfer}
+  \bicaption[golfer1]{}{打高尔夫球球的人（博士论文双语题注）}{Fig.$\!$}{The person playing golf (Doctoral thesis)}
+\end{figure}
 
 \subsection{并排图和子图}[Abreast-picture and Sub-picture example]
 \subsubsection{并排图}[Abreast-picture example]
@@ -224,7 +226,7 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
       \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~2]{\includegraphics[width=0.4\textwidth]{golfer}}}
     \end{minipage}
     \vspace{0.2em}
-    \bicaption[golfer47]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf. Please note that, although it is appropriate to put subfigures' captions under this caption as stipulated in regulation, but its format is not clearly stated.}
+    \bicaption[golfer47]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf.}
   \end{minipage}
 \end{figure}
 
@@ -237,7 +239,7 @@ Times New Roman字体，字号尽量采用5号字（当字数较多时可用小5
       \node at (0.8,0.2) {b)};
     \end{scope}
   \end{tikzpicture}
-  \bicaption[golfer0]{}{打高尔夫球球的人（博士论文双语题注）}{Fig.$\!$}{The person playing golf (Doctoral thesis)}
+  \bicaption[golfer0]{}{打高尔夫球球的人（硕士论文双语题注）}{Fig.$\!$}{The person playing golf (Master thesis)}
   \vskip -0.4em
   \hspace{2em}
   \begin{minipage}[t]{0.3\textwidth}

@@ -272,7 +272,245 @@ pgf/TikZ是一个在tex系统中的画图宏包，除了可以精确的作图外
   \bicaption[fig:TikZ]{TikZ插图}{TikZ插图}{Fig.}{Draw with TikZ}
 \end{figure}
 
-更多的关于pgf/TikZ请参考相关资料。
+使用pgf/TikZ可以直接使用数据表绘图，如图~\ref{fig:TikZTable}，其实现代码和数据如下。
+
+\wuhao{
+\begin{lstlisting}
+\begin{figure}[htbp]
+    \centering
+	\begin{tikzpicture}[scale=0.85]
+	\pgfplotstableread{
+	budget    name1   name2   name3   name4    name5    name6
+	0.2 1   1   1   1   1   1
+	0.4 10  10  10  10  10  10
+	0.6 30  30  30  30  30  30 
+	0.8 50  49  51  48  50  50
+	1.0 110 110 110 110 110 110
+	1.2 120 110 120 110 110 110
+	1.4 130 130 130 110 110 130
+	1.6 150 150 150 110 110 150
+	1.8 160 150 150 160 111 150
+	2.0 170 170 170 100 160 160
+	}{\datatable}
+	\begin{axis}[
+	    width = \linewidth, height = 0.5\linewidth,
+	    title style={at={(0.5,-0.35)}},
+	    xtick pos=bottom,
+	    ytick pos=left,
+	    ybar=0,
+	    ylabel={ylabel},
+	    ylabel style={at={(axis description cs:0.03,0.5)}},
+	    ytick={0,20,...,180},
+	    bar width=4pt, ymin=0, ymax=180,
+	    legend image code/.code={\draw [#1] (0cm,-0.1cm) rectangle (0.35cm,0.1cm);
+	    },
+	    legend style={
+	        legend pos=north west,
+	        nodes={scale=1},
+	        draw = none,
+	        cells={anchor=west}, 
+	    },
+	    xlabel={xlabel},
+	    xtick=data,
+	    xticklabels from table={\datatable}{budget},
+	    ]
+	
+	\newcommand{\mysubplot}[2]{
+	    \addplot[#2] table [x=budget,y=#1] {\datatable};
+	    \addlegendentry{#1};
+	}
+	\mysubplot{name1}{}
+	\mysubplot{name2}{pattern=crosshatch dots}
+	\mysubplot{name3}{pattern=north east lines}
+	\mysubplot{name4}{pattern=crosshatch}
+	\mysubplot{name5}{pattern=north west lines}
+	\mysubplot{name6}{fill=black}
+	
+	\end{axis}
+	\end{tikzpicture}
+   \bicaption[fig:TikZTable]{TikZ数据表绘图}{TikZ数据表}{Fig.}{Draw with Data Table}
+\end{figure}
+\end{lstlisting}
+}
+
+\begin{figure}[htbp]
+    \centering
+	\begin{tikzpicture}[scale=0.85]
+	\pgfplotstableread{
+	budget    name1   name2   name3   name4    name5    name6
+	0.2 1   1   1   1   1   1
+	0.4 10  10  10  10  10  10
+	0.6 30  30  30  30  30  30 
+	0.8 50  49  51  48  50  50
+	1.0 110 110 110 110 110 110
+	1.2 120 110 120 110 110 110
+	1.4 130 130 130 110 110 130
+	1.6 150 150 150 110 110 150
+	1.8 160 150 150 160 111 150
+	2.0 170 170 170 100 160 160
+	}{\datatable}
+	\begin{axis}[
+	    width = \linewidth, height = 0.5\linewidth,
+	    %title={The Title},
+	    title style={at={(0.5,-0.35)}},
+	    xtick pos=bottom,
+	    ytick pos=left, % remove the tick from the right and top
+	    ybar=0,
+	    ylabel={ylabel},
+	    ylabel style={at={(axis description cs:0.03,0.5)}},
+	    ytick={0,20,...,180},
+	    bar width=4pt,
+	    %enlarge x limits=0.15,
+	    ymin=0, ymax=180,
+	    % legned related -------------
+	    legend image code/.code={
+	        \draw [#1] (0cm,-0.1cm) rectangle (0.35cm,0.1cm);
+	    },
+	    legend style={
+	        %at={(0.13,1)},
+	        legend pos=north west,
+	        nodes={scale=1},
+	        draw = none,        % without box
+	        cells={anchor=west}, % algin left
+	    },
+	    xlabel={xlabel},
+	    % xtick related 
+	    xtick=data,
+	    xticklabels from table={\datatable}{budget},
+	    %xticklabel style={
+	    %j    rotate=45,xshift=-100,yshift=-100,anchor=mid east
+	    %j},
+	    ] % end of options of axis environment
+	
+	\newcommand{\mysubplot}[2]{
+	    \addplot[#2] table [x=budget,y=#1] {\datatable};
+	    \addlegendentry{#1};
+	}
+	\mysubplot{name1}{}
+	\mysubplot{name2}{pattern=crosshatch dots}
+	\mysubplot{name3}{pattern=north east lines}
+	\mysubplot{name4}{pattern=crosshatch}
+	\mysubplot{name5}{pattern=north west lines}
+	\mysubplot{name6}{fill=black}
+	
+	\end{axis}
+	\end{tikzpicture}
+   \bicaption[fig:TikZTable]{TikZ数据表绘图}{TikZ数据表}{Fig.}{Draw with Data Table}
+\end{figure}
+
+pgf/TikZ不仅可以使用文档内部数据绘图，还可以直接读取外部~csv~数据文件进行绘图，如图 ~\ref{fig:TikZcsv}~便是
+读取~\texttt{data/datafile1.csv}~数据文件完成的绘图。
+
+\wuhao{
+\begin{lstlisting}
+\begin{figure}[htbp]
+    \centering
+ \begin{tikzpicture}[scale=0.85]
+    \pgfplotstableread{data/datafile1.csv}{\datatable}
+    \begin{axis}[
+        xlabel={Computation time passed~[minutes]},
+        ylabel={bits per channel use},
+        ylabel style={at={(axis description cs:0.06,0.5)}},
+        xmin= 0, xmax= 120, ymin= 0,
+        legend style = {
+            legend pos=south east,
+            legend columns = {2},
+            nodes={scale=0.5}, 
+        },
+        grid = major,
+        grid style=dashed,
+        mark repeat={8},
+        width = \linewidth,
+        height = 0.5\linewidth,
+        mark options={solid},
+        every axis/.append style={
+            extra description/.code={
+                \node[scale=0.5] at (0.07,0.93) {Information Rate};
+                \node[scale=0.5] at (0.93,0.93) {Information Rate};
+            },
+        },
+    ]
+
+    \addplot[red,mark=o,dashed] table [x index=0, y index=1] {\datatable};
+    \addlegendentry{EM-type algorithm~[13] with 4-state FSMC}
+    \addplot[dashed,mark=o] table [x index=0, y index=2] {\datatable};
+    \addlegendentry{EM-type algorithm~[13] with 16-state FSMC}
+    \addplot[blue,mark=diamond] table [x index=0, y index=3] {\datatable};
+    \addlegendentry{Algorithm~11 with 1-qubit QSC}
+    \addplot[red,mark=+] table [x index=0, y index=4] {\datatable};
+    \addlegendentry{Algorithm~11 with 4-state FSMC}
+    \addplot[mark=+] table [x index=0, y index=5] {\datatable};
+    \addlegendentry{Algorithm~11 with 16-state FSMC}
+    \addplot[red,mark=diamond] table [x index=0, y index=6] {\datatable};
+    \addlegendentry{Algorithm~11 with 2-qubit QSC}
+    \addplot[dashed] table [x index=0, y index=7] {\datatable};
+    \addlegendentry{Estimated Information Rate~(Alg.~9)}
+
+    \end{axis}
+    \end{tikzpicture}
+   \bicaption[fig:TikZcsv]{TikZ数据文件绘图}{TikZ数据文件绘图}{Fig.}{Draw with Data File}
+\end{figure}
+\end{lstlisting}
+}
+
+\begin{figure}[htbp]
+    \centering
+ \begin{tikzpicture}[scale=0.85]
+    \pgfplotstableread{data/datafile1.csv}{\datatable}
+    \begin{axis}[
+        xlabel={Computation time passed~[minutes]},
+        ylabel={bits per channel use},
+        ylabel style={at={(axis description cs:0.06,0.5)}},
+        xmin= 0, xmax= 120, ymin= 0,
+        legend style = {
+            legend pos=south east,
+            legend columns = {2},
+            nodes={scale=0.5}, % make the legend box smaller
+            %font = {\tiny},
+        },
+        grid = major,
+        grid style=dashed,
+        mark repeat={8},
+        width = \linewidth,
+        height = 0.5\linewidth,
+        mark options={solid},
+        %% extra label for information rate
+        every axis/.append style={
+            extra description/.code={
+                \node[scale=0.5] at (0.07,0.93) {Information Rate};
+                \node[scale=0.5] at (0.93,0.93) {Information Rate};
+            },
+        },
+    ]
+
+    %1
+    \addplot[red,mark=o,dashed] table [x index=0, y index=1] {\datatable};
+    \addlegendentry{EM-type algorithm~[13] with 4-state FSMC}
+    %2
+    \addplot[dashed,mark=o] table [x index=0, y index=2] {\datatable};
+    \addlegendentry{EM-type algorithm~[13] with 16-state FSMC}
+    %3
+    \addplot[blue,mark=diamond] table [x index=0, y index=3] {\datatable};
+    \addlegendentry{Algorithm~11 with 1-qubit QSC}
+    %4
+    \addplot[red,mark=+] table [x index=0, y index=4] {\datatable};
+    \addlegendentry{Algorithm~11 with 4-state FSMC}
+    %5
+    \addplot[mark=+] table [x index=0, y index=5] {\datatable};
+    \addlegendentry{Algorithm~11 with 16-state FSMC}
+    %6
+    \addplot[red,mark=diamond] table [x index=0, y index=6] {\datatable};
+    \addlegendentry{Algorithm~11 with 2-qubit QSC}
+    %7
+    \addplot[dashed] table [x index=0, y index=7] {\datatable};
+    \addlegendentry{Estimated Information Rate~(Alg.~9)}
+
+    \end{axis}
+    \end{tikzpicture}
+   \bicaption[fig:TikZcsv]{TikZ数据文件绘图}{TikZ数据文件绘图}{Fig.}{Draw with Data File}
+\end{figure}
+   
+更多的关于pgf/TikZ绘图方法请参考相关资料。
 
 \section*{本章小结}[Brief Summary]
 插图方法介绍。
