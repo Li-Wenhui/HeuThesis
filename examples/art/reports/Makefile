@@ -17,16 +17,11 @@ CLSFILES=$(PACKAGE)art.cls $(PACKAGE)art.cfg *.bst
 # make deletion work on Windows
 ifdef SystemRoot
 	RM = del /Q
-	OPEN = start
 else
 	RM = rm -f
-	OPEN = open
 endif
 
-.PHONY: clean report viewreport
-
-viewthesis: report
-	$(OPEN) $(REPORTMAIN).pdf
+.PHONY: clean report
 
 report: $(REPORTMAIN).pdf
 

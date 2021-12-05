@@ -116,7 +116,7 @@ Files/Codes in heuthesis also under the protection of license of [Attribution-No
 		
    - 如果是Windows执行（作者没测试过，如遇问题同上）
 	
-			lualatex heuthesis.ins
+			xelatex heuthesis.ins
 
    - 如果喜欢玩 make
 
@@ -126,11 +126,10 @@ Files/Codes in heuthesis also under the protection of license of [Attribution-No
 
 		examples
 		├── art
-		│   ├── reportplus  %青岛校区博士中期报告
-		│   └── reports     %除去青岛校区博士中期报告的一校三区本硕博开题、中期报告
+		│   └── reports     %本硕博开题、中期报告
 		└── book
-		    ├── chinese     %一校三区本硕博毕业论文以及博后出站报告
-		    └── english     %一校三区本硕博英文版毕业论文
+		    ├── chinese     %本硕博毕业论文以及博后出站报告
+		    └── english     %本硕博英文版毕业论文
 
 2. 生成论文方式
 
@@ -152,7 +151,7 @@ Files/Codes in heuthesis also under the protection of license of [Attribution-No
               xelatex -shell-escape thesis.tex
               xelatex -shell-escape thesis.tex
       
-      - art/{reports,reportplus}文件夹中
+      - art/{reports}文件夹中
       
               xelatex -shell-escape report.tex
               bibtex report

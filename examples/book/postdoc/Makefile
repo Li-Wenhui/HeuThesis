@@ -17,16 +17,11 @@ CLSFILES=$(PACKAGE)book.cls $(PACKAGE)book.cfg $(PACKAGE).ist $(PACKAGE).sty *.b
 # make deletion work on Windows
 ifdef SystemRoot
 	RM = del /Q
-	OPEN = start
 else
 	RM = rm -f
-	OPEN = open
 endif
 
-.PHONY: clean cleanall main viewthesis
-
-viewthesis: thesis
-#	$(OPEN) $(THESISMAIN).pdf
+.PHONY: clean cleanall thesis
 
 thesis: $(THESISMAIN).pdf
 

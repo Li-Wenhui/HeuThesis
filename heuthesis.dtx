@@ -290,7 +290,6 @@
 % \lstinputlisting[style=lstStyleLaTeX]{examples/book/promaster/main.tex}
 % \lstinputlisting[style=lstStyleLaTeX]{examples/book/bachelor/main.tex}
 % \lstinputlisting[style=lstStyleLaTeX]{examples/art/reports/report.tex}
-% \lstinputlisting[style=lstStyleLaTeX]{examples/art/reportplus/report.tex}
 %
 % \subsection{论文选项}
 % \label{sec:option}
@@ -2853,423 +2852,13 @@ EXECUTE {end.bib}                                 %   end_bib();
                                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %</bst>
-%<bookcls|artcls|artpluscls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<bookcls|artcls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<bookcls>\ProvidesClass{heuthesisbook}
 %<artcls>\ProvidesClass{heuthesisart}
-%<artpluscls>\ProvidesClass{heuthesisartplus}
 %<bookcfg>\ProvidesFile{heuthesisbook.cfg}
 %<artcfg>\ProvidesFile{heuthesisart.cfg}
 %<heuthesis-style>\ProvidesPackage{heuthesis}
-%<artpluscls|artcls|bookcls|bookcfg|artcfg|heuthesis-style>[2021/05/06 3.0.15 Harbin Engineering University Thesis Template]
-%<*artpluscls>
-\RequirePackage{ifthen}
-\RequirePackage{kvoptions}
-\SetupKeyvalOptions{
-  family=heu,
-  prefix=heu@,
-  setkeys=\kvsetkeys}
-
-\newif\ifheu@bachelor
-\newif\ifheu@master
-\newif\ifheu@doctor
-\define@key{heu}{type}{%
-  \heu@bachelorfalse
-  \heu@masterfalse
-  \heu@doctorfalse
-  \expandafter\csname heu@#1true\endcsname}
-
-\newif\ifheu@productdevelopment
-\newif\ifheu@projectdplanning
-\newif\ifheu@projectdesign
-\newif\ifheu@applicationResearch
-\define@key{heu}{research}{%
-  \heu@productdevelopmentfalse
-  \heu@projectdplanningfalse
-  \heu@projectdesignfalse
-  \heu@applicationResearchfalse
-  \expandafter\csname heu@#1true\endcsname}
-\ifheu@productdevelopment\relax\else
-\ifheu@projectdplanning\relax\else
-\ifheu@projectdesign\relax\else
-\heu@applicationResearchtrue
-\fi
-\fi
-\fi
-
-\newif\ifheu@qingdao
-\newif\ifheu@yantai
-\newif\ifheu@harbin
-\define@key{heu}{campus}{%
-  \heu@qingdaofalse
-  \heu@yantaifalse
-  \heu@harbinfalse
-  \expandafter\csname heu@#1true\endcsname}
-\ifheu@yantai\relax\else
-\ifheu@qingdao\relax\else
-\heu@harbintrue
-\fi
-\fi
-
-\newif\ifheu@opening
-\newif\ifheu@midterm
-\define@key{heu}{stage}{%
-  \heu@openingfalse
-  \heu@midtermfalse
-  \expandafter\csname heu@#1true\endcsname}
-
-\DeclareStringOption{fontset}
-
-\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexart}}
-
-\ProcessKeyvalOptions*
-\PassOptionsToPackage{no-math}{fontspec}
-
-\ifheu@bachelor\relax\else
-\ifheu@master\relax\else
-\ifheu@doctor\relax\else
-\ClassError{heuthesisartplus}%
-{
-  \MessageBreak Please specify thesis type in option:
-  \MessageBreak type=[bachelor | master | doctor]
-}
-\fi
-\fi
-\fi
-
-\ifheu@productdevelopment\relax\else
-\ifheu@projectdplanning\relax\else
-\ifheu@projectdesign\relax\else
-\ifheu@applicationResearch\relax\else
-\ClassError{heuthesisartplus}%
-{
-  \MessageBreak Please specify research type in option:
-  \MessageBreak research=[productdevelopment | projectdplanning | projectdesign | applicationResearch]
-}
-\fi
-\fi
-\fi
-\fi
-
-\ifheu@opening\relax\else
-\ifheu@midterm\relax\else
-\ClassError{heuthesisartplus}%
-{
-  \MessageBreak Please specify stage in option:
-  \MessageBreak stage=<opening|midterm>
-}
-\fi
-\fi
-
-\ifheu@midterm
-  \relax
-\else
-  \ClassError{heuthesisartplus}%
-  {
-    \MessageBreak This document class only support midterm report.
-  }
-\fi
-
-\ifthenelse%
-{\equal{\heu@fontset}{}}%
-{%
-  \PassOptionsToPackage{AutoFakeBold=2}{xeCJK}
-}%
-{%
-  \ifthenelse%
-  {\equal{\heu@fontset}{siyuan}}%
-  {\relax}%
-  {%
-    \PassOptionsToPackage{AutoFakeBold=2}{xeCJK}
-  }%
-  \PassOptionsToClass{fontset=\heu@fontset}{ctexart}
-}%
-\LoadClass[a4paper,UTF8,zihao=-4,scheme=plain]{ctexart}
-
-\RequirePackage{etoolbox}
-\RequirePackage{ifxetex}
-\ifxetex
-\else
-    \ClassError{heuthesis}{Please use: \MessageBreak xelatex}
-\fi
-\RequirePackage{xparse}
-\RequirePackage{amsmath}
-\RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
-\RequirePackage{amssymb}
-\RequirePackage[defaultsups]{newtxtext}
-
-\RequirePackage{courier}
-\RequirePackage{graphicx}
-\RequirePackage{pdfpages}
-\includepdfset{fitpaper=true}
-\RequirePackage{enumitem}       %使用enumitem宏包,改变列表项的格式
-\RequirePackage{environ}
-\RequirePackage[perpage,hang]{footmisc}
-\RequirePackage{xeCJKfntef}
-
-\RequirePackage{diagbox}
-\RequirePackage{longtable}
-\RequirePackage{booktabs}
-\RequirePackage[sort&compress,numbers]{natbib}
-\RequirePackage{hyperref}
-\hypersetup{%
-  CJKbookmarks=true,
-  linktoc=all,
-  bookmarksnumbered=true,
-  bookmarksopen=true,
-  bookmarksopenlevel=1,
-  breaklinks=true,
-  colorlinks=false,
-  plainpages=false,
-  pdfborder=0 0 0}
-\urlstyle{same}
-
-\RequirePackage{geometry}
-
-\geometry{
-  a4paper,
-  hcentering,
-  ignoreall,
-  nomarginpar,
-  centering,
-  text={150true mm,236true mm},
-  left=30true mm,
-  head=5true mm,
-  headsep=2true mm,
-  footskip=0true mm,
-  foot=5.2true mm
-}
-
-\RequirePackage{tikzpagenodes}
-\RequirePackage{eso-pic}
-\RequirePackage{tikz}
-\RequirePackage{pgfplots}
-\usetikzlibrary{patterns}
-\usetikzlibrary{calc}
-
-\RequirePackage{fancyhdr}
-
-\RequirePackage{tabularx}
-\RequirePackage{varwidth}
-\RequirePackage{changepage}
-\RequirePackage{multicol}
-\RequirePackage[below]{placeins}% 允许上一个section的浮动图形出现在下一个section的开始部分,还提供\FloatBarrier命令,使所有未处理的浮动图形立即被处理
-\RequirePackage{flafter}        % 使得所有浮动体不能被放置在其浮动环境之前，以免浮动体在引述它的文本之前出现.
-\RequirePackage{multirow}       % 使用Multirow宏包，使得表格可以合并多个row格
-\RequirePackage{subfigure}      % 支持子图 %centerlast 设置最后一行是否居中
-\RequirePackage[subfigure]{ccaption} % 支持双语标题
-\RequirePackage{xltxtra}
-
-\RequirePackage{lipsum}%random text
-
-%-- 添加字号设置 --%
-\renewcommand\normalsize{%
-  \@setfontsize\normalsize{12bp}{15bp}%
-  \abovedisplayskip=6pt
-  \abovedisplayshortskip=6pt
-  \belowdisplayskip=\abovedisplayskip
-  \belowdisplayshortskip=\abovedisplayshortskip}
-\def\heu@def@fontsize#1#2{%
-  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
-    \fontsize{#2}{##1\dimexpr #2}\selectfont}}
-\heu@def@fontsize{dachu}{58bp}
-\heu@def@fontsize{chuhao}{42bp}
-\heu@def@fontsize{xiaochu}{36bp}
-\heu@def@fontsize{yihao}{26bp}
-\heu@def@fontsize{xiaoyi}{24bp}
-\heu@def@fontsize{erhao}{22bp}
-\heu@def@fontsize{xiaoer}{18bp}
-\heu@def@fontsize{sanhao}{16bp}
-\heu@def@fontsize{xiaosan}{15bp}
-\heu@def@fontsize{sihao}{14bp}
-\heu@def@fontsize{banxiaosi}{13bp}
-\heu@def@fontsize{xiaosi}{12bp}
-\heu@def@fontsize{dawu}{11bp}
-\heu@def@fontsize{wuhao}{10.5bp}
-\heu@def@fontsize{xiaowu}{9bp}
-\heu@def@fontsize{liuhao}{7.5bp}
-\heu@def@fontsize{xiaoliu}{6.5bp}
-\heu@def@fontsize{qihao}{5.5bp}
-\heu@def@fontsize{bahao}{5bp}
-
-%-- 设置字号 --%
-\ctexset{%
-  section={
-    afterindent=true,
-    beforeskip={7.5bp},%上下空0.5行
-    afterskip={7.5bp},
-    format={\normalsize},
-    aftername=\enspace,
-    fixskip=true,
-    break={},
-  },
-  subsection={
-    afterindent=true,
-    beforeskip={7bp},
-    afterskip={7bp},
-    format={\normalsize},
-    aftername=\enspace,
-    fixskip=true,
-    break={},
-  },
-  subsubsection={
-    afterindent=true,
-    beforeskip={3bp},
-    afterskip={3bp},
-    format={\normalsize},
-    aftername=\enspace,
-    fixskip=true,
-    break={},
-  },
-  paragraph/afterindent=true,
-  subparagraph/afterindent=true
-}
-
-\let\heu@section\section
-\RenewDocumentCommand\section{s o m s}{%
-  \IfBooleanF{#4}{\noindent\tikz[overlay] \draw (-5mm,0mm) -- (155mm,0mm);}%
-  \IfBooleanTF{#1}%
-  {% if \section*
-    \IfNoValueTF{#2}%
-    {\heu@section*{#3}}%
-    {\heu@section*[#2]{#3}}%
-  }%
-  {% if \section
-    \IfNoValueTF{#2}%
-    {\heu@section{#3}}%
-    {\heu@section[#2]{#3}}%
-  }
-}
-
-\def\heu@def@term#1{%
-  \define@key{heu}{#1}{\csname #1\endcsname{##1}}
-  \expandafter\gdef\csname #1\endcsname##1{%
-    \expandafter\gdef\csname heu@#1\endcsname{##1}}
-  \csname #1\endcsname{}}
-
-%-- 封面定义 --%
-\heu@def@term{ctitlecover} %中文标题封面
-\heu@def@term{ctitleone}
-\heu@def@term{ctitletwo}
-\heu@def@term{csubject}
-\heu@def@term{cauthor}
-\heu@def@term{cstudentid}
-\heu@def@term{cclassid}
-\heu@def@term{caffil}
-\heu@def@term{csupervisor}
-\heu@def@term{coralexdate}
-\heu@def@term{csubmitdate}
-\heu@def@term{cdate}
-\heu@def@term{cenrolldate}
-
-\def\heu@parse@keywords#1{
-  \define@key{heu}{#1}{\csname #1\endcsname{##1}}
-  \expandafter\gdef\csname heu@#1\endcsname{}
-  \expandafter\gdef\csname #1\endcsname##1{
-    \@for\reserved@a:=##1\do{
-      \expandafter\ifx\csname heu@#1\endcsname\@empty\else
-      \expandafter\g@addto@macro\csname heu@#1\endcsname{%
-        \ignorespaces\csname heu@#1@separator\endcsname}
-      \fi
-      \expandafter\expandafter\expandafter\g@addto@macro%
-      \expandafter\csname heu@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
-
-\def\heusetup{\kvsetkeys{heu}}
-
-%    \end{macrocode}
-% 中期检查报告封面
-%    \begin{macrocode}
-\newcommand{\heu@report@titlepage@graduate}{
-  \ifthenelse%
-  {\equal{\heu@fontset}{siyuan}}%
-  {\xiaosi[1]\vspace*{0.65em}}%
-  {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@motto}}}%
-  \vspace*{10mm}
-  \begin{center}
-    \songti\erhao\textbf{\heu@cschoolname\ifheu@qingdao\heu@qingdaocampus\fi\ifheu@yantai\heu@yantaicampus\fi}
-  \end{center}
-  \begin{center}
-    \songti\erhao\textbf{\heu@cthesismidtermcheck}
-  \end{center}
-   \vspace{66bp}
-     \parbox[b][3cm][t]{\textwidth}{
-       \begin{center}\songti\xiaosan
-       \renewcommand{\arraystretch}{1.8}
-       \begin{tabular}{l@{\ \ }c}
-         \textbf{\heu@graduate@studenttitle：} & \underline{\makebox[6.1cm]{\textbf{\heu@cauthor}}}\\
-         \textbf{\heu@graduate@enrolldate：} & \underline{\makebox[6.1cm]{\textbf{\heu@cenrolldate}}}\\
-         \textbf{\heu@graduate@thesistitle：} & \underline{\makebox[6.1cm]{\textbf{\heu@ctitleone}}}\\
-                                            & \underline{\makebox[6.1cm]{\textbf{\heu@ctitletwo}}}\\
-         \textbf{\heu@graduate@cafflimajor：} & \underline{\makebox[6.1cm]{\textbf{\heu@csubject}}}\\
-         \textbf{\heu@graduate@datetitle：} & \underline{\makebox[6.1cm]{\textbf{\heu@cdate}}}\\
-         \textbf{\heu@graduate@supervisor：} & \underline{\makebox[6.1cm]{\textbf{\heu@csupervisor}}}\\
-       \end{tabular}\renewcommand{\arraystretch}{1}
-     \end{center}
-	}
-   \vfill
-   \ifheu@harbin
-   \heu@harbin@schoolbottommark
-   \else
-   \ifheu@qingdao
-   \heu@qingdao@schoolbottommark
-   \else
-   \ifheu@yantai
-   \heu@yantai@schoolbottommark
-   \fi
-   \fi
-   \fi
-}
-
-\def\makecover{
-  \begin{titlepage}
-    \heu@report@titlepage@graduate
-    \clearpage
-    \heu@doctor@midterm@note
-  \end{titlepage}
-  \AddToShipoutPicture{%
-    \begin{tikzpicture}[remember picture,overlay]
-      \draw ($(current page text area.south west)+(-5mm,0mm)$) rectangle ($(current page text area.north east)+(5mm,2mm)$);
-    \end{tikzpicture}
-  }
-  \pagestyle{fancy}
-  \fancyhead{}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
-  \fancyfoot[C]{\xiaowu-~\thepage~-}
-}
-
-\newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
-\newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{\heu@inline@sep}}
-
-\citestyle{numerical}
-\DeclareRobustCommand\inlinecite{\@inlinecite}
-\def\@inlinecite#1{\begingroup\citestyle{inline}\let\@cite\NAT@citenum\citep{#1}\endgroup}
-\let\onlinecite\inlinecite
-
-\renewenvironment{thebibliography}[1]{%
-  \list{\@biblabel{\@arabic\c@enumiv}}%
-  {\renewcommand{\makelabel}[1]{##1\hfill}
-    \settowidth{\labelwidth}{\@biblabel{#1}}
-    \setlength{\labelsep}{0.5em}
-    \setlength{\itemindent}{0pt}
-    \setlength{\leftmargin}{\labelsep+\labelwidth}
-    \addtolength{\itemsep}{-0.8em}
-    \usecounter{enumiv}%
-    \let\p@enumiv\@empty
-  \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-  \sloppy\frenchspacing
-  \flushbottom
-  \clubpenalty0
-  \@clubpenalty \clubpenalty
-  \widowpenalty0%
-  \interlinepenalty-50%
-\sfcode`\.\@m}
-
-\AtEndOfClass{\input{heuthesisart.cfg}}
-\AtEndOfClass{\sloppy}
-%</artpluscls>
-%    \end{macrocode}
-% 添加artcls
-%    \begin{macrocode}
+%<artcls|bookcls|bookcfg|artcfg|heuthesis-style>[2021/05/06 3.0.15 Harbin Engineering University Thesis Template]
 %<*artcls>
 \RequirePackage{ifthen}
 \RequirePackage{kvoptions}
@@ -3371,16 +2960,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 {
   \MessageBreak Please specify stage in option:
   \MessageBreak stage=<opening|midterm>
-}
-\fi
-\fi
-
-\ifheu@doctor
-\ifheu@midterm
-\ClassError{heuthesisart}%
-{
-  \MessageBreak This document class does not support midterm report for doctor.
-  \MessageBreak please use \string\documentclass{heuthesisartplus}
 }
 \fi
 \fi
@@ -3666,7 +3245,7 @@ EXECUTE {end.bib}                                 %   end_bib();
      }
    \end{center}
    \vspace{15mm}
-   \parbox[t][6.5cm][t]{\textwidth}{
+   \parbox[t][4.0cm][t]{\textwidth}{
      \begin{center}
        \songti\xiaoer\textbf{\heu@cthesistitleprefix\heu@title@csep\heu@ctitlecover}
      \end{center}
@@ -3678,9 +3257,6 @@ EXECUTE {end.bib}                                 %   end_bib();
          \textbf{\heu@bachelor@cmajortitle} & \underline{\makebox[6.1cm]{\textbf{\heu@csubject}}}\\
          \textbf{\heu@bachelor@cstudenttitle} & \underline{\makebox[6.1cm]{\textbf{\heu@cauthor}}}\\
          \textbf{\heu@bachelor@cstudentidtitle} & \underline{\makebox[6.1cm]{\textbf{\heu@cstudentid}}}\\
-         \ifheu@yantai % 烟台校区特有
-         \textbf{\heu@bachelor@cclass} & \underline{\makebox[6.1cm]{\textbf{\heu@cclassid}}}\\
-         \fi
          \textbf{\heu@bachelor@csupervisortitle} & \underline{\makebox[6.1cm]{\textbf{\heu@csupervisor}}}\\
          \textbf{\heu@bachelor@cdatetitle} & \underline{\makebox[6.1cm]{\textbf{\heu@cdate}}}\\
        \end{tabular}\renewcommand{\arraystretch}{1}
@@ -4834,7 +4410,7 @@ delim_1 "\\hspace*{\\fill}"
 }
 \newcommand{\heu@harbin@bachelor@schoolbottommark}{
    \begin{center}
-     \lishu\xiaoer\textbf{哈尔滨工程大学教务处制}
+     \songti\xiaoer\textbf{哈尔滨工程大学教务处制}
    \end{center}
 }
 \newcommand{\heu@doctor@midterm@note}{
@@ -5780,7 +5356,7 @@ delim_1 "\\hspace*{\\fill}"
 
 \newcommand{\heu@harbin@bachelor@schoolbottommark}{
    \begin{center}
-     \lishu\xiaoer\textbf{哈尔滨工程大学教务处制}
+     \songti\xiaoer\textbf{哈尔滨工程大学教务处制}
    \end{center}
 }
 
