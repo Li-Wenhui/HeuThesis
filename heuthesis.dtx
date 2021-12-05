@@ -1,6 +1,6 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2017- by Yanshuo Chu <yanshuoc@gmail.com>
+% Copyright (C) 2021- by LIWenhui <lwh@hrbeu.edu.cn>
 %
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3a
@@ -9,14 +9,12 @@
 %
 % http://www.latex-project.org/lppl.txt
 %
-% and version 1.3a or later is part of all distributions of LaTeX
-% version 2004/10/01 or later.
 %
 % \fi
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{heuthesis.dtx}[2021/05/06 3.0.15 Harbin Engineering University Thesis Template]
+\ProvidesFile{heuthesis.dtx}[2021/12/06 1.0.0 Harbin Engineering University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -75,12 +73,11 @@
 % \GlossaryPrologue{\section{\glossaryname}}
 %
 % \title{\bfseries\color{violet}\heuthesis：哈尔滨工程大学学位论文模板}
-% \author{{\songti 哈哈哈}\ ]\texttt{hahaha@email.net}}
+% \author{{\songti 李文辉}\ ]\texttt{lwh@hrbeu.edu.cn}}
 % \date{v\fileversion\ (\filedate)}
 % \maketitle\thispagestyle{empty}
 % \begin{abstract}\noindent
-% 该宏包为哈尔滨工程大学本、硕、博中英文毕业论文、开题和中期报告以及博后出站报
-% 告模板。
+% 该宏包为哈尔滨工程大学本、硕、博中英文毕业论文、开题和中期报告以及博后出站报告模板。
 % \end{abstract}
 %
 % \vskip2cm
@@ -88,12 +85,11 @@
 % \begin{abstract}
 % \noindent
 % \begin{enumerate}
-% \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内
-%   容。
-% \item 本模板为作者根据哈尔滨工程大学教务处颁发的\UGR ，哈尔滨工程大学研究生院颁发的\PGR 编写而成
-% ，为方便哈尔滨工程大学学生撰写毕业论文使用。
-% \item 哈尔滨工程大学教务处和研究生院只提供毕业论文写作指南，不提供官方模板（包括MS word
-% ），也不会授权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格
+% \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内容。
+% \item 本模板为作者根据哈尔滨工程大学教务处颁发的\UGR ，哈尔滨工程大学研究生院颁发的\PGR 
+% 编写而成，为方便哈尔滨工程大学学生撰写毕业论文使用。
+% \item 哈尔滨工程大学教务处和研究生院只提供毕业论文写作指南，不提供官方模板，
+% 也未授权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格
 % 式审查老师不提意见。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无
 % 关。
 % \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
@@ -172,7 +168,7 @@
 %
 % \subsection{生成模板}
 % \label{sec:generate-cls}
-% 模板解压缩后生成文件夹 \file{heuthesis-vX.Y.Z}\footnote{\texttt{vX.Y.Z} 为版本号。}，
+% 模板解压缩后生成文件夹 \file{heuthesis}，
 % 其中包括：模板源文件（\file{heuthesis.ins} 和 \file{heuthesis.dtx}），参考文献
 % 样式 \file{heuthesis.bst}，示例文档
 % （\file{main.tex}，\file{shuji.tex}，\file{heuthesis.sty}\footnote{可能用到的包
@@ -181,9 +177,9 @@
 % 板文件和配置文件（具体命令细节请参考 \file{README.md} 和 \file{Makefile}）：
 %
 % \begin{shell}
-% $ cd heuthesis-vX.Y.Z
+% $ cd heuthesis
 % # 生成 heuthesisbook.cls 和 heuthesisbook.cfg
-% $ lulatex heuthesis.ins
+% $ xelatex heuthesis.ins
 %
 % # 下面的命令用来生成用户手册，可以不执行
 % $ xelatex heuthesis.dtx
@@ -244,15 +240,6 @@
 % 改 \file{Makefile} 开头的参数或通过命令行传递参数（请参看 \file{README.md}），
 % 进一步还可以修改 \file{latexmkrc} 进行定制。
 %
-% \subsection{升级}
-% \label{sec:updgrade}
-% \heuthesis\ 升级非常简单，可以通过 \TeX 发行版的包管理工具自动更新发行版，也可
-% 以下载最新的开发版，
-% 将 \file{heuthesis.ins}，\file{heuthesis.dtx} 拷贝至工作目
-% 录覆盖相应的文件，然后运行：
-% \begin{shell}
-% $ latex heuthesis.ins
-% \end{shell}
 %
 % 生成新的类文件和配置文件即可。也可以直接拷
 % 贝 \file{heuthesisbook.cls}，\file{heuthesisbook.cfg} 和
@@ -289,7 +276,7 @@
 % 正确配置中文字体是使用模板的第一步。模板调用 \CTeX\ 宏包，只提供基于
 % \pkg{xeCJK} 包，使用 \XeLaTeX\ 编译的方式。
 % 关于如何使用字体命令、字号等等，属于模板格式范畴，在实现细节中讨论。
-% 关于中文字体安装、配置的所有问题不在本模板讨论 范围。
+% 关于中文字体安装、配置的所有问题不在本模板讨论范围。
 %
 % \subsection{前文}
 % \label{sec:titlepage}
@@ -467,13 +454,13 @@
 % \myentry{学生类型}
 % \DescribeMacro{cstudenttype}
 % \DescribeMacro{estudenttype}
-% 非全日制教育申请学位者
+% 非全日制或专业学位申请者（profdegree=true）
 %（同等学力人员）、（工程硕士）、（工商管理硕士）、
 %（高级管理人员工商管理硕士）、（公共管理硕士）、（中职教师）、（高校教师）等，
 % 具体要求按照入学的培养计划中学科自行填写，具体名称不是本文档范畴。
 % \begin{latex}
 % \heusetup{
-%   cstudenttype={同等学力人员},
+%   cstudenttype={工程硕士},
 %   estudenttype={Master of Art},
 % }
 % \end{latex}
@@ -548,8 +535,8 @@
 % 两个题之间的距离具体多少不在\PGR\ 中要求。目前的方法是用户手动调节该距离。
 % 关于图题\PGR\ 和\UGR\ 只规定了居中，并没有规定居中对其。然而评审老师很多喜欢居
 % 中且居中对齐。模板默认选项是居中且居中对齐，如果不喜欢居中对齐，那么需要在
-% \file{main.tex}的文档类选项中设置选项capcenterlast=false。详细方法见前文的介绍
-% 。
+% \file{main.tex}的文档类选项中设置选项capcenterlast=false。
+% 详细方法见前文的介绍。
 % \begin{heurgu}
 % 每个图均应有图题（由图序和图名组成），图题不宜有标点符号，图名在图序之后空1个
 % 半角字符排写。图序按章编排，如第1章第一个插图的图号为“图1.1”。图题置于图下，硕
@@ -718,9 +705,7 @@
 % \medskip
 % \noindent\framebox[\linewidth][l]{{\heiti 胡说~1.1~~~} % {契丹武士要来中原夺武林秘笈。—— 慕容博}}
 % \subsubsection{算法}
-% 我校算法不在规范中要求且一千个评审老师有一千个算法格式喜好。详见
-% \href{https://github.com/PlutoThesis/PlutoThesis#%E6%B2%A1%E6%9C%89%E6%98%8E%E7%A1%AE%E8%A6%81%E6%B1%82%E7%9A%84%E6%A0%BC%E5%BC%8F}{PlutoThesis}
-% 中的各个实验室算法喜好举例。在此多说无益。
+% 我校算法不在规范中要求，且一千个评审老师有一千个算法格式喜好。
 % \subsubsection{引用参考文献}
 % \DescribeMacro{\inlinecite}
 % 学校要求的参考文献引用有两种模式：（1）上标模式。比如``同样的工作有很
@@ -799,13 +784,13 @@
 %
 % \subsubsection{所发表文章}
 % \DescribeEnv{publication}
-% 虽然在\PGR\UGR\ 中都没有明确规定此处的格式，但按照旧模板PlutoThesis，此处格式
-% 非常复杂。此处仍然使用旧模板中的设置方法。
+% 虽然在\PGR\UGR\ 中都没有明确规定此处的格式，
+% 此处基本按照参考文献的要求进行设置。
 % \begin{latex}
 % \begin{publication}
 % \noindent\textbf{（一）发表的学术论文}
 % \begin{publist}
-% \item	XXX，XXX. Static Oxidation Model of Al-Mg/C Dissipation Thermal Protection Materials[J]. Rare Metal Materials and Engineering, 2010, 39(Suppl. 1): 520-524.（SCI~收录，IDS号为~669JS，IF=0.16）
+% \item XXX，XXX. Static Oxidation Model of Al-Mg/C Dissipation Thermal Protection Materials[J]. Rare Metal Materials and Engineering, 2010, 39(Suppl. 1): 520-524.（SCI~收录，IDS号为~669JS，IF=0.16）
 % \item XXX，XXX. 精密超声振动切削单晶铜的计算机仿真研究[J]. 系统仿真学报，2007，19（4）：738-741，753.（EI~收录号：20071310514841）
 % \item XXX，XXX. 局部多孔质气体静压轴向轴承静态特性的数值求解[J]. 摩擦学学报，2007（1）：68-72.（EI~收录号：20071510544816）
 % \item XXX，XXX. 硬脆光学晶体材料超精密切削理论研究综述[J]. 机械工程学报，2003，39（8）：15-22.（EI~收录号：2004088028875）
@@ -820,7 +805,7 @@
 %
 % \noindent\textbf{（三）参与的科研项目及获奖情况}
 % \begin{publist}
-% \item	XXX，XXX. XX~气体静压轴承技术研究, XX~省自然科学基金项目.课题编号：XXXX.
+% \item XXX，XXX. XX~气体静压轴承技术研究, XX~省自然科学基金项目.课题编号：XXXX.
 % \item XXX，XXX. XX~静载下预应力混凝土房屋结构设计统一理论. 黑江省科学技术二等奖, 2007.
 % \end{publist}
 % %\vfill
@@ -915,7 +900,7 @@ ENTRY                                             % class Entry {
   series                                          %   String series;
   volume                                          %   String volume;
   number                                          %   String number;
-  version 										  %	  String version;
+  version                                         %   String version;
   month                                           %   String month;
   school                                          %   String school;
   institution                                     %   String institution;
@@ -957,63 +942,63 @@ STRINGS {                                         % //  declare global String va
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % define global static constants
-FUNCTION {true} 				{#1}
-FUNCTION {false} 				{#0}
-FUNCTION {debug.enabled} 		{true}
-FUNCTION {cap.volume.en} 		{"Vol~"}
-FUNCTION {cap.volume.zh} 		{"卷"}
-FUNCTION {cap.edition.en} 		{"~ed"}
-FUNCTION {cap.edition.zh} 		{"版"}
-FUNCTION {cap.anonymous.en} 	{"Anon"}
-FUNCTION {cap.anonymous.zh} 	{"佚名"}
-FUNCTION {cap.no.address.en} 	{"[S.l.]"}
-FUNCTION {cap.no.address.zh} 	{"[出版地不详]"}
-FUNCTION {cap.no.publisher.en} 	{"[s.n.]"}
-FUNCTION {cap.no.publisher.zh} 	{"[出版者不详]"}
-FUNCTION {cap.et.al.en} 		{", et~al"}
-FUNCTION {cap.et.al.zh} 		{", 等"}
-FUNCTION {cap.translate.en} 	{"~trans"}
-FUNCTION {cap.translate.zh} 	{"译"}
-FUNCTION {cap.doi.url} 			{"http://dx.doi.org/"}
-FUNCTION {cap.st.en} 			{"st"}
-FUNCTION {cap.nd.en} 			{"nd"}
-FUNCTION {cap.rd.en} 			{"rd"}
-FUNCTION {cap.th.en} 			{"th"}
+FUNCTION {true}                 {#1}
+FUNCTION {false}                {#0}
+FUNCTION {debug.enabled}        {true}
+FUNCTION {cap.volume.en}        {"Vol~"}
+FUNCTION {cap.volume.zh}        {"卷"}
+FUNCTION {cap.edition.en}       {"~ed"}
+FUNCTION {cap.edition.zh}       {"版"}
+FUNCTION {cap.anonymous.en}     {"Anon"}
+FUNCTION {cap.anonymous.zh}     {"佚名"}
+FUNCTION {cap.no.address.en}    {"[S.l.]"}
+FUNCTION {cap.no.address.zh}    {"[出版地不详]"}
+FUNCTION {cap.no.publisher.en}  {"[s.n.]"}
+FUNCTION {cap.no.publisher.zh}  {"[出版者不详]"}
+FUNCTION {cap.et.al.en}         {", et~al"}
+FUNCTION {cap.et.al.zh}         {", 等"}
+FUNCTION {cap.translate.en}     {"~trans"}
+FUNCTION {cap.translate.zh}     {"译"}
+FUNCTION {cap.doi.url}          {"http://dx.doi.org/"}
+FUNCTION {cap.st.en}            {"st"}
+FUNCTION {cap.nd.en}            {"nd"}
+FUNCTION {cap.rd.en}            {"rd"}
+FUNCTION {cap.th.en}            {"th"}
 
 FUNCTION {cap.space}            {" "}
-FUNCTION {cap.period} 		    {"\@. "}
-FUNCTION {cap.comma} 			{"\@, "}
-FUNCTION {cap.colon} 			{"\textnormal{: }"}
-FUNCTION {cap.double.slash} 	{" //\thinspace{}"}
-FUNCTION {cap.dash} 			{"\textnormal{-}"}
+FUNCTION {cap.period}           {"\@. "}
+FUNCTION {cap.comma}            {"\@, "}
+FUNCTION {cap.colon}            {"\textnormal{: }"}
+FUNCTION {cap.double.slash}     {" //\thinspace{}"}
+FUNCTION {cap.dash}             {"\textnormal{-}"}
 
 % Predefined latex command used to format the style of bibitems
-FUNCTION {env.bibbegin} 		{ "\begin{thebibliography}" }
-FUNCTION {env.bibend}   		{ "\end{thebibliography}" }
-FUNCTION {cmd.bibauthor} 		{ "\providecommand{\bibauthor}[1]{#1}" }
-FUNCTION {cmd.bibeditor} 		{ "\providecommand{\bibeditor}[1]{#1}" }
-FUNCTION {cmd.bibtranslator} 	{ "\providecommand{\bibtranslator}[1]{#1}" }
-FUNCTION {cmd.bibtitle} 		{ "\providecommand{\bibtitle}[1]{#1}" }
-FUNCTION {cmd.bibbooktitle} 	{ "\providecommand{\bibbooktitle}[1]{#1}" }
-FUNCTION {cmd.bibjournal} 		{ "\providecommand{\bibjournal}[1]{#1}" }
-FUNCTION {cmd.bibmark} 			{ "\providecommand{\bibmark}[1]{\mbox{#1}}" }
-FUNCTION {cmd.bibcountry} 		{ "\providecommand{\bibcountry}[1]{#1}" }
-FUNCTION {cmd.bibpatentid} 		{ "\providecommand{\bibpatentid}[1]{#1}" }
-FUNCTION {cmd.bibedition} 		{ "\providecommand{\bibedition}[1]{#1}" }
-FUNCTION {cmd.biborganization} 	{ "\providecommand{\biborganization}[1]{#1}" }
-FUNCTION {cmd.bibaddress} 		{ "\providecommand{\bibaddress}[1]{#1}" }
-FUNCTION {cmd.bibpublisher} 	{ "\providecommand{\bibpublisher}[1]{#1}" }
-FUNCTION {cmd.bibinstitution}	{ "\providecommand{\bibinstitution}[1]{#1}" }
-FUNCTION {cmd.bibschool} 		{ "\providecommand{\bibschool}[1]{#1}" }
-FUNCTION {cmd.bibvolume} 		{ "\providecommand{\bibvolume}[1]{#1}" }
-FUNCTION {cmd.bibnumber} 		{ "\providecommand{\bibnumber}[1]{#1}" }
-FUNCTION {cmd.bibversion} 		{ "\providecommand{\bibversion}[1]{#1}" }
-FUNCTION {cmd.bibpages} 		{ "\providecommand{\bibpages}[1]{#1}" }
-FUNCTION {cmd.bibmodifydate}	{ "\providecommand{\bibmodifydate}[1]{#1}" }
-FUNCTION {cmd.bibcitedate} 		{ "\providecommand{\bibcitedate}[1]{#1}" }
-FUNCTION {cmd.bibyear} 			{ "\providecommand{\bibyear}[1]{#1}" }
-FUNCTION {cmd.bibdate} 			{ "\providecommand{\bibdate}[1]{#1}" }
-FUNCTION {cmd.biburl} 			{ "\providecommand{\biburl}[1]{\newline\url{#1}}" }
+FUNCTION {env.bibbegin}         { "\begin{thebibliography}" }
+FUNCTION {env.bibend}           { "\end{thebibliography}" }
+FUNCTION {cmd.bibauthor}        { "\providecommand{\bibauthor}[1]{#1}" }
+FUNCTION {cmd.bibeditor}        { "\providecommand{\bibeditor}[1]{#1}" }
+FUNCTION {cmd.bibtranslator}    { "\providecommand{\bibtranslator}[1]{#1}" }
+FUNCTION {cmd.bibtitle}         { "\providecommand{\bibtitle}[1]{#1}" }
+FUNCTION {cmd.bibbooktitle}     { "\providecommand{\bibbooktitle}[1]{#1}" }
+FUNCTION {cmd.bibjournal}       { "\providecommand{\bibjournal}[1]{#1}" }
+FUNCTION {cmd.bibmark}          { "\providecommand{\bibmark}[1]{\mbox{#1}}" }
+FUNCTION {cmd.bibcountry}       { "\providecommand{\bibcountry}[1]{#1}" }
+FUNCTION {cmd.bibpatentid}      { "\providecommand{\bibpatentid}[1]{#1}" }
+FUNCTION {cmd.bibedition}       { "\providecommand{\bibedition}[1]{#1}" }
+FUNCTION {cmd.biborganization}  { "\providecommand{\biborganization}[1]{#1}" }
+FUNCTION {cmd.bibaddress}       { "\providecommand{\bibaddress}[1]{#1}" }
+FUNCTION {cmd.bibpublisher}     { "\providecommand{\bibpublisher}[1]{#1}" }
+FUNCTION {cmd.bibinstitution}   { "\providecommand{\bibinstitution}[1]{#1}" }
+FUNCTION {cmd.bibschool}        { "\providecommand{\bibschool}[1]{#1}" }
+FUNCTION {cmd.bibvolume}        { "\providecommand{\bibvolume}[1]{#1}" }
+FUNCTION {cmd.bibnumber}        { "\providecommand{\bibnumber}[1]{#1}" }
+FUNCTION {cmd.bibversion}       { "\providecommand{\bibversion}[1]{#1}" }
+FUNCTION {cmd.bibpages}         { "\providecommand{\bibpages}[1]{#1}" }
+FUNCTION {cmd.bibmodifydate}    { "\providecommand{\bibmodifydate}[1]{#1}" }
+FUNCTION {cmd.bibcitedate}      { "\providecommand{\bibcitedate}[1]{#1}" }
+FUNCTION {cmd.bibyear}          { "\providecommand{\bibyear}[1]{#1}" }
+FUNCTION {cmd.bibdate}          { "\providecommand{\bibdate}[1]{#1}" }
+FUNCTION {cmd.biburl}           { "\providecommand{\biburl}[1]{\newline\url{#1}}" }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                   %
@@ -2091,7 +2076,7 @@ FUNCTION {output.number} {                        % void Entry::output_number(in
 FUNCTION {output.report.number} {                 % void Entry::output_report_number(int required) {
   'required :=                                    %   this.required = required;
   number empty$ not {                             %   if (! empty(this.number)) {
-  	cap.colon write$                              %     write(cap_colon);
+    cap.colon write$                              %     write(cap_colon);
     number format.report.number write$            %     write(format_report_number(this.number));
   } {                                             %   } else {
     required {                                    %     if (required == 1) {
@@ -3032,7 +3017,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 
 \RequirePackage{fancyhdr}
 
-
 \RequirePackage{tabularx}
 \RequirePackage{varwidth}
 \RequirePackage{changepage}
@@ -3075,7 +3059,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \heu@def@fontsize{xiaoliu}{6.5bp}
 \heu@def@fontsize{qihao}{5.5bp}
 \heu@def@fontsize{bahao}{5bp}
-
 
 %-- 设置字号 --%
 \ctexset{%
@@ -3132,7 +3115,6 @@ EXECUTE {end.bib}                                 %   end_bib();
     \expandafter\gdef\csname heu@#1\endcsname{##1}}
   \csname #1\endcsname{}}
 
-
 %-- 封面定义 --%
 \heu@def@term{ctitlecover} %中文标题封面
 \heu@def@term{ctitleone}
@@ -3161,7 +3143,6 @@ EXECUTE {end.bib}                                 %   end_bib();
       \expandafter\csname heu@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
 
 \def\heusetup{\kvsetkeys{heu}}
-
 
 \newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
 \newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{\heu@inline@sep}}
@@ -3238,7 +3219,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \fi
 \fi
 
-
 \newif\ifheu@opening
 \newif\ifheu@midterm
 \define@key{heu}{stage}{%
@@ -3253,7 +3233,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \DeclareBoolOption[true]{newtxmath}
 
 \DeclareStringOption{fontset}
-
 
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexart}}
 
@@ -3295,7 +3274,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 }
 \fi
 \fi
-
 
 \ifheu@doctor
 \ifheu@midterm
@@ -3448,7 +3426,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \heu@def@fontsize{qihao}{5.5bp}
 \heu@def@fontsize{bahao}{5bp}
 
-
 %-- 设置字号 --%
 \ctexset{%
   section={
@@ -3482,13 +3459,11 @@ EXECUTE {end.bib}                                 %   end_bib();
   subparagraph/afterindent=true
 }
 
-
 \def\heu@def@term#1{%
   \define@key{heu}{#1}{\csname #1\endcsname{##1}}
   \expandafter\gdef\csname #1\endcsname##1{%
     \expandafter\gdef\csname heu@#1\endcsname{##1}}
   \csname #1\endcsname{}}
-
 
 \heu@def@term{ctitlecover} %中文标题封面
 \heu@def@term{csubject}
@@ -3500,7 +3475,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \heu@def@term{csubmitdate}
 \heu@def@term{coralexdate}
 \heu@def@term{cdate}
-
 
 \def\heu@parse@keywords#1{
   \define@key{heu}{#1}{\csname #1\endcsname{##1}}
@@ -3515,7 +3489,6 @@ EXECUTE {end.bib}                                 %   end_bib();
       \expandafter\csname heu@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
 
 \def\heusetup{\kvsetkeys{heu}}
-
 
 \newcommand{\heu@report@titlepage@bachelor}{
    \ifthenelse%
@@ -3567,7 +3540,6 @@ EXECUTE {end.bib}                                 %   end_bib();
    \fi
 }
 
-
 \newcommand{\heu@report@backpage@bachelor}{
   \thispagestyle{empty}
   \noindent\parbox[t][6.5cm][t]{\textwidth}{\heu@bachelor@teachercomment}
@@ -3578,7 +3550,6 @@ EXECUTE {end.bib}                                 %   end_bib();
   \thispagestyle{empty}
   \normalsize\@starttoc{toc}
 }
-
 
 \def\makecover{
   \begin{titlepage}
@@ -3598,7 +3569,6 @@ EXECUTE {end.bib}                                 %   end_bib();
     \clearpage
     \heu@report@backpage@bachelor
 }
-
 
 \newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
 \newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{\heu@inline@sep}}
@@ -4669,9 +4639,9 @@ delim_1 "\\hspace*{\\fill}"
    \end{center}
 }
 \newcommand{\heu@yantai@schoolbottommark}{
-	\begin{center}
-		\songti\sanhao\textbf{哈工程（烟台）制}
-	\end{center}
+    \begin{center}
+        \songti\sanhao\textbf{哈工程（烟台）制}
+    \end{center}
 }
 
 \newcommand{\heu@harbin@schoolbottommark}{
@@ -4755,18 +4725,18 @@ delim_1 "\\hspace*{\\fill}"
   \vskip\abovecaptionskip
   \wuhao\sbox\@tempboxa{#1\ifheu@bachelor\hskip\ccwd\else\enskip\fi#2}%
   \ifdim \wd\@tempboxa >\hsize
-	  \ifheu@capcenterlast%
-		  \vskip 6.3bp%
-		  {\setbox0=\vbox{#1\ifheu@bachelor\hskip\ccwd\else\enskip\fi#2}
-			  \setbox1=\vbox{%
-				  \unvbox0
-				  \setbox2=\lastbox
-				  \hbox to \textwidth{\hfill\unhcopy2 \unskip\unskip\hfill}
-			  }
-		  \unvbox1}
-	  \else%
-		  #1\ifheu@bachelor\hskip\ccwd\else\enskip\fi#2%
-	  \fi%
+      \ifheu@capcenterlast%
+          \vskip 6.3bp%
+          {\setbox0=\vbox{#1\ifheu@bachelor\hskip\ccwd\else\enskip\fi#2}
+              \setbox1=\vbox{%
+                  \unvbox0
+                  \setbox2=\lastbox
+                  \hbox to \textwidth{\hfill\unhcopy2 \unskip\unskip\hfill}
+              }
+          \unvbox1}
+      \else%
+          #1\ifheu@bachelor\hskip\ccwd\else\enskip\fi#2%
+      \fi%
     \par
   \else
   \global \@minipagefalse
@@ -5238,7 +5208,7 @@ delim_1 "\\hspace*{\\fill}"
 \RenewDocumentCommand{\chapter}{s o m o}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi\phantomsection%
   \IfBooleanTF{#1}%
-  {%	if \chapter*
+  {%    if \chapter*
     \IfNoValueTF{#2}%
     {\heu@chapter*{#3}}%
     {\heu@chapter*[#2]{#3}}%
@@ -5246,10 +5216,10 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 此处添加保护选项
 %    \begin{macrocode}
-	    \addcontentsline{toe}{chapter}{\texorpdfstring{\bfseries #4}{#4}}
+        \addcontentsline{toe}{chapter}{\texorpdfstring{\bfseries #4}{#4}}
     }
   }%
-  {%	if \chapter
+  {%    if \chapter
     \IfNoValueTF{#2}%
     {\heu@chapter{#3}}%
     {\heu@chapter[#2]{#3}}%
@@ -5258,7 +5228,7 @@ delim_1 "\\hspace*{\\fill}"
 %    此处需删除章节的空白
 % 此处添加保护选项
 %    \begin{macrocode}
-	    \addcontentsline{toe}{chapter}{\texorpdfstring{\bfseries\relax Chapter \thechapter\hspace{0.5em}\ignorespaces #4}{Chapter \thechapter\hspace{0.5em}\ignorespaces #4}}
+        \addcontentsline{toe}{chapter}{\texorpdfstring{\bfseries\relax Chapter \thechapter\hspace{0.5em}\ignorespaces #4}{Chapter \thechapter\hspace{0.5em}\ignorespaces #4}}
     }
   }
 }
@@ -5266,7 +5236,7 @@ delim_1 "\\hspace*{\\fill}"
 \let\heu@section\section
 \RenewDocumentCommand\section{s o m o}{
   \IfBooleanTF{#1}%
-  {%	if \section*
+  {%    if \section*
     \IfNoValueTF{#2}%
     {\heu@section*{#3}}%
     {\heu@section*[#2]{#3}}%
@@ -5274,7 +5244,7 @@ delim_1 "\\hspace*{\\fill}"
       \addcontentsline{toe}{section}{#4}
     }
   }%
-  {%	if \section
+  {%    if \section
     \IfNoValueTF{#2}%
     {\heu@section{#3}}%
     {\heu@section[#2]{#3}}%
@@ -5290,7 +5260,7 @@ delim_1 "\\hspace*{\\fill}"
 \let\heu@subsection\subsection
 \RenewDocumentCommand\subsection{s o m o}{
   \IfBooleanTF{#1}%
-  {%	if \subsection*
+  {%    if \subsection*
     \IfNoValueTF{#2}%
     {\heu@subsection*{#3}}%
     {\heu@subsection*[#2]{#3}}%
@@ -5298,7 +5268,7 @@ delim_1 "\\hspace*{\\fill}"
       \addcontentsline{toe}{subsection}{#4}
     }
   }%
-  {%	if \subsection
+  {%    if \subsection
     \IfNoValueTF{#2}%
     {\heu@subsection{#3}}%
     {\heu@subsection[#2]{#3}}%
@@ -5315,7 +5285,7 @@ delim_1 "\\hspace*{\\fill}"
 \let\heu@subsubsection\subsubsection
 \RenewDocumentCommand\subsubsection{s o m o}{
   \IfBooleanTF{#1}%
-  {%	if \subsubsection*
+  {%    if \subsubsection*
     \IfNoValueTF{#2}%
     {\heu@subsubsection*{#3}}%
     {\heu@subsubsection*[#2]{#3}}%
@@ -5323,7 +5293,7 @@ delim_1 "\\hspace*{\\fill}"
       \addcontentsline{toe}{subsubsection}{#4}
     }
   }%
-  {%	if \subsubsection
+  {%    if \subsubsection
     \IfNoValueTF{#2}%
     {\heu@subsubsection{#3}}%
     {\heu@subsubsection[#2]{#3}}%
@@ -5372,23 +5342,22 @@ delim_1 "\\hspace*{\\fill}"
 \heu@def@term{csubject}%中文专业
 \heu@def@term{csubmitdate}%论文提交日期
 \heu@def@term{coralexdate}%论文答辩日期
-\heu@def@term{cdate}
-\heu@def@term{cpositionname}
+\heu@def@term{cdate}%论文封面日期
+\heu@def@term{cpositionname}%博士后工作站名称
 %    \end{macrocode}
 % 添加博后封皮选项
 %    \begin{macrocode}
-\heu@def@term{cfinishdate}
-\heu@def@term{cstartdate}
-\heu@def@term{cenddate}
+\heu@def@term{cfinishdate}%完成日期
+\heu@def@term{cstartdate}%开始日期
+\heu@def@term{cenddate}%博士后期满时间
 %    \end{macrocode}
 % 添加博后封皮的title选项
 %    \begin{macrocode}
 
-\heu@def@term{cstudentid}%
-\heu@def@term{cstudenttype}%
-\heu@def@term{ctitleone}%
-\heu@def@term{ctitletwo}%
-
+\heu@def@term{cstudentid}%学会
+\heu@def@term{cstudenttype}%学生类型
+\heu@def@term{ctitleone}%第一行标题
+\heu@def@term{ctitletwo}%第二行标题
 
 \heu@def@term{etitle} %英文标题
 \heu@def@term{esubtitle} %英文标题
@@ -5397,12 +5366,13 @@ delim_1 "\\hspace*{\\fill}"
 \heu@def@term{esupervisor} %英文导师
 \heu@def@term{eassosupervisor} %英文副导师
 \heu@def@term{ecosupervisor} %英文联合导师
-\heu@def@term{eaffil}
-\heu@def@term{esubject}
-\heu@def@term{esubmitdate}%论文提交日期
-\heu@def@term{eoralexdate}%论文答辩日期
-\heu@def@term{edate}
-\heu@def@term{estudenttype}
+\heu@def@term{eaffil}%英文院系
+\heu@def@term{esubject}%英文学科
+\heu@def@term{esubmitdate}%英文论文提交日期
+\heu@def@term{eoralexdate}%英文论文答辩日期
+\heu@def@term{edate}%英文日期
+\heu@def@term{estudenttype}%英文学生类型
+
 \newcommand{\heu@@cabstract}[1]{\long\gdef\heu@cabstract{#1}}
 \newenvironment{cabstract}{\Collect@Body\heu@@cabstract}{}
 \newcommand{\heu@@eabstract}[1]{\long\gdef\heu@eabstract{#1}}
@@ -5429,7 +5399,7 @@ delim_1 "\\hspace*{\\fill}"
 \ifheu@postdoc
 \gdef\heu@cxueweishort{博}
 \gdef\heu@exuewei{Doctor}
-\gdef\heu@exueweier{D.Eng}
+\gdef\heu@exueweier{D.Eng}%英文学位名称缩写
 \gdef\heu@cxuewei{\heu@cxueweishort 士}
 \gdef\heu@cdegree{\heu@cxueke\heu@cxuewei}
 \gdef\heu@edegree{\heu@exuewei \ of \heu@exueke}
@@ -5443,25 +5413,26 @@ delim_1 "\\hspace*{\\fill}"
 \ifheu@doctor
 \gdef\heu@cxueweishort{博}
 \gdef\heu@exuewei{Doctor}
-\gdef\heu@exueweier{D.Eng}
+\gdef\heu@exueweier{D.Eng}%英文学位名称缩写
 \gdef\heu@cxuewei{\heu@cxueweishort 士}
 \gdef\heu@cdegree{\heu@cxueke\heu@cxuewei}
 \gdef\heu@edegree{\heu@exuewei \ of \heu@exueke}
 \def\heu@cauthortitle{\heu@cxueweishort 士研究生}
 \fi
+
 \ifheu@master
 \gdef\heu@cxueweishort{硕}
 \gdef\heu@exuewei{Master}
-\gdef\heu@exueweier{M.Eng}
+\gdef\heu@exueweier{M.Eng}%英文学位名称缩写
 \gdef\heu@cxuewei{\heu@cxueweishort 士}
 \gdef\heu@cdegree{\heu@cxueke\heu@cxuewei}
 \gdef\heu@edegree{\heu@exuewei \ of \heu@exueke}
 \def\heu@cauthortitle{\heu@cxueweishort 士研究生}
 \fi
+
 \ifheu@bachelor
 \gdef\heu@cxuewei{学士}
 \fi
-
 
 \def\heu@postdoc@classifiedindex{分类号}
 \def\heu@postdoc@secretlevel{密级}
@@ -5479,11 +5450,10 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@postdoc@documenttitlenospace{博士后研究工作报告}
 \def\heu@postdoc@finishdate{工作完成日期}
 \def\heu@postdoc@submitdate{报告提交日期}
-
-\def\heu@postdoc@authorname{博\hspace{0.5\ccwd}士\hspace{0.5\ccwd}后\hspace{0.5\ccwd}姓\hspace{0.5\ccwd}名}
-\def\heu@postdoc@supervisor{合\hspace{\ccwd}作\hspace{\ccwd}导\hspace{\ccwd}师}
-\def\heu@postdoc@positionname{流\hspace{0.5\ccwd}动\hspace{0.5\ccwd}站\hspace{0.5\ccwd}名\hspace{0.5\ccwd}称}
-\def\heu@postdoc@major{专\hspace{\ccwd}业\hspace{\ccwd}名\hspace{\ccwd}称}
+\def\heu@postdoc@authorname{博士后姓名}
+\def\heu@postdoc@supervisor{合作导师}
+\def\heu@postdoc@positionname{流动站名称}
+\def\heu@postdoc@major{专业名称}
 \def\heu@postdoc@startdate{研究工作起始时间}
 \def\heu@postdoc@enddate{研究工作期满时间}
 \def\heu@postdoc@separator{：}
@@ -5491,7 +5461,6 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 添加博后选项
 %    \begin{macrocode}
-
 
 \def\heu@bachelor@cxuewei{本科}
 \def\heu@bachelor@cthesisname{毕业论文}
@@ -5503,7 +5472,6 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 添加本科开题封皮中title定义
 %    \begin{macrocode}
-
 
 \def\heu@bachelor@caffiltitle{学院（系）名称}
 %</bookcfg>
@@ -5528,7 +5496,6 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@bachelor@checkdate}{检查日期：}
 
 \def\heu@cthesistitleprefix{题\hspace{\ccwd}目}
-
 
 \def\heu@cschoolname{哈尔滨工程大学}
 %</bookcfg>
@@ -5613,12 +5580,10 @@ delim_1 "\\hspace*{\\fill}"
 % 添加博后封皮title的选项
 %    \begin{macrocode}
 
-
 \def\heu@correspondingaddr@ctitle{永久通讯地址}
 
-
 \def\heu@resume@etitle{Resume}
-\def\heu@authorization@ctitle{论文原创性与授权声明}
+\def\heu@authorization@ctitle{学位论文原创性声明}
 \def\heu@authorization@etitle{Statement of copyright and Letter of authorization}
 
 \newcommand{\heu@authorsig}{作者签名：}
@@ -5626,7 +5591,7 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@frontdate}{日期：}
 \newcommand{\heu@denotation@ctitle}{物理量名称及符号表}
 \newcommand{\heu@denotation@etitle}{List of physical quantity and symbol}
-\newcommand{\heu@authorizationtitle}{学位论文使用权限}
+\newcommand{\heu@authorizationtitle}{学位论文授权使用声明}
 
 \newcommand{\heu@qingdao@schoolbottommark}{
    \begin{center}
@@ -5637,12 +5602,12 @@ delim_1 "\\hspace*{\\fill}"
    \end{center}
 }
 \newcommand{\heu@yantai@schoolbottommark}{
-	\begin{center}
-		\songti\sanhao\textbf{哈工程（烟台）制}
-	\end{center}
-	\begin{center}
-		\songti\sanhao\textbf{二〇二〇年三月}
-	\end{center}
+    \begin{center}
+        \songti\sanhao\textbf{哈工程（烟台）制}
+    \end{center}
+    \begin{center}
+        \songti\sanhao\textbf{二〇二〇年三月}
+    \end{center}
 }
 \newcommand{\heu@harbin@schoolbottommark}{
    \begin{center}
@@ -5673,6 +5638,16 @@ delim_1 "\\hspace*{\\fill}"
 \item 报告统一用A4纸打印。
 \end{enumerate}
 }
+
+\newcommand{\heu@authorizationtext}{%
+本人完全了解学校保护知识产权的有关规定，即研究生在校攻读学位期间论文工作的知识产权属于\heu@cschoolname 。\heu@cschoolname 有权保留并向国家有关部门或机构送交论文的复印件。本人允许\heu@cschoolname 将论文的部分或全部内容编入有关数据库进行检索，可采用影印、缩印或扫描等复制手段保存和汇编本学位论文，可以公布论文的全部内容。同时本人保证毕业后结合学位论文研究课题再撰写的论文一律注明作者第一署名单位为\heu@cschoolname 。涉密学位论文待解密后适用本声明。
+本论文（□在授予学位后即可  □在授予学位12个月后  □解密后）由\heu送交有关部门进行保存、汇编等。}
+\newcommand{\heu@declarename@bachelor}{\heu@cschoolname 本科毕业设计（论文）原创性声明}
+\newcommand{\heu@authorizationtext@bachelor}{%
+本人郑重声明：在\heu@cschoolname 攻读学士学位期间，所提交的毕业设计（论文）《\heu@ctitle》，是本人在导师指导下独立进行研究工作所取得的成果。对本文的研究工作做出重要贡献的个人和集体，均已在文中以明确方式注明，其它未注明部分不包含他人已发表或撰写过的研究成果，不存在购买、由他人代写、剽窃和伪造数据等作假行为。本人完全意识到本声明的法律结果由本人承担。}
+\newcommand{\heu@declarename}{学位论文原创性声明}
+\newcommand{\heu@declaretext}{%
+本人郑重声明：本论文的所有工作，是在导师的指导下，由作者本人独立完成的。有关观点、方法、数据和文献的引用已在文中指出，并与参考文献相对应。除文中已注明引用的内容外，本论文不包含任何其他个人或集体已经公开发表的作品成果。对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果由本人承担。}
 
 %    \end{macrocode}
 % 添加青岛中期报告内容
@@ -5824,33 +5799,33 @@ delim_1 "\\hspace*{\\fill}"
   \vspace*{0.1cm}
   \begin{center}
   {\songti \xiaosi
-	\begin{tabular}{@{\qquad\qquad}@{}r@{}l@{}l@{\qquad}}
-	 &  & \\
-	 &  &
-	\end{tabular}}\hfill
+    \begin{tabular}{@{\qquad\qquad}@{}r@{}l@{}l@{\qquad}}
+     &  & \\
+     &  &
+    \end{tabular}}\hfill
   {\songti \xiaosi
-	\begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
-	\heu@bachelor@cstudentidtitle & \underline{\makebox[2.5cm]{\heu@cstudentid}} & \\
-	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &
-	\end{tabular}}
+    \begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
+    \heu@bachelor@cstudentidtitle & \underline{\makebox[2.5cm]{\heu@cstudentid}} & \\
+    \heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &
+    \end{tabular}}
   \parbox[t][2.0cm][t]{\textwidth}{\begin{center} \end{center} }
   \parbox[t][1.2cm][t]{\textwidth}{
-	\begin{center}\xiaoer[1]\songti{\heu@cschoolname\heu@bachelor@cxuewei\heu@bachelor@cthesisname}\end{center}}
+    \begin{center}\xiaoer[1]\songti{\heu@cschoolname\heu@bachelor@cxuewei\heu@bachelor@cthesisname}\end{center}}
   \parbox[t][1.2cm][t]{\textwidth}{}
   \parbox[t][7.8cm][t]{\textwidth}{%
-	\begin{center}\erhao\heiti\heu@ctitlecover\end{center}
-	\ifheu@subtitle\begin{center}\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\end{center}\fi}
+    \begin{center}\erhao\heiti\heu@ctitlecover\end{center}
+    \ifheu@subtitle\begin{center}\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\end{center}\fi}
   \parbox[t][7.4cm][t]{\textwidth}{
   {\xiaosan
-	\setlength{\heu@title@width}{7em}
-	\begin{center} \renewcommand{\arraystretch}{1.62} \songti
-	\begin{tabular}{l@{\heu@title@csep}l}
-	{\songti \heu@put@title{\heu@bachelor@caffiltitle}}	&	\heu@caffil \\
-	{\songti \heu@put@title{\heu@bachelor@cmajortitle}}	&	\heu@csubject \\
-	{\songti \heu@put@title{\heu@bachelor@cstudenttitle}}	&	\heu@cauthor\\
-	{\songti \heu@put@title{\heu@bachelor@csupervisortitle}}	&	\heu@csupervisor\quad\heu@cprofessional
-	\end{tabular} \renewcommand{\arraystretch}{1}
-	\end{center}}}
+    \setlength{\heu@title@width}{7em}
+    \begin{center} \renewcommand{\arraystretch}{1.62} \songti
+    \begin{tabular}{l@{\heu@title@csep}l}
+    {\songti \heu@put@title{\heu@bachelor@caffiltitle}} &   \heu@caffil \\
+    {\songti \heu@put@title{\heu@bachelor@cmajortitle}} &   \heu@csubject \\
+    {\songti \heu@put@title{\heu@bachelor@cstudenttitle}}   &   \heu@cauthor\\
+    {\songti \heu@put@title{\heu@bachelor@csupervisortitle}}    &   \heu@csupervisor\quad\heu@cprofessional
+    \end{tabular} \renewcommand{\arraystretch}{1}
+    \end{center}}}
   \parbox[t][1.4cm][t]{\textwidth}{
   \begin{center}\kaishu\xiaoer{\heu@cschoolname}\end{center}}
   {\songti\xiaosan{\heu@cdate}}
@@ -5863,39 +5838,39 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@second@titlepage@bachelor}{
   \vspace*{0.5cm}
   {\songti \xiaosi
-	\begin{tabular}{@{\qquad\qquad}@{}r@{}l@{}l@{\qquad}}
-	&  & \\
-	&  &
-	\end{tabular}}\hfill
+    \begin{tabular}{@{\qquad\qquad}@{}r@{}l@{}l@{\qquad}}
+    &  & \\
+    &  &
+    \end{tabular}}\hfill
   {\songti \xiaosi
-	\begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
-	\heu@bachelor@cstudentidtitle & \underline{\makebox[2.5cm]{\heu@cstudentid}} & \\
-	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &
-	\end{tabular}}
+    \begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
+    \heu@bachelor@cstudentidtitle & \underline{\makebox[2.5cm]{\heu@cstudentid}} & \\
+    \heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &
+    \end{tabular}}
   \vspace*{1.5cm}
   \begin{center}
     \parbox[t][8.0cm][t]{\textwidth}
     {\heiti\xiaosan
-	    \begin{center}\erhao\heiti\heu@ctitlecover\end{center}
+        \begin{center}\erhao\heiti\heu@ctitlecover\end{center}
       \ifheu@subtitle\begin{center}\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\end{center}\fi
       \begin{center}\erhao\textbf{\heu@etitle}\end{center}
       \begin{center}\xiaoer\textbf{\ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}\end{center}
     }
   \parbox[t][9.8cm][b]{\textwidth}
   {\heiti\xiaosan
-	\setlength{\heu@title@width}{6em}
-	\begin{center} \renewcommand{\arraystretch}{1.5} \songti
-	\begin{tabular}{l@{\heu@title@csep}l}
-	\textbf{\heu@put@title{\heu@bachelor@cstudenttitle}}      & \heu@cauthor\\
-	\textbf{\heu@put@title{\heu@caffiltitle}}		          & \heu@caffil\\
-	\textbf{\heu@put@title{\heu@bachelor@cmajortitle}}        & \heu@csubject\\
-	\textbf{\heu@put@title{\heu@bachelor@csupervisortitle}}   & \heu@csupervisor\\
-	\textbf{\heu@put@title{\heu@bachelor@cprofessionaltitle}} & \heu@cprofessional\\
-	\textbf{\heu@put@title{\heu@csubmitdatatitle}}	        & \heu@csubmitdate\\
-	\textbf{\heu@put@title{\heu@coralexdatetitle}}	        & \heu@coralexdate\\
-	\textbf{\heu@put@title{\heu@cschoolnametitle}}	        & \heu@cschoolname
-	\end{tabular} \renewcommand{\arraystretch}{1}
-	\end{center}
+    \setlength{\heu@title@width}{6em}
+    \begin{center} \renewcommand{\arraystretch}{1.5} \songti
+    \begin{tabular}{l@{\heu@title@csep}l}
+    \textbf{\heu@put@title{\heu@bachelor@cstudenttitle}}      & \heu@cauthor\\
+    \textbf{\heu@put@title{\heu@caffiltitle}}                 & \heu@caffil\\
+    \textbf{\heu@put@title{\heu@bachelor@cmajortitle}}        & \heu@csubject\\
+    \textbf{\heu@put@title{\heu@bachelor@csupervisortitle}}   & \heu@csupervisor\\
+    \textbf{\heu@put@title{\heu@bachelor@cprofessionaltitle}} & \heu@cprofessional\\
+    \textbf{\heu@put@title{\heu@csubmitdatatitle}}          & \heu@csubmitdate\\
+    \textbf{\heu@put@title{\heu@coralexdatetitle}}          & \heu@coralexdate\\
+    \textbf{\heu@put@title{\heu@cschoolnametitle}}          & \heu@cschoolname
+    \end{tabular} \renewcommand{\arraystretch}{1}
+    \end{center}
   }
   \end{center}
 }
@@ -5910,15 +5885,15 @@ delim_1 "\\hspace*{\\fill}"
  \vspace*{0.1cm}
 \begin{center}
   {\songti \xiaosi
-	\begin{tabular}{@{\qquad}@{}r@{：}l@{}l@{\qquad}}
-	\heu@natclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@natclassifiedindex}} & \\
-	\heu@internatclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@intclassifiedindex}} &
-	\end{tabular}}\hfill
+    \begin{tabular}{@{\qquad}@{}r@{：}l@{}l@{\qquad}}
+    \heu@natclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@natclassifiedindex}} & \\
+    \heu@internatclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@intclassifiedindex}} &
+    \end{tabular}}\hfill
   {\songti \xiaosi
-	\begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
-	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &   \\
-	\heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &
-	\end{tabular}}
+    \begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
+    \heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &   \\
+    \heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &
+    \end{tabular}}
 
   \vspace*{2.0cm}
   \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1]
@@ -5932,19 +5907,19 @@ delim_1 "\\hspace*{\\fill}"
     {\xiaosan
     \setlength{\heu@title@width}{7em}
     \begin{center} \renewcommand{\arraystretch}{1.62} \songti
-	\begin{tabular}{l@{\heu@title@csep}l}
-    {\songti \heu@put@title{\heu@cauthortitle}}	&	\heu@cauthor\\
-    {\songti \heu@put@title{\heu@csupervisortitle}}	&	\heu@csupervisor\\
+    \begin{tabular}{l@{\heu@title@csep}l}
+    {\songti \heu@put@title{\heu@cauthortitle}} &   \heu@cauthor\\
+    {\songti \heu@put@title{\heu@csupervisortitle}} &   \heu@csupervisor\\
     \ifheu@profdegree%
-      {\songti \heu@put@title{\heu@cassosupervisortitle}} &	\heu@cassosupervisor \\
-	  {\songti \heu@put@title{\heu@cprodrgreetitle}}	&	\heu@cstudenttype \\
+      {\songti \heu@put@title{\heu@cassosupervisortitle}} & \heu@cassosupervisor \\
+      {\songti \heu@put@title{\heu@cprodrgreetitle}}    &   \heu@cstudenttype \\
     \else%
-      {\songti \heu@put@title{\heu@csubjecttitle}}	&	\heu@csubject \\
+      {\songti \heu@put@title{\heu@csubjecttitle}}  &   \heu@csubject \\
     \fi
     \ifx\heu@creviewer\@empty\else%
-      {\songti \heu@put@title{\heu@creviewertitle}}	&	\heu@creviewer
+      {\songti \heu@put@title{\heu@creviewertitle}} &   \heu@creviewer
     \fi
-	\end{tabular} \renewcommand{\arraystretch}{1}
+    \end{tabular} \renewcommand{\arraystretch}{1}
   \end{center}}}
     \parbox[t][3.0cm][b]{\textwidth}{
   \begin{center}\kaishu\xiaoer{\heu@cschoolname}\end{center}}
@@ -5959,20 +5934,20 @@ delim_1 "\\hspace*{\\fill}"
   \begin{center}
     {\songti \xiaosi
       \begin{tabular}{@{\qquad}@{}r@{：}l@{}l@{\qquad}}
-	\heu@natclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@natclassifiedindex}} & \\
-	\heu@internatclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@intclassifiedindex}} &
+    \heu@natclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@natclassifiedindex}} & \\
+    \heu@internatclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@intclassifiedindex}} &
     \end{tabular}}\hfill
     {\songti \xiaosi
       \begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
-	\heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &   \\
-	\heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &
+    \heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &   \\
+    \heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &
     \end{tabular}}
   \parbox[t][2.0cm][t]{\textwidth}{\begin{center} \end{center}}
     \parbox[t][1.2cm][t]{\textwidth}{\xiaoer[1]
   \begin{center}\songti\heu@cdegree\heu@cthesisname\end{center}}
 % 修改第二行标题：学术类型
   \parbox[t][1.2cm][t]{\textwidth}{\quad}
-	\parbox[t][5cm][t]{\textwidth}{\erhao
+    \parbox[t][5cm][t]{\textwidth}{\erhao
   \begin{center}\heiti\heu@ctitlecover\end{center}
     \ifheu@subtitle\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\fi
     \ifheu@profdegree{\begin{center}\sihao\songti\par\heu@searcetype\end{center}}\else{\par\quad}\fi}
@@ -5980,22 +5955,22 @@ delim_1 "\\hspace*{\\fill}"
     {\sihao
       \setlength{\heu@title@width}{6em}
       \begin{center} \renewcommand{\arraystretch}{1.5} \songti
-  	\begin{tabular}{l@{\heu@title@csep}l}
-	  \textbf{\heu@put@title{\heu@cauthortitle}}	&	\heu@cauthor\\
-	  \textbf{\heu@put@title{\heu@csupervisortitle}}	&	\heu@csupervisor\\
+    \begin{tabular}{l@{\heu@title@csep}l}
+      \textbf{\heu@put@title{\heu@cauthortitle}}    &   \heu@cauthor\\
+      \textbf{\heu@put@title{\heu@csupervisortitle}}    &   \heu@csupervisor\\
     \ifheu@profdegree%
-    \textbf{\heu@put@title{\heu@cassosupervisortitle}}&	\heu@cassosupervisor\\
-    \textbf{\heu@put@title{\heu@cprosubjecttile}}	&	\heu@csubject\\
-	  \textbf{\heu@put@title{\heu@ccolegetitle}}		&	\heu@caffil\\
+    \textbf{\heu@put@title{\heu@cassosupervisortitle}}& \heu@cassosupervisor\\
+    \textbf{\heu@put@title{\heu@cprosubjecttile}}   &   \heu@csubject\\
+      \textbf{\heu@put@title{\heu@ccolegetitle}}        &   \heu@caffil\\
     \else%
-    \textbf{\heu@put@title{\heu@cdegreetitle}}	&	\heu@cdegree\\
-	  \textbf{\heu@put@title{\heu@csubjecttitle}}	&	\heu@csubject\\
-	  \textbf{\heu@put@title{\heu@caffiltitle}}		&	\heu@caffil\\
+    \textbf{\heu@put@title{\heu@cdegreetitle}}  &   \heu@cdegree\\
+      \textbf{\heu@put@title{\heu@csubjecttitle}}   &   \heu@csubject\\
+      \textbf{\heu@put@title{\heu@caffiltitle}}     &   \heu@caffil\\
     \fi
-	  \textbf{\heu@put@title{\heu@csubmitdatatitle}}		&	\heu@csubmitdate\\
-	  \textbf{\heu@put@title{\heu@coralexdatetitle}}		&	\heu@coralexdate\\
-	  \textbf{\heu@put@title{\heu@cschoolnametitle}}	&	\heu@cschoolname
-	\end{tabular} \renewcommand{\arraystretch}{1}
+      \textbf{\heu@put@title{\heu@csubmitdatatitle}}        &   \heu@csubmitdate\\
+      \textbf{\heu@put@title{\heu@coralexdatetitle}}        &   \heu@coralexdate\\
+      \textbf{\heu@put@title{\heu@cschoolnametitle}}    &   \heu@cschoolname
+    \end{tabular} \renewcommand{\arraystretch}{1}
     \end{center} }
   \end{center}
 }
@@ -6005,15 +5980,15 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\emultiline}[2][c]{\renewcommand{\arraystretch}{1}\begin{tabular}[#1]{@{}l@{}}#2\end{tabular} \renewcommand{\arraystretch}{1.3}}
 \newcommand{\heu@engcover}{
   {\songti \xiaosi
-	\begin{tabular}{@{\qquad}l@{}l@{\qquad}}
-	Classified Index:\ \heu@natclassifiedindex & \\
-	U.D.C:\ \heu@intclassifiedindex &
-	\end{tabular}}\hfill
+    \begin{tabular}{@{\qquad}l@{}l@{\qquad}}
+    Classified Index:\ \heu@natclassifiedindex & \\
+    U.D.C:\ \heu@intclassifiedindex &
+    \end{tabular}}\hfill
   {\songti \xiaosi
-	\begin{tabular}{@{}r@{ }l@{}l@{\qquad}}
-	 &  &   \\
-	 &  &
-	\end{tabular}}
+    \begin{tabular}{@{}r@{ }l@{}l@{\qquad}}
+     &  &   \\
+     &  &
+    \end{tabular}}
   \vspace*{1em}
   \begin{center}
 % 工程硕士、非全日制学位论文英文封面第一行文字不同。
@@ -6030,19 +6005,19 @@ delim_1 "\\hspace*{\\fill}"
     \begin{center}\xiaoer\textbf{\ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}\end{center}}
     {\xiaosi\renewcommand{\arraystretch}{1.3}
       \begin{tabular}{@{}r@{~}l@{}}
-	    \textbf{\heu@eauthortitle\heu@title@esep}		&	\heu@eauthor\\
-	    \textbf{\heu@esupervisortitle\heu@title@esep}	&	\heu@esupervisor\\
+        \textbf{\heu@eauthortitle\heu@title@esep}       &   \heu@eauthor\\
+        \textbf{\heu@esupervisortitle\heu@title@esep}   &   \heu@esupervisor\\
       \ifheu@profdegree%
-      \textbf{\heu@eassosupervisortitle\heu@title@esep}	&	\heu@eassosupervisor\\
-      \textbf{\heu@ecategorytitle\heu@title@esep}	&	\heu@esubject\\
-      \textbf{\heu@eaffiltitle\heu@title@esep}	&	\heu@eaffil\\
+      \textbf{\heu@eassosupervisortitle\heu@title@esep} &   \heu@eassosupervisor\\
+      \textbf{\heu@ecategorytitle\heu@title@esep}   &   \heu@esubject\\
+      \textbf{\heu@eaffiltitle\heu@title@esep}  &   \heu@eaffil\\
       \else%
-	    \textbf{\heu@edegreetitle\heu@title@esep}		&	\heu@edegree\\
-      \textbf{\heu@esubjecttitle\heu@title@esep}		&\heu@esubject\\
+        \textbf{\heu@edegreetitle\heu@title@esep}       &   \heu@edegree\\
+      \textbf{\heu@esubjecttitle\heu@title@esep}        &\heu@esubject\\
       \fi
-      \textbf{\heu@esubmitdatetitle\heu@title@esep}		&	\heu@esubmitdate\\
-      \textbf{\heu@eoralexdatetitle\heu@title@esep}		&	\heu@eoralexdate\\
-      \textbf{\heu@eschoolnametitle\heu@title@esep}	&	\heu@eschoolname
+      \textbf{\heu@esubmitdatetitle\heu@title@esep}     &   \heu@esubmitdate\\
+      \textbf{\heu@eoralexdatetitle\heu@title@esep}     &   \heu@eoralexdate\\
+      \textbf{\heu@eschoolnametitle\heu@title@esep} &   \heu@eschoolname
     \end{tabular}\renewcommand{\arraystretch}{1}}
   \end{center}
 }
@@ -6394,12 +6369,14 @@ delim_1 "\\hspace*{\\fill}"
   \ifheu@openright\cleardoublepage\else\clearpage\fi
   \heu@appendix@chapter*{\heu@authorization@ctitle}[\heu@authorization@etitle]
   \xiaosi[1.6]\vspace{\baselineskip}
-\begin{center}\xiaosan\heiti\heu@declarename\end{center}
+\begin{center}\xiaosan\heiti\heu@cschoolname\\%
+\heu@declarename\end{center}
 \par\heu@declaretext
 \vspace{\baselineskip}
 \par\hspace{6em}\heu@authorsig\hfill\heu@frontdate\heu@datefill
 \vspace{2\baselineskip}
-\begin{center}\xiaosan\heiti\heu@authorizationtitle\end{center}
+\begin{center}\xiaosan\heiti\heu@cschoolname\\%
+  \heu@authorizationtitle\end{center}
 \par\heu@authorizationtext
 \vspace{2\baselineskip}
 \par\hspace{6em}\heu@authorsig\hfill\heu@frontdate\heu@datefill
@@ -6418,18 +6395,18 @@ delim_1 "\\hspace*{\\fill}"
 
 \NewDocumentCommand{\authorization}{o}{%
   \IfNoValueTF{#1}{%
-  	% 本科不需要原创性和授权页，删掉
+    % 本科不需要原创性和授权页，删掉
     %\ifheu@bachelor\heu@authorization@bachelor\else\heu@authorization@other\fi
     \ifheu@bachelor heu@empty\else\heu@authorization@other\fi
     }{%
     \ifheu@openright\cleardoublepage\else\clearpage\fi%
     \includepdf[fitpaper=true,pagecommand={%
-	\thispagestyle{heu@empty}%
-	% 原创性和授权页不加到目录
-	%\phantomsection\addcontentsline{toc}{chapter}{\ifheu@bachelor\heu@declarename@bachelor\else\heu@authorization@ctitle\fi}%
-	%\ifheu@doctor%
+    \thispagestyle{heu@empty}%
+    % 原创性和授权页不加到目录
+    %\phantomsection\addcontentsline{toc}{chapter}{\ifheu@bachelor\heu@declarename@bachelor\else\heu@authorization@ctitle\fi}%
+    %\ifheu@doctor%
     %  \addcontentsline{toe}{chapter}{\texorpdfstring{\bfseries \heu@authorization@etitle}{\heu@authorization@etitle}}%
-	%\fi%
+    %\fi%
     }]{#1}%
   }%
 }
@@ -6546,7 +6523,6 @@ delim_1 "\\hspace*{\\fill}"
 % 图形和表格的控制旋转
 \RequirePackage{rotating}
 
-
 % 算法的宏包，注意宏包兼容性，先后顺序为float、hyperref、algorithm(2e)，否则无法
 % 生成算法列表。我校算法混乱问题详见heuthesis文档。各个实验室设置具体方法详见
 % heuthesis文档或者示例中给出的地址。
@@ -6646,183 +6622,182 @@ breaklines=true
 \tikzstyle{tnline}= [dashed,draw=colorzero,opacity=0.3,line width=1pt]
 
 \newcommand{\gseg}[9]{%
-	\pgfmathsetmacro{\sstartx}{#1}
-	\pgfmathsetmacro{\slengx}{#2}
-	\pgfmathsetmacro{\sy}{#3}
-	\pgfmathsetmacro{\sdy}{#4}
-	\pgfmathsetmacro{\sdx}{#5}
-	\pgfmathsetmacro{\sdxh}{#7}
-	\pgfmathsetmacro{\sdxt}{#8}
-	\fill[#6](\sstartx,\sy)--(\sstartx-\sdx,\sy+\sdy)--
-	(\slengx+\sstartx+1.5-\sdx,\sy+\sdy)--(\slengx+\sstartx+1.5,\sy)--
-	(\slengx+\sstartx+1.5-\sdx,\sy-\sdy)--(\sstartx-\sdx,\sy-\sdy)--cycle;
-	\draw[#9] (\sstartx-\sdxh,\sy) -- (\sstartx, \sy);
-	\draw[#9] (\slengx+\sstartx+1.5, \sy) -- (\slengx+\sstartx+1.5+\sdxt,\sy);
+    \pgfmathsetmacro{\sstartx}{#1}
+    \pgfmathsetmacro{\slengx}{#2}
+    \pgfmathsetmacro{\sy}{#3}
+    \pgfmathsetmacro{\sdy}{#4}
+    \pgfmathsetmacro{\sdx}{#5}
+    \pgfmathsetmacro{\sdxh}{#7}
+    \pgfmathsetmacro{\sdxt}{#8}
+    \fill[#6](\sstartx,\sy)--(\sstartx-\sdx,\sy+\sdy)--
+    (\slengx+\sstartx+1.5-\sdx,\sy+\sdy)--(\slengx+\sstartx+1.5,\sy)--
+    (\slengx+\sstartx+1.5-\sdx,\sy-\sdy)--(\sstartx-\sdx,\sy-\sdy)--cycle;
+    \draw[#9] (\sstartx-\sdxh,\sy) -- (\sstartx, \sy);
+    \draw[#9] (\slengx+\sstartx+1.5, \sy) -- (\slengx+\sstartx+1.5+\sdxt,\sy);
 }
 \newcommand{\gsegr}[9]{%
-	\pgfmathsetmacro{\sstartx}{#1}
-	\pgfmathsetmacro{\slengx}{#2}
-	\pgfmathsetmacro{\sy}{#3}
-	\pgfmathsetmacro{\sdy}{#4}
-	\pgfmathsetmacro{\sdx}{#5}
-	\pgfmathsetmacro{\sdxh}{#7}
-	\pgfmathsetmacro{\sdxt}{#8}
-	\fill[#6](\sstartx-0.5,\sy)--(\sstartx+\sdx-0.5,\sy+\sdy)--
-	(\slengx+\sstartx+1.5+\sdx-0.5,\sy+\sdy)--(\slengx+\sstartx+1.5-0.5,\sy)--
-	(\slengx+\sstartx+1.5+\sdx-0.5,\sy-\sdy)--(\sstartx+\sdx-0.5,\sy-\sdy)--cycle;
-	\draw[#9] (\sstartx-\sdxh-0.5,\sy) -- (\sstartx-0.5, \sy);
-	\draw[#9] (\slengx+\sstartx+1.5-0.5, \sy) -- (\slengx+\sstartx+1.5+\sdxt-0.5,\sy);
+    \pgfmathsetmacro{\sstartx}{#1}
+    \pgfmathsetmacro{\slengx}{#2}
+    \pgfmathsetmacro{\sy}{#3}
+    \pgfmathsetmacro{\sdy}{#4}
+    \pgfmathsetmacro{\sdx}{#5}
+    \pgfmathsetmacro{\sdxh}{#7}
+    \pgfmathsetmacro{\sdxt}{#8}
+    \fill[#6](\sstartx-0.5,\sy)--(\sstartx+\sdx-0.5,\sy+\sdy)--
+    (\slengx+\sstartx+1.5+\sdx-0.5,\sy+\sdy)--(\slengx+\sstartx+1.5-0.5,\sy)--
+    (\slengx+\sstartx+1.5+\sdx-0.5,\sy-\sdy)--(\sstartx+\sdx-0.5,\sy-\sdy)--cycle;
+    \draw[#9] (\sstartx-\sdxh-0.5,\sy) -- (\sstartx-0.5, \sy);
+    \draw[#9] (\slengx+\sstartx+1.5-0.5, \sy) -- (\slengx+\sstartx+1.5+\sdxt-0.5,\sy);
 }
 
 \newcommand{\rcell}[2]{%
-	\pgfmathsetmacro{\x}{#1}
-	\pgfmathsetmacro{\y}{#2}
-	%\node at (\x+10, \y) {Reference};
-	\draw (\x+1,\y) node[aallele]{A};
-	\draw (\x+2,\y) node[aallele]{C};
-	\draw (\x+3,\y) node[aallele]{T};
-	\draw (\x+4,\y) node[aallele]{C};
-	\gseg{\x}{4}{\y}{0.2}{0.5}{refseg}{1.5}{1}{reference};
+    \pgfmathsetmacro{\x}{#1}
+    \pgfmathsetmacro{\y}{#2}
+    %\node at (\x+10, \y) {Reference};
+    \draw (\x+1,\y) node[aallele]{A};
+    \draw (\x+2,\y) node[aallele]{C};
+    \draw (\x+3,\y) node[aallele]{T};
+    \draw (\x+4,\y) node[aallele]{C};
+    \gseg{\x}{4}{\y}{0.2}{0.5}{refseg}{1.5}{1}{reference};
 }
 
 \newcommand{\ncell}[2]{%
-	\pgfmathsetmacro{\x}{#1}
-	\pgfmathsetmacro{\y}{#2}
-	%\node [maternal] at (\x+8, \y) {M};
-	%\node [paternal] at (\x+8, \y-0.5) {P};
-	\draw[bncell](\x-2,\y+0.5)--(\x+7,\y+0.5)--
-	(\x+7,\y-1)--(\x-2,\y-1)--cycle;
-	\draw (\x+1,\y) node[aallele]{A};
-	\draw (\x+2,\y) node[ballele]{G};
-	\draw (\x+3,\y) node[aallele]{T};
-	\draw (\x+4,\y) node[aallele]{C};
-	\gseg{\x}{4}{\y}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
-	\draw (\x+1,\y-0.5) node[ballele]{T};
-	\draw (\x+2,\y-0.5) node[aallele]{C};
-	\draw (\x+3,\y-0.5) node[aallele]{T};
-	\draw (\x+4,\y-0.5) node[ballele]{A};
-	\gseg{\x}{4}{\y-0.5}{0.2}{0.5}{pseg}{1.5}{1}{paternal};
+    \pgfmathsetmacro{\x}{#1}
+    \pgfmathsetmacro{\y}{#2}
+    %\node [maternal] at (\x+8, \y) {M};
+    %\node [paternal] at (\x+8, \y-0.5) {P};
+    \draw[bncell](\x-2,\y+0.5)--(\x+7,\y+0.5)--
+    (\x+7,\y-1)--(\x-2,\y-1)--cycle;
+    \draw (\x+1,\y) node[aallele]{A};
+    \draw (\x+2,\y) node[ballele]{G};
+    \draw (\x+3,\y) node[aallele]{T};
+    \draw (\x+4,\y) node[aallele]{C};
+    \gseg{\x}{4}{\y}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
+    \draw (\x+1,\y-0.5) node[ballele]{T};
+    \draw (\x+2,\y-0.5) node[aallele]{C};
+    \draw (\x+3,\y-0.5) node[aallele]{T};
+    \draw (\x+4,\y-0.5) node[ballele]{A};
+    \gseg{\x}{4}{\y-0.5}{0.2}{0.5}{pseg}{1.5}{1}{paternal};
 }
 
 \newcommand{\tcellone}[2]{%
-	\pgfmathsetmacro{\x}{#1}
-	\pgfmathsetmacro{\y}{#2}
-	%\node [maternal] at (\x+8, \y) {M};
-	%\node [maternal] at (\x+8, \y-0.5) {M};
-	%\node [paternal] at (\x+8, \y-1) {P};
-	\draw[btcell](\x-2,\y+0.5)--(\x+7,\y+0.5)--
-	(\x+7,\y-1.5)--(\x-2,\y-1.5)--cycle;
-	\draw (\x+1,\y) node[aallele]{A};
-	\draw (\x+2,\y) node[ballele]{G};
-	\draw (\x+3,\y) node[aallele]{T};
-	\draw (\x+4,\y) node[aallele]{C};
-	\gseg{\x}{4}{\y}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
-	\draw (\x+1,\y-0.5) node[aallele]{A};
-	\draw (\x+2,\y-0.5) node[ballele]{G};
-	\draw (\x+3,\y-0.5) node[aallele]{T};
-	\draw (\x+4,\y-0.5) node[aallele]{C};
-	\gseg{\x}{4}{\y-0.5}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
-	\draw (\x+1,\y-1) node[ballele]{T};
-	\draw (\x+2,\y-1) node[aallele]{C};
-	\draw (\x+3,\y-1) node[aallele]{T};
-	\draw (\x+4,\y-1) node[ballele]{A};
-	\gseg{\x}{4}{\y-1}{0.2}{0.5}{pseg}{1.5}{1}{paternal};
+    \pgfmathsetmacro{\x}{#1}
+    \pgfmathsetmacro{\y}{#2}
+    %\node [maternal] at (\x+8, \y) {M};
+    %\node [maternal] at (\x+8, \y-0.5) {M};
+    %\node [paternal] at (\x+8, \y-1) {P};
+    \draw[btcell](\x-2,\y+0.5)--(\x+7,\y+0.5)--
+    (\x+7,\y-1.5)--(\x-2,\y-1.5)--cycle;
+    \draw (\x+1,\y) node[aallele]{A};
+    \draw (\x+2,\y) node[ballele]{G};
+    \draw (\x+3,\y) node[aallele]{T};
+    \draw (\x+4,\y) node[aallele]{C};
+    \gseg{\x}{4}{\y}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
+    \draw (\x+1,\y-0.5) node[aallele]{A};
+    \draw (\x+2,\y-0.5) node[ballele]{G};
+    \draw (\x+3,\y-0.5) node[aallele]{T};
+    \draw (\x+4,\y-0.5) node[aallele]{C};
+    \gseg{\x}{4}{\y-0.5}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
+    \draw (\x+1,\y-1) node[ballele]{T};
+    \draw (\x+2,\y-1) node[aallele]{C};
+    \draw (\x+3,\y-1) node[aallele]{T};
+    \draw (\x+4,\y-1) node[ballele]{A};
+    \gseg{\x}{4}{\y-1}{0.2}{0.5}{pseg}{1.5}{1}{paternal};
 }
 
 \newcommand{\tcellthree}[2]{%
-	\pgfmathsetmacro{\x}{#1}
-	\pgfmathsetmacro{\y}{#2}
-	%\node [maternal] at (\x+12, \y) {M};
-	%\node [paternal] at (\x+12, \y-0.5) {P};
-	\draw[btcell](\x-2,\y+0.5)--(\x+11,\y+0.5)--
-	(\x+11,\y-1)--(\x-2,\y-1)--cycle;
-	\draw (\x+1,\y) node[aallele]{A};
-	\draw (\x+2,\y) node[ballele]{G};
-	\gseg{\x}{2}{\y}{0.2}{0.5}{mseg}{1.5}{0}{maternal};
-	\gseg{\x+4}{0}{\y}{0.2}{0.5}{vseg}{0.5}{0.5}{variant};
-	\draw (\x+7,\y) node[aallele]{T};
-	\draw (\x+8,\y) node[aallele]{C};
-	\gseg{\x+6}{2}{\y}{0.2}{0.5}{mseg}{0}{1}{maternal};
-	\draw (\x+1,\y-0.5) node[ballele]{T};
-	\draw (\x+2,\y-0.5) node[aallele]{C};
-	\draw (\x+3,\y-0.5) node[aallele]{T};
-	\draw (\x+4,\y-0.5) node[ballele]{A};
-	\gseg{\x}{4}{\y-0.5}{0.2}{0.5}{pseg}{1.5}{1}{paternal};
+    \pgfmathsetmacro{\x}{#1}
+    \pgfmathsetmacro{\y}{#2}
+    %\node [maternal] at (\x+12, \y) {M};
+    %\node [paternal] at (\x+12, \y-0.5) {P};
+    \draw[btcell](\x-2,\y+0.5)--(\x+11,\y+0.5)--
+    (\x+11,\y-1)--(\x-2,\y-1)--cycle;
+    \draw (\x+1,\y) node[aallele]{A};
+    \draw (\x+2,\y) node[ballele]{G};
+    \gseg{\x}{2}{\y}{0.2}{0.5}{mseg}{1.5}{0}{maternal};
+    \gseg{\x+4}{0}{\y}{0.2}{0.5}{vseg}{0.5}{0.5}{variant};
+    \draw (\x+7,\y) node[aallele]{T};
+    \draw (\x+8,\y) node[aallele]{C};
+    \gseg{\x+6}{2}{\y}{0.2}{0.5}{mseg}{0}{1}{maternal};
+    \draw (\x+1,\y-0.5) node[ballele]{T};
+    \draw (\x+2,\y-0.5) node[aallele]{C};
+    \draw (\x+3,\y-0.5) node[aallele]{T};
+    \draw (\x+4,\y-0.5) node[ballele]{A};
+    \gseg{\x}{4}{\y-0.5}{0.2}{0.5}{pseg}{1.5}{1}{paternal};
 }
 
 \newcommand{\tcellfour}[2]{%
-	\pgfmathsetmacro{\x}{#1}
-	\pgfmathsetmacro{\y}{#2}
-	%\node [maternal] at (\x+18, \y) {M};
-	%\node [paternal] at (\x+18, \y-0.5) {P};
-	\draw[btcell](\x-2,\y+0.5)--(\x+15,\y+0.5)--
-	(\x+15,\y-1)--(\x-2,\y-1)--cycle;
-	\draw (\x+1,\y) node[aallele]{A};
-	\draw (\x+2,\y) node[ballele]{G};
-	\gseg{\x}{2}{\y}{0.2}{0.5}{mseg}{1.5}{0}{maternal};
-	\gseg{\x+4}{0}{\y}{0.2}{0.5}{vseg}{0.5}{0.5}{variant};
-	\draw (\x+7,\y) node[aallele]{T};
-	\gseg{\x+6}{1}{\y}{0.2}{0.5}{mseg}{0}{0}{maternal};
-	\gseg{\x+9}{0}{\y}{0.2}{0.5}{vseg}{0.5}{0.5}{variant};
-	\draw (\x+12,\y) node[aallele]{C};
-	\gseg{\x+11}{1}{\y}{0.2}{0.5}{mseg}{0}{1}{maternal};
-	\draw (\x+1,\y-0.5) node[ballele]{T};
-	\draw (\x+2,\y-0.5) node[aallele]{C};
-	\draw (\x+3,\y-0.5) node[aallele]{T};
-	\draw (\x+4,\y-0.5) node[ballele]{A};
-	\gseg{\x}{4}{\y-0.5}{0.2}{0.5}{pseg}{1.5}{1}{paternal};
+    \pgfmathsetmacro{\x}{#1}
+    \pgfmathsetmacro{\y}{#2}
+    %\node [maternal] at (\x+18, \y) {M};
+    %\node [paternal] at (\x+18, \y-0.5) {P};
+    \draw[btcell](\x-2,\y+0.5)--(\x+15,\y+0.5)--
+    (\x+15,\y-1)--(\x-2,\y-1)--cycle;
+    \draw (\x+1,\y) node[aallele]{A};
+    \draw (\x+2,\y) node[ballele]{G};
+    \gseg{\x}{2}{\y}{0.2}{0.5}{mseg}{1.5}{0}{maternal};
+    \gseg{\x+4}{0}{\y}{0.2}{0.5}{vseg}{0.5}{0.5}{variant};
+    \draw (\x+7,\y) node[aallele]{T};
+    \gseg{\x+6}{1}{\y}{0.2}{0.5}{mseg}{0}{0}{maternal};
+    \gseg{\x+9}{0}{\y}{0.2}{0.5}{vseg}{0.5}{0.5}{variant};
+    \draw (\x+12,\y) node[aallele]{C};
+    \gseg{\x+11}{1}{\y}{0.2}{0.5}{mseg}{0}{1}{maternal};
+    \draw (\x+1,\y-0.5) node[ballele]{T};
+    \draw (\x+2,\y-0.5) node[aallele]{C};
+    \draw (\x+3,\y-0.5) node[aallele]{T};
+    \draw (\x+4,\y-0.5) node[ballele]{A};
+    \gseg{\x}{4}{\y-0.5}{0.2}{0.5}{pseg}{1.5}{1}{paternal};
 }
 
 \newcommand{\tcelltwo}[2]{%
-	\pgfmathsetmacro{\x}{#1}
-	\pgfmathsetmacro{\y}{#2}
-	%\node [maternal] at (\x+8, \y) {M};
-	%\node [maternal] at (\x+8, \y-0.5) {M};
-	%\node [paternal] at (\x+8, \y-1) {P};
-	\draw[btcell](\x-2,\y+0.5)--(\x+7,\y+0.5)--
-	(\x+7,\y-1.5)--(\x-2,\y-1.5)--cycle;
-	\draw (\x+1,\y)  node[aallele]{A};
-	\draw (\x+2,\y)  node[ballele]{G};
-	\draw (\x+3,\y)  node[aallele]{T};
-	\draw (\x+4,\y)  node[aallele]{C};
-	\gseg{\x}{4}{\y}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
-	\draw (\x+1,\y-0.5) node[aallele]{A};
-	\draw (\x+2,\y-0.5) node[ballele]{G};
-	\draw (\x+3,\y-0.5) node[aallele]{T};
-	\draw (\x+4,\y-0.5) node[ballele]{G};
-	\gseg{\x}{4}{\y-0.5}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
-	\draw (\x+1,\y-1) node[ballele]{T};
-	\draw (\x+2,\y-1) node[aallele]{C};
-	\draw (\x+3,\y-1) node[aallele]{T};
-	\draw (\x+4,\y-1) node[ballele]{A};
-	\gseg{\x}{4}{\y-1}{0.2}{0.5}{pseg}{1.5}{1}{paternal};
+    \pgfmathsetmacro{\x}{#1}
+    \pgfmathsetmacro{\y}{#2}
+    %\node [maternal] at (\x+8, \y) {M};
+    %\node [maternal] at (\x+8, \y-0.5) {M};
+    %\node [paternal] at (\x+8, \y-1) {P};
+    \draw[btcell](\x-2,\y+0.5)--(\x+7,\y+0.5)--
+    (\x+7,\y-1.5)--(\x-2,\y-1.5)--cycle;
+    \draw (\x+1,\y)  node[aallele]{A};
+    \draw (\x+2,\y)  node[ballele]{G};
+    \draw (\x+3,\y)  node[aallele]{T};
+    \draw (\x+4,\y)  node[aallele]{C};
+    \gseg{\x}{4}{\y}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
+    \draw (\x+1,\y-0.5) node[aallele]{A};
+    \draw (\x+2,\y-0.5) node[ballele]{G};
+    \draw (\x+3,\y-0.5) node[aallele]{T};
+    \draw (\x+4,\y-0.5) node[ballele]{G};
+    \gseg{\x}{4}{\y-0.5}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
+    \draw (\x+1,\y-1) node[ballele]{T};
+    \draw (\x+2,\y-1) node[aallele]{C};
+    \draw (\x+3,\y-1) node[aallele]{T};
+    \draw (\x+4,\y-1) node[ballele]{A};
+    \gseg{\x}{4}{\y-1}{0.2}{0.5}{pseg}{1.5}{1}{paternal};
 }
 
-
 \newcommand{\tcellfive}[2]{%
-	\pgfmathsetmacro{\x}{#1}
-	\pgfmathsetmacro{\y}{#2}
-	%\node [maternal] at (\x+8, \y) {M};
-	%\node [maternal] at (\x+8, \y-0.5) {M};
-	%\node [paternal] at (\x+8, \y-1) {P};
-	\draw[btcell](\x-2,\y+0.5)--(\x+9.5,\y+0.5)--
-	(\x+9.5,\y-1.5)--(\x-2,\y-1.5)--cycle;
-	\draw (\x+1,\y) node[aallele]{A};
-	\draw (\x+2,\y) node[ballele]{G};
-	\draw (\x+3,\y) node[aallele]{T};
-	\draw (\x+4,\y) node[aallele]{C};
-	\gseg{\x}{4}{\y}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
-	\draw (\x+1,\y-0.5) node[aallele]{A};
-	\draw (\x+2,\y-0.5) node[ballele]{G};
-	\draw (\x+3,\y-0.5) node[aallele]{T};
-	\draw (\x+4,\y-0.5) node[aallele]{C};
-	\gseg{\x}{4}{\y-0.5}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
-	\draw (\x+1,\y-1) node[ballele]{T};
-	\gseg{\x}{1}{\y-1}{0.2}{0.5}{pseg}{1.5}{0}{paternal};
-	\draw (\x+4.5,\y-1) node[ballele]{A};
-	\draw (\x+5.5,\y-1) node[aallele]{T};
-	\draw (\x+6.5,\y-1) node[aallele]{C};
-	\gsegr{\x+3.5}{3}{\y-1}{0.2}{0.5}{pseg}{0.5}{1.5}{paternal};
+    \pgfmathsetmacro{\x}{#1}
+    \pgfmathsetmacro{\y}{#2}
+    %\node [maternal] at (\x+8, \y) {M};
+    %\node [maternal] at (\x+8, \y-0.5) {M};
+    %\node [paternal] at (\x+8, \y-1) {P};
+    \draw[btcell](\x-2,\y+0.5)--(\x+9.5,\y+0.5)--
+    (\x+9.5,\y-1.5)--(\x-2,\y-1.5)--cycle;
+    \draw (\x+1,\y) node[aallele]{A};
+    \draw (\x+2,\y) node[ballele]{G};
+    \draw (\x+3,\y) node[aallele]{T};
+    \draw (\x+4,\y) node[aallele]{C};
+    \gseg{\x}{4}{\y}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
+    \draw (\x+1,\y-0.5) node[aallele]{A};
+    \draw (\x+2,\y-0.5) node[ballele]{G};
+    \draw (\x+3,\y-0.5) node[aallele]{T};
+    \draw (\x+4,\y-0.5) node[aallele]{C};
+    \gseg{\x}{4}{\y-0.5}{0.2}{0.5}{mseg}{1.5}{1}{maternal};
+    \draw (\x+1,\y-1) node[ballele]{T};
+    \gseg{\x}{1}{\y-1}{0.2}{0.5}{pseg}{1.5}{0}{paternal};
+    \draw (\x+4.5,\y-1) node[ballele]{A};
+    \draw (\x+5.5,\y-1) node[aallele]{T};
+    \draw (\x+6.5,\y-1) node[aallele]{C};
+    \gsegr{\x+3.5}{3}{\y-1}{0.2}{0.5}{pseg}{0.5}{1.5}{paternal};
 }
 
 % 最后定义一些常见的数学公式样式。格式和内容分离，是LaTeX的巨大优势
@@ -6960,9 +6935,9 @@ breaklines=true
 %    \begin{macrocode}
 %<bookcfg|dtx-style>\newcommand{\pozhehao}{——}
 %<bookcfg|dtx-style>\def\heuthesis{\textsc{heu}\-\textsc{Thesis}}
-%<bookcfg|dtx-style>\def\PGR{\href{http://hitgs.hit.edu.cn/aa/fd/c3425a109309/page.htm}
+%<bookcfg|dtx-style>\def\PGR{\href{http://yjsy.hrbeu.edu.cn/2017/0327/c11369a113996/page.htm}
 %<bookcfg|dtx-style>{《哈尔滨工程大学研究生学位论文撰写规范》}}
-%<bookcfg|dtx-style>\def\UGR{\href{http://jwc.hit.edu.cn/2566/list.htm}
+%<bookcfg|dtx-style>\def\UGR{\href{http://ugs.hrbeu.edu.cn/main.htm}
 %<bookcfg|dtx-style>{《哈尔滨工程大学本科生毕业论文撰写规范》}}
 %<bookcfg>\def\heu@inline@sep{，}
 %<*dtx-style>
