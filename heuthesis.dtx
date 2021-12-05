@@ -73,7 +73,7 @@
 % \GlossaryPrologue{\section{\glossaryname}}
 %
 % \title{\bfseries\color{violet}\heuthesis：哈尔滨工程大学学位论文模板}
-% \author{{\songti 李文辉}\ ]\texttt{lwh@hrbeu.edu.cn}}
+% \author{{\songti [\ 李文辉}\ ]\texttt{lwh@hrbeu.edu.cn}}
 % \date{v\fileversion\ (\filedate)}
 % \maketitle\thispagestyle{empty}
 % \begin{abstract}\noindent
@@ -86,9 +86,9 @@
 % \noindent
 % \begin{enumerate}
 % \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内容。
-% \item 本模板为作者根据哈尔滨工程大学教务处颁发的\UGR ，哈尔滨工程大学研究生院颁发的\PGR 
-% 编写而成，为方便哈尔滨工程大学学生撰写毕业论文使用。
-% \item 哈尔滨工程大学教务处和研究生院只提供毕业论文写作指南，不提供官方模板，
+% \item 本模板为作者根据 \heu 教务处颁发的 \UGR ，\heu 研究生院颁发的 \PGR 
+% 编写而成，为 \heu 学学生撰写毕业论文使用。
+% \item \heu 教务处和研究生院只提供毕业论文写作指南，不提供官方模板，
 % 也未授权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格
 % 式审查老师不提意见。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无
 % 关。
@@ -110,7 +110,7 @@
 %
 % \section{模板介绍}
 % \heuthesis\ (\textbf{H}arbin \textbf{E}ngineering \textbf{U}niversity \LaTeX\
-% \textbf{Thesis} Template) 是为了帮助哈尔滨工程大学毕业生撰写毕业论文而编写
+% \textbf{Thesis} Template) 是为了帮助 \heu 毕业生撰写毕业论文而编写
 % 的 \LaTeX\ 论文模板。
 %
 % 本模板是基于哈尔滨工业大学学位论文模板 \textsc{hi}\-\textsc{Thesis} 修改而来。
@@ -150,6 +150,7 @@
 % front/ & 正文之前内容\\
 % body/ & 正文内容\\
 % back/ & 正文之后内容\\
+% data/ & TiZk绘图数据文件\\
 % figures/ & 插图图片路径\\
 % heuthesis.sty & 为示例文档加载其它宏包\\\midrule
 % Makefile & Makefile\\
@@ -175,6 +176,8 @@
 % 以及一些命令定义都放在这里，以免 \file{heuthesisbook.cls} 过分臃
 % 肿。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
 % 板文件和配置文件（具体命令细节请参考 \file{README.md} 和 \file{Makefile}）：
+%
+% 如果是直接使用编译后的模板文件，可以忽略下述操作。
 %
 % \begin{shell}
 % $ cd heuthesis
@@ -245,6 +248,26 @@
 % 贝 \file{heuthesisbook.cls}，\file{heuthesisbook.cfg} 和
 % \file{heuthesis.ist}，免去上面命令的执行。
 %
+% \subsubsection{buidl.bat}
+% \label{sec:build}
+%
+% 示例文件夹中也包含了 \file{build.bat} 批处理文件，在 \texttt{Windows} 环境下可以
+% 直接使用改批处理文件生成最终 \texttt{PDF} 格式的论文 \file{main.pdf}。
+%
+% \subsection{生成封面}
+% \label{sec:generate-cover}
+% 模板还提供了用于生成论文 \texttt{A3} 页面的封面定义文档。用户可根据自己的情况选择。
+%
+% A3 封面的生成是利用上述论文的首页封面和书脊拼花而成，因此在生成 A3 封面前
+% 需要先生成论文 \file{main.pdf} 并在 \file{spine.tex} 定义论文标题和作者姓名信息，
+% 然后使用 \texttt{xelatex} 依次编译 \file{spine.tex} 和 \file{a3cover.tex}：
+%
+% \begin{shell}
+% $ xelatex spine.tex
+% $ xelatex a3cover.tex
+% \end{shell}
+%
+% 在 \texttt{Windows} 系统下也可以直接使用 \file{make\_cover.bat} 批处理生成 \texttt{A3} 封面。
 %
 % \section{使用说明}
 % \label{sec:usage}
@@ -262,6 +285,10 @@
 %
 % \lstinputlisting[style=lstStyleLaTeX]{examples/book/english/main.tex}
 % \lstinputlisting[style=lstStyleLaTeX]{examples/book/chinese/main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{examples/book/doctor/main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{examples/book/master/main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{examples/book/promaster/main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{examples/book/bachelor/main.tex}
 % \lstinputlisting[style=lstStyleLaTeX]{examples/art/reports/report.tex}
 % \lstinputlisting[style=lstStyleLaTeX]{examples/art/reportplus/report.tex}
 %
@@ -313,7 +340,7 @@
 % \DescribeMacro{cnumber}
 % \DescribeMacro{natclassifiedindex}
 % \DescribeMacro{intclassifiedindex}
-% 定义秘密级别和国内国际索引号。
+% 定义秘密级别、编号和国内国际索引号。
 % \begin{latex}
 % \heusetup{
 % statesecrets={公开},
@@ -332,11 +359,13 @@
 % \DescribeMacro{csubtitle}
 % \DescribeMacro{esubtitle}
 % 中英文标题。
-% 如果有副标题，需要在封面选项中设置subtitle=true，否则不显示副标题。
+% 如果有副标题，需要在封面选项中设置 subtitle=true，否则不显示副标题。
+%
+% 博后研究报告封面研究内容标题采用两行格式，需要对 ctitleone 和 ctitletwo 分别定义。
 % \begin{latex}
 % \heusetup{
-%   ctitlecover={封面中文题目可断行},
-%   ctitle={论文中文题目},
+%   ctitlecover={封面中文题目（可使用 \cs\cs 断行）},
+%   ctitle={论文中文题目（页眉等不断行处使用）},
 %   etitle={Thesis English Title},
 %   csubtitle={论文中文副题目（如果有）},
 %   esubtitle={Thesis English Sub-Title (if necessary)},
@@ -382,7 +411,7 @@
 %  eaffil={\emultiline[t]{School of Power and Energy Engineering}},
 % }
 % \end{latex}
-% \note[注意：]{个别学院英文名过长，使用以上方法自行换行。}
+% \note[注意：]{个别学院英文名过长，使用以上方法自动换行。}
 %
 % \subsubsection{专业名称}
 % \myentry{专业名称}
@@ -415,7 +444,7 @@
 % \myentry{副导师}
 % \DescribeMacro{cassosupervisor}
 % \DescribeMacro{eassosupervisor}
-% 副指导教师。
+% 副指导教师。对于专业学位学生是企业导师
 % \begin{latex}
 % \heusetup{
 %   cassosupervisor={副导师~副教授},
@@ -434,13 +463,15 @@
 % }
 % \end{latex}
 %
-% \subsubsection{成文日期}
+% \subsubsection{日期}
 % \myentry{日期}
 % \DescribeMacro{cdate}
 % \DescribeMacro{csubmitdate}
 % \DescribeMacro{coralexdate}
 % \DescribeMacro{edate}
-% 默认为当前时间，也可以自己指定。
+% 日期内容包括封面日期、论文提交日期和论文答辩日期等。
+% 其中论文封面日期默认为当前时间，也可以自己指定。
+% 论文提交日期和论文答辩日期需要手工设置。
 % \begin{latex}
 % \heusetup{
 %   cdate={中文日期},
@@ -452,12 +483,17 @@
 %
 % \subsubsection{学生类型}
 % \myentry{学生类型}
+% \DescribeMacro{profdegree}
+% \DescribeMacro{research}
 % \DescribeMacro{cstudenttype}
 % \DescribeMacro{estudenttype}
-% 非全日制或专业学位申请者（profdegree=true）
-%（同等学力人员）、（工程硕士）、（工商管理硕士）、
-%（高级管理人员工商管理硕士）、（公共管理硕士）、（中职教师）、（高校教师）等，
+% 非全日制或专业学位申请者（profdegree=true），如：
+% 同等学力人员、工程硕士、工商管理硕士、
+% 高级管理人员工商管理硕士、公共管理硕士、中职教师、高校教师等，
 % 具体要求按照入学的培养计划中学科自行填写，具体名称不是本文档范畴。
+% 同时根据专业学位论文扉页格式要求，还需要通过 research 参数设置论文研究类型。
+% profdegree 和 research 通过模板选项设置。cstudenttype 和 estudenttype 在
+% 封面定义文件 \file{back/cover.tex} 文件中通过 \cs{heusetup} 设置。
 % \begin{latex}
 % \heusetup{
 %   cstudenttype={工程硕士},
@@ -505,9 +541,10 @@
 %
 % \subsubsection{符号对照表}
 % \DescribeEnv{denotation}
-% 主要符号表环境，单独在文件\file{front/denotation.tex}中。
-% 跟据\PGR\
-% 示例中要求，我校符号表是table环境，示例文件如下，由于我校要求博士论文图表标题是双语，所以任何对单个标题的全局格式调整都会影响到双语标题，所以这里使用\cs{vspace}，具体见实现细节中的描述。
+% 主要符号表环境，单独在文件 \file{front/denotation.tex} 中。
+% 跟据 \PGR\ 示例中要求，我校符号表是table环境，示例文件如下，
+% 由于我校要求博士论文图表标题是双语，所以任何对单个标题的全局格式调整都会影响到双语标题，
+% 所以这里使用 \cs{vspace}，具体见实现细节中的描述。
 % \begin{latex}
 % \begin{denotation}
 % \begin{table}[h]%此处最好是h
@@ -525,7 +562,7 @@
 % \end{latex}
 %
 % \subsubsection{目录}
-% 目录不需要用户干预，自动生成，具体命令已经写在\file{main.tex}中。
+% 目录不需要用户干预，自动生成，具体命令已经写在 \file{main.tex} 中。
 %
 % \subsection{正文}
 %
@@ -533,9 +570,9 @@
 % 哈尔滨工程大学博士毕业论文要求使用中英双语图题、表题，这增加了维护难度。
 % 因为现有唯一的方法是在已有的图题或表题的基础上再添加一行英语图题或表题。
 % 两个题之间的距离具体多少不在\PGR\ 中要求。目前的方法是用户手动调节该距离。
-% 关于图题\PGR\ 和\UGR\ 只规定了居中，并没有规定居中对其。然而评审老师很多喜欢居
+% 关于图题 \PGR\ 和 \UGR\ 只规定了居中，并没有规定居中对其。然而评审老师很多喜欢居
 % 中且居中对齐。模板默认选项是居中且居中对齐，如果不喜欢居中对齐，那么需要在
-% \file{main.tex}的文档类选项中设置选项capcenterlast=false。
+% \file{main.tex} 的文档类选项中设置选项 capcenterlast=false。
 % 详细方法见前文的介绍。
 % \begin{heurgu}
 % 每个图均应有图题（由图序和图名组成），图题不宜有标点符号，图名在图序之后空1个
@@ -610,7 +647,7 @@
 % \end{table}
 % \end{latex}
 % 因为长表格不是浮动体，不会自动调整位置、也不会自动调整字体大小，一切都要手动设
-% 置。特别繁琐。
+% 置。设置起来特别繁琐，建议尽量不要使用长表格。
 % \begin{latex}
 % \ltfontsize{\dawu[1.667]} %设置表格内字体行间距
 % \dawu[1.667]\begin{longtable}{ccc} % 注意此处设置的是表格线距离
@@ -662,8 +699,10 @@
 % 台湾省 & 台 & 台北市\\
 % \end{longtable}\normalsize %注意这里要恢复正常字体
 % \end{latex}
+%
 % \subsubsection{公式}
 % 公式不做介绍，与正常用法一致。
+%
 % \subsubsection{数学环境}
 % \label{sec:math}
 % \heuthesis\ 定义了常用的数学环境：
@@ -704,8 +743,10 @@
 %
 % \medskip
 % \noindent\framebox[\linewidth][l]{{\heiti 胡说~1.1~~~} % {契丹武士要来中原夺武林秘笈。—— 慕容博}}
+%
 % \subsubsection{算法}
-% 我校算法不在规范中要求，且一千个评审老师有一千个算法格式喜好。
+% 我校算法不在规范中要求，且每个人都有自己的算法格式喜好，大家最好采用大家普遍接收的方式，做到美观、协调就可以。
+%
 % \subsubsection{引用参考文献}
 % \DescribeMacro{\inlinecite}
 % 学校要求的参考文献引用有两种模式：（1）上标模式。比如``同样的工作有很
@@ -724,7 +765,7 @@
 %   year      = 2006,
 %   address   = {西安, 中国},
 %   month     = sep,
-%   language      = "zh",
+%   language  = "zh",
 % }
 %
 % @ARTICLE{cnarticle,
@@ -734,7 +775,7 @@
 %   PAGES   = "260--266",
 %   VOLUME  = "224",
 %   YEAR    = "1800",
-%   LANGUAGE    = "zh",
+%   LANGUAGE= "zh",
 % }
 % \end{latex}
 %
@@ -824,12 +865,6 @@
 % \end{ceindex}
 %\end{latex}
 % 手工添加索引的方法不推荐，模板中将去除该功能。
-% \subsubsection{授权}
-% \DescribeMacro{\authorization}
-% 授权页中的签名和日期是需要手写，不需要人工干预。
-%\begin{latex}
-% \authorization[authorization.pdf] %添加扫描页的命令，与上互斥
-%\end{latex}
 %
 % \subsubsection{致谢声明}
 % \DescribeEnv{acknowledgement}
@@ -862,6 +897,15 @@
 % 工作经历：
 % \end{resume}
 % \end{latex}
+%
+% \subsubsection{授权}
+% \DescribeMacro{\authorization}
+% 授权页中的签名和日期是需要手写，不需要人工干预。
+% 模板中提供了未签名的空白论文原创性声明和授权页 \file{authorization.pdf}，
+% 可以使用签字后的扫描版文件进行替换。
+%\begin{latex}
+% \authorization[authorization.pdf]
+%\end{latex}
 %
 % \subsection{其它}
 % 模板的配置文件 \file{heuthesisbook.cfg} 中定义了很多固定词汇，一般无须修改。如果有特殊需求，
@@ -2873,7 +2917,6 @@ EXECUTE {end.bib}                                 %   end_bib();
   \heu@midtermfalse
   \expandafter\csname heu@#1true\endcsname}
 
-
 \DeclareStringOption{fontset}
 
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexart}}
@@ -2917,7 +2960,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 \fi
 \fi
 
-
 \ifheu@doctor
   \ifheu@midterm
     \ifheu@qingdao
@@ -2959,7 +3001,6 @@ EXECUTE {end.bib}                                 %   end_bib();
   \PassOptionsToClass{fontset=\heu@fontset}{ctexart}
 }%
 \LoadClass[a4paper,UTF8,zihao=-4,scheme=plain]{ctexart}
-
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifxetex}
@@ -3508,7 +3549,7 @@ EXECUTE {end.bib}                                 %   end_bib();
    \ifthenelse%
    {\equal{\heu@fontset}{siyuan}}%
    {\xiaosi[1]\vspace*{0.65em}}%
-   {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@hi}}}%
+   {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@motto}}}%
    \vspace*{10mm}
    \begin{center}
      \includegraphics[width=6.2cm]{heulogo.jpg}
@@ -3640,6 +3681,9 @@ EXECUTE {end.bib}                                 %   end_bib();
   \heu@doctorfalse
   \heu@postdocfalse
   \expandafter\csname heu@#1true\endcsname}
+%    \end{macrocode}
+% 此处设置专业学位论文研究类型，没有明确给出时默认为{\bf 应用研究}型。
+%    \begin{macrocode}
 \newif\ifheu@productdevelopment
 \newif\ifheu@projectdplanning
 \newif\ifheu@projectdesign
@@ -3674,7 +3718,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 \fi
 \fi
 %    \end{macrocode}
-%    设置版芯，由于我校版芯歧义。
+%    设置版芯。
 %    \begin{macrocode}
 \newif\ifheu@english
 \newif\ifheu@chinese
@@ -3795,7 +3839,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \begin{macrocode}
 \PassOptionsToPackage{no-math}{fontspec}
 %    \end{macrocode}
-% 载入单双面打印设置，本、硕单面，博士双面。
+% 载入单双面打印设置，默认本、硕、博均采用双面打印。
 %    \begin{macrocode}
 \ifheu@bachelor
 \PassOptionsToClass{twoside}{book}
@@ -3837,9 +3881,9 @@ EXECUTE {end.bib}                                 %   end_bib();
   \ifheu@master\relax\else
     \ifheu@doctor\relax\else
       \ifheu@postdoc\relax\else
-          \ClassError{heuthesis}%
-                    {Please specify thesis type in option: \MessageBreak
-                      type=[bachelor | master | doctor | postdoc]}{}
+         \ClassError{heuthesis}%
+            {Please specify thesis type in option: \MessageBreak
+             type=[bachelor | master | doctor | postdoc]}{}
       \fi
     \fi
   \fi
@@ -3853,8 +3897,7 @@ EXECUTE {end.bib}                                 %   end_bib();
     \ifheu@projectdesign\relax\else
       \ifheu@applicationResearch\relax\else
         \ClassError{heuthesisartplus}%
-        {
-          Please specify research type in option:\MessageBreak
+        { Please specify research type in option:\MessageBreak
           research=[productdevelopment | projectdplanning | projectdesign | applicationResearch]
         }{}
       \fi
@@ -3873,9 +3916,9 @@ EXECUTE {end.bib}                                 %   end_bib();
 \RequirePackage{ifxetex}
 \ifxetex
 \else
-        \ClassError{heuthesis}%
-                   {Please use: \MessageBreak
-                    xelatex}{}
+  \ClassError{heuthesis}%
+    {Please use: \MessageBreak
+      xelatex}{}
 \fi
 \RequirePackage{xparse}
 %    \end{macrocode}
@@ -3940,7 +3983,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \begin{macrocode}
 \RequirePackage{xeCJKfntef}
 %    \end{macrocode}
-
+%
 % 表格控制
 %    \begin{macrocode}
 \RequirePackage{diagbox}
@@ -3972,19 +4015,21 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \begin{macrocode}
 \urlstyle{same}
 %    \end{macrocode}
-% 根据我校2021年的“四月革命”，引用文献标准更新到GBT2015
+% 引用文献标准GBT2015
 %    \begin{macrocode}
 \RequirePackage[sort&compress]{gbt7714}
 %    \end{macrocode}
 %
 % \subsection{页面设置}
 % \label{sec:layout}
-% 这部分是根据我校\PGR\ 的版芯要求设置。
-% 论文尺寸为207x291mm，版心尺寸140x220mm，版心距左边25mm，距右边20mm，距上下边各20mm。
+% 这部分是根据 \heu 研院函〔2010〕26号《关于调整研究生学位论文版面大小的通知》的规定：
+% “版面一律改成A4纸页边距上、下设置为28mm，左、右设置为25mm，页眉、页脚设置为20mm。
+% 装订时上、下、右各切除3mm，学位论文成品版面大小为207mm*291mm”要求设置。
+% 论文尺寸为207x291mm，版芯尺寸140x220mm，版心距左边25mm，距右边20mm，距上下边各20mm。
 % 这里只设置版心尺寸和版心距左边距尺寸，其他尺寸由装订裁切进行控制。
 %    \begin{macrocode}
 \ifheu@debug\RequirePackage[showframe]{geometry}\else\RequirePackage{geometry}\fi
-\geometry{%根据规范要定义而来
+\geometry{%版芯定义
   a4paper, % 210 * 297mm
   hcentering,
   ignoreall,
@@ -4056,7 +4101,7 @@ delim_1 "\\hspace*{\\fill}"
 % \subsection{主文档格式}
 % \label{sec:mainbody}
 %
-% \subsubsection{Three matters}
+% \subsubsection{页面选项}
 % \begin{macro}{\cleardoublepage}
 % 对于 \textsl{openright} 选项，必须保证章首页右开，且如果前章末页无内容须
 % 清空其页眉页脚。
@@ -4136,6 +4181,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\backmatter}
+% 后文开页选项，根据 \textsl{openright} 选项决定分页方式。
 %    \begin{macrocode}
 \renewcommand\backmatter{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
@@ -4147,7 +4193,7 @@ delim_1 "\\hspace*{\\fill}"
 % \subsubsection{字体}
 % \label{sec:font}
 % \begin{macro}{\normalsize}
-% 根据我校规定，正文小四号 (12bp) 字，行距为固定值3--4mm。
+% 根据我校规定，正文小四号 (12bp) 字，但对行距没有给出明确要求。
 %    \begin{macrocode}
 %<*bookcls>
 %    \end{macrocode}
@@ -4214,7 +4260,7 @@ delim_1 "\\hspace*{\\fill}"
 % \begin{macro}{\xiaoliu}
 % \begin{macro}{\qihao}
 % \begin{macro}{\bahao}
-% 一组字号定义。
+% 一组字号定义。可以在论文中使用 \cs{fontsize} 格式指定，如 \cs{sihao} 。
 %    \begin{macrocode}
 \heu@def@fontsize{dachu}{58bp}
 \heu@def@fontsize{chuhao}{42bp}
@@ -4256,13 +4302,14 @@ delim_1 "\\hspace*{\\fill}"
 % \end{macro}
 % \end{macro}
 % \end{macro}
+%
 % \subsubsection{页眉页脚}
 % \label{sec:headerfooter}
 % \begin{macro}{\heu@empty}
 % \begin{macro}{\heu@plain}
 % \begin{macro}{\heu@headings}
 % \begin{macro}{\heu@titleheadings}
-% 定义三种页眉页脚格式：
+% 定义四种页眉页脚格式：
 % \begin{itemize}
 % \item \texttt{heu@empty}：页眉页脚都没有
 % \item \texttt{heu@plain}：只显示页脚的页码。\cs{chapter} 自动调用
@@ -4273,6 +4320,9 @@ delim_1 "\\hspace*{\\fill}"
 %    \begin{macrocode}
 %<*bookcls>
 \let\heu@headrule\headrule
+%    \end{macrocode}
+% 空白页面页眉页脚格式控制
+%    \begin{macrocode}
 \fancypagestyle{heu@empty}{%
   \fancyhf{}
   \let\headrule\heu@headrule%
@@ -4280,15 +4330,15 @@ delim_1 "\\hspace*{\\fill}"
   \renewcommand{\footrulewidth}{0pt}
 }
 %    \end{macrocode}
-%    此处根据本科生模板的多种版本，提供选项自定义页码、页眉样式。
+% 正文页眉页脚格式控制
 %    \begin{macrocode}
 \fancypagestyle{heu@headings}{%
   \fancyhf{}
   \ifheu@english
-    \fancyhead[C]{\wuhao[0]\leftmark}
 %    \end{macrocode}
-% \changes{v1.0.4}{2021/12/01}{根据最新要求修改页码格式}
+% 英文版页眉格式控制
 %    \begin{macrocode}
+    \fancyhead[C]{\wuhao[0]\leftmark}
     \fancyfoot[C]{\wuhao\thepage}
     \renewcommand{\headrule}{
       \vskip 0.5mm
@@ -4297,12 +4347,9 @@ delim_1 "\\hspace*{\\fill}"
       \hrule\@height0.8mm\@width\headwidth
     }
   \else
-%    \end{macrocode}
-% 添加英文版页眉格式控制
-%    \begin{macrocode}
     \ifheu@postdoc
 %    \end{macrocode}
-% 添加博后页眉控制
+% 博后页眉控制
 %    \begin{macrocode}
       \fancyhead[CO]{\songti\wuhao[0]\leftmark}
       \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@postdoc@documenttitlenospace}
@@ -4343,9 +4390,6 @@ delim_1 "\\hspace*{\\fill}"
         \fancyhead[CE]{\songti\wuhao[0]\heu@cschoolname\heu@yantaicampus\heu@bachelor@cxuewei\heu@bachelor@cthesisname}
       \fi
     \fi
-%    \end{macrocode}
-% \changes{v1.0.4}{2021/12/01}{根据最新要求修改页码格式}
-%    \begin{macrocode}
     \fancyfoot[C]{\wuhao\thepage}
     \renewcommand{\headrule}{
     \vskip 1.634877pt
@@ -4357,9 +4401,8 @@ delim_1 "\\hspace*{\\fill}"
   \renewcommand{\footrulewidth}{0pt}
 }
 %    \end{macrocode}
-% \changes{v1.0.4}{2021/12/01}{根据最新要求修改摘要和目录页的页眉页脚}
-%    \begin{macrocode}
-% 从这里，是摘要和目录页的页眉页脚
+% 前文页眉页脚格式控制（奇数页页眉为论文题目）
+%    \begin{macrocode}%
 \fancypagestyle{heu@titleheadings}%
 {%
   \fancyhead{} %
@@ -4410,7 +4453,7 @@ delim_1 "\\hspace*{\\fill}"
     \hrule\@height2.127659pt\@width\headwidth
   }
 }
-\AtBeginDocument{%此处解决页眉经典bug
+\AtBeginDocument{%
   \pagestyle{heu@empty}
   \renewcommand{\chaptermark}[1]{\@mkboth{\CTEXthechapter\enspace#1}{}}}
 %</bookcls>
@@ -4436,6 +4479,7 @@ delim_1 "\\hspace*{\\fill}"
 \setlist{nosep}
 %</bookcls>
 %    \end{macrocode}
+%
 % \subsubsection{脚注}
 % \label{sec:footnote}
 % 脚注符合中文习惯，数字带圈。
@@ -4470,6 +4514,7 @@ delim_1 "\\hspace*{\\fill}"
 \apptocmd{\@makefntext}{\let\@makefnmark\heu@makefnmark}{}{}
 %</bookcls>
 %    \end{macrocode}
+%
 % \subsubsection{数学相关}
 % \label{sec:equation}
 % 允许太长的公式断行、分页等。
@@ -4479,7 +4524,7 @@ delim_1 "\\hspace*{\\fill}"
 \predisplaypenalty=0  %公式之前可以换页，公式出现在页面顶部
 \postdisplaypenalty=0
 %    \end{macrocode}
-% \changes{v1.0.1}{2021/11/20}{修改公式编号分割符-为.}
+% 设置公式编号方式为 X.n
 %    \begin{macrocode}
 \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter.\fi\@arabic\c@equation}
 %    \end{macrocode}
@@ -4585,6 +4630,14 @@ delim_1 "\\hspace*{\\fill}"
   figurename=图,
   tablename=表
 }
+%</artcfg>
+%    \end{macrocode}
+%
+% \subsubsection{论文信息}
+% \label{sec:thesisinfo}
+% 包括论文作者、单位、指导教师、日期等信息。
+%    \begin{macrocode}
+%<*artcfg>
 \let\CJK@todaysave=\today
 \def\CJK@todaysmall@short{\the\year 年 \the\month 月}
 \def\CJK@todaysmall{\the\year 年 \the\month 月 \the\day 日}
@@ -4664,7 +4717,6 @@ delim_1 "\\hspace*{\\fill}"
         \songti\sanhao\textbf{哈工程（烟台）制}
     \end{center}
 }
-
 \newcommand{\heu@harbin@schoolbottommark}{
    \begin{center}
      \songti\sanhao\textbf{研究生院制}
@@ -4690,11 +4742,12 @@ delim_1 "\\hspace*{\\fill}"
 \end{enumerate}
 }
 \newcommand{\heu@datefill}{\hspace{2.5em}年\hspace{1.5em}月\hspace{1.5em}日}
-\def\heu@hi{大工至善，大学至臻}
+\def\heu@motto{大工至善，大学至臻}
 \def\heuthesis{\textsc{heu}\-\textsc{Thesis}}
 \def\heu{哈尔滨工程大学}
 %</artcfg>
 %    \end{macrocode}
+%
 % \subsubsection{浮动对象以及表格}
 % \label{sec:float}
 % 设置浮动对象和文字之间的距离，由于规范中没有明确规定，根据经验，设置成正文汉字
@@ -4746,17 +4799,17 @@ delim_1 "\\hspace*{\\fill}"
   \vskip\abovecaptionskip
   \wuhao\sbox\@tempboxa{#1\ifheu@bachelor\hskip\ccwd\else\enskip\fi#2}%
   \ifdim \wd\@tempboxa >\hsize
-      \ifheu@capcenterlast%
-          \vskip 6.3bp%
-          {\setbox0=\vbox{#1\ifheu@bachelor\hskip\ccwd\else\enskip\fi#2}
-              \setbox1=\vbox{%
-                  \unvbox0
-                  \setbox2=\lastbox
-                  \hbox to \textwidth{\hfill\unhcopy2 \unskip\unskip\hfill}
-              }
+    \ifheu@capcenterlast%
+      \vskip 6.3bp%
+        {\setbox0=\vbox{#1\ifheu@bachelor\hskip\ccwd\else\enskip\fi#2}
+           \setbox1=\vbox{%
+             \unvbox0
+             \setbox2=\lastbox
+             \hbox to \textwidth{\hfill\unhcopy2 \unskip\unskip\hfill}
+            }
           \unvbox1}
       \else%
-          #1\ifheu@bachelor\hskip\ccwd\else\enskip\fi#2%
+        #1\ifheu@bachelor\hskip\ccwd\else\enskip\fi#2%
       \fi%
     \par
   \else
@@ -4825,16 +4878,7 @@ delim_1 "\\hspace*{\\fill}"
 %    图表名称及格式。
 %    \begin{macrocode}
 \renewcommand{\thesubtable}{(\alph{subtable})}
-%    \end{macrocode}
-% \changes{v1.0.1}{2021/11/20}{修改图标编号分割符-为.}
-%    \begin{macrocode}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}%使图编号为 7.1 的格式 %\protect{~}
-%    \end{macrocode}
-% 修改字图为双括号
-%    \begin{macrocode}
-%    \end{macrocode}
-% \changes{v1.0.1}{2021/11/20}{修改图标编号分割符-为.}
-%    \begin{macrocode}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}%使子图编号为 (a) 的格式
 \renewcommand{\p@subfigure}{\thefigure~} %使子图引用为 7.1(a) 的格式，母图编号和子图编号之间用~加一个空格
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}%使表编号为 7.1 的格式
@@ -4851,7 +4895,7 @@ delim_1 "\\hspace*{\\fill}"
 \setlength{\belowcaptionskip}{0pt}
 % 自定义项目列表标签及格式 \begin{publist} 列表项 \end{publist}
 \newcounter{pubctr} %自定义新计数器
-\newenvironment{publist}{%%%%%定义新环境
+\newenvironment{publist}{%%定义新环境
 \begin{list}{[\arabic{pubctr}]} %%标签格式
     {
      \usecounter{pubctr}
@@ -4880,6 +4924,7 @@ delim_1 "\\hspace*{\\fill}"
 \arraycolsep=1.6pt
 %</bookcls>
 %    \end{macrocode}
+%
 % \subsubsection{章节标题}
 % \label{sec:theor}
 %    \begin{macrocode}
@@ -5113,7 +5158,6 @@ delim_1 "\\hspace*{\\fill}"
     paragraph/afterindent=true,
     subparagraph/afterindent=true
   }
-
 \else
   \ctexset{%
     chapter={
@@ -5348,7 +5392,6 @@ delim_1 "\\hspace*{\\fill}"
 \heu@def@term{cnumber} %编号
 \heu@def@term{natclassifiedindex}  %国内图书分类号
 \heu@def@term{intclassifiedindex}  %国际图书分类号
-
 \heu@def@term{ctitlecover} %中文标题封面
 \heu@def@term{ctitle} %中文标题
 \heu@def@term{csubtitle} %中文副标题
@@ -5364,18 +5407,15 @@ delim_1 "\\hspace*{\\fill}"
 \heu@def@term{csubmitdate}%论文提交日期
 \heu@def@term{coralexdate}%论文答辩日期
 \heu@def@term{cdate}%论文封面日期
-\heu@def@term{cpositionname}%博士后工作站名称
 %    \end{macrocode}
 % 添加博后封皮选项
 %    \begin{macrocode}
+\heu@def@term{cpositionname}%博士后工作站名称
 \heu@def@term{cfinishdate}%完成日期
 \heu@def@term{cstartdate}%开始日期
 \heu@def@term{cenddate}%博士后期满时间
-%    \end{macrocode}
-% 添加博后封皮的title选项
-%    \begin{macrocode}
 
-\heu@def@term{cstudentid}%学会
+\heu@def@term{cstudentid}%学号
 \heu@def@term{cstudenttype}%学生类型
 \heu@def@term{ctitleone}%第一行标题
 \heu@def@term{ctitletwo}%第二行标题
@@ -5457,15 +5497,14 @@ delim_1 "\\hspace*{\\fill}"
 
 \def\heu@postdoc@classifiedindex{分类号}
 \def\heu@postdoc@secretlevel{密级}
+\def\heu@postdoc@number{编号}
 \def\heu@postdoc@UDC{U\hspace{0.4\ccwd}D\hspace{0.4\ccwd}C：}
 \def\heu@stage@opening{开题}
 \def\heu@stage@midterm{中期}
 \def\heu@stage@doctype{报告}
 
-
-\def\heu@postdoc@number{编号}
 %    \end{macrocode}
-% 更改博后封皮中字间距
+% 调整博后封皮中字间距
 %    \begin{macrocode}
 \def\heu@postdoc@documenttitle{博\hspace{0.58\ccwd}士\hspace{0.58\ccwd}后\hspace{0.58\ccwd}研\hspace{0.58\ccwd}究\hspace{0.58\ccwd}工\hspace{0.58\ccwd}作\hspace{0.58\ccwd}报\hspace{0.58\ccwd}告}
 \def\heu@postdoc@documenttitlenospace{博士后研究工作报告}
@@ -5478,22 +5517,15 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@postdoc@startdate{研究工作起始时间}
 \def\heu@postdoc@enddate{研究工作期满时间}
 \def\heu@postdoc@separator{：}
-
 %    \end{macrocode}
-% 添加博后选项
+% 添加本科开题封皮中title定义
 %    \begin{macrocode}
-
 \def\heu@bachelor@cxuewei{本科}
 \def\heu@bachelor@cthesisname{毕业论文}
 \def\heu@bachelor@cmajortitle{专\hspace{2\ccwd}业}
 \def\heu@bachelor@cstudenttitle{学\hspace{2\ccwd}生}
 \def\heu@bachelor@cstudentidtitle{学\hspace{2\ccwd}号}
 \def\heu@bachelor@cclass{班\hspace{2\ccwd}号}
-
-%    \end{macrocode}
-% 添加本科开题封皮中title定义
-%    \begin{macrocode}
-
 \def\heu@bachelor@caffiltitle{学院（系）名称}
 %</bookcfg>
 %    \end{macrocode}
@@ -5508,8 +5540,6 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@bachelor@cprofessionaltitle{职称}
 \def\heu@bachelor@cthesistitle{题目}
 \def\heu@bachelor@cstudenttitle{学生姓名}
-\def\heu@cthesisname{学位论文}
-
 \def\heu@bachelor@cdatetitle{日\hspace{2\ccwd}期}
 
 \newcommand{\heu@bachelor@teachercomment}{指导教师评语：}
@@ -5517,19 +5547,16 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@bachelor@checkdate}{检查日期：}
 
 \def\heu@cthesistitleprefix{题\hspace{\ccwd}目}
-
+\def\heu@cthesisname{学位论文}
 \def\heu@cschoolname{哈尔滨工程大学}
 %</bookcfg>
 %    \end{macrocode}
-% 此处添加青岛校区设置
+% 此处添加校区设置
 %    \begin{macrocode}
 %<*bookcfg>
 \def\heu@qingdaocampus{（青岛）}
 \def\heu@yantaicampus{（烟台）}
 \def\heu@harbincampus{（哈尔滨）}
-%    \end{macrocode}
-% 添加哈尔滨校区选项
-%    \begin{macrocode}
 
 \def\heu@cschoolnametitle{学位授予单位}
 \def\heu@csubmitdatatitle{论文提交日期}
@@ -5562,7 +5589,9 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@internatclassifiedindextitle{ＵＤＣ}
 \def\heu@secretlevel{密级}
 \def\heu@cnumbertitle{编号}
-
+%    \end{macrocode}
+% 专业学位论文扉页研究类型选项
+%    \begin{macrocode}
 \ifheu@productdevelopment
   \def\heu@searcetype{（\ding{110}产品设计~\ding{113}工程规划~\ding{113}工程设计~\ding{113}应用研究）}
 \fi
@@ -5661,8 +5690,8 @@ delim_1 "\\hspace*{\\fill}"
 }
 
 \newcommand{\heu@authorizationtext}{%
-本人完全了解学校保护知识产权的有关规定，即研究生在校攻读学位期间论文工作的知识产权属于\heu@cschoolname 。\heu@cschoolname 有权保留并向国家有关部门或机构送交论文的复印件。本人允许\heu@cschoolname 将论文的部分或全部内容编入有关数据库进行检索，可采用影印、缩印或扫描等复制手段保存和汇编本学位论文，可以公布论文的全部内容。同时本人保证毕业后结合学位论文研究课题再撰写的论文一律注明作者第一署名单位为\heu@cschoolname 。涉密学位论文待解密后适用本声明。
-本论文（□在授予学位后即可  □在授予学位12个月后  □解密后）由\heu送交有关部门进行保存、汇编等。}
+本人完全了解学校保护知识产权的有关规定，即研究生在校攻读学位期间论文工作的知识产权属于 \heu@cschoolname 。\heu@cschoolname 有权保留并向国家有关部门或机构送交论文的复印件。本人允许 \heu@cschoolname 将论文的部分或全部内容编入有关数据库进行检索，可采用影印、缩印或扫描等复制手段保存和汇编本学位论文，可以公布论文的全部内容。同时本人保证毕业后结合学位论文研究课题再撰写的论文一律注明作者第一署名单位为 \heu@cschoolname 。涉密学位论文待解密后适用本声明。
+本论文（□在授予学位后即可  □在授予学位12个月后  □解密后）由 \heu@cschoolname 送交有关部门进行保存、汇编等。}
 \newcommand{\heu@declarename@bachelor}{\heu@cschoolname 本科毕业设计（论文）原创性声明}
 \newcommand{\heu@authorizationtext@bachelor}{%
 本人郑重声明：在\heu@cschoolname 攻读学士学位期间，所提交的毕业设计（论文）《\heu@ctitle》，是本人在导师指导下独立进行研究工作所取得的成果。对本文的研究工作做出重要贡献的个人和集体，均已在文中以明确方式注明，其它未注明部分不包含他人已发表或撰写过的研究成果，不存在购买、由他人代写、剽窃和伪造数据等作假行为。本人完全意识到本声明的法律结果由本人承担。}
@@ -5691,7 +5720,7 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@datefill}{\hspace{2.5em}年\hspace{1.5em}月\hspace{1.5em}日}
 \newcommand{\heu@publication@etitle}{Papers published in the period of Ph.D. education}
 \def\heu@index@etitle{Index}
-\def\heu@hi{大工至善，大学至臻}
+\def\heu@motto{大工至善，大学至臻}
 \def\heu@cbraceleft{（}
 \def\heu@cbraceright{）}
 \def\heu@ebraceleft{(}
@@ -5771,7 +5800,7 @@ delim_1 "\\hspace*{\\fill}"
   \ifthenelse%
   {\equal{\heu@fontset}{siyuan}}%
   {\xiaosi[1]\vspace*{0.65em}}%
-  {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@hi}}}%
+  {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@motto}}}%
   \vspace*{1.2cm}
   \begin{center}
     \parbox[t][8cm][t]{\textwidth}{
@@ -5816,7 +5845,7 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@first@titlepage@bachelor}{
 \ifthenelse%
   {\equal{\heu@fontset}{siyuan}}%
-  {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@hi}}}%
+  {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@motto}}}%
   \vspace*{0.1cm}
   \begin{center}
   {\songti \xiaosi
@@ -5902,7 +5931,7 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@first@titlepage@other}{
 \ifthenelse%
 {\equal{\heu@fontset}{siyuan}}%
-{\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@hi}}}%
+{\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@motto}}}%
  \vspace*{0.1cm}
 \begin{center}
   {\songti \xiaosi
@@ -6082,11 +6111,11 @@ delim_1 "\\hspace*{\\fill}"
   \relax
   \else
   \authorization[authorization.pdf]
+%    \end{macrocode}
+%    生成独创性声明和授权签字页。
+%    \begin{macrocode}
   \fi
   \cleardoublepage
-%    \end{macrocode}
-%    生成授权签字页。
-%    \begin{macrocode}
   \heu@makeabstract}
 %    \end{macrocode}
 %    生成参考文献和关键字。
@@ -6107,8 +6136,7 @@ delim_1 "\\hspace*{\\fill}"
   \addtocontents{\ext@figure}{{\noindent\sihao\textbf{Figure}~\hfill\textbf{Page}}\par}%
   \fi
 %    \end{macrocode}
-% 英文版目录之前有page行
-% \changes{v1.0.4}{2021/12/01}{根据最新要求修改摘要页眉}
+% 摘要不加入目录、不在页眉显示
 %    \begin{macrocode}
 %  \heu@appendix@chapter*{\cabstractcname}[\cabstractename]
   \pagestyle{heu@titleheadings}
@@ -6125,7 +6153,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \begin{macrocode}
   \ifheu@openright\cleardoublepage\else\clearpage\fi
 %    \end{macrocode}
-% \changes{v1.0.4}{2021/12/01}{根据最新要求修改摘要页眉}
+% 摘要不加入目录、不在页眉显示
 %    \begin{macrocode}
 %  \heu@appendix@chapter*{\eabstractcname}[\eabstractename]
   \begin{center}
@@ -6142,9 +6170,6 @@ delim_1 "\\hspace*{\\fill}"
   \ifheu@openright\cleardoublepage\else\clearpage\fi
   \heu@appendix@chapter*{\heu@denotation@ctitle}[\heu@denotation@etitle]
 \setcounter{table}{0}
-%    \end{macrocode}
-% \changes{v1.0.1}{2021/11/20}{修改图标编号分割符-为.}
-%    \begin{macrocode}
 \renewcommand{\thetable}{\arabic{table}}%使表编号为 1 的格式
   }{\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}%使表编号为 7.1 的格式
 \setcounter{table}{0}}%
@@ -6159,7 +6184,7 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@listof#1#2{% #1: float type
   \ifheu@openright\cleardoublepage\else\clearpage\fi
 %    \end{macrocode}
-% \changes{v1.0.4}{2021/12/01}{根据最新要求修改索引页眉}
+% 前文的图、表清单不列入目录
 %    \begin{macrocode}
 %  \heu@appendix@chapter*[\csname list#1name\endcsname]{\csname list#1name\endcsname}[#2]
   \begin{center}
@@ -6182,22 +6207,20 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand\listofequations{\heu@listof{equation}{\listequationename}}
 \let\l@equation\l@figure
 %    \end{macrocode}
+%
 % \subsubsection{目录}
 % \label{sec:toc}
-% 本科文科生要求目录有四级。
+% 默认目录是三级，如需要四级目录需要设置 tocfour=true。
 %    \begin{macrocode}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
 \ifheu@bachelor\ifheu@tocfour\setcounter{tocdepth}{3}\fi\fi
-%    \end{macrocode}
-%    工程大学论文目录中的潜规则：目录中的目录位置是空白。
-%    \begin{macrocode}
 \renewcommand\tableofcontents{%
 \ifheu@openright\cleardoublepage\else\clearpage\fi
 \phantomsection
 \markboth{\contentsname}{ccontent}
 %    \end{macrocode}
-% \changes{v1.0.4}{2021/12/01}{根据最新要求修改摘要页眉}
+% 工程大学论文要求：目录中的目录位置是空白。
 %    \begin{macrocode}
 %\heu@chapter*{\contentsname}
 \begin{center}
@@ -6209,7 +6232,7 @@ delim_1 "\\hspace*{\\fill}"
 \ifheu@doctor
 \tableofengcontents
 %    \end{macrocode}
-% 有些硕士的范例中带有英文目录，这里添加手动开关
+% 有些硕士的范例中带有英文目录，这里添加手动开关 engtoc=true
 %    \begin{macrocode}
 \else
 \ifheu@engtoc
@@ -6217,7 +6240,7 @@ delim_1 "\\hspace*{\\fill}"
 \fi
 \fi
 %    \end{macrocode}
-% 将英文目录潜入中文目录命令中，进一步简化thesis.tex结构
+% 将英文目录嵌入中文目录命令中
 %    \begin{macrocode}
 \ifheu@english
 \printnoidxglossary[sort=word,style=engstyle,title={Nomenclature},nopostdot,nonumberlist]
@@ -6322,7 +6345,6 @@ delim_1 "\\hspace*{\\fill}"
 \setlist[translationbib]{label=[\arabic*],align=left,nosep,itemsep=6bp,
   leftmargin=10mm,labelsep=!,before=\vspace{0.5\baselineskip}\wuhao[1.3]}
 
-
 \newenvironment{conclusions}{%
 \ifheu@openright\cleardoublepage\else\clearpage\fi
 \ifheu@english
@@ -6345,7 +6367,6 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 博后用到的通讯页面
 %    \begin{macrocode}
-
 \newenvironment{resume}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
   \heu@appendix@chapter*{\heu@resume@ctitle}[\heu@resume@etitle]}{}
@@ -6353,13 +6374,12 @@ delim_1 "\\hspace*{\\fill}"
   \ifheu@openright\cleardoublepage\else\clearpage\fi
   \heu@appendix@chapter*{\heu@publication@ctitle}[\heu@publication@etitle]}{}
 
-
 \newenvironment{doctorpublication}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
   \heu@appendix@chapter*{\heu@doctorpublication@ctitle}}{}
 %    \end{macrocode}
 % 此处添加博后用到的博士生发表页面
-% 此处中英文索引的格式设置尽量符合\PGR\ 中给出的示例的格式。此处间距常数是人工调节的。
+% 此处中英文索引的格式设置尽量符合 \PGR\ 中给出的示例的格式。此处间距常数是人工调节的。
 %    \begin{macrocode}
 \newenvironment{ceindex}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
@@ -6495,6 +6515,7 @@ delim_1 "\\hspace*{\\fill}"
         #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi\endgroup}
 %</bookcls>
 %    \end{macrocode}
+%
 % \subsection{其它}
 % \label{sec:other}
 % 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改。
@@ -6509,7 +6530,7 @@ delim_1 "\\hspace*{\\fill}"
 %<*heuthesis-style>
 % 此文件声明不在规范中要求的格式所使用的宏包。
 % （所以，格式基本上是自由发挥的。）
-
+%
 % 根据我校规范中对数字书写规范的规定（6）：
 % 凡4位或4位以上的数都从个位起每3位数空半个数码(1/4汉字)。
 % 注意此处，除此任何空格都是错误的（包括\:\;\ 等）
@@ -6955,11 +6976,12 @@ breaklines=true
 %    \end{macrocode}
 %    \begin{macrocode}
 %<bookcfg|dtx-style>\newcommand{\pozhehao}{——}
+%<bookcfg|dtx-style>\def\heu{哈尔滨工程大学}
 %<bookcfg|dtx-style>\def\heuthesis{\textsc{heu}\-\textsc{Thesis}}
 %<bookcfg|dtx-style>\def\PGR{\href{http://yjsy.hrbeu.edu.cn/2017/0327/c11369a113996/page.htm}
-%<bookcfg|dtx-style>{《哈尔滨工程大学研究生学位论文撰写规范》}}
+%<bookcfg|dtx-style>{《 \heu 研究生学位论文撰写规范》}}
 %<bookcfg|dtx-style>\def\UGR{\href{http://ugs.hrbeu.edu.cn/main.htm}
-%<bookcfg|dtx-style>{《哈尔滨工程大学本科生毕业论文撰写规范》}}
+%<bookcfg|dtx-style>{《 \heu 本科生毕业论文撰写规范》}}
 %<bookcfg>\def\heu@inline@sep{，}
 %<*dtx-style>
   \NewDocumentEnvironment{heurgu}{o o}
