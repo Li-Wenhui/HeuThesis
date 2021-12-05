@@ -2960,29 +2960,12 @@ EXECUTE {end.bib}                                 %   end_bib();
 \fi
 \fi
 
-\ifheu@doctor
-  \ifheu@midterm
-    \ifheu@qingdao
-      \relax
-    \else
-      \ClassError{heuthesisartplus}%
-      {
-        \MessageBreak This document class only support midterm report for doctor
-        in qingdao campus
-      }
-    \fi
-  \else
-    \ClassError{heuthesisartplus}%
-    {
-      \MessageBreak This document class only support midterm report for doctor
-      in qingdao campus
-    }
-  \fi
+\ifheu@midterm
+  \relax
 \else
   \ClassError{heuthesisartplus}%
   {
-    \MessageBreak This document class only support midterm report for doctor
-    in qingdao campus
+    \MessageBreak This document class only support midterm report.
   }
 \fi
 
@@ -3192,6 +3175,68 @@ EXECUTE {end.bib}                                 %   end_bib();
 
 \def\heusetup{\kvsetkeys{heu}}
 
+%    \end{macrocode}
+% 中期检查报告封面
+%    \begin{macrocode}
+\newcommand{\heu@report@titlepage@graduate}{
+  \ifthenelse%
+  {\equal{\heu@fontset}{siyuan}}%
+  {\xiaosi[1]\vspace*{0.65em}}%
+  {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@motto}}}%
+  \vspace*{10mm}
+  \begin{center}
+    \songti\erhao\textbf{\heu@cschoolname\ifheu@qingdao\heu@qingdaocampus\fi\ifheu@yantai\heu@yantaicampus\fi}
+  \end{center}
+  \begin{center}
+    \songti\erhao\textbf{\heu@cthesismidtermcheck}
+  \end{center}
+   \vspace{66bp}
+     \parbox[b][3cm][t]{\textwidth}{
+       \begin{center}\songti\xiaosan
+       \renewcommand{\arraystretch}{1.8}
+       \begin{tabular}{l@{\ \ }c}
+         \textbf{\heu@graduate@studenttitle：} & \underline{\makebox[6.1cm]{\textbf{\heu@cauthor}}}\\
+         \textbf{\heu@graduate@enrolldate：} & \underline{\makebox[6.1cm]{\textbf{\heu@cenrolldate}}}\\
+         \textbf{\heu@graduate@thesistitle：} & \underline{\makebox[6.1cm]{\textbf{\heu@ctitleone}}}\\
+                                            & \underline{\makebox[6.1cm]{\textbf{\heu@ctitletwo}}}\\
+         \textbf{\heu@graduate@cafflimajor：} & \underline{\makebox[6.1cm]{\textbf{\heu@csubject}}}\\
+         \textbf{\heu@graduate@datetitle：} & \underline{\makebox[6.1cm]{\textbf{\heu@cdate}}}\\
+         \textbf{\heu@graduate@supervisor：} & \underline{\makebox[6.1cm]{\textbf{\heu@csupervisor}}}\\
+       \end{tabular}\renewcommand{\arraystretch}{1}
+     \end{center}
+	}
+   \vfill
+   \ifheu@harbin
+   \heu@harbin@schoolbottommark
+   \else
+   \ifheu@qingdao
+   \heu@qingdao@schoolbottommark
+   \else
+   \ifheu@yantai
+   \heu@yantai@schoolbottommark
+   \fi
+   \fi
+   \fi
+}
+
+\def\makecover{
+  \begin{titlepage}
+    \heu@report@titlepage@graduate
+    \clearpage
+    \heu@doctor@midterm@note
+  \end{titlepage}
+  \AddToShipoutPicture{%
+    \begin{tikzpicture}[remember picture,overlay]
+      \draw ($(current page text area.south west)+(-5mm,0mm)$) rectangle ($(current page text area.north east)+(5mm,2mm)$);
+    \end{tikzpicture}
+  }
+  \pagestyle{fancy}
+  \fancyhead{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+  \fancyfoot[C]{\xiaowu-~\thepage~-}
+}
+
 \newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
 \newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{\heu@inline@sep}}
 
@@ -3332,14 +3377,11 @@ EXECUTE {end.bib}                                 %   end_bib();
 
 \ifheu@doctor
 \ifheu@midterm
-\ifheu@qingdao
 \ClassError{heuthesisart}%
 {
-  \MessageBreak This document class does not support midterm report for doctor
-  in qingdao campus.
+  \MessageBreak This document class does not support midterm report for doctor.
   \MessageBreak please use \string\documentclass{heuthesisartplus}
 }
-\fi
 \fi
 \fi
 
@@ -3364,9 +3406,9 @@ EXECUTE {end.bib}                                 %   end_bib();
 \RequirePackage{ifxetex}
 \ifxetex
 \else
-        \ClassError{heuthesis}%
-                   {Please use: \MessageBreak
-                    xelatex}{}
+  \ClassError{heuthesis}%
+    {Please use: \MessageBreak
+     xelatex}{}
 \fi
 \RequirePackage{xparse}
 \RequirePackage{amsmath}
@@ -3544,6 +3586,63 @@ EXECUTE {end.bib}                                 %   end_bib();
       \expandafter\csname heu@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
 
 \def\heusetup{\kvsetkeys{heu}}
+
+%    \end{macrocode}
+% 开题报告封面
+%    \begin{macrocode}
+\newcommand{\heu@report@titlepage@graduate}{
+  \ifthenelse%
+  {\equal{\heu@fontset}{siyuan}}%
+  {\xiaosi[1]\vspace*{0.65em}}%
+  {\xiaosi[1]\textcolor[rgb]{1,1,1}{\songti{\heu@motto}}}%
+  \vspace*{10mm}
+  \begin{center}
+    \kaishu\xiaoer\textbf{\heu@cschoolname\ifheu@qingdao\heu@qingdaocampus\fi\ifheu@yantai\heu@yantaicampus\fi}
+  \end{center}
+  \vspace{1mm}
+  \begin{center}
+    \songti\erhao\textbf{\heu@cxuewei\heu@cthesisname
+      \ifheu@opening
+      \heu@stage@opening
+      \else
+      \ifheu@midterm
+      \heu@stage@midterm
+      \fi
+      \fi
+      \heu@stage@doctype
+    }
+  \end{center}
+   \vspace{10mm}
+   \parbox[t][3cm][t]{\textwidth}{
+     \begin{center}
+       \songti\xiaoer\textbf{\heu@cthesistitleprefix\heu@title@csep\heu@ctitlecover}
+     \end{center}
+   }
+     \parbox[b][3cm][t]{\textwidth}{
+       \begin{center}\songti\sanhao
+       \renewcommand{\arraystretch}{1.8}
+       \begin{tabular}{l@{\ \ }c}
+         \textbf{\heu@graduate@caffiltitle：} & \underline{\makebox[6.1cm]{\textbf{\heu@caffil}}}\\
+         \textbf{\heu@graduate@cmajortitle：} & \underline{\makebox[6.1cm]{\textbf{\heu@csubject}}}\\
+         \textbf{\heu@graduate@supervisor：} & \underline{\makebox[6.1cm]{\textbf{\heu@csupervisor}}}\\
+         \textbf{\heu@graduate@studenttitle：} & \underline{\makebox[6.1cm]{\textbf{\heu@cauthor}}}\\
+         \textbf{\heu@graduate@studentid：} & \underline{\makebox[6.1cm]{\textbf{\heu@cstudentid}}}\\
+         \textbf{\heu@graduate@datetitle：} & \underline{\makebox[6.1cm]{\textbf{\heu@cdate}}}\\
+       \end{tabular}\renewcommand{\arraystretch}{1}
+     \end{center}
+     }
+   \vfill
+   \ifheu@harbin
+   \heu@harbin@schoolbottommark
+   \else
+   \ifheu@qingdao
+   \heu@qingdao@schoolbottommark
+   \else
+   \ifheu@yantai
+   \heu@yantai@schoolbottommark
+   \fi
+   \fi
+}
 
 \newcommand{\heu@report@titlepage@bachelor}{
    \ifthenelse%
@@ -4684,10 +4783,21 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@bachelor@teachersign}{指导教师签字：}
 \newcommand{\heu@bachelor@checkdate}{检查日期：}
 \def\heu@cthesistitleprefix{题\hspace{\ccwd}目}
+\def\heu@graduate@caffiltitle{院\hspace{3\ccwd}（系）}
+\def\heu@graduate@cmajortitle{学\hspace{4\ccwd}科}
+\def\heu@graduate@supervisor{导\hspace{4\ccwd}师}
+\def\heu@graduate@studenttitle{研\hspace{1.5\ccwd}究\hspace{1.5\ccwd}生}
+\def\heu@graduate@studentid{学\hspace{4\ccwd}号}
+\def\heu@graduate@datetitle{\ifheu@opening\heu@stage@opening
+\else\ifheu@midterm\heu@stage@midterm\fi\fi\heu@stage@doctype 日期}
+\def\heu@graduate@enrolldate{入\hspace{0.6666666\ccwd}学\hspace{0.6666666\ccwd}时\hspace{0.6666666\ccwd}间}
+\def\heu@graduate@thesistitle{论\hspace{0.6666666\ccwd}文\hspace{0.6666666\ccwd}题\hspace{0.6666666\ccwd}目}
+\def\heu@graduate@cafflimajor{学\hspace{0.6666666\ccwd}科\hspace{0.6666666\ccwd}专\hspace{0.6666666\ccwd}业}
 \def\heu@cschoolname{哈尔滨工程大学}
 \def\heu@qingdaocampus{（青岛）}
 \def\heu@cthesisname{学位论文}
 \def\heu@yantaicampus{（烟台）}
+\def\heu@cthesismidtermcheck{\heu@cxueweishort\hspace{.125\ccwd}士\hspace{.125\ccwd}学\hspace{.125\ccwd}位\hspace{.125\ccwd}论\hspace{.125\ccwd}文\hspace{.125\ccwd}中\hspace{.125\ccwd}期\hspace{.125\ccwd}检\hspace{.125\ccwd}查\hspace{.125\ccwd}报\hspace{.125\ccwd}告}
 \def\heu@cschoolnametitle{学位授予单位}
 \def\heu@csubmitdatatitle{论文提交日期}
 \def\heu@coralexdatetitle{论文答辩日期}
@@ -4727,7 +4837,7 @@ delim_1 "\\hspace*{\\fill}"
      \lishu\xiaoer\textbf{哈尔滨工程大学教务处制}
    \end{center}
 }
-\newcommand{\heu@qingdao@doctor@midterm@note}{
+\newcommand{\heu@doctor@midterm@note}{
 \thispagestyle{empty}
 {\begin{center}
 \songti\sanhao\textbf{说\hspace{4\ccwd}明}
@@ -5674,7 +5784,7 @@ delim_1 "\\hspace*{\\fill}"
    \end{center}
 }
 
-\newcommand{\heu@qingdao@doctor@midterm@note}{
+\newcommand{\heu@doctor@midterm@note}{
 \thispagestyle{empty}
 {\begin{center}
 \songti\sanhao\textbf{说\hspace{4\ccwd}明}
@@ -5698,10 +5808,6 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@declarename}{学位论文原创性声明}
 \newcommand{\heu@declaretext}{%
 本人郑重声明：本论文的所有工作，是在导师的指导下，由作者本人独立完成的。有关观点、方法、数据和文献的引用已在文中指出，并与参考文献相对应。除文中已注明引用的内容外，本论文不包含任何其他个人或集体已经公开发表的作品成果。对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果由本人承担。}
-
-%    \end{macrocode}
-% 添加青岛中期报告内容
-%    \begin{macrocode}
 
 \ifheu@english
 \newcommand{\heu@publication@ctitle}{Author's Publications}
