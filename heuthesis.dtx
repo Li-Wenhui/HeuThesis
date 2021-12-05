@@ -2844,6 +2844,13 @@ EXECUTE {end.bib}                                 %   end_bib();
   \heu@projectdesignfalse
   \heu@applicationResearchfalse
   \expandafter\csname heu@#1true\endcsname}
+\ifheu@productdevelopment\relax\else
+\ifheu@projectdplanning\relax\else
+\ifheu@projectdesign\relax\else
+\heu@applicationResearchtrue
+\fi
+\fi
+\fi
 
 \newif\ifheu@qingdao
 \newif\ifheu@yantai
@@ -3204,6 +3211,13 @@ EXECUTE {end.bib}                                 %   end_bib();
   \heu@projectdesignfalse
   \heu@applicationResearchfalse
   \expandafter\csname heu@#1true\endcsname}
+\ifheu@productdevelopment\relax\else
+\ifheu@projectdplanning\relax\else
+\ifheu@projectdesign\relax\else
+\heu@applicationResearchtrue
+\fi
+\fi
+\fi
 
 \newif\ifheu@qingdao
 \newif\ifheu@yantai
@@ -3636,6 +3650,13 @@ EXECUTE {end.bib}                                 %   end_bib();
   \heu@projectdesignfalse
   \heu@applicationResearchfalse
   \expandafter\csname heu@#1true\endcsname}
+\ifheu@productdevelopment\relax\else
+\ifheu@projectdplanning\relax\else
+\ifheu@projectdesign\relax\else
+\heu@applicationResearchtrue
+\fi
+\fi
+\fi
 %    \end{macrocode}
 % 此处设置校区，没有明确给出烟台或者青岛时候，默认为哈尔滨校区。
 %    \begin{macrocode}
