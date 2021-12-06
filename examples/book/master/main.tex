@@ -27,6 +27,9 @@
 % tocfour=true|false
 %   含义：是否添加第四级目录，只对本科文科个别要求四级目录有效，缺省值为
 %   false
+% fontset=windows|mac|ubuntu|fandol|adobe
+%   含义：设置字体，默认情况会自动识别系统，然后设置字体。后两个是开源字体，自行
+%   下载安装后设置使用。
 % subtitle=true|false
 %   含义：论文题目是否含有副标题，缺省值为false，如果有要在cover中设置副标
 %   题内容，封面中显示。
@@ -45,17 +48,26 @@
 
 \begin{document}
 \frontmatter
-\input{front/cover} % 封面和摘要
+\input{front/cover} % 封面和扉页
 \makecover
 
-\tableofcontents %论文目录
+\authorization               % 使用模板生成的原始原创性与授权声明页
+%%\authorization[auscan.pdf] % 使用签字扫描版的原创性与授权声明页
 
-\listoffigures%%----------  插图目录, 如不需要可用 % 注释掉下面两行
-\listoftables%%----------  表格目录, 如不需要可用 % 注释掉下面两行
-\cleardoublepage
+\cleardoublepage   % 控制右开页，与前文连续开页时注释掉
+\makeabstract      % 封面和摘要
 
+\cleardoublepage   % 控制右开页，与前文连续开页时注释掉
+\tableofcontents   % 论文目录
 
-%%----------  论文主体，可以根据需要添加章节
+%%\cleardoublepage % 控制右开页，与前文连续开页时注释掉
+\listoffigures     % 插图目录, 如不需要可用 % 注释掉下面两行
+
+%%\cleardoublepage % 控制右开页，与前文连续开页时注释掉
+\listoftables      % 表格目录, 如不需要可用 % 注释掉下面两行
+
+%%----------  论文主体，可以根据需要添加章节 --------------
+\cleardoublepage % 控制右开页，后续论文正文一般采用此格式
 \mainmatter
 \include{body/chap01}
 \include{body/chap02}
@@ -65,7 +77,7 @@
 \include{body/chap07}
 \include{body/chap08}
 
-%%----------  论文结论、参考文献、附录等部分
+%%----------  论文结论、参考文献、附录等部分 ------------
 \backmatter
 \include{back/conclusion}   % 结论
 
