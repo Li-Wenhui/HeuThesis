@@ -123,35 +123,92 @@ First things first，首先的工作是安装一个合适的 \XeTeX{}编译系�
 当然，你也可以自己配置 VIM 下的 \LaTeX{}编译环境。在 Windows 环境下，可以在网上下载免费的
 TeXStudio 软件进行 tex 文件编辑。
 
-\subsection{编译运行}[Compile]
+\subsection{生成论文}[Compile]
+\label{sec:generate-thesis}
 
 在安装并配置好编译环境之后，接下来的工作就是如何编译 \XeLaTeX{} 文件，生成
 所需的 PDF 文档了。
 
 任何文本编辑工具都可以用来编写论文，当然 Linux 下也有很多免费的集成编辑工具可以使用。
 
-以本模版为例，在 \TeX{}works 编译过程是这样的：
+本节介绍几种常见的生成论文的方法。用户可根据自己的情况选择。
+
+\subsubsection{\XeLaTeX}
+\label{sec:xelatex}
+很多用户对 \LaTeX\ 命令执行的次数不太清楚。一个基本的原则是多次运行 \LaTeX\ 命
+令直至不再出现警告。下面给出生成示例文档的详细过程（\texttt{\#} 开头的行为注
+释），首先来看推荐的 \texttt{xelatex} 方式：
+\begin{lstlisting}
+# 1. 发现里面的引用关系，文件后缀 .tex 可以省略
+$ xelatex main
+
+# 2. 编译参考文件源文件，生成 bbl 文件
+$ bibtex main
+
+# 3. 解决引用
+$ xelatex main
+$ xelatex main   # 如果不需要生成索引此时生成完整的 pdf 文件
+$ splitindex main -- -s heuthesis.ist  # 自动生成索引
+$ xelatex main.tex
+\end{lstlisting}
+
+\subsubsection{latexmk}
+\label{sec:latexmk}
+\texttt{latexmk} 命令支持全自动生成 \LaTeX\ 编写的文档，并且支持使用不同的工具
+链来进行生成，它会自动运行多次工具直到交叉引用都被解决。下面给出了一个用
+\texttt{latexmk} 调用 \texttt{xelatex} 生成最终文档的示例：
+\begin{lstlisting}
+$ latexmk -xelatex main
+\end{lstlisting}
+
+\subsubsection{make}
+\label{sec:make}
+
+上面使用 \texttt{xelatex} 生成论文的方法虽然不复杂，但是每次都输入还是非常罗嗦，所以 \heuthesis\ 
+提供了一个 \texttt{Makefile}，可以通过在命令行环境下执行一次 make 完成论文生成这些工作。
+
+\subsubsection{buidl.bat}
+\label{sec:build}
+
+示例文件夹中也包含了 \texttt{build.bat} 批处理文件，在 \texttt{Windows} 环境下可以
+直接使用改批处理文件生成最终 \texttt{PDF} 格式的论文 \texttt{main.pdf}。
+
+\subsection{原创性和授权声明}
+\label{sec:generate-auth}
+
+按学校研究生论文规范要求，硕士和博士论文扉页后应有论文原创性和授权声明签字页。
+该页可以使用两种方式实现：
+
 \begin{enumerate}
-\item[(1)] 打开main.tex文件；
-\item[(2)] 将工具栏上的编译命令切换至 \XeLaTeX{} 后，点击运行；
-\item[(3)] 再将工具栏上的编译命令切换至 Bib\TeX{} 后，点击运行；
-\item[(4)] 再将工具栏上的编译命令切换至 \XeLaTeX{} 后，点击运行，这里需要运行两
-  到三遍；
-\item[(5)] 如果编译没有错误，就可以看到输出的PDF文件了。
+  \item[(1)] \texttt{\cs authorization} 
+  \item[(2)] \texttt{\cs authorization[auscan.pdf]} 
 \end{enumerate}
 
-对于 \TeX{}maker ，首先需要在【选项】【配置 \TeX{}maker 】【命令】中将第一行
-的 latex 改成 xelatex，之后用 \LaTeX{} 作为 \XeLaTeX{} 命令执行即可，其他的和上
-面类似。
+格式（1）不带参数，使用模板生成的空白原创性和授权声明签字页，可先使用这种方式生成签字页后进行打印签字，然后扫描成 PDF 格式文件。
 
-对于熟悉 Linux 软件开发编译流程的同学，可以为编译过程编写一个 makefile 后使用 make 工具进行处理，
-对于在 Windows 系统下使用 tex 撰写论文的同学，也可以使用模板提供的 build.bat 批处理文件生产 PDF 文件。
+格式（2）使用带参数的方式，~\texttt{[auscan.pdf]}~指定使用~\texttt{auscan.pdf}~文件作为嵌入到论文中的原创性和授权声明签字页。
 
-除了正常的论文模板之外，还附带了论文书脊定义和 A3 封面生成工具。在生成封面前，
-需要编辑书脊定义 spine.tex 文件，将其中的论文题目和作者信息进行修改，
-然后执行 make\_cover.bat 批处理文件即可生成 a3cover.pdf 论文装订用 A3 封皮。
+模板目录中已包含空白论文原创性和授权声明文件 auscan.pdf，可以在生成论文前使用签字后扫描的pdf文件进行替换，也可以指定其他符合系统要求的文件名称。
 
-模板目录中的authorization.pdf为论文原创性和授权声明，可以在生成论文前使用签字后扫描的pdf文件进行替换。
+\subsection{生成封面}
+\label{sec:generate-cover}
+模板还提供了用于生成论文 \texttt{A3} 页面的封面定义文档。用户可根据自己的情况选择。
+
+A3 封面的生成是利用上述论文的首页封面和书脊拼合而成，因此在生成 A3 封面前
+需要先生成论文 \texttt{main.pdf} 并在 \texttt{spine.tex} 定义论文标题和作者姓名信息，
+然后使用 \texttt{xelatex} 依次编译 \texttt{spine.tex} 和 \texttt{a3cover.tex}：
+
+\begin{lstlisting}
+# 1. 使用 xelatex 
+$ xelatex spine
+$ xelatex a3cover
+
+# 2. 或者使用 latexmk
+$ latexmk spine
+$ latexmk a3cover
+\end{lstlisting}
+
+在 \texttt{Windows} 系统下也可以直接使用 \texttt{make\_cover.bat} 批处理生成 \texttt{A3} 封面。
 
 \section{字库安装}[Font Install]
 
@@ -159,7 +216,7 @@ TeXStudio 软件进行 tex 文件编辑。
 
 本模板默认是使用Windows库，可以不用设置字体选项，如果使用Adobe字体字库，需要设置~\texttt{fontset=adobe}~。
 在使用此模板撰写论文前，应该确保相应的字库已经安装，并且最好是包含宋体、黑体、楷体和仿宋的完整套装。
-在 Windows 操作系统下，只要把字库文件复制的 Windows \textbackslash Fonts 文件夹下即可，
+在 Windows 操作系统下，只要把字库文件复制到 Windows 的 Fonts 文件夹下即可，
 而对于 Linux 系统，可通过右键点击字库文件然后选择【安装字库】菜单选项进行安装。
 Linux 对于系统新安装的字库，需要使用命令~\texttt{sudo fc-cache -fsv}~刷新缓存后才可以使用。
 
