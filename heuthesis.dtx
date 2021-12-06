@@ -3011,14 +3011,9 @@ EXECUTE {end.bib}                                 %   end_bib();
 \else
   \RequirePackage[perpage,hang]{footmisc}
 \fi
-\ifheu@pifootnote
-  \RequirePackage{pifont}
-\fi
-%    \end{macrocode}
-% CJKfntef包不再自动加载xeCJKfntef
-%    \begin{macrocode}
+\RequirePackage{bbding}
+\RequirePackage{pifont}
 \RequirePackage{xeCJKfntef}
-
 \RequirePackage{diagbox}
 \RequirePackage{longtable}
 \RequirePackage{booktabs}
@@ -3649,11 +3644,10 @@ EXECUTE {end.bib}                                 %   end_bib();
   \RequirePackage[perpage,hang]{footmisc}
 \fi
 %    \end{macrocode}
-% 脚注格式。
+% 扩展符号字符红包。
 %    \begin{macrocode}
-\ifheu@pifootnote
-  \RequirePackage{pifont}
-\fi
+\RequirePackage{bbding}
+\RequirePackage{pifont}
 %    \end{macrocode}
 % 利用 \pkg{xeCJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
 % \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
@@ -5281,16 +5275,16 @@ delim_1 "\\hspace*{\\fill}"
 % 专业学位论文扉页研究类型选项
 %    \begin{macrocode}
 \ifheu@productdevelopment
-  \def\heu@searcetype{（$\blacksquare$~产品设计~$\square$~工程规划~$\square$~工程设计~$\square$~应用研究）}
+  \def\heu@searcetype{（{\wuhao\SquareSolid}产品设计\hspace{0.5\ccwd}{\wuhao\Square}工程规划\hspace{0.5\ccwd}{\wuhao\Square}工程设计\hspace{0.5\ccwd}{\wuhao\Square}应用研究）}
 \fi
 \ifheu@projectdplanning
-  \def\heu@searcetype{（$\square$~产品设计~$\blacksquare$~工程规划~$\square$~工程设计~$\square$~应用研究）}
+  \def\heu@searcetype{（{\wuhao\Square}产品设计\hspace{0.5\ccwd}{\wuhao\SquareSolid}工程规划\hspace{0.5\ccwd}{\wuhao\Square}工程设计\hspace{0.5\ccwd}{\wuhao\Square}应用研究）}
 \fi
 \ifheu@projectdesign
-  \def\heu@searcetype{（$\square$~产品设计~$\square$~工程规划~$\blacksquare$~工程设计~$\square$~应用研究）}
+  \def\heu@searcetype{（{\wuhao\Square}产品设计\hspace{0.5\ccwd}{\wuhao\Square}工程规划\hspace{0.5\ccwd}{\wuhao\SquareSolid}工程设计\hspace{0.5\ccwd}{\wuhao\Square}应用研究）}
 \fi
 \ifheu@applicationResearch
-  \def\heu@searcetype{（$\square$~产品设计~$\square$~工程规划~$\square$~工程设计~$\blacksquare$~应用研究）}
+  \def\heu@searcetype{（{\wuhao\Square}产品设计\hspace{0.5\ccwd}{\wuhao\Square}工程规划\hspace{0.5\ccwd}{\wuhao\Square}工程设计\hspace{0.5\ccwd}{\wuhao\SquareSolid}应用研究）}
 \fi
 
 \ifheu@postdoc
@@ -5384,7 +5378,7 @@ delim_1 "\\hspace*{\\fill}"
 可以公布论文的全部内容。同时本人保证毕业后结合学位论文研究课题再撰写的论文一律注明作者第一署名单位为 \heu@cschoolname 。
 涉密学位论文待解密后适用本声明。
 
-本论文（~$\square$~在授予学位后即可\quad~$\square$~在授予学位12个月后\quad~$\square$~解密后）由 \heu@cschoolname 送交有关部门进行保存、汇编等。}
+本论文（{\wuhao\Square}在授予学位后即可\hspace{0.75\ccwd}{\wuhao\Square}在授予学位12个月后\hspace{0.75\ccwd}{\wuhao\Square}解密后）由 \heu@cschoolname 送交有关部门进行保存、汇编等。}
 \newcommand{\heu@declarename@bachelor}{\heu@cschoolname 本科毕业设计（论文）原创性声明}
 \newcommand{\heu@authorizationtext@bachelor}{%
 本人郑重声明：在\heu@cschoolname 攻读学士学位期间，所提交的毕业设计（论文）《\heu@ctitle》，是本人在导师指导下独立进行研究工作所取得的成果。
