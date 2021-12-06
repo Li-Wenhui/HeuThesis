@@ -5809,6 +5809,62 @@ delim_1 "\\hspace*{\\fill}"
 %    \begin{macrocode}
 %  \fi
   \cleardoublepage}
+
+\def\heu@authorization@other{%
+	\ifheu@openright\cleardoublepage\else\clearpage\fi
+	%  \heu@appendix@chapter*{\heu@authorization@ctitle}[\heu@authorization@etitle]
+	%  \xiaosi[1.5]\vspace{\baselineskip}
+	\begin{center}
+		\quad\\
+		\quad\\
+		\xiaoer\heiti\heu@cschoolname\\%
+		\vspace{0.25\baselineskip}%
+		\heu@declarename
+	\end{center}
+	\vspace{0.5\baselineskip}
+	\par\heu@declaretext
+	\vspace{\baselineskip}
+	\par\hspace{20em}\heu@authorsig
+	\vspace{0.5\baselineskip}
+	\par\hspace{20em}\heu@frontdate\heu@datefill
+	\vspace{\baselineskip}
+	\begin{center}
+		\xiaoer\heiti\heu@cschoolname\\%
+		\vspace{0.25\baselineskip}%
+		\heu@authorizationtitle
+	\end{center}
+	\vspace{0.5\baselineskip}
+	\par\heu@authorizationtext
+	\vspace{\baselineskip}
+	\par\hspace{4em}\heu@authorsig\hspace{10em}\heu@teachersig
+	\vspace{0.5\baselineskip}
+	\par\hspace{4em}\heu@frontdate\heu@datefill\hspace{5em}\heu@frontdate\heu@datefill}
+\def\heu@authorization@bachelor{%
+	\ifheu@openright\cleardoublepage\else\clearpage\fi
+	\heu@appendix@chapter*{\heu@declarename@bachelor}
+	\heu@authorizationtext@bachelor
+	\vspace{2\baselineskip}
+	\par\hspace{6em}\heu@authorsig\hfill\heu@frontdate\heu@datefill}
+
+\NewDocumentCommand{\authorization}{o}{%
+	\IfNoValueTF{#1}{%
+		\thispagestyle{empty}%
+		% 本科不需要原创性和授权页，删掉
+		%\ifheu@bachelor\heu@authorization@bachelor\else\heu@authorization@other\fi
+		\heu@authorization@other
+	}{%
+		\ifheu@openright\cleardoublepage\else\clearpage\fi%
+		\includepdf[fitpaper=true,pagecommand={%
+			\thispagestyle{empty}%
+			% 原创性和授权页不加到目录
+			%\phantomsection\addcontentsline{toc}{chapter}{\ifheu@bachelor\heu@declarename@bachelor\else\heu@authorization@ctitle\fi}%
+			%\ifheu@doctor%
+			%  \addcontentsline{toe}{chapter}{\texorpdfstring{\bfseries \heu@authorization@etitle}{\heu@authorization@etitle}}%
+			%\fi%
+		}]{#1}%
+	}%
+}
+
 %  \heu@makeabstract}
 %    \end{macrocode}
 %    生成参考文献和关键字。
@@ -6100,60 +6156,6 @@ delim_1 "\\hspace*{\\fill}"
   nosep,
   labelindent=4em,
   font=\wuhao\rm,
-}
-\def\heu@authorization@other{%
-  \ifheu@openright\cleardoublepage\else\clearpage\fi
-%  \heu@appendix@chapter*{\heu@authorization@ctitle}[\heu@authorization@etitle]
-%  \xiaosi[1.5]\vspace{\baselineskip}
-\begin{center}
-  \quad\\
-  \quad\\
-  \xiaoer\heiti\heu@cschoolname\\%
-  \vspace{0.25\baselineskip}%
-  \heu@declarename
-\end{center}
-\vspace{0.5\baselineskip}
-\par\heu@declaretext
-\vspace{\baselineskip}
-\par\hspace{20em}\heu@authorsig
-\vspace{0.5\baselineskip}
-\par\hspace{20em}\heu@frontdate\heu@datefill
-\vspace{\baselineskip}
-\begin{center}
-  \xiaoer\heiti\heu@cschoolname\\%
-  \vspace{0.25\baselineskip}%
-  \heu@authorizationtitle
-\end{center}
-\vspace{0.5\baselineskip}
-\par\heu@authorizationtext
-\vspace{\baselineskip}
-\par\hspace{4em}\heu@authorsig\hspace{10em}\heu@teachersig
-\vspace{0.5\baselineskip}
-\par\hspace{4em}\heu@frontdate\heu@datefill\hspace{5em}\heu@frontdate\heu@datefill}
-\def\heu@authorization@bachelor{%
-  \ifheu@openright\cleardoublepage\else\clearpage\fi
-  \heu@appendix@chapter*{\heu@declarename@bachelor}
-  \heu@authorizationtext@bachelor
-\vspace{2\baselineskip}
-\par\hspace{6em}\heu@authorsig\hfill\heu@frontdate\heu@datefill}
-
-\NewDocumentCommand{\authorization}{o}{%
-  \IfNoValueTF{#1}{%
-  	\thispagestyle{heu@titleheadings}%
-    % 本科不需要原创性和授权页，删掉
-    %\ifheu@bachelor\heu@authorization@bachelor\else\heu@authorization@other\fi
-    \heu@authorization@other
-    }{%
-    \ifheu@openright\cleardoublepage\else\clearpage\fi%
-    \includepdf[fitpaper=true,pagecommand={%
-    \thispagestyle{empty}%
-    % 原创性和授权页不加到目录
-    %\phantomsection\addcontentsline{toc}{chapter}{\ifheu@bachelor\heu@declarename@bachelor\else\heu@authorization@ctitle\fi}%
-    %\ifheu@doctor%
-    %  \addcontentsline{toe}{chapter}{\texorpdfstring{\bfseries \heu@authorization@etitle}{\heu@authorization@etitle}}%
-    %\fi%
-    }]{#1}%
-  }%
 }
 
 \newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
