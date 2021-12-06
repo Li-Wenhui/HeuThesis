@@ -5800,16 +5800,16 @@ delim_1 "\\hspace*{\\fill}"
     \fi
   \end{titlepage}
   \normalsize
-  \ifheu@bachelor
-  \relax
-  \else
-  \authorization[authorization.pdf]
+%  \ifheu@bachelor
+%  \relax
+%  \else
+%  \authorization[authorization.pdf]
 %    \end{macrocode}
 %    生成独创性声明和授权签字页。
 %    \begin{macrocode}
-  \fi
-  \cleardoublepage
-  \heu@makeabstract}
+%  \fi
+  \cleardoublepage}
+%  \heu@makeabstract}
 %    \end{macrocode}
 %    生成参考文献和关键字。
 %    \begin{macrocode}
@@ -5821,7 +5821,7 @@ delim_1 "\\hspace*{\\fill}"
     \box\heu@kw#2\par
   \endgroup}
 
-\newcommand{\heu@makeabstract}{%
+\newcommand{\makeabstract}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
   \ifheu@english
   \addtocontents{toc}{~\hfill\textbf{Page}\par}
@@ -5844,7 +5844,8 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 博后关键字加粗
 %    \begin{macrocode}
-  \ifheu@openright\cleardoublepage\else\clearpage\fi
+%  \ifheu@openright\cleardoublepage\else\clearpage\fi
+  \clearpage
 %    \end{macrocode}
 % 摘要不加入目录、不在页眉显示
 %    \begin{macrocode}
@@ -5875,7 +5876,8 @@ delim_1 "\\hspace*{\\fill}"
   \@starttoc{\csname ext@#1\endcsname}
   \let\numberline\oldnumberline}
 \def\heu@listof#1#2{% #1: float type
-  \ifheu@openright\cleardoublepage\else\clearpage\fi
+  \clearpage
+%  \ifheu@openright\cleardoublepage\else\clearpage\fi
 %    \end{macrocode}
 % 前文的图、表清单不列入目录
 %    \begin{macrocode}
@@ -6137,13 +6139,14 @@ delim_1 "\\hspace*{\\fill}"
 
 \NewDocumentCommand{\authorization}{o}{%
   \IfNoValueTF{#1}{%
+  	\thispagestyle{heu@titleheadings}%
     % 本科不需要原创性和授权页，删掉
     %\ifheu@bachelor\heu@authorization@bachelor\else\heu@authorization@other\fi
-    \ifheu@bachelor heu@empty\else\heu@authorization@other\fi
+    \heu@authorization@other
     }{%
     \ifheu@openright\cleardoublepage\else\clearpage\fi%
     \includepdf[fitpaper=true,pagecommand={%
-    \thispagestyle{heu@empty}%
+    \thispagestyle{empty}%
     % 原创性和授权页不加到目录
     %\phantomsection\addcontentsline{toc}{chapter}{\ifheu@bachelor\heu@declarename@bachelor\else\heu@authorization@ctitle\fi}%
     %\ifheu@doctor%
