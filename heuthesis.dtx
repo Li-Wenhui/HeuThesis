@@ -169,12 +169,9 @@
 %
 % \subsection{生成模板}
 % \label{sec:generate-cls}
-% 模板解压缩后生成文件夹 \file{heuthesis}，
+% 将模板解压缩到文件夹，
 % 其中包括：模板源文件（\file{heuthesis.ins} 和 \file{heuthesis.dtx}），参考文献
-% 样式 \file{heuthesis.bst}，示例文档
-% （\file{main.tex}，\file{shuji.tex}，\file{heuthesis.sty}\footnote{可能用到的包
-% 以及一些命令定义都放在这里，以免 \file{heuthesisbook.cls} 过分臃
-% 肿。}，\file{data/} 和 \file{figures/} 和 \file{ref/}）。在使用之前需要先生成模
+% 样式 \file{heuthesis.bst} 和示例文档。在使用之前需要先生成模
 % 板文件和配置文件（具体命令细节请参考 \file{README.md} 和 \file{Makefile}）：
 %
 % 如果是直接使用编译后的模板文件，可以忽略下述操作。
@@ -258,13 +255,18 @@
 % \label{sec:generate-cover}
 % 模板还提供了用于生成论文 \texttt{A3} 页面的封面定义文档。用户可根据自己的情况选择。
 %
-% A3 封面的生成是利用上述论文的首页封面和书脊拼花而成，因此在生成 A3 封面前
+% A3 封面的生成是利用上述论文的首页封面和书脊拼合而成，因此在生成 A3 封面前
 % 需要先生成论文 \file{main.pdf} 并在 \file{spine.tex} 定义论文标题和作者姓名信息，
 % 然后使用 \texttt{xelatex} 依次编译 \file{spine.tex} 和 \file{a3cover.tex}：
 %
 % \begin{shell}
-% $ xelatex spine.tex
-% $ xelatex a3cover.tex
+% # 1. 使用 xelatex 
+% $ xelatex spine
+% $ xelatex a3cover
+%
+% # 2. 或者使用 latexmk
+% $ latexmk spine
+% $ latexmk a3cover
 % \end{shell}
 %
 % 在 \texttt{Windows} 系统下也可以直接使用 \file{make\_cover.bat} 批处理生成 \texttt{A3} 封面。
