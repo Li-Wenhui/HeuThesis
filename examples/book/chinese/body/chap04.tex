@@ -531,27 +531,30 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
 \end{lstlisting}
 
 
-tabularx环境的第1个参数选为正文宽度，第2个参数里面各个符号的意义为：
-    第1个 \@{}表示在“式中”二字左侧不插入任何文本，“式中”二字能够在正文中左对齐，若无此项，则“式中”二字左侧会留出一定的空白；
-    \@{\quad}表示在“式中”和物理量符号间插入一个空铅宽度的空白；
-    \@{— — —}实现插入破折号的功能，它由三个1/2的中文破折号构成；
-    第2个 \@{}表示在注释内容靠近正文右边界的地方能够实现右对齐。
+tabularx环境的第1个参数~\verb|{\textwidth}|~设置表格宽度为正文宽度，第2个参数里面各个符号的意义为：
+    第1个~\verb|@{}l|~表示在“式中”二字左侧不插入任何文本，“式中”二字能够在正文中左对齐，若无此项，则“式中”二字左侧会留出一定的空白；
+   ~\verb|@{\quad}|~表示在“式中”和物理量符号间插入一个空铅宽度的空白；
+    ~\verb|@{— — }|~实现插入破折号的功能，它由两个个1/2的中文破折号构成；
+    第2个~\verb|@{}|~表示在注释内容靠近正文右边界的地方能够实现右对齐。
 
 
-由此方法生成的注释内容应紧邻待注释公式并置于其下方，因此不能将代码放入\verb|table|浮动环境中。但此方法不能实现自动转页接排，
-可能会在当前页剩余空间不够时，全部移动到下一页而导致当前页出现很大空白。因此在需要转页处理时，还请您手动将需要转页的代码放入一个
-新的\verb|tabularx|环境中，将原来的一个\verb|tabularx|环境拆分为两个\verb|tabularx|环境。
+由此方法生成的注释内容应紧邻待注释公式并置于其下方，因此不能将代码放入\verb|table|浮动环境中。
+但此方法不能实现自动转页接排，可能会在当前页剩余空间不够时，全部移动到下一页而导致当前页出现很大空白。
+因此在需要转页处理时，需要手动将将原来的一个\verb|tabularx|环境拆分为两个\verb|tabularx|环境。
 
 
 \section{罗列}[Enumitem]
-学位论文一般可采用两种罗列环境：一种是并列条目有同样标签的~\verb|itemize|~罗列环境，另一种是具有自动排序编号符号的~\verb|enumerate|~罗列环境。这两种罗列环境的样式参数可参考图~\ref{list}。
+学位论文一般可采用两种罗列环境：一种是并列条目有同样标签的~\verb|itemize|~罗列环境，
+另一种是具有自动排序编号符号的~\verb|enumerate|~罗列环境。这两种罗列环境的样式参数可参考图~\ref{list}。
 \begin{figure}[htbp]
 \centering
 \includegraphics[width = 0.6\textwidth]{list}
 \bicaption[list]{}{罗列环境参数示意图}{Fig.$\!$}{Schematic diagram of list environments}\vspace{-1em}
 \end{figure}
 
-通过调用~enumitem~宏包可以很方便地控制罗列环境的布局，其~format.tex~文件中的~\verb|\setitemize|~和~\verb|\setenumerate|~命令分别用来设置~\verb|itemize|~和~\verb|enumerate|~环境的样式参数。采用~\verb|itemize|~单层罗列环境的排版形式如下：
+通过调用~enumitem~宏包可以很方便地控制罗列环境的布局，
+其~format.tex~文件中的~\verb|\setitemize|~和~\verb|\setenumerate|~命令分别用来设置~\verb|itemize|~和~\verb|enumerate|~环境的样式参数。
+采用~\verb|itemize|~单层罗列环境的排版形式如下：
 
 \begin{itemize}
 \item 第一个条目文本内容
