@@ -3309,7 +3309,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 \DeclareRobustCommand\inlinecite{\@inlinecite}
 \def\@inlinecite#1{\begingroup\citestyle{inline}\let\@cite\NAT@citenum\citep{#1}\endgroup}
 \let\onlinecite\inlinecite
-
+\newcommand{\lcite}{\inlinecite}
 \renewenvironment{thebibliography}[1]{%
   \list{\@biblabel{\@arabic\c@enumiv}}%
   {\renewcommand{\makelabel}[1]{##1\hfill}
@@ -6163,6 +6163,7 @@ delim_1 "\\hspace*{\\fill}"
 \DeclareRobustCommand\inlinecite{\@inlinecite}
 \def\@inlinecite#1{\begingroup\citestyle{inline}\let\@cite\NAT@citenum\citep{#1}\endgroup}
 \let\onlinecite\inlinecite
+\newcommand{\lcite}{\inlinecite}
 \renewenvironment{thebibliography}[1]{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi\phantomsection%
   \heu@appendix@chapter*{\bibname}[\heu@bibname@etitle]
