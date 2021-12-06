@@ -5281,16 +5281,16 @@ delim_1 "\\hspace*{\\fill}"
 % 专业学位论文扉页研究类型选项
 %    \begin{macrocode}
 \ifheu@productdevelopment
-  \def\heu@searcetype{（\ding{110}产品设计~\ding{113}工程规划~\ding{113}工程设计~\ding{113}应用研究）}
+  \def\heu@searcetype{（$\blacksquare$~产品设计~$\square$~工程规划~$\square$~工程设计~$\square$~应用研究）}
 \fi
 \ifheu@projectdplanning
-  \def\heu@searcetype{（\ding{113}产品设计~\ding{110}工程规划~\ding{113}工程设计~\ding{113}应用研究）}
+  \def\heu@searcetype{（$\square$~产品设计~$\blacksquare$~工程规划~$\square$~工程设计~$\square$~应用研究）}
 \fi
 \ifheu@projectdesign
-  \def\heu@searcetype{（\ding{113}产品设计~\ding{113}工程规划~\ding{110}工程设计~\ding{113}应用研究）}
+  \def\heu@searcetype{（$\square$~产品设计~$\square$~工程规划~$\blacksquare$~工程设计~$\square$~应用研究）}
 \fi
 \ifheu@applicationResearch
-  \def\heu@searcetype{（\ding{113}产品设计~\ding{113}工程规划~\ding{113}工程设计~\ding{110}应用研究）}
+  \def\heu@searcetype{（$\square$~产品设计~$\square$~工程规划~$\square$~工程设计~$\blacksquare$~应用研究）}
 \fi
 
 \ifheu@postdoc
@@ -5324,8 +5324,8 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@authorization@ctitle{学位论文原创性声明}
 \def\heu@authorization@etitle{Statement of copyright and Letter of authorization}
 
-\newcommand{\heu@authorsig}{作者签名：}
-\newcommand{\heu@teachersig}{导师签名：}
+\newcommand{\heu@authorsig}{作者（签字）：}
+\newcommand{\heu@teachersig}{导师（签字）：}
 \newcommand{\heu@frontdate}{日期：}
 \newcommand{\heu@denotation@ctitle}{物理量名称及符号表}
 \newcommand{\heu@denotation@etitle}{List of physical quantity and symbol}
@@ -5378,14 +5378,23 @@ delim_1 "\\hspace*{\\fill}"
 }
 
 \newcommand{\heu@authorizationtext}{%
-本人完全了解学校保护知识产权的有关规定，即研究生在校攻读学位期间论文工作的知识产权属于 \heu@cschoolname 。\heu@cschoolname 有权保留并向国家有关部门或机构送交论文的复印件。本人允许 \heu@cschoolname 将论文的部分或全部内容编入有关数据库进行检索，可采用影印、缩印或扫描等复制手段保存和汇编本学位论文，可以公布论文的全部内容。同时本人保证毕业后结合学位论文研究课题再撰写的论文一律注明作者第一署名单位为 \heu@cschoolname 。涉密学位论文待解密后适用本声明。
-本论文（□在授予学位后即可  □在授予学位12个月后  □解密后）由 \heu@cschoolname 送交有关部门进行保存、汇编等。}
+本人完全了解学校保护知识产权的有关规定，即研究生在校攻读学位期间论文工作的知识产权属于 \heu@cschoolname 。
+\heu@cschoolname 有权保留并向国家有关部门或机构送交论文的复印件。
+本人允许 \heu@cschoolname 将论文的部分或全部内容编入有关数据库进行检索，可采用影印、缩印或扫描等复制手段保存和汇编本学位论文，
+可以公布论文的全部内容。同时本人保证毕业后结合学位论文研究课题再撰写的论文一律注明作者第一署名单位为 \heu@cschoolname 。
+涉密学位论文待解密后适用本声明。
+
+本论文（~$\square$~在授予学位后即可\quad~$\square$~在授予学位12个月后\quad~$\square$~解密后）由 \heu@cschoolname 送交有关部门进行保存、汇编等。}
 \newcommand{\heu@declarename@bachelor}{\heu@cschoolname 本科毕业设计（论文）原创性声明}
 \newcommand{\heu@authorizationtext@bachelor}{%
-本人郑重声明：在\heu@cschoolname 攻读学士学位期间，所提交的毕业设计（论文）《\heu@ctitle》，是本人在导师指导下独立进行研究工作所取得的成果。对本文的研究工作做出重要贡献的个人和集体，均已在文中以明确方式注明，其它未注明部分不包含他人已发表或撰写过的研究成果，不存在购买、由他人代写、剽窃和伪造数据等作假行为。本人完全意识到本声明的法律结果由本人承担。}
+本人郑重声明：在\heu@cschoolname 攻读学士学位期间，所提交的毕业设计（论文）《\heu@ctitle》，是本人在导师指导下独立进行研究工作所取得的成果。
+对本文的研究工作做出重要贡献的个人和集体，均已在文中以明确方式注明，其它未注明部分不包含他人已发表或撰写过的研究成果，
+不存在购买、由他人代写、剽窃和伪造数据等作假行为。本人完全意识到本声明的法律结果由本人承担。}
 \newcommand{\heu@declarename}{学位论文原创性声明}
 \newcommand{\heu@declaretext}{%
-本人郑重声明：本论文的所有工作，是在导师的指导下，由作者本人独立完成的。有关观点、方法、数据和文献的引用已在文中指出，并与参考文献相对应。除文中已注明引用的内容外，本论文不包含任何其他个人或集体已经公开发表的作品成果。对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果由本人承担。}
+本人郑重声明：本论文的所有工作，是在导师的指导下，由作者本人独立完成的。有关观点、方法、数据和文献的引用已在文中指出，并与参考文献相对应。
+除文中已注明引用的内容外，本论文不包含任何其他个人或集体已经公开发表的作品成果。
+对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果由本人承担。}
 
 \ifheu@english
 \newcommand{\heu@publication@ctitle}{Author's Publications}
@@ -6092,31 +6101,39 @@ delim_1 "\\hspace*{\\fill}"
 }
 \def\heu@authorization@other{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
-  \heu@appendix@chapter*{\heu@authorization@ctitle}[\heu@authorization@etitle]
-  \xiaosi[1.6]\vspace{\baselineskip}
-\begin{center}\xiaosan\heiti\heu@cschoolname\\%
-\heu@declarename\end{center}
+%  \heu@appendix@chapter*{\heu@authorization@ctitle}[\heu@authorization@etitle]
+%  \xiaosi[1.5]\vspace{\baselineskip}
+\begin{center}
+  \quad\\
+  \quad\\
+  \xiaoer\heiti\heu@cschoolname\\%
+  \vspace{0.25\baselineskip}%
+  \heu@declarename
+\end{center}
+\vspace{0.5\baselineskip}
 \par\heu@declaretext
 \vspace{\baselineskip}
-\par\hspace{6em}\heu@authorsig\hfill\heu@frontdate\heu@datefill
-\vspace{2\baselineskip}
-\begin{center}\xiaosan\heiti\heu@cschoolname\\%
-  \heu@authorizationtitle\end{center}
+\par\hspace{20em}\heu@authorsig
+\vspace{0.5\baselineskip}
+\par\hspace{20em}\heu@frontdate\heu@datefill
+\vspace{\baselineskip}
+\begin{center}
+  \xiaoer\heiti\heu@cschoolname\\%
+  \vspace{0.25\baselineskip}%
+  \heu@authorizationtitle
+\end{center}
+\vspace{0.5\baselineskip}
 \par\heu@authorizationtext
-\vspace{2\baselineskip}
-\par\hspace{6em}\heu@authorsig\hfill\heu@frontdate\heu@datefill
-\ifheu@english\vspace{\baselineskip}\else\vspace{2\baselineskip}\fi
-%    \end{macrocode}
-% 英文版和中文版这里的间距不一样
-%    \begin{macrocode}
-\par\hspace{6em}\heu@teachersig\hfill\heu@frontdate\heu@datefill}
+\vspace{\baselineskip}
+\par\hspace{4em}\heu@authorsig\hspace{10em}\heu@teachersig
+\vspace{0.5\baselineskip}
+\par\hspace{4em}\heu@frontdate\heu@datefill\hspace{5em}\heu@frontdate\heu@datefill}
 \def\heu@authorization@bachelor{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
   \heu@appendix@chapter*{\heu@declarename@bachelor}
   \heu@authorizationtext@bachelor
 \vspace{2\baselineskip}
-\par\hspace{6em}\heu@authorsig\hfill\heu@frontdate\heu@datefill
-}
+\par\hspace{6em}\heu@authorsig\hfill\heu@frontdate\heu@datefill}
 
 \NewDocumentCommand{\authorization}{o}{%
   \IfNoValueTF{#1}{%
