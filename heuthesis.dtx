@@ -4453,9 +4453,6 @@ delim_1 "\\hspace*{\\fill}"
 % 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止幅度对象占据过多的文本页面，
 % 也可以防止在很大空白的浮动页上放置很小的图形。
 %    \begin{macrocode}
-%    \end{macrocode}
-% \changes{v1.0.1}{2021/11/20}{修改图标编号分割符-为.}
-%    \begin{macrocode}
 \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter.\arabic{figure}}}
 \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter.\arabic{table}}}
 \g@addto@macro\appendix{\renewcommand*{\theequation}{\thechapter.\arabic{equation}}}
