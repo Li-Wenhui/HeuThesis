@@ -23,11 +23,11 @@
 论文中的公式应另起行，原则上应居中书写，与周围文字留有足够的空间区分开。
 若公式前有文字（如“解”、“假定”等），文字空两格写，公式仍居中写。公式末不加标点。
 
-公式应标注序号，并将序号置于括号内。 公式序号按章编排，如第~1~章第一个公式序号为“(1-1)”。公式的序号右端对齐。
+公式应标注序号，并将序号置于括号内。 公式序号按章编排，如第~1~章第一个公式序号为“(1.1)”。公式的序号右端对齐。
 
 公式较长时最好在等号“＝”处转行，如难实现，则可在~$+$、$-$、$\times$、$\div$~运算符号处转行，转行时运算符号仅书写于转行式前，不重复书写。
 
-文中引用公式时，一般用“见式~(1-1)”或“由公式~(1-1)”。
+文中引用公式时，一般用“见式~(1.1)”或“由公式~(1.1)”。
 
 公式中用斜线表示“除”的关系时应采用括号，以免含糊不清，如~$a/(b\cos x)$。通常“乘”的关系在前，如~$a\cos x/b$而不写成~$(a/b)\cos x$。
 
@@ -55,18 +55,18 @@ $\to$转换”，在弹出的对话窗中选中“转换到其它语言（文字
 
 出现在正文一行之内的公式称为行内公式，例如~$f(x)=\int_{a}^{b}\frac{\sin{x}}{x}\mathrm{d}x$。对于非矩阵和非多行形式的行内公式，一般不会使得行距发生变化，而~word~等软件却会根据行内公式的竖直距离而自动调节行距，如图~\ref{hangju}~所示。
 \begin{figure}[htbp]
-\centering
-\subfigure{\label{latex}}\addtocounter{subfigure}{-2}
-\subfigure[Inline mode equation derived from \LaTeX system]{\subfigure[由~\LaTeX~系统生成的行内公式]
-          {\fbox{\includegraphics[width=0.55\textwidth]{latex}}}}
-\subfigure{\label{word}}\addtocounter{subfigure}{-2}
-\subfigure[Inline mode equation displayed as .doc format file derived from word software]{\subfigure[由~word软件生成的~.doc~格式行内公式]
-          {\fbox{\includegraphics[width=0.55\textwidth]{word}}}}
-\subfigure{\label{pdf}}\addtocounter{subfigure}{-2}
-\subfigure[Inline mode equation displayed as .pdf format file derived from word software]{\subfigure[由~word软件生成的~.pdf~格式行内公式]
-          {\fbox{\includegraphics[width=0.55\textwidth]{pdf}}}}
-\bicaption[hangju]{}{由~\LaTeX~和~word~生成的~3~种行内公式屏显效果}{Fig.$\!$}{Three kinds of inline mode equation displayed effects derived from \LaTeX and word}
-\vspace{-1em}
+  \centering
+  \subfigure{\label{latex}}\addtocounter{subfigure}{-2}
+  \subfigure[Inline mode equation derived from \LaTeX system]{\subfigure[由~\LaTeX~系统生成的行内公式]
+    {\fbox{\includegraphics[width=0.55\textwidth]{latex}}}}
+  \subfigure{\label{word}}\addtocounter{subfigure}{-2}
+  \subfigure[Inline mode equation displayed as .doc format file derived from word software]{\subfigure[由~word软件生成的~.doc~格式行内公式]
+    {\fbox{\includegraphics[width=0.55\textwidth]{word}}}}
+  \subfigure{\label{pdf}}\addtocounter{subfigure}{-2}
+  \subfigure[Inline mode equation displayed as .pdf format file derived from word software]{\subfigure[由~word软件生成的~.pdf~格式行内公式]
+    {\fbox{\includegraphics[width=0.55\textwidth]{pdf}}}}
+  \bicaption[hangju]{}{由~\LaTeX~和~word~生成的~3~种行内公式屏显效果}{Fig.$\!$}{Three kinds of inline mode equation displayed effects derived from \LaTeX and word}
+  \vspace{-1em}
 \end{figure}
 这三幅图分别为~\LaTeX~和~word~生成的行内公式屏显效果，从图中可看出，在~\LaTeX~文本含有公式的行内，在正文与公式之间对接工整，行距不变；而在~word~文本含有公式的行内，在正文与公式之间对接不齐，行距变大。因此从这一点来说，
 \LaTeX~系统在数学公式的排版上具有很大优势。
@@ -83,15 +83,15 @@ $\to$转换”，在弹出的对话窗中选中“转换到其它语言（文字
 
 除人工编号外，\LaTeX~各种类型行间公式的标记见表~\ref{eqtag}。
 \begin{table}[htbp]
-\bicaption[eqtag]{}{各种类型行间公式的标记}{Table$\!$}{Tags for several kinds of displaymath mode equations}
-\vspace{0.5em}\centering\wuhao
-\begin{tabularx}{0.9\textwidth}{cXX}
-\toprule
-& 无编号 & 自动编号\\\midrule
-单行公式 & \textbackslash begin\{displaymath\}...... \textbackslash end\{displaymath\}~或~\textbackslash [...\textbackslash ] & \textbackslash begin\{equation\} ...... \textbackslash end\{equation\}\\
-多行公式 & \textbackslash begin\{eqnarray*\} ...... \textbackslash end\{eqnarray*\} & \textbackslash begin\{eqnarray\} ...... \textbackslash end\{eqnarray\}\\
-\bottomrule
-\end{tabularx}
+  \bicaption[eqtag]{}{各种类型行间公式的标记}{Table$\!$}{Tags for several kinds of displaymath mode equations}
+  \vspace{0.5em}\centering\wuhao
+  \begin{tabularx}{0.9\textwidth}{cXX}
+    \toprule
+             & 无编号                                                                                                             & 自动编号                                                               \\\midrule
+    单行公式 & \textbackslash begin\{displaymath\}...... \textbackslash end\{displaymath\}~或~\textbackslash [...\textbackslash ] & \textbackslash begin\{equation\} ...... \textbackslash end\{equation\} \\
+    多行公式 & \textbackslash begin\{eqnarray*\} ...... \textbackslash end\{eqnarray*\}                                           & \textbackslash begin\{eqnarray\} ...... \textbackslash end\{eqnarray\} \\
+    \bottomrule
+  \end{tabularx}
 \end{table}
 
 另外，在自动编号的某行公式行尾添加标签~\verb|\nonumber|，可将该行转换为无编号形式。
@@ -100,27 +100,27 @@ $\to$转换”，在弹出的对话窗中选中“转换到其它语言（文字
 
 对于不需要进行公示编号的行间公式，也可以使用简化的行间公式符号~\verb|$$  $$|~或~\verb|\[  \]|~，例如：
 
- $$(\sum_{k=\frac12}^{N^2})$$
- 或
- \[(\sum_{k=\frac12}^{N^2})\]
- 
- 上述量化公式代码分别为：
- \begin{lstlisting}
+$$(\sum_{k=\frac12}^{N^2})$$
+或
+\[(\sum_{k=\frac12}^{N^2})\]
+
+上述量化公式代码分别为：
+\begin{lstlisting}
    $$(\sum_{k=\frac12}^{N^2})$$
  \end{lstlisting}
- 和
- \begin{lstlisting}
+和
+\begin{lstlisting}
    \[(\sum_{k=\frac12}^{N^2})\]
  \end{lstlisting}
- 
+
 \section{可自动调整大小的定界符}[Limiter Setting]
 
 若在左右两个定界符之前分别添加命令~\verb|\left|~和~\verb|\right|，则定界符可根据所包围公式大小自动调整其尺寸，这可从式(\ref{nodelimiter})和式(\ref{delimiter})中看出。
 \begin{equation}\label{nodelimiter}
-(\sum_{k=\frac12}^{N^2})
+  (\sum_{k=\frac12}^{N^2})
 \end{equation}
 \begin{equation}\label{delimiter}
-\left(\sum_{k=\frac12}^{N^2}\right)
+  \left(\sum_{k=\frac12}^{N^2}\right)
 \end{equation}
 式(\ref{nodelimiter})和式(\ref{delimiter})是在~\LaTeX~中分别输入如下代码得到的。
 \begin{lstlisting}
@@ -141,15 +141,15 @@ $\to$转换”，在弹出的对话窗中选中“转换到其它语言（文字
 数学重音符号通常用来区分同一字母表示的不同变量，输入方法如下（需要调用~\verb|amsmath|~宏包）：
 
 \vspace{0.5em}\noindent\wuhao\begin{tabularx}{\textwidth}{Xc|Xc|Xc}
- \verb|\acute| & $\acute{a}$ & \verb|\mathring| & $\mathring{a}$ & \verb|\underbrace| & $\underbrace{a}$ \\
- \verb|\bar| & $\bar{a}$ & \verb|\overbrace| & $\overbrace{a}$ & \verb|\underleftarrow| & $\underleftarrow{a}$ \\
- \verb|\breve| & $\breve{a}$ & \verb|\overleftarrow| & $\overleftarrow{a}$ & \verb|\underleftrightarrow| & $\underleftrightarrow{a}$ \\
- \verb|\check| & $\check{a}$ & \verb|\overleftrightarrow| & $\overleftrightarrow{a}$ & \verb|\underline| & $\underline{a}$ \\
- \verb|\dddot| & $\dddot{a}$ & \verb|\overline| & $\overline{a}$ & \verb|\underrightarrow| & $\underrightarrow{a}$ \\
- \verb|\ddot| & $\ddot{a}$ & \verb|\overrightarrow| & $\overrightarrow{a}$ & \verb|\vec| & $\vec{a}$ \\
- \verb|\dot| & $\dot{a}$ & \verb|\tilde| & $\tilde{a}$ & \verb|\widehat| & $\widehat{a}$ \\
- \verb|\grave| & $\grave{a}$ & \verb|\underbar| & $\underbar{a}$ & \verb|\widetilde| & $\widetilde{a}$ \\
- \verb|\hat| & $\hat{a}$
+  \verb|\acute| & $\acute{a}$ & \verb|\mathring|           & $\mathring{a}$           & \verb|\underbrace|          & $\underbrace{a}$          \\
+  \verb|\bar|   & $\bar{a}$   & \verb|\overbrace|          & $\overbrace{a}$          & \verb|\underleftarrow|      & $\underleftarrow{a}$      \\
+  \verb|\breve| & $\breve{a}$ & \verb|\overleftarrow|      & $\overleftarrow{a}$      & \verb|\underleftrightarrow| & $\underleftrightarrow{a}$ \\
+  \verb|\check| & $\check{a}$ & \verb|\overleftrightarrow| & $\overleftrightarrow{a}$ & \verb|\underline|           & $\underline{a}$           \\
+  \verb|\dddot| & $\dddot{a}$ & \verb|\overline|           & $\overline{a}$           & \verb|\underrightarrow|     & $\underrightarrow{a}$     \\
+  \verb|\ddot|  & $\ddot{a}$  & \verb|\overrightarrow|     & $\overrightarrow{a}$     & \verb|\vec|                 & $\vec{a}$                 \\
+  \verb|\dot|   & $\dot{a}$   & \verb|\tilde|              & $\tilde{a}$              & \verb|\widehat|             & $\widehat{a}$             \\
+  \verb|\grave| & $\grave{a}$ & \verb|\underbar|           & $\underbar{a}$           & \verb|\widetilde|           & $\widetilde{a}$           \\
+  \verb|\hat|   & $\hat{a}$
 \end{tabularx}\vspace{0.5em}
 \xiaosi 当需要在字母~$i$~和~$j$~的上方添加重音符号时，为了去掉这两个字母顶上的小点，这两个字母应该分别改用~\verb|\imath|~和~\verb|\jmath|。
 
@@ -202,38 +202,38 @@ $f(x) = 3x + 7$
 \begin{definition}
   任给集合~$X \in U$ 和属性集~$R$, 对~$0\leqslant l < u \leqslant 1$,
   集合~$X$ 的~$l${--}下近似、$u${--}上近似分别定义为
-     \begin{align}
-\underline {R} _u (X) &=  \bigcup \left\{ {X_i  \in U/R\Bigm|X_i \mathop  \subseteq \limits^u  X} \right\}, \\
-\overline {R} _l (X)  &=  \bigcup \left\{ {X_i  \in U/R\Bigm|X_i \mathop  \subset \limits^l X} \right\}.
-   \end{align}
+  \begin{align}
+    \underline {R} _u (X) & =  \bigcup \left\{ {X_i  \in U/R\Bigm|X_i \mathop  \subseteq \limits^u  X} \right\}, \\
+    \overline {R} _l (X)  & =  \bigcup \left\{ {X_i  \in U/R\Bigm|X_i \mathop  \subset \limits^l X} \right\}.
+  \end{align}
 \end{definition}
 
 \begin{theorem}[\heiti 费马]
   {\upshape\kaishu 不存在使得~
-  \begin{equation}
-     x^n+y^n=z^n
-  \end{equation}
-  成立的整数~$x$, $y$, $z$ and $n>2$. }
+    \begin{equation}
+      x^n+y^n=z^n
+    \end{equation}
+    成立的整数~$x$, $y$, $z$ and $n>2$. }
 \end{theorem}
 
 \begin{proof}
   {\upshape\kaishu 这是推论
-  \begin{equation}
-     \textcolor[rgb]{0.00,0.00,1.00}{
-     I'_{{\rm{total}}} = \sum\limits_{i = 1}^n
-     {\left( {M_0 V_i - M_{i{\rm{rp}}} \sqrt{V_i^2 - V_{50}^2}}\right)}}
-  \end{equation}}
+    \begin{equation}
+      \textcolor[rgb]{0.00,0.00,1.00}{
+      I'_{{\rm{total}}} = \sum\limits_{i = 1}^n
+      {\left( {M_0 V_i - M_{i{\rm{rp}}} \sqrt{V_i^2 - V_{50}^2}}\right)}}
+    \end{equation}}
 \end{proof}
 
 下面是一个稍微一些复杂的公式：
 
- \begin{equation}
-{\mu _X}\sigma _X^2\sum\limits_{i = 1}^n {{{({X_i} - \bar X)}^2}} \frac{{x - \mu }}{\sigma }\frac{{{\partial ^2}\Omega }}{{\partial u\partial v}}\mathop{{\int\!\!\!\!\!\int\!\!\!\!\!\int}\mkern-31.2mu \bigodot}\nolimits_{x \in }
- {\bigcup\limits_{i = 1}^n {{X_i}} \frac{{dy}}{{dx}}}
+\begin{equation}
+  {\mu _X}\sigma _X^2\sum\limits_{i = 1}^n {{{({X_i} - \bar X)}^2}} \frac{{x - \mu }}{\sigma }\frac{{{\partial ^2}\Omega }}{{\partial u\partial v}}\mathop{{\int\!\!\!\!\!\int\!\!\!\!\!\int}\mkern-31.2mu \bigodot}\nolimits_{x \in }
+  {\bigcup\limits_{i = 1}^n {{X_i}} \frac{{dy}}{{dx}}}
 \end{equation}
 
- 利用~\LaTeX~你可以排出专业的数学版面效果。
+利用~\LaTeX~你可以排出专业的数学版面效果。
 
- 
+
 \section*{本章小结}[Brief Summary]
 数学公式排版方法介绍。

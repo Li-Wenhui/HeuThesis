@@ -19,6 +19,7 @@
 \label{chap03}
 
 \section{个人信息}[Author Information]
+
 使用模版的第一步当然是修改您的个人信息。与个人信息有关的内容位
 于~{/front/cover.tex}~文件中。对照着模版内容改就好了，没有什么难度。填
 写专业、姓名和导师的时候注意添加适当空格，也就是$\sim$字符，以调整对齐方式。
@@ -36,27 +37,28 @@
 
 专业学位论文类型分为四类：
 \begin{itemize}
-\item \texttt{productdevelopment}：产品设计
-\item \texttt{projectdplanning}：工程规划
-\item \texttt{projectdesign}：工程设计
-\item \texttt{applicationResearch}：应用研究
+  \item \texttt{productdevelopment}：产品设计
+  \item \texttt{projectdplanning}：工程规划
+  \item \texttt{projectdesign}：工程设计
+  \item \texttt{applicationResearch}：应用研究
 \end{itemize}
 
 详细设置方法与选项定义可以参考main.tex文件中的说明。
 
 \section{中英文摘要、关键字}[Abstract and Key Word]
+
 中英文摘要和关键字也位于~{/front/cover.tex}~文件中定义，将相应位置的内容替换成自己的即可。
 
 这里附上研究生院对摘要和关键字的要求：
 \begin{itemize}
-\item “摘要”是摘要部分的标题，不可省略。论文摘要是学位论文的缩影，文字
-  要简练、明确。内容要包括目的、方法、结果和结论。单位制一律换算成国际标
-  准计量单位制，除特殊情况外，数字一律用阿拉伯数码。文中不允许出现插图，
-  重要的表格可以写入；
-\item 关键词请尽量用《汉语主题词表》等词表提供的规范词。中文关键词之间用全角
-  分号间隔，末尾不加标点；
-\item 英文摘要和中文摘要对应，但不要逐字翻译。英文关键字使用半角分号间隔，
-  末尾同样不加标点。
+  \item “摘要”是摘要部分的标题，不可省略。论文摘要是学位论文的缩影，文字
+        要简练、明确。内容要包括目的、方法、结果和结论。单位制一律换算成国际标
+        准计量单位制，除特殊情况外，数字一律用阿拉伯数码。文中不允许出现插图，
+        重要的表格可以写入；
+  \item 关键词请尽量用《汉语主题词表》等词表提供的规范词。中文关键词之间用全角
+        分号间隔，末尾不加标点；
+  \item 英文摘要和中文摘要对应，但不要逐字翻译。英文关键字使用半角分号间隔，
+        末尾同样不加标点。
 \end{itemize}
 
 \section{正文}[Main Thesis Part]
@@ -99,12 +101,12 @@
 每种字体还包括正体、斜体、粗体，而且可以实现复合效果，例如：
 
 \begin{flushleft}
-{
-{\songti 宋体 \textbf{加粗宋体} \textsl{斜体宋体} \textbf{\textsl{加粗斜体宋体}}} \\
-{\heiti 黑体 \textbf{加粗黑体} \textsl{斜体黑体} \textbf{\textsl{加粗斜体黑体}}} \\
-{\kaishu 楷体 \textbf{加粗楷体} \textsl{斜体楷体} \textbf{\textsl{加粗斜体楷体}}} \\
-{\fangsong 仿宋 \textbf{加粗仿宋} \textsl{斜体仿宋} \textbf{\textsl{加粗斜体仿宋}}} \\
-}
+  {
+  {\songti 宋体 \textbf{加粗宋体} \textsl{斜体宋体} \textbf{\textsl{加粗斜体宋体}}} \\
+  {\heiti 黑体 \textbf{加粗黑体} \textsl{斜体黑体} \textbf{\textsl{加粗斜体黑体}}} \\
+  {\kaishu 楷体 \textbf{加粗楷体} \textsl{斜体楷体} \textbf{\textsl{加粗斜体楷体}}} \\
+  {\fangsong 仿宋 \textbf{加粗仿宋} \textsl{斜体仿宋} \textbf{\textsl{加粗斜体仿宋}}} \\
+  }
 \end{flushleft}
 
 设置字体的方法是在需要修改字体的文字前面加入字体定义指令，格式为\textbackslash~font，
@@ -124,6 +126,7 @@
 \end{lstlisting}
 
 \subsection{字号设置}[Font Size]
+
 设置字号的方法为：
 \begin{lstlisting}
 \xiaowu   \textbackslash xiaowu~  小五，默认单倍行距 \\
@@ -140,22 +143,23 @@
 
 打印效果如下：
 
- \begin{flushleft}
- {
-\xiaowu   \textbackslash xiaowu~  小五，默认单倍行距 \\
-\wuhao    \textbackslash wuhao~   五号，默认单倍行距 \\
-\xiaosi   \textbackslash xiaosi~  小四，默认1.25倍行距 \\
-\sihao    \textbackslash sihao~   四号，默认1.25倍行距 \\
-\xiaosan  \textbackslash xiaosan~ 小三，默认1.25 倍行距 \\
-\sanhao   \textbackslash sanhao~  三号，默认1.25 倍行距 \\
-\xiaoer   \textbackslash xiaoer~  小二，默认1.25 倍行距 \\
-\erhao    \textbackslash erhao~   二号，默认1.25 倍行距 \\
-\xiaoyi   \textbackslash xiaoyi~  小一，默认1.25 倍行距 \\
-\yihao    \textbackslash yihao~   一号，默认1.5  倍行距 \\
-}
+\begin{flushleft}
+  {
+    \xiaowu   \textbackslash xiaowu~  小五，默认单倍行距 \\
+    \wuhao    \textbackslash wuhao~   五号，默认单倍行距 \\
+    \xiaosi   \textbackslash xiaosi~  小四，默认1.25倍行距 \\
+    \sihao    \textbackslash sihao~   四号，默认1.25倍行距 \\
+    \xiaosan  \textbackslash xiaosan~ 小三，默认1.25 倍行距 \\
+    \sanhao   \textbackslash sanhao~  三号，默认1.25 倍行距 \\
+    \xiaoer   \textbackslash xiaoer~  小二，默认1.25 倍行距 \\
+    \erhao    \textbackslash erhao~   二号，默认1.25 倍行距 \\
+    \xiaoyi   \textbackslash xiaoyi~  小一，默认1.25 倍行距 \\
+    \yihao    \textbackslash yihao~   一号，默认1.5  倍行距 \\
+  }
 \end{flushleft}
 
 \subsection{颜色设置}[Color]
+
 设置文字颜色的方法为：
 \begin{lstlisting}
 \definecolor {myrgb}{rgb}{0.25, 0.5, 0.25}
@@ -172,8 +176,8 @@
 
 文字颜色设置打印效果：
 \begin{flushleft}
-\xiaosan
-{
+  \xiaosan
+  {
     \definecolor {myrgb}{rgb}{0.25, 0.5, 0.25}
     \definecolor {mycmyk}{cmyk}{1, 0.8, 0.2, 0.1}
 
@@ -183,7 +187,7 @@
     \heiti \textcolor{yellow} {这是预定义颜色－黄色 yellow} \\
     \heiti \textcolor{myrgb}  {这是自定义RGB颜色 myrgb}  \\
     \heiti \textcolor{mycmyk} {这是自定义CMYK颜色 mycmyk} \\
-}
+  }
 \end{flushleft}
 
 \section*{本章小结}[Brief summary]

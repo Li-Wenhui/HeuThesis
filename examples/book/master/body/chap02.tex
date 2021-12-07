@@ -46,11 +46,11 @@
 
 以本模版为例，在 Windows 下的编译过程是这样的：
 \begin{enumerate}
-\item[(1)] 打开main.tex文件；
-\item[(2)] 先点击WinEdt工具栏上的\XeLaTeX{}按钮(可能在Acrobat Reader按钮的下拉菜单中)；
-\item[(3)] 再点击WinEdt工具栏上的Bib\TeX{}按钮；
-\item[(4)] 再点击WinEdt工具栏上的\XeLaTeX{}按钮两到三遍；
-\item[(5)] 最后点击WinEdt工具栏上的Acrobat Reader按钮就可以看到输出的PDF文档了。
+  \item[(1)] 打开main.tex文件；
+  \item[(2)] 先点击WinEdt工具栏上的\XeLaTeX{}按钮(可能在Acrobat Reader按钮的下拉菜单中)；
+  \item[(3)] 再点击WinEdt工具栏上的Bib\TeX{}按钮；
+  \item[(4)] 再点击WinEdt工具栏上的\XeLaTeX{}按钮两到三遍；
+  \item[(5)] 最后点击WinEdt工具栏上的Acrobat Reader按钮就可以看到输出的PDF文档了。
 \end{enumerate}
 
 \section{Linux~操作系统(以~Ubuntu~为例)}[Linux System]
@@ -64,21 +64,13 @@ First things first，首先的工作是安装一个合适的 \XeTeX{}编译系�
 例，简要的说明 \TeX{}Live 的安装及配置过程，高玩们请主动绕行：
 
 \begin{enumerate}
-\item[(1)] 下载 \TeX{}live 2021 镜像，点击\href{https://tug.org/texlive/}{这里}进
-  入 \TeX{}live 2021 网站选择需要下载的安装文件或文档。
-\item[(2)] 安装 perl-tk 包，以便使用图形界面进行安装。在终端中输入命
-  令\texttt{sudo apt-get install perl-tk}；
-\item[(3)] 挂载下载好的iso镜像，\texttt{sudo mkdir
-    /mnt/texlive}（在~{/mnt}~下创建texlive文件夹
-  ），\texttt{sudo mount -o loop texlive2021.iso
-    /mnt/texlive}（挂载texlive2021.iso）。进入~/mnt/texlive~目录，输入命
-  令~\texttt{sudo ./install-tl -gui}~之后出现图形界面。之后
-  的操作就比较简单了，可以去掉不用的语言包以节省磁盘空间，注意选择最后一
-  项 Create symlinks in system directories ，让安装程序自动创建语法链接。确
-  定安装，耐心等待进度条到头；
-\item[(4)] 配置环境变量。在终端中输入~\texttt{sudo gedit /etc/bash.bashrc}，在此文件末尾添加
+  \item[(1)] 下载 \TeX{}live 2021 镜像，点击\href{https://tug.org/texlive/}{这里}进    入 \TeX{}live 2021 网站选择需要下载的安装文件或文档。
+  \item[(2)] 安装 perl-tk 包，以便使用图形界面进行安装。在终端中输入命    令\texttt{sudo apt-get install perl-tk}；
+  \item[(3)] 挂载下载好的iso镜像，\texttt{sudo mkdir /mnt/texlive}（在~{/mnt}~下创建texlive文件夹），\texttt{sudo mount -o loop texlive2021.iso  /mnt/texlive}（挂载texlive2021.iso）。进入~/mnt/texlive~目录，输入命令~\texttt{sudo ./install-tl -gui}~之后出现图形界面。之后的操作就比较简单了，可以去掉不用的语言包以节省磁盘空间，注意选择最后一项 Create symlinks in system directories ，让安装程序自动创建语法链接。确定安装，耐心等待进度条到头；
+  \item[(4)] 配置环境变量。在终端中输入~\texttt{sudo gedit /etc/bash.bashrc}，在此文件末尾添加
+\end{enumerate}
 
-  \begin{lstlisting}
+\begin{lstlisting}
     PATH=/usr/local/texlive/2021/bin/i386-linux: $PATH;
     export PATH
     MANPATH=/usr/local/texlive/2021/texmf/doc/man: $MANPATH;
@@ -87,21 +79,20 @@ First things first，首先的工作是安装一个合适的 \XeTeX{}编译系�
     export INFOPATH
   \end{lstlisting}
 
-  在~{/etc/manpath.config}~文件的~\texttt{set up PATH to
-    MANPATH mapping}~这行下面的列表后增加一条：
-  \begin{lstlisting}
-    MANPATH_MAP /usr/local/texlive/2021/bin/i386-linux
-    /usr/local/texlive/2021/texmf/doc/man
+在~{/etc/manpath.config}~文件的~\texttt{set up PATH to  MANPATH mapping}~这行下面的列表后增加一条：
+
+\begin{lstlisting}
+    MANPATH_MAP /usr/local/texlive/2021/bin/i386-linux  /usr/local/texlive/2021/texmf/doc/man
   \end{lstlisting}
 
-  在~{/etc/manpath.config}~文件的~\texttt{set up PATH to
-    MANPATH mapping}~这行下面的列表后增加一条：
-  \begin{lstlisting}
-    MANPATH_MAP /usr/local/texlive/2021/bin/i386-linux
-    /usr/local/texlive/2021/texmf/doc/man
+在~{/etc/manpath.config}~文件的~\texttt{set up PATH to  MANPATH mapping}~这行下面的列表后增加一条：
+
+\begin{lstlisting}
+    MANPATH_MAP /usr/local/texlive/2021/bin/i386-linux /usr/local/texlive/2021/texmf/doc/man
   \end{lstlisting}
-\end{enumerate}
+
 至此安装过程结束。
+
 
 如果是在 Windows 系统下，可直接将 Texlive 可执行文件加入系统 PATH 环境变量中。
 
@@ -110,10 +101,10 @@ First things first，首先的工作是安装一个合适的 \XeTeX{}编译系�
 更好的显示效果，也可以使用 Adobe 等其他中文字体。 Adobe 字体的安装及配置过程如下：
 
 \begin{enumerate}
-\item[(1)] 下载Adobe中文字体，点击\href{http://forum.ubuntu.org.cn/viewtopic.php?f=35&t=180987&start=0}{这里}进入下载页面；
-\item[(2)] 将下载的字体拷至~{/usr/share/fonts/truetype/adobe}~目录，如果没有请以管理员身份新建；
-\item[(3)] 刷新字体缓存，在终端中输入~\texttt{sudo fc-cache -fv }。这时，你可以通过~\texttt{fc-list:lang=zh-cn |sort}~命令来查看字体是否安装成功，注意fc-list后有个空格；
-\item[(4)] 你可能还需要在终端中运行~\texttt{sudo apt-get install poppler-data cmap-adobe-cns1 cmap-adobe-gb1}命令来解决Adobe中文字体在PDF文件中不显示的情况。
+  \item[(1)] 下载Adobe中文字体，点击\href{http://forum.ubuntu.org.cn/viewtopic.php?f=35&t=180987&start=0}{这里}进入下载页面；
+  \item[(2)] 将下载的字体拷至~{/usr/share/fonts/truetype/adobe}~目录，如果没有请以管理员身份新建；
+  \item[(3)] 刷新字体缓存，在终端中输入~\texttt{sudo fc-cache -fv }。这时，你可以通过~\texttt{fc-list:lang=zh-cn |sort}~命令来查看字体是否安装成功，注意fc-list后有个空格；
+  \item[(4)] 你可能还需要在终端中运行~\texttt{sudo apt-get install poppler-data cmap-adobe-cns1 cmap-adobe-gb1}命令来解决Adobe中文字体在PDF文件中不显示的情况。
 \end{enumerate}
 
 这样，我们就配置好了中文字体，当然这没什么特别的，网上教程一大把。
@@ -135,6 +126,7 @@ TeXStudio 软件进行 tex 文件编辑。
 
 \subsubsection{\XeLaTeX}
 \label{sec:xelatex}
+
 很多用户对 \LaTeX\ 命令执行的次数不太清楚。一个基本的原则是多次运行 \LaTeX\ 命
 令直至不再出现警告。下面给出生成示例文档的详细过程（\texttt{\#} 开头的行为注
 释），首先来看推荐的 \texttt{xelatex} 方式：
@@ -154,6 +146,7 @@ $ xelatex main.tex
 
 \subsubsection{latexmk}
 \label{sec:latexmk}
+
 \texttt{latexmk} 命令支持全自动生成 \LaTeX\ 编写的文档，并且支持使用不同的工具
 链来进行生成，它会自动运行多次工具直到交叉引用都被解决。下面给出了一个用
 \texttt{latexmk} 调用 \texttt{xelatex} 生成最终文档的示例：
@@ -164,7 +157,7 @@ $ latexmk -xelatex main
 \subsubsection{make}
 \label{sec:make}
 
-上面使用 \texttt{xelatex} 生成论文的方法虽然不复杂，但是每次都输入还是非常罗嗦，所以 \heuthesis\ 
+上面使用 \texttt{xelatex} 生成论文的方法虽然不复杂，但是每次都输入还是非常罗嗦，所以 \heuthesis\
 提供了一个 \texttt{Makefile}，可以通过在命令行环境下执行一次 make 完成论文生成这些工作。
 
 \subsubsection{buidl.bat}
@@ -180,8 +173,8 @@ $ latexmk -xelatex main
 该页可以使用两种方式实现：
 
 \begin{enumerate}
-  \item[(1)] \texttt{\cs authorization} 
-  \item[(2)] \texttt{\cs authorization[auscan.pdf]} 
+  \item[(1)] \texttt{\cs authorization}
+  \item[(2)] \texttt{\cs authorization[auscan.pdf]}
 \end{enumerate}
 
 格式（1）不带参数，使用模板生成的空白原创性和授权声明签字页，可先使用这种方式生成签字页后进行打印签字，然后扫描成 PDF 格式文件。
@@ -192,6 +185,7 @@ $ latexmk -xelatex main
 
 \subsection{生成封面}
 \label{sec:generate-cover}
+
 模板还提供了用于生成论文 \texttt{A3} 页面的封面定义文档。用户可根据自己的情况选择。
 
 A3 封面的生成是利用上述论文的首页封面和书脊拼合而成，因此在生成 A3 封面前
@@ -199,7 +193,7 @@ A3 封面的生成是利用上述论文的首页封面和书脊拼合而成，�
 然后使用 \texttt{xelatex} 依次编译 \texttt{spine.tex} 和 \texttt{a3cover.tex}：
 
 \begin{lstlisting}
-# 1. 使用 xelatex 
+# 1. 使用 xelatex
 $ xelatex spine
 $ xelatex a3cover
 

@@ -19,6 +19,7 @@
 \label{chap05}
 
 \section{研究生院的插图规范}[Requirement of Figure]
+
 图应有自明性。插图应与文字紧密配合，文图相符，内容正确。选图要力求精练，插图、照片应完整清晰。图中文字和数字等字号用宋体~5~号字。
 
 机械工程图：采用第一角投影法，严格按照~GB4457---GB131-83《机械制图》标准规定。
@@ -39,6 +40,7 @@
 
 
 \subsection{图题及图中说明}[Note of Figure]
+
 每个图均应有图题（由图序和图名组成），图名在图序之后空一格排写。图序按章编排，如第~1~章第一个插图的图号为“图~1.1”等。
 图题置于图下，硕士论文可只用中文书写，博士论文用中、英文两种文字居中书写，中文在上，要求中文用宋体~5~号字，英文用~Times New Roman 5~号字。有图注或其它说明时应置于图题之上。引用图应注明出处，在图题右上角加引用文献号。
 图中若有分图时，分图题置于分图之下或图题之下，分图号用~(a)、(b)等表示。
@@ -63,9 +65,9 @@
 \bicaption[fig:refname]{中文索引图名称}{中文图名称}{Eng_Index}{English Caption}
 \end{lstlisting}
 
- 引用图形时，需在图题处插入“图\textbackslash ref~\{fig:refname\}”，\LaTeX{}编译器会自动对插图序号进行编排，并用最终图号替换符号引用标识。
+引用图形时，需在图题处插入“图\textbackslash ref~\{fig:refname\}”，\LaTeX{}编译器会自动对插图序号进行编排，并用最终图号替换符号引用标识。
 
- 如果图形图题过长，\LaTeX{}排版系统会自动按悬挂缩进排版。
+如果图形图题过长，\LaTeX{}排版系统会自动按悬挂缩进排版。
 
 \begin{figure}[htbp]
   \centering
@@ -90,14 +92,14 @@
   \wuhao
   \begin{tabularx}{0.8\textwidth{}}{lX}
     \toprule
-    参数             & 说明 \\
+    参数             & 说明                                                             \\
     \midrule
-    width=x,height=y & 宽度和高度,绝对尺寸,可用任意长度单位。  \\
+    width=x,height=y & 宽度和高度,绝对尺寸,可用任意长度单位。                           \\
     scale=s          & 缩放比。绝对尺寸和缩放比用一种即可,同时使用两者,绝对尺寸起作用。 \\
-    keepaspectratio & 保持图形比例。宽度和高度通常设置一个即可,否则图形比
+    keepaspectratio  & 保持图形比例。宽度和高度通常设置一个即可,否则图形比
     例会失调,除非再加上此选 项,
-    这样图形宽度和高度都不超过指定参数。     \\
-    angle=a          & 逆时针旋转角度,单位是度。  \\
+    这样图形宽度和高度都不超过指定参数。                                                \\
+    angle=a          & 逆时针旋转角度,单位是度。                                        \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -119,9 +121,9 @@
 个选项。
 
 \begin{figure}[tbph]
-\usetikzlibrary{calc,through}
+  \usetikzlibrary{calc,through}
   \centering
-    \begin{tikzpicture}
+  \begin{tikzpicture}
     \coordinate [label=left:$A$] (A) at (0,0);
     \coordinate [label=right:$B$] (B) at (0.75,0.25);
     \coordinate [label=above:$C$] (C) at (1,1.5);
@@ -131,14 +133,14 @@
     \node (H) [label=135:$H$,draw,circle through=(C)] at (B) {};
     \draw (D) -- ($ (D) ! 3.5 ! (B) $) coordinate [label=below:$F$] (F);
     \draw (D) -- ($ (D) ! 2.5 ! (A) $) coordinate [label=below:$E$] (E);
-    \end{tikzpicture}
+  \end{tikzpicture}
 
-    \bicaption[fig:sun]
-    {长标题示例}
-    {一个很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的标题示例
+  \bicaption[fig:sun]
+  {长标题示例}
+  {一个很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的标题示例
     这个图形是由Tikz绘制当然你也可以用JPG图片}
-    {Fig.}
-    {a long long long long long long long long long long long long caption}
+  {Fig.}
+  {a long long long long long long long long long long long long caption}
 \end{figure}
 
 \begin{lstlisting}
@@ -272,13 +274,13 @@ Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中�
 子图图题使用“minipage”和“description”环境，宽度，对齐方式可以按照需要自由设置。
 
 \begin{figure}[htbp]
-    \centering
-    \subfigure{\label{{fig:1a}}}\addtocounter{subfigure}{-2}
-    \subfigure[Girl A]{\subfigure[女孩A]{\includegraphics[keepaspectratio]{chao.jpg}}}
-    \hspace{20pt}
-    \subfigure{\label{{fig:1b}}}\addtocounter{subfigure}{-2}
-    \subfigure[Girl B]{\subfigure[女孩B]{\includegraphics[keepaspectratio]{ren.jpg}}}
-    \bicaption[fig:judy]{女孩}{女孩}{Fig.}{Judy}
+  \centering
+  \subfigure{\label{{fig:1a}}}\addtocounter{subfigure}{-2}
+  \subfigure[Girl A]{\subfigure[女孩A]{\includegraphics[keepaspectratio]{chao.jpg}}}
+  \hspace{20pt}
+  \subfigure{\label{{fig:1b}}}\addtocounter{subfigure}{-2}
+  \subfigure[Girl B]{\subfigure[女孩B]{\includegraphics[keepaspectratio]{ren.jpg}}}
+  \bicaption[fig:judy]{女孩}{女孩}{Fig.}{Judy}
 \end{figure}
 
 \begin{lstlisting}
@@ -396,6 +398,7 @@ Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中�
 如果不想让图片浮动到下一章节，那么在此处使用\cs{clearpage}命令。
 
 \section{pgf/TikZ~插图}[pgf/TikZ Figure]
+
 pgf/TikZ是一个在tex系统中的画图宏包，除了可以精确的作图外，对于某些不要求精确控制的图形绘制，如：流程图，树图，等等，也提供了简便易用的支持。
 下面这张图片是用TikZ宏包进行绘制的图形，其实现代码为：
 \begin{lstlisting}
@@ -408,13 +411,13 @@ pgf/TikZ是一个在tex系统中的画图宏包，除了可以精确的作图外
 \end{lstlisting}
 
 \begin{figure}[htbp]
-    \centering
-    \begin{tikzpicture}[thick,smooth,domain=0:4,scale=0.9]
-        \draw[very thin,gray] (0,0) grid (12,4);
-        \draw plot[mark=*] (\x,{\x * \x/4});
-        \draw[blue,xshift=4cm] plot[samples=5,mark=+] (\x,{\x * \x/4});
-        \draw[red,xshift=8cm] plot[samples=10,mark=x] (\x,{\x * \x/4});
-    \end{tikzpicture}
+  \centering
+  \begin{tikzpicture}[thick,smooth,domain=0:4,scale=0.9]
+    \draw[very thin,gray] (0,0) grid (12,4);
+    \draw plot[mark=*] (\x,{\x * \x/4});
+    \draw[blue,xshift=4cm] plot[samples=5,mark=+] (\x,{\x * \x/4});
+    \draw[red,xshift=8cm] plot[samples=10,mark=x] (\x,{\x * \x/4});
+  \end{tikzpicture}
   \bicaption[fig:TikZ]{TikZ插图}{TikZ插图}{Fig.}{Draw with TikZ}
 \end{figure}
 
@@ -429,7 +432,7 @@ pgf/TikZ是一个在tex系统中的画图宏包，除了可以精确的作图外
 	budget    name1   name2   name3   name4    name5    name6
 	0.2 1   1   1   1   1   1
 	0.4 10  10  10  10  10  10
-	0.6 30  30  30  30  30  30 
+	0.6 30  30  30  30  30  30
 	0.8 50  49  51  48  50  50
 	1.0 110 110 110 110 110 110
 	1.2 120 110 120 110 110 110
@@ -454,13 +457,13 @@ pgf/TikZ是一个在tex系统中的画图宏包，除了可以精确的作图外
 	        legend pos=north west,
 	        nodes={scale=1},
 	        draw = none,
-	        cells={anchor=west}, 
+	        cells={anchor=west},
 	    },
 	    xlabel={xlabel},
 	    xtick=data,
 	    xticklabels from table={\datatable}{budget},
 	    ]
-	
+
 	\newcommand{\mysubplot}[2]{
 	    \addplot[#2] table [x=budget,y=#1] {\datatable};
 	    \addlegendentry{#1};
@@ -471,7 +474,7 @@ pgf/TikZ是一个在tex系统中的画图宏包，除了可以精确的作图外
 	\mysubplot{name4}{pattern=crosshatch}
 	\mysubplot{name5}{pattern=north west lines}
 	\mysubplot{name6}{fill=black}
-	
+
 	\end{axis}
 	\end{tikzpicture}
    \bicaption[fig:TikZTable]{TikZ数据表绘图}{TikZ数据表}{Fig.}{Draw with Data Table}
@@ -480,68 +483,68 @@ pgf/TikZ是一个在tex系统中的画图宏包，除了可以精确的作图外
 }
 
 \begin{figure}[htbp]
-    \centering
-	\begin{tikzpicture}[scale=0.85]
-	\pgfplotstableread{
-	budget    name1   name2   name3   name4    name5    name6
-	0.2 1   1   1   1   1   1
-	0.4 10  10  10  10  10  10
-	0.6 30  30  30  30  30  30 
-	0.8 50  49  51  48  50  50
-	1.0 110 110 110 110 110 110
-	1.2 120 110 120 110 110 110
-	1.4 130 130 130 110 110 130
-	1.6 150 150 150 110 110 150
-	1.8 160 150 150 160 111 150
-	2.0 170 170 170 100 160 160
-	}{\datatable}
-	\begin{axis}[
-	    width = \linewidth, height = 0.5\linewidth,
-	    %title={The Title},
-	    title style={at={(0.5,-0.35)}},
-	    xtick pos=bottom,
-	    ytick pos=left, % remove the tick from the right and top
-	    ybar=0,
-	    ylabel={ylabel},
-	    ylabel style={at={(axis description cs:0.03,0.5)}},
-	    ytick={0,20,...,180},
-	    bar width=4pt,
-	    %enlarge x limits=0.15,
-	    ymin=0, ymax=180,
-	    % legned related -------------
-	    legend image code/.code={
-	        \draw [#1] (0cm,-0.1cm) rectangle (0.35cm,0.1cm);
-	    },
-	    legend style={
-	        %at={(0.13,1)},
-	        legend pos=north west,
-	        nodes={scale=1},
-	        draw = none,        % without box
-	        cells={anchor=west}, % algin left
-	    },
-	    xlabel={xlabel},
-	    % xtick related 
-	    xtick=data,
-	    xticklabels from table={\datatable}{budget},
-	    %xticklabel style={
-	    %j    rotate=45,xshift=-100,yshift=-100,anchor=mid east
-	    %j},
-	    ] % end of options of axis environment
-	
-	\newcommand{\mysubplot}[2]{
-	    \addplot[#2] table [x=budget,y=#1] {\datatable};
-	    \addlegendentry{#1};
-	}
-	\mysubplot{name1}{}
-	\mysubplot{name2}{pattern=crosshatch dots}
-	\mysubplot{name3}{pattern=north east lines}
-	\mysubplot{name4}{pattern=crosshatch}
-	\mysubplot{name5}{pattern=north west lines}
-	\mysubplot{name6}{fill=black}
-	
-	\end{axis}
-	\end{tikzpicture}
-   \bicaption[fig:TikZTable]{TikZ数据表绘图}{TikZ数据表}{Fig.}{Draw with Data Table}
+  \centering
+  \begin{tikzpicture}[scale=0.85]
+    \pgfplotstableread{
+      budget    name1   name2   name3   name4    name5    name6
+      0.2 1   1   1   1   1   1
+      0.4 10  10  10  10  10  10
+      0.6 30  30  30  30  30  30
+      0.8 50  49  51  48  50  50
+      1.0 110 110 110 110 110 110
+      1.2 120 110 120 110 110 110
+      1.4 130 130 130 110 110 130
+      1.6 150 150 150 110 110 150
+      1.8 160 150 150 160 111 150
+      2.0 170 170 170 100 160 160
+    }{\datatable}
+    \begin{axis}[
+        width = \linewidth, height = 0.5\linewidth,
+        %title={The Title},
+        title style={at={(0.5,-0.35)}},
+        xtick pos=bottom,
+        ytick pos=left, % remove the tick from the right and top
+        ybar=0,
+        ylabel={ylabel},
+        ylabel style={at={(axis description cs:0.03,0.5)}},
+        ytick={0,20,...,180},
+        bar width=4pt,
+        %enlarge x limits=0.15,
+        ymin=0, ymax=180,
+        % legned related -------------
+        legend image code/.code={
+            \draw [#1] (0cm,-0.1cm) rectangle (0.35cm,0.1cm);
+          },
+        legend style={
+            %at={(0.13,1)},
+            legend pos=north west,
+            nodes={scale=1},
+            draw = none,        % without box
+            cells={anchor=west}, % algin left
+          },
+        xlabel={xlabel},
+        % xtick related
+        xtick=data,
+        xticklabels from table={\datatable}{budget},
+        %xticklabel style={
+        %j    rotate=45,xshift=-100,yshift=-100,anchor=mid east
+        %j},
+      ] % end of options of axis environment
+
+      \newcommand{\mysubplot}[2]{
+        \addplot[#2] table [x=budget,y=#1] {\datatable};
+        \addlegendentry{#1};
+      }
+      \mysubplot{name1}{}
+      \mysubplot{name2}{pattern=crosshatch dots}
+      \mysubplot{name3}{pattern=north east lines}
+      \mysubplot{name4}{pattern=crosshatch}
+      \mysubplot{name5}{pattern=north west lines}
+      \mysubplot{name6}{fill=black}
+
+    \end{axis}
+  \end{tikzpicture}
+  \bicaption[fig:TikZTable]{TikZ数据表绘图}{TikZ数据表}{Fig.}{Draw with Data Table}
 \end{figure}
 
 pgf/TikZ不仅可以使用文档内部数据绘图，还可以直接读取外部~csv~数据文件进行绘图，如图 ~\ref{fig:TikZcsv}~便是
@@ -561,7 +564,7 @@ pgf/TikZ不仅可以使用文档内部数据绘图，还可以直接读取外部
         legend style = {
             legend pos=south east,
             legend columns = {2},
-            nodes={scale=0.5}, 
+            nodes={scale=0.5},
         },
         grid = major,
         grid style=dashed,
@@ -600,62 +603,62 @@ pgf/TikZ不仅可以使用文档内部数据绘图，还可以直接读取外部
 }
 
 \begin{figure}[htbp]
-    \centering
- \begin{tikzpicture}[scale=0.85]
+  \centering
+  \begin{tikzpicture}[scale=0.85]
     \pgfplotstableread{data/datafile1.csv}{\datatable}
     \begin{axis}[
-        xlabel={Computation time passed~[minutes]},
-        ylabel={bits per channel use},
-        ylabel style={at={(axis description cs:0.06,0.5)}},
-        xmin= 0, xmax= 120, ymin= 0,
-        legend style = {
-            legend pos=south east,
-            legend columns = {2},
-            nodes={scale=0.5}, % make the legend box smaller
-            %font = {\tiny},
+      xlabel={Computation time passed~[minutes]},
+      ylabel={bits per channel use},
+      ylabel style={at={(axis description cs:0.06,0.5)}},
+      xmin= 0, xmax= 120, ymin= 0,
+      legend style = {
+          legend pos=south east,
+          legend columns = {2},
+          nodes={scale=0.5}, % make the legend box smaller
+          %font = {\tiny},
         },
-        grid = major,
-        grid style=dashed,
-        mark repeat={8},
-        width = \linewidth,
-        height = 0.5\linewidth,
-        mark options={solid},
-        %% extra label for information rate
-        every axis/.append style={
-            extra description/.code={
-                \node[scale=0.5] at (0.07,0.93) {Information Rate};
-                \node[scale=0.5] at (0.93,0.93) {Information Rate};
+      grid = major,
+      grid style=dashed,
+      mark repeat={8},
+      width = \linewidth,
+      height = 0.5\linewidth,
+      mark options={solid},
+      %% extra label for information rate
+      every axis/.append style={
+          extra description/.code={
+              \node[scale=0.5] at (0.07,0.93) {Information Rate};
+              \node[scale=0.5] at (0.93,0.93) {Information Rate};
             },
         },
-    ]
+      ]
 
-    %1
-    \addplot[red,mark=o,dashed] table [x index=0, y index=1] {\datatable};
-    \addlegendentry{EM-type algorithm~[13] with 4-state FSMC}
-    %2
-    \addplot[dashed,mark=o] table [x index=0, y index=2] {\datatable};
-    \addlegendentry{EM-type algorithm~[13] with 16-state FSMC}
-    %3
-    \addplot[blue,mark=diamond] table [x index=0, y index=3] {\datatable};
-    \addlegendentry{Algorithm~11 with 1-qubit QSC}
-    %4
-    \addplot[red,mark=+] table [x index=0, y index=4] {\datatable};
-    \addlegendentry{Algorithm~11 with 4-state FSMC}
-    %5
-    \addplot[mark=+] table [x index=0, y index=5] {\datatable};
-    \addlegendentry{Algorithm~11 with 16-state FSMC}
-    %6
-    \addplot[red,mark=diamond] table [x index=0, y index=6] {\datatable};
-    \addlegendentry{Algorithm~11 with 2-qubit QSC}
-    %7
-    \addplot[dashed] table [x index=0, y index=7] {\datatable};
-    \addlegendentry{Estimated Information Rate~(Alg.~9)}
+      %1
+      \addplot[red,mark=o,dashed] table [x index=0, y index=1] {\datatable};
+      \addlegendentry{EM-type algorithm~[13] with 4-state FSMC}
+      %2
+      \addplot[dashed,mark=o] table [x index=0, y index=2] {\datatable};
+      \addlegendentry{EM-type algorithm~[13] with 16-state FSMC}
+      %3
+      \addplot[blue,mark=diamond] table [x index=0, y index=3] {\datatable};
+      \addlegendentry{Algorithm~11 with 1-qubit QSC}
+      %4
+      \addplot[red,mark=+] table [x index=0, y index=4] {\datatable};
+      \addlegendentry{Algorithm~11 with 4-state FSMC}
+      %5
+      \addplot[mark=+] table [x index=0, y index=5] {\datatable};
+      \addlegendentry{Algorithm~11 with 16-state FSMC}
+      %6
+      \addplot[red,mark=diamond] table [x index=0, y index=6] {\datatable};
+      \addlegendentry{Algorithm~11 with 2-qubit QSC}
+      %7
+      \addplot[dashed] table [x index=0, y index=7] {\datatable};
+      \addlegendentry{Estimated Information Rate~(Alg.~9)}
 
     \end{axis}
-    \end{tikzpicture}
-   \bicaption[fig:TikZcsv]{TikZ数据文件绘图}{TikZ数据文件绘图}{Fig.}{Draw with Data File}
+  \end{tikzpicture}
+  \bicaption[fig:TikZcsv]{TikZ数据文件绘图}{TikZ数据文件绘图}{Fig.}{Draw with Data File}
 \end{figure}
-   
+
 更多的关于pgf/TikZ绘图方法请参考相关资料。
 
 \section*{本章小结}[Brief Summary]

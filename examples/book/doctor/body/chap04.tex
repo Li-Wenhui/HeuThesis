@@ -40,17 +40,17 @@
 
 表格应具有三线表格式，因此需要调用~booktabs~宏包，其标准格式如表~\ref{table1}~所示。
 \begin{table}[htbp]
-\bicaption[table1]{}{符合研究生院绘图规范的表格}{Table$\!$}{Table in agreement of the standard from graduate school}
-\vspace{0.5em}\centering\wuhao
-\begin{tabular}{ccccc}
-\toprule[1.5pt]
-$D$(in) & $P_u$(lbs) & $u_u$(in) & $\beta$ & $G_f$(psi.in)\\
-\midrule[1pt]
- 5 & 269.8 & 0.000674 & 1.79 & 0.04089\\
-10 & 421.0 & 0.001035 & 3.59 & 0.04089\\
-20 & 640.2 & 0.001565 & 7.18 & 0.04089\\
-\bottomrule[1.5pt]
-\end{tabular}
+  \bicaption[table1]{}{符合研究生院绘图规范的表格}{Table$\!$}{Table in agreement of the standard from graduate school}
+  \vspace{0.5em}\centering\wuhao
+  \begin{tabular}{ccccc}
+    \toprule[1.5pt]
+    $D$(in) & $P_u$(lbs) & $u_u$(in) & $\beta$ & $G_f$(psi.in) \\
+    \midrule[1pt]
+    5       & 269.8      & 0.000674  & 1.79    & 0.04089       \\
+    10      & 421.0      & 0.001035  & 3.59    & 0.04089       \\
+    20      & 640.2      & 0.001565  & 7.18    & 0.04089       \\
+    \bottomrule[1.5pt]
+  \end{tabular}
 \end{table}
 
 其绘制表格的代码及其说明如下。
@@ -186,13 +186,13 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
   \wuhao
   \begin{tabular}{ccc}
     \toprule
-    Test    & \multicolumn{2}{c}{Common Tools} \\
-              \cmidrule{2-3}
-    OS         & Distribution & Editor  \\
+    Test       & \multicolumn{2}{c}{Common Tools}             \\
+    \cmidrule{2-3}
+    OS         & Distribution                     & Editor    \\
     \midrule
-    Windows    & MikTeX       & TexMakerX  \\
-    Mac OS     & MacTeX       & TeXShop  \\
-    Linux/Unix & TeX Live     & TeXworks  \\
+    Windows    & MikTeX                           & TexMakerX \\
+    Mac OS     & MacTeX                           & TeXShop   \\
+    Linux/Unix & TeX Live                         & TeXworks  \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -236,13 +236,13 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
   \wuhao
   \begin{tabular}{ccc}
     \toprule
-    \multirow{2}*{OS} & \multicolumn{2}{c}{Common Tools} \\
-                        \cmidrule{2-3}
-                      & Distribution & Editor  \\
+    \multirow{2}*{OS} & \multicolumn{2}{c}{Common Tools}             \\
+    \cmidrule{2-3}
+                      & Distribution                     & Editor    \\
     \midrule
-    Windows          & MikTeX       & TexMakerX  \\
-    Mac OS           & MacTeX       & TeXShop  \\
-    Linux/Unix       & TeX Live     & TeXworks  \\
+    Windows           & MikTeX                           & TexMakerX \\
+    Mac OS            & MacTeX                           & TeXShop   \\
+    Linux/Unix        & TeX Live                         & TeXworks  \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -297,12 +297,12 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
   \wuhao
   \begin{tabularx}{0.8\textwidth{}}{lX}
     \toprule
-    People & Says \\
+    People        & Says                                                 \\
     \midrule
     Elias Canetti & If you were alone, you would cut yourself in two, so
-    that one part would shape the other.\\
-    Franz Kafka & In the struggle between yourself and the world,
-    second the world.\\
+    that one part would shape the other.                                 \\
+    Franz Kafka   & In the struggle between yourself and the world,
+    second the world.                                                    \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -330,14 +330,14 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
 首先给出这种情况下的一个例子如表~\ref{table3}~所示。
 \begin{table}[htbp]
   \centering
-\bicaption[table3]{}{最小的三个正整数的英文表示法}{Table$\!$}{The English construction of the smallest three positive integral numbers}\vspace{0.5em}\wuhao
-\begin{tabularx}{0.7\textwidth}{llX}
-\toprule[1.5pt]
-Value & Name & Alternate names, and names for sets of the given size\\\midrule[1pt]
-1 & One & ace, single, singleton, unary, unit, unity\\
-2 & Two & binary, brace, couple, couplet, distich, deuce, double, doubleton, duad, duality, duet, duo, dyad, pair, snake eyes, span, twain, twosome, yoke\\
-3 & Three & deuce-ace, leash, set, tercet, ternary, ternion, terzetto, threesome, tierce, trey, triad, trine, trinity, trio, triplet, troika, hat-trick\\\bottomrule[1.5pt]
-\end{tabularx}
+  \bicaption[table3]{}{最小的三个正整数的英文表示法}{Table$\!$}{The English construction of the smallest three positive integral numbers}\vspace{0.5em}\wuhao
+  \begin{tabularx}{0.7\textwidth}{llX}
+    \toprule[1.5pt]
+    Value & Name  & Alternate names, and names for sets of the given size                                                                                           \\\midrule[1pt]
+    1     & One   & ace, single, singleton, unary, unit, unity                                                                                                      \\
+    2     & Two   & binary, brace, couple, couplet, distich, deuce, double, doubleton, duad, duality, duet, duo, dyad, pair, snake eyes, span, twain, twosome, yoke \\
+    3     & Three & deuce-ace, leash, set, tercet, ternary, ternion, terzetto, threesome, tierce, trey, triad, trine, trinity, trio, triplet, troika, hat-trick     \\\bottomrule[1.5pt]
+  \end{tabularx}
 \end{table}
 
 绘制这种表格的代码及其说明如下。
@@ -386,7 +386,7 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
     \toprule
     \diagbox{Times}{Day} & Mon  & Tue  & Wed  \\
     \midrule
-    Morning              & used & used &  \\
+    Morning              & used & used &      \\
     Afternoon            &      & used & used \\
     \bottomrule
   \end{tabular}
@@ -418,7 +418,7 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
     \hline
     \diagbox{Times}{Day} & Mon  & Tue  & Wed  \\
     \hline
-    Morning              & used & used &  \\
+    Morning              & used & used &      \\
     Afternoon            &      & used & used \\
     \hline
   \end{tabular}
@@ -463,14 +463,14 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
     \toprule
     Planet  & Size(Earth=1) & {Weight(Earth=1)} & Radius  \\
     \midrule
-    Mercury & 0.056         & 0.055           & 0.3871  \\
-    Venus   & 0.857         & 0.815           & 0.7233  \\
-    Earth   & 1.00          & 1.000           & 1.0000  \\
-    Mars    & 0.151         & 0.107           & 1.5237  \\
-    Jupiter & 1321          & 317.832         & 5.2026  \\
-    Saturn  & 755           & 95.16           & 9.5549  \\
-    Uranus  & 63            & 14.54           & 19.2184 \\
-    Neptune & 58            & 17.15           & 30.1104 \\
+    Mercury & 0.056         & 0.055             & 0.3871  \\
+    Venus   & 0.857         & 0.815             & 0.7233  \\
+    Earth   & 1.00          & 1.000             & 1.0000  \\
+    Mars    & 0.151         & 0.107             & 1.5237  \\
+    Jupiter & 1321          & 317.832           & 5.2026  \\
+    Saturn  & 755           & 95.16             & 9.5549  \\
+    Uranus  & 63            & 14.54             & 19.2184 \\
+    Neptune & 58            & 17.15             & 30.1104 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -505,17 +505,17 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
 由\verb|tabularx|环境生成的对公式中物理量符号进行注释的公式如式(\ref{eq:1})所示。
 
 \begin{equation}\label{eq:1}
-\ddot{\boldsymbol{\rho}}-\frac{\mu}{R_{t}^{3}}\left(3\mathbf{R_{t}}\frac{\mathbf{R_{t}\rho}}{R_{t}^{2}}-\boldsymbol{\rho}\right)=\mathbf{a}
+  \ddot{\boldsymbol{\rho}}-\frac{\mu}{R_{t}^{3}}\left(3\mathbf{R_{t}}\frac{\mathbf{R_{t}\rho}}{R_{t}^{2}}-\boldsymbol{\rho}\right)=\mathbf{a}
 \end{equation}
 \begin{tabularx}{\textwidth}{@{}l@{\quad}r@{——}X@{}}
-式中& $\boldsymbol{\rho}$ &追踪飞行器与目标飞行器之间的相对位置矢量；\\
-&  $\boldsymbol{\ddot{\rho}}$&追踪飞行器与目标飞行器之间的相对加速度；\\
-&  $\mathbf{a}$   &推力所产生的加速度；\\
-&  $\mathbf{R_t}$ & 目标飞行器在惯性坐标系中的位置矢量；\\
-&  $\omega_{t}$ & 目标飞行器的轨道角速度；\\
-&  $\mathbf{g}$ & 重力加速度，$=\frac{\mu}{R_{t}^{3}}\left(
-3\mathbf{R_{t}}\frac{\mathbf{R_{t}\rho}}{R_{t}^{2}}-\boldsymbol{\rho}\right)=\omega_{t}^{2}\frac{R_{t}}{p}\left(
-3\mathbf{R_{t}}\frac{\mathbf{R_{t}\rho}}{R_{t}^{2}}-\boldsymbol{\rho}\right)$，这里~$p$~是目标飞行器的轨道半通径。
+  式中 & $\boldsymbol{\rho}$        & 追踪飞行器与目标飞行器之间的相对位置矢量； \\
+       & $\boldsymbol{\ddot{\rho}}$ & 追踪飞行器与目标飞行器之间的相对加速度；   \\
+       & $\mathbf{a}$               & 推力所产生的加速度；                       \\
+       & $\mathbf{R_t}$             & 目标飞行器在惯性坐标系中的位置矢量；       \\
+       & $\omega_{t}$               & 目标飞行器的轨道角速度；                   \\
+       & $\mathbf{g}$               & 重力加速度，$=\frac{\mu}{R_{t}^{3}}\left(
+    3\mathbf{R_{t}}\frac{\mathbf{R_{t}\rho}}{R_{t}^{2}}-\boldsymbol{\rho}\right)=\omega_{t}^{2}\frac{R_{t}}{p}\left(
+    3\mathbf{R_{t}}\frac{\mathbf{R_{t}\rho}}{R_{t}^{2}}-\boldsymbol{\rho}\right)$，这里~$p$~是目标飞行器的轨道半通径。
 \end{tabularx}
 \vspace{2em}
 
@@ -532,10 +532,10 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
 
 
 tabularx环境的第1个参数~\verb|{\textwidth}|~设置表格宽度为正文宽度，第2个参数里面各个符号的意义为：
-    第1个~\verb|@{}l|~表示在“式中”二字左侧不插入任何文本，“式中”二字能够在正文中左对齐，若无此项，则“式中”二字左侧会留出一定的空白；
-   ~\verb|@{\quad}|~表示在“式中”和物理量符号间插入一个空铅宽度的空白；
-    ~\verb|@{— — }|~实现插入破折号的功能，它由两个个1/2的中文破折号构成；
-    第2个~\verb|@{}|~表示在注释内容靠近正文右边界的地方能够实现右对齐。
+第1个~\verb|@{}l|~表示在“式中”二字左侧不插入任何文本，“式中”二字能够在正文中左对齐，若无此项，则“式中”二字左侧会留出一定的空白；
+~\verb|@{\quad}|~表示在“式中”和物理量符号间插入一个空铅宽度的空白；
+~\verb|@{— — }|~实现插入破折号的功能，它由两个个1/2的中文破折号构成；
+第2个~\verb|@{}|~表示在注释内容靠近正文右边界的地方能够实现右对齐。
 
 
 由此方法生成的注释内容应紧邻待注释公式并置于其下方，因此不能将代码放入\verb|table|浮动环境中。
@@ -568,9 +568,9 @@ tabularx环境的第1个参数~\verb|{\textwidth}|~设置表格宽度为正文�
 学位论文一般可采用两种罗列环境：一种是并列条目有同样标签的~\verb|itemize|~罗列环境，
 另一种是具有自动排序编号符号的~\verb|enumerate|~罗列环境。这两种罗列环境的样式参数可参考图~\ref{list}。
 \begin{figure}[htbp]
-\centering
-\includegraphics[width = 0.6\textwidth]{list}
-\bicaption[list]{}{罗列环境参数示意图}{Fig.$\!$}{Schematic diagram of list environments}\vspace{-1em}
+  \centering
+  \includegraphics[width = 0.6\textwidth]{list}
+  \bicaption[list]{}{罗列环境参数示意图}{Fig.$\!$}{Schematic diagram of list environments}\vspace{-1em}
 \end{figure}
 
 通过调用~enumitem~宏包可以很方便地控制罗列环境的布局，
@@ -578,9 +578,9 @@ tabularx环境的第1个参数~\verb|{\textwidth}|~设置表格宽度为正文�
 采用~\verb|itemize|~单层罗列环境的排版形式如下：
 
 \begin{itemize}
-\item 第一个条目文本内容
-\item 第二个条目文本内容
-\item 第三个条目文本内容
+  \item 第一个条目文本内容
+  \item 第二个条目文本内容
+  \item 第三个条目文本内容
 \end{itemize}
 
 其代码如下
@@ -595,9 +595,9 @@ tabularx环境的第1个参数~\verb|{\textwidth}|~设置表格宽度为正文�
 
 采用~\verb|enumerate|~单层罗列环境的排版形式如下：
 \begin{enumerate}
-\item 第一个条目文本内容
-\item 第二个条目文本内容
-\item 第三个条目文本内容
+  \item 第一个条目文本内容
+  \item 第二个条目文本内容
+  \item 第三个条目文本内容
 \end{enumerate}
 
 其代码如下
@@ -613,9 +613,9 @@ tabularx环境的第1个参数~\verb|{\textwidth}|~设置表格宽度为正文�
 例如：
 
 \begin{enumerate}
-\item 鉴定袋蛾———二十分
-\item 给斯拉瓦写信———二小时四十五分
-\item 植物保护小组开会———二小时二十五分
+  \item 鉴定袋蛾———二十分
+  \item 给斯拉瓦写信———二小时四十五分
+  \item 植物保护小组开会———二小时二十五分
 \end{enumerate}
 
 上述是默认的列表样式。源代码如下：
@@ -634,9 +634,9 @@ tabularx环境的第1个参数~\verb|{\textwidth}|~设置表格宽度为正文�
 马数字(i),(ii),(iii)这样的顺序呢，只需要
 在 \verb|\item[]| 后面[~]中加入指定的序号。比如:
 \begin{enumerate}
-\item[(1)] 鉴定袋蛾———二十分
-\item[(2)] 给斯拉瓦写信———二小时四十五分
-\item[(3)] 植物保护小组开会———二小时二十五分
+  \item[(1)] 鉴定袋蛾———二十分
+  \item[(2)] 给斯拉瓦写信———二小时四十五分
+  \item[(3)] 植物保护小组开会———二小时二十五分
 \end{enumerate}
 源代码是：
 \begin{lstlisting}
