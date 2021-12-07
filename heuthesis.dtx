@@ -5794,16 +5794,10 @@ delim_1 "\\hspace*{\\fill}"
     \fi
   \end{titlepage}
   \normalsize
-%  \ifheu@bachelor
-%  \relax
-%  \else
-%  \authorization[authorization.pdf]
+  \cleardoublepage}
 %    \end{macrocode}
 %    生成独创性声明和授权签字页。
 %    \begin{macrocode}
-%  \fi
-  \cleardoublepage}
-
 \def\heu@authorization@other{%
 	\ifheu@openright\cleardoublepage\else\clearpage\fi
 	%  \heu@appendix@chapter*{\heu@authorization@ctitle}[\heu@authorization@etitle]
@@ -5832,14 +5826,13 @@ delim_1 "\\hspace*{\\fill}"
 	\vspace{\baselineskip}
 	\par\hspace{4em}\heu@authorsig\hspace{10em}\heu@teachersig
 	\vspace{0.5\baselineskip}
-	\par\hspace{4em}\heu@frontdate\heu@datefill\hspace{5em}\heu@frontdate\heu@datefill}
+	\par\hspace{4em}\heu@frontdate\heu@datefill\hspace{8em}\heu@datefill}
 \def\heu@authorization@bachelor{%
 	\ifheu@openright\cleardoublepage\else\clearpage\fi
 	\heu@appendix@chapter*{\heu@declarename@bachelor}
 	\heu@authorizationtext@bachelor
 	\vspace{2\baselineskip}
 	\par\hspace{6em}\heu@authorsig\hfill\heu@frontdate\heu@datefill}
-
 \NewDocumentCommand{\authorization}{o}{%
 	\IfNoValueTF{#1}{%
 		\thispagestyle{empty}%
@@ -5858,8 +5851,6 @@ delim_1 "\\hspace*{\\fill}"
 		}]{#1}%
 	}%
 }
-
-%  \heu@makeabstract}
 %    \end{macrocode}
 %    生成参考文献和关键字。
 %    \begin{macrocode}
@@ -5870,7 +5861,6 @@ delim_1 "\\hspace*{\\fill}"
     \noindent\hangindent\wd\heu@kw\hangafter1%
     \box\heu@kw#2\par
   \endgroup}
-
 \newcommand{\makeabstract}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
   \ifheu@english
