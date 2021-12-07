@@ -80,6 +80,7 @@ $\to$转换”，在弹出的对话窗中选中“转换到其它语言（文字
 
 位于两行之间的公式称为行间公式，每个公式都是一个单独的段落，例如
 \[\int_a^b{f\left(x\right)\mathrm{d}x}=\lim_{\left\|\Delta{x_i}\right\|\to 0}\sum_i{f\left(\xi_i\right)\Delta{x_i}}\]
+
 除人工编号外，\LaTeX~各种类型行间公式的标记见表~\ref{eqtag}。
 \begin{table}[htbp]
 \bicaption[eqtag]{}{各种类型行间公式的标记}{Table$\!$}{Tags for several kinds of displaymath mode equations}
@@ -92,10 +93,26 @@ $\to$转换”，在弹出的对话窗中选中“转换到其它语言（文字
 \bottomrule
 \end{tabularx}
 \end{table}
+
 另外，在自动编号的某行公式行尾添加标签~\verb|\nonumber|，可将该行转换为无编号形式。
 
 行间多行公式需采用~\verb|eqnarray|~或~\verb|eqnarray*|~环境，它默认是一个列格式为~\verb|rcl|~的~3~列矩阵，并且中间列的字号要小一些，因此通常只将需要对齐的运算符号（通常为等号“=”）置于中间列。
 
+对于不需要进行公示编号的行间公式，也可以使用简化的行间公式符号~\verb|$$  $$|~或~\verb|\[  \]|~，例如：
+
+ $$(\sum_{k=\frac12}^{N^2})$$
+ 或
+ \[(\sum_{k=\frac12}^{N^2})\]
+ 
+ 上述量化公式代码分别为：
+ \begin{lstlisting}
+   $$(\sum_{k=\frac12}^{N^2})$$
+ \end{lstlisting}
+ 和
+ \begin{lstlisting}
+   \[(\sum_{k=\frac12}^{N^2})\]
+ \end{lstlisting}
+ 
 \section{可自动调整大小的定界符}[Limiter Setting]
 
 若在左右两个定界符之前分别添加命令~\verb|\left|~和~\verb|\right|，则定界符可根据所包围公式大小自动调整其尺寸，这可从式(\ref{nodelimiter})和式(\ref{delimiter})中看出。
@@ -107,9 +124,14 @@ $\to$转换”，在弹出的对话窗中选中“转换到其它语言（文字
 \end{equation}
 式(\ref{nodelimiter})和式(\ref{delimiter})是在~\LaTeX~中分别输入如下代码得到的。
 \begin{lstlisting}
-(\sum_{k=\frac12}^{N^2})
-\left(\sum_{k=\frac12}^{N^2}\right)
+  \begin{equation}\label{nodelimiter}
+    (\sum_{k=\frac12}^{N^2})
+  \end{equation}
+  \begin{equation}\label{delimiter}
+    \left(\sum_{k=\frac12}^{N^2}\right)
+  \end{equation}
 \end{lstlisting}
+
 \verb|\left|~和~\verb|\right|~总是成对出现的，若只需在公式一侧有可自动调整大小的定界符，则只要用“.”代替另一侧那个无需打印出来的定界符即可。
 
 若想获得关于此部分内容的更多信息，可参见~\href{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=voss-mathmode}{Math mode}~文档的第~8~章“Brackets, braces and parentheses”。
@@ -135,6 +157,38 @@ $\to$转换”，在弹出的对话窗中选中“转换到其它语言（文字
 
 最后，建议大家还是要以~\href{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=voss-mathmode}{Math mode}~这篇~pdf~文档作为主要参考。若要获得最为标准、美观的数学公式排版形式，可以查查文档中是否有和你所要的排版形式相同或相近的代码段，通过修改代码段以获得你所要的数学公式排版形式。
 
+\section{定理和定义等}[Theorem]
+\begin{theorem}[\cite{cnproceed}]
+  宇宙大爆炸是一种爆炸。
+\end{theorem}
+\begin{definition}[（霍金）]
+  宇宙大爆炸是一种爆炸。
+\end{definition}
+\begin{assumption}
+  宇宙大爆炸是一种爆炸。
+\end{assumption}
+\begin{lemma}
+  宇宙大爆炸是一种爆炸。
+\end{lemma}
+\begin{corollary}
+  宇宙大爆炸是一种爆炸。
+\end{corollary}
+\begin{exercise}
+  宇宙大爆炸是一种爆炸。
+\end{exercise}
+\begin{problem}[(Albert Einstein)]
+宇宙大爆炸是一种爆炸。
+\end{problem}
+\begin{remark}
+  宇宙大爆炸是一种爆炸。
+\end{remark}
+\begin{axiom}[（爱因斯坦）]
+  宇宙大爆炸是一种爆炸。
+\end{axiom}
+\begin{conjecture}
+  宇宙大爆炸是一种爆炸。
+\end{conjecture}
+
 \section{数学公式排版示例}[Equation Demo]
 
 下面是采用~\LaTeX~实现的几个简单的数学公式排版。
@@ -143,9 +197,7 @@ $\to$转换”，在弹出的对话窗中选中“转换到其它语言（文字
 
 $f(x) = 3x + 7$
 
-$$\sum_{i=1}^n a_i=0$$
-
-下面是几个采用行间格式排版的数学公式，行间数学公式在最右侧自动编号：
+下面是几个采用行间格式排版的数学公式，行间数学公式在最右侧自动编号，在两个~\verb|$|~符号中间进行定义：
 
 \begin{definition}
   任给集合~$X \in U$ 和属性集~$R$, 对~$0\leqslant l < u \leqslant 1$,
@@ -156,8 +208,8 @@ $$\sum_{i=1}^n a_i=0$$
    \end{align}
 \end{definition}
 
-\begin{theorem}[\hei 费马]
-  {\upshape\kai 不存在使得~
+\begin{theorem}[\heiti 费马]
+  {\upshape\kaishu 不存在使得~
   \begin{equation}
      x^n+y^n=z^n
   \end{equation}
@@ -165,7 +217,7 @@ $$\sum_{i=1}^n a_i=0$$
 \end{theorem}
 
 \begin{proof}
-  {\upshape\kai 这是推论
+  {\upshape\kaishu 这是推论
   \begin{equation}
      \textcolor[rgb]{0.00,0.00,1.00}{
      I'_{{\rm{total}}} = \sum\limits_{i = 1}^n
@@ -182,5 +234,6 @@ $$\sum_{i=1}^n a_i=0$$
 
  利用~\LaTeX~你可以排出专业的数学版面效果。
 
+ 
 \section*{本章小结}[Brief Summary]
 数学公式排版方法介绍。

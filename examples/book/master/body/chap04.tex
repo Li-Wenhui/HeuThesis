@@ -542,6 +542,27 @@ tabularx环境的第1个参数~\verb|{\textwidth}|~设置表格宽度为正文�
 但此方法不能实现自动转页接排，可能会在当前页剩余空间不够时，全部移动到下一页而导致当前页出现很大空白。
 因此在需要转页处理时，需要手动将将原来的一个\verb|tabularx|环境拆分为两个\verb|tabularx|环境。
 
+\subsubsection{排版横版表格的举例}[An example of landscape table]
+由于版面设置方向调整，使用横版排版的表格必须另起一页，例如表~\ref{table4}。
+
+\begin{table}[p]
+  \centering
+  \begin{sideways}
+    \begin{minipage}{\textheight}
+      \bicaption[table4]{}{不在规范中规定的横版表格}{Table$\!$}{A table style which is not stated in the regulation}
+      \vspace{0.5em}\centering\wuhao
+      \begin{tabular}{ccccc}
+        \toprule[1.5pt]
+        $D$(in) & $P_u$(lbs) & $u_u$(in) & $\beta$ & $G_f$(psi.in) \\
+        \midrule[1pt]
+        5       & 269.8      & 0.000674  & 1.79    & 0.04089       \\
+        10      & 421.0      & 0.001035  & 3.59    & 0.04089       \\
+        20      & 640.2      & 0.001565  & 7.18    & 0.04089       \\
+        \bottomrule[1.5pt]
+      \end{tabular}
+    \end{minipage}
+  \end{sideways}
+\end{table}
 
 \section{罗列}[Enumitem]
 学位论文一般可采用两种罗列环境：一种是并列条目有同样标签的~\verb|itemize|~罗列环境，

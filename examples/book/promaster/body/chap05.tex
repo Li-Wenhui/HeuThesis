@@ -169,8 +169,8 @@
 长图题一般没有必要在插图目录中也完整显示，可使用菜单\texttt{Insert -{}-\textgreater{} Short
 Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中已将图表编号两边设置了小的间距，不必再手动加入空格。
 
-
-\section{双图并列}[Two Figures]
+\section{并排图和子图}[Abreast-picture and Sub-picture example]
+\subsection{双图并列}[Two Figures]
 
 并列图示例如图\ref{fig:lang}与图\ref{fig:niang}所示。
 
@@ -212,9 +212,64 @@ Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中�
 这里指定了每个 minipage 的宽度为0.4倍的版芯宽度。当然，也可以自
 己指定，只是两个宽度加起来不超过版芯宽度就可以了。
 
-\section{两子图并列}[Sub Figure]
+使用并排图时，需要注意对齐方式。默认情况是中部对齐。这里给出中部对齐、顶部对齐
+、图片底部对齐三种常见方式。其中，底部对齐方式有一个很巧妙的方式，将长度比较小
+的图放在左面即可。
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{golfer}
+    \bicaption[golfer2]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
+  \end{minipage}
+  \centering
+  \begin{minipage}{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{golfer}
+    \bicaption[golfer3]{}{打高尔夫球的人。注意，这里默认居中}{Fig.$\!$}{The person playing golf. Please note that, it is vertically center aligned by default.}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[t]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{golfer}
+    \bicaption[golfer5]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
+  \end{minipage}
+  \centering
+  \begin{minipage}[t]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{golfer}
+    \bicaption[golfer8]{}{打高尔夫球的人。注意，此图是顶部对齐}{Fig.$\!$}{The person playing golf. Please note that, it is vertically top aligned.}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}[t]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth,height=\textwidth]{golfer}
+    \bicaption[golfer9]{}{打高尔夫球的人。注意，此图对齐方式是图片底部对齐}{Fig.$\!$}{The person playing golf. Please note that, it is vertically bottom aligned for figure.}
+  \end{minipage}
+  \centering
+  \begin{minipage}[t]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{golfer}
+    \bicaption[golfer6]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
+  \end{minipage}
+\end{figure}
+
+\subsection{子图}[Sub Figure]
 
 子图并列示例如图\ref{fig:judy}所示。
+注意：子图题注也可以只用中文。规范规定“分图题置于分图之下或图题之下”，但没有给出具体的格式要求。
+没有要求的另外一个说法就是“无论什么格式都不对”。
+
+所以只有在一个图中有标注“（a），（b）”，无法使用\cs{subfigure}的情况下，使用最后一个图例中的格式设置方法，否则不要使用。
+
+子图图题使用“minipage”和“description”环境，宽度，对齐方式可以按照需要自由设置。
 
 \begin{figure}[htbp]
     \centering
@@ -248,6 +303,97 @@ Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中�
 学位论文规范要求不止总图的标题为中英文形式，其各个子图也应具有中英文形式的标题。
 然而~ccaption~宏包却无法实现子图的中英文标题功能，这里采用对 \verb|\subfigure| 命令进行嵌套的方法来实现子图的中英文标题功能。
 
+\begin{figure}[!h]
+  \setlength{\subfigcapskip}{-1bp}
+  \centering
+  \begin{minipage}{\textwidth}
+    \centering
+    \subfigure{\label{golfer41}}\addtocounter{subfigure}{-2}
+    \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~1]{\includegraphics[width=0.4\textwidth]{golfer}}}
+    \hspace{2em}
+    \subfigure{\label{golfer42}}\addtocounter{subfigure}{-2}
+    \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~2]{\includegraphics[width=0.4\textwidth]{golfer}}}
+  \end{minipage}
+  \centering
+  \begin{minipage}{\textwidth}
+    \centering
+    \subfigure{\label{golfer43}}\addtocounter{subfigure}{-2}
+    \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~3]{\includegraphics[width=0.4\textwidth]{golfer}}}
+    \hspace{2em}
+    \subfigure{\label{golfer44}}\addtocounter{subfigure}{-2}
+    \subfigure[The person playing golf. Here, 'hang indent' and 'center last line' are not stipulated in the regulation.]{\subfigure[打高尔夫球的人~4。注意，规范中没有明确规定要悬挂缩进、最后一行居中。]{\includegraphics[width=0.4\textwidth]{golfer}}}
+  \end{minipage}
+  \vspace{0.2em}
+  \bicaption[golfer4]{}{打高尔夫球的人}{Fig.$\!$}{The person playing gol}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \begin{minipage}{.7\linewidth}
+    \setlength{\subfigcapskip}{-1bp}
+    \centering
+    \begin{minipage}{\textwidth}
+      \centering
+      \subfigure{\label{golfer45}}\addtocounter{subfigure}{-2}
+      \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~1]{\includegraphics[width=0.4\textwidth]{golfer}}}
+      \hspace{4em}
+      \subfigure{\label{golfer46}}\addtocounter{subfigure}{-2}
+      \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~2]{\includegraphics[width=0.4\textwidth]{golfer}}}
+    \end{minipage}
+    \vspace{0.2em}
+    \bicaption[golfer47]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf.}
+  \end{minipage}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.3\textwidth]{golfer}};
+    \begin{scope}[x={(image.south east)},y={(image.north west)}]
+      \node at (0.3,0.5) {a)};
+      \node at (0.8,0.2) {b)};
+    \end{scope}
+  \end{tikzpicture}
+  \bicaption[golfer0]{}{打高尔夫球球的人（硕士论文双语题注）}{Fig.$\!$}{The person playing golf (Master thesis)}
+  \vskip -0.4em
+  \hspace{2em}
+  \begin{minipage}[t]{0.3\textwidth}
+    \wuhao \setlist[description]{font=\normalfont}
+    \begin{description}
+      \item[(a)]a点说明
+    \end{description}
+  \end{minipage}
+  \hspace{2em}
+  \begin{minipage}[t]{0.3\textwidth}
+    \wuhao \setlist[description]{font=\normalfont}
+    \begin{description}
+      \item[(b)]b点说明
+      \item[(b)]Note of Point b
+    \end{description}
+  \end{minipage}
+\end{figure}
+
+
+\begin{figure}[!h]
+  \centering
+  \begin{sideways}
+    \begin{minipage}{\textheight}
+      \centering
+      \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+      \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+      \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+      \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+      \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+      \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+      \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+      \bicaption[golfer7]{}{打高尔夫球的人（多图组合）}{Fig.$\!$}{The person playing golf (Many pictures arrange)}
+    \end{minipage}
+  \end{sideways}
+\end{figure}
+
+\clearpage
+
+如果不想让图片浮动到下一章节，那么在此处使用\cs{clearpage}命令。
 
 \section{pgf/TikZ~插图}[pgf/TikZ Figure]
 pgf/TikZ是一个在tex系统中的画图宏包，除了可以精确的作图外，对于某些不要求精确控制的图形绘制，如：流程图，树图，等等，也提供了简便易用的支持。
