@@ -1,1 +1,1 @@
-del /S *.aux *.bbl *.blg *.out *.thm *.toc *.lof *.fen *.toe *.lot *.ten *.log *.bak *.loa *.dvi *.idx
+del /S *.aux *.bbl *.blg *.out *.thm *.toc *.lof *.fen *.toe *.lot *.ten *.log *.bak *.loa *.dvi *.idx *.glo *.gls *.hd *.ilg *.ind
