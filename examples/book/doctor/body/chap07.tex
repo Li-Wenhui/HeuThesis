@@ -25,11 +25,15 @@
 行间引用使用~\verb|\inlinecite{引用词}|~语句实现，其显示效果是这样的：文献\inlinecite{DXM2005}论述了什么什么，而文献\inlinecite{OJP1999,kelton2002,strawderman2001,LQL1999}则对这个那个进行了研究。
 
 其实现方式为：
+
 \texttt{文献\cs inlinecite\{DXM2005\}论述了什么什么，而文献\cs inlinecite\{OJP1999,kelton2002,strawderman2001,LQL1999\}则对这个那个进行了研究。}
 
-也可以使用模板预定义的简化形式~\verb|\lcite|~替代~\verb|\inlinecite|。例如：文献\lcite{DXM2005}论述了什么什么，而文献\lcite{OJP1999,kelton2002,strawderman2001,LQL1999}则对这个那个进行了研究。
+也可以使用模板预定义的简化形式~\verb|\lcite|~替代~\verb|\inlinecite|。例如：
+
+文献\lcite{DXM2005}论述了什么什么，而文献\lcite{OJP1999,kelton2002,strawderman2001,LQL1999}则对这个那个进行了研究。
 
 其实现方式为：
+
 \texttt{文献\cs lcite\{DXM2005\}论述了什么什么，而文献\cs lcite\{OJP1999,kelton2002,strawderman2001,LQL1999\}则对这个那个进行了研究。}
 
 上标引用使用~\verb|\cite{引用词}|~语句实现，下面这段文字是普通的上标引用格式。
@@ -39,6 +43,19 @@
 以比较，把它们粘结或分开\cite{OJP1999,OJP1991}，这样把感性印象的原始素材加工成称之为经验的对象
 知识，那么知识能力又该由什么来唤起活动呢\cite{braun2007,kelton2002,strawderman2001,LQL1999}？所以
 按照时间，我们没有任何知识是先行于经验的，一切知识都是从经验开始的。
+
+上面这段文字的实现方式如下：
+
+\texttt{
+  我们的一切知识都是从经验开始\cs cite{LQL1999}，这是没有任何怀疑的\cs cite{DXM2005}\cs cite{DXM2000}；
+  因为，如果不是对象激动我们的感官，一则由它们自己引起表象，一则使我们的知性活动运作起来，对这些表象加
+  以比较，把它们粘结或分开\cs cite{OJP1999,OJP1991}，这样把感性印象的原始素材加工成称之为经验的对象
+  知识，那么知识能力又该由什么来唤起活动呢\cs cite{braun2007,kelton2002,strawderman2001,LQL1999}？所以
+  按照时间，我们没有任何知识是先行于经验的，一切知识都是从经验开始的。
+}
+
+这里请注意一下上述文献引用方式\cite{DXM2005}\cite{DXM2000}\cs cite{DXM2005}\cs cite{DXM2000}
+和\cite{OJP1999,OJP1991}\cs cite{OJP1999,OJP1991}书写方式上的区别！
 
 文献标志~\verb|\inlinecite{引用词}、\cite{引用词}|~中的“引用词”也称为~\verb|citekey|。
 对于参考文献\cite{OJP1999}，bib文件中文献定义是这样的：
