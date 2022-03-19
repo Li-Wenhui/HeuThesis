@@ -1,0 +1,134 @@
+%%
+%% Copyright (C) 2021- by LIWenhui <lwh@hrbeu.edu.cn>
+%%
+%% This file is part of the heuthesis package project.
+%% ---------------------------------------------------
+%%
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3a
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in:
+%%
+%% http://www.latex-project.org/lppl.txt
+%%
+%%
+
+\input docstrip
+
+\askforoverwritefalse
+%\askonceonly
+\showprogress
+\keepsilent
+
+\usedir{tex/latex/heuthesis}
+
+\preamble
+
+This is a generated file.
+
+Copyright (C) 2021-\the\year by LIWenhui <lwh@hrbeu.edu.cn>
+
+This file may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3a
+of this license or (at your option) any later version.
+The latest version of this license is in:
+
+http://www.latex-project.org/lppl.txt
+
+To produce the documentation run the original source files ending with `.dtx'
+through LaTeX.
+
+\endpreamble
+
+\declarepreamble\cfgpreamble
+
+This is a generated file.
+
+Copyright (C) 2021-\the\year by LIWenhui <lwh@hrbeu.edu.cn>
+
+This file may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3a
+of this license or (at your option) any later version.
+The latest version of this license is in:
+
+http://www.latex-project.org/lppl.txt
+
+and version 1.3a or later is part of all distributions of LaTeX
+version 2004/10/01 or later.
+
+This is the configuration file of the heuthesis package with LaTeX2e.
+
+\endpreamble
+\declarepreamble\istpreamble
+
+This is a generated file.
+
+Copyright (C) 2021-\the\year by LIWenhui <lwh@hrbeu.edu.cn>
+
+This file may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3a
+of this license or (at your option) any later version.
+The latest version of this license is in:
+
+http://www.latex-project.org/lppl.txt
+
+and version 1.3a or later is part of all distributions of LaTeX
+version 2004/10/01 or later.
+
+This is the configuration file of the heuthesis package with LaTeX2e.
+
+\endpreamble
+%%  examples/
+%%  ├── art
+%%  │   └── reports
+%%  └── book
+%%      ├── chinese
+%%      ├── doctor
+%%      ├── master
+%%      ├── postdoc
+%%      ├── promaster
+%%      └── english
+\generate{
+    \file{\jobname book.cls}{\from{\jobname.dtx}{bookcls}}
+%%    \file{examples/book/chinese/\jobname book.cls}{\from{\jobname.dtx}{bookcls}}
+%%    \file{examples/book/english/\jobname book.cls}{\from{\jobname.dtx}{bookcls}}
+    \file{\jobname art.cls}{\from{\jobname.dtx}{artcls}}
+%%    \file{examples/art/reports/\jobname art.cls}{\from{\jobname.dtx}{artcls}}
+    \usepreamble\cfgpreamble
+    \file{\jobname book.cfg}{\from{\jobname.dtx}{bookcfg}}
+%%    \file{examples/book/chinese/\jobname book.cfg}{\from{\jobname.dtx}{bookcfg}}
+%%    \file{examples/book/english/\jobname book.cfg}{\from{\jobname.dtx}{bookcfg}}
+    \file{\jobname art.cfg}{\from{\jobname.dtx}{artcfg}}
+%%    \file{examples/art/reports/\jobname art.cfg}{\from{\jobname.dtx}{artcfg}}
+    \usepreamble\istpreamble
+    \file{\jobname.ist}{\from{\jobname.dtx}{ist}}
+%%    \file{examples/book/chinese/\jobname.ist}{\from{\jobname.dtx}{ist}}
+%%    \file{examples/book/english/\jobname.ist}{\from{\jobname.dtx}{ist}}
+    \usepreamble\defaultpreamble\usepostamble\defaultpostamble
+    \file{dtx-style.sty}{\from{\jobname.dtx}{dtx-style}}
+    \file{\jobname.sty}{\from{\jobname.dtx}{heuthesis-style}}
+%%    \file{examples/book/chinese/\jobname.sty}{\from{\jobname.dtx}{heuthesis-style}}
+%%    \file{examples/book/english/\jobname.sty}{\from{\jobname.dtx}{heuthesis-style}}
+}
+
+\ifToplevel{%
+  \Msg{***********************************************************}
+  \Msg{*}
+  \Msg{* To finish the installation you have to move the following}
+  \Msg{* files into a directory searched by TeX:}
+  \Msg{*}
+  \Msg{* The recommended directory is TEXMF/tex/latex/heuthesis}
+  \Msg{*}
+  \Msg{* \space\space heuthesisbook.cls}
+  \Msg{* \space\space heuthesisart.cls}
+  \Msg{* \space\space heuthesisbook.cfg}
+  \Msg{* \space\space heuthesisart.cfg}
+  \Msg{* \space\space heuthesis.ist}
+  \Msg{*}
+  \Msg{* To produce the documentation run the files ending with}
+  \Msg{* `.dtx' through LaTeX.}
+  \Msg{*}
+  \Msg{* Happy TeXing!}
+  \Msg{***********************************************************}}
+
+\endbatchfile

@@ -61,6 +61,3 @@ dist
 *.bst
 *.ist
 heuthesis.bst
-*.ins
-/bthesistitle.eps
-*.eps
