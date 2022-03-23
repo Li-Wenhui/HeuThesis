@@ -58,6 +58,4 @@ dist
 *.cfg
 *.cls
 *.sty
-*.bst
 *.ist
-heuthesis.bst
