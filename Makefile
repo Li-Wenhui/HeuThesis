@@ -26,7 +26,7 @@ all: doc
 cls: $(CLSFILES)
 
 $(CLSFILES): $(SOURCES)
-	xelatex $(PACKAGE).ins
+	latex $(PACKAGE).ins
 
 viewdoc: doc
 	$(OPEN) $(PACKAGE).pdf
