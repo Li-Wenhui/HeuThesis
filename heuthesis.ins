@@ -80,14 +80,15 @@ This is the configuration file of the heuthesis package with LaTeX2e.
 \endpreamble
 %%  examples/
 %%  ├── art
-%%  │   └── reports
+%%  │      └── reports
 %%  └── book
-%%      ├── chinese
-%%      ├── doctor
-%%      ├── master
-%%      ├── postdoc
-%%      ├── promaster
-%%      └── english
+%%          ├── chinese
+%%          ├── doctor
+%%          ├── master
+%%          ├── postdoc
+%%          ├── promaster
+%%          └── english
+
 \generate{
     \file{\jobname book.cls}{\from{\jobname.dtx}{bookcls}}
     \file{examples/book/chinese/\jobname book.cls}{\from{\jobname.dtx}{bookcls}}
@@ -97,7 +98,7 @@ This is the configuration file of the heuthesis package with LaTeX2e.
     \usepreamble\cfgpreamble
     \file{\jobname book.cfg}{\from{\jobname.dtx}{bookcfg}}
     \file{examples/book/chinese/\jobname book.cfg}{\from{\jobname.dtx}{bookcfg}}
-   \file{\jobname art.cfg}{\from{\jobname.dtx}{artcfg}}
+    \file{\jobname art.cfg}{\from{\jobname.dtx}{artcfg}}
     \file{examples/art/reports/\jobname art.cfg}{\from{\jobname.dtx}{artcfg}}
     \usepreamble\istpreamble
     \file{\jobname.ist}{\from{\jobname.dtx}{ist}}

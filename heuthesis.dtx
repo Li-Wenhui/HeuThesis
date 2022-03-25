@@ -1,6 +1,6 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2021- by LIWenhui <lwh@hrbeu.edu.cn>
+% Copyright (C) 2022- by LIWenhui <lwh@hrbeu.edu.cn>
 %
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3a
@@ -3430,10 +3430,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \begin{macrocode}
 \DeclareBoolOption[false]{arialtitle}
 %    \end{macrocode}
-% 章标题是否加粗，默认是
-%    \begin{macrocode}
-\DeclareBoolOption[true]{chapterbold}
-%    \end{macrocode}
 % \option{raggedbottom} 选项（默认开启）。如果不开启这个选项，会出现一页中尽量上
 % 下对齐，段的间距大。如果开启，尽量使段间距保持一致，页面底部出现空白。
 %    \begin{macrocode}
@@ -3450,10 +3446,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 % 文科生四级目录设置（默认关闭）。
 %    \begin{macrocode}
 \DeclareBoolOption[false]{tocfour}
-%    \end{macrocode}
-% 目录中“目录”位置是否空行（默认开启）。
-%    \begin{macrocode}
-\DeclareBoolOption[true]{tocblank}
 %    \end{macrocode}
 % 章标题是否悬挂居中（默认开启）
 %    \begin{macrocode}
@@ -3732,10 +3724,10 @@ EXECUTE {end.bib}                                 %   end_bib();
 %
 % \subsection{页面设置}
 % \label{sec:layout}
-% 这部分是根据 \heu 研院函〔2010〕26号《关于调整研究生学位论文版面大小的通知》的规定：
-% “版面一律改成A4纸页边距上、下设置为28mm，左、右设置为25mm，页眉、页脚设置为20mm。
-% 装订时上、下、右各切除3mm，学位论文成品版面大小为207mm*291mm”要求设置。
-% 论文尺寸为207x291mm，版芯尺寸140x220mm，版心距左边25mm，距右边20mm，距上下边各20mm。
+% 这部分是根据 \heu 研院函〔2010〕26 号《关于调整研究生学位论文版面大小的通知》的规定：
+% “版面一律改成 A4 纸页边距上、下设置为 28mm，左、右设置为 25mm，页眉、页脚设置为 20mm。
+% 装订时上、下、右各切除 3mm，学位论文成品版面大小为 207mm*291mm”要求设置。
+% 论文尺寸为 207x291mm，版芯尺寸 140x220mm，版心距左边 25mm，距右边 20mm，距上下边各 20mm。
 % 这里只设置版心尺寸和版心距左边距尺寸，其他尺寸由装订裁切进行控制。
 %    \begin{macrocode}
 \ifheu@debug\RequirePackage[showframe]{geometry}\else\RequirePackage{geometry}\fi
@@ -3872,14 +3864,6 @@ delim_1 "\\hspace*{\\fill}"
 % 设置第一章必须在奇数页
 %    \begin{macrocode}
 \renewcommand\mainmatter{%
-  \ifheu@english
-  \relax
-  \else
-  \ifheu@tocblank%
-  \addtocontents{toc}{\vspace{\baselineskip}} %规范中并没有这一要求，此处不应该加
-  \addtocontents{toe}{\vspace{\baselineskip}}
-  \fi%
-  \fi
 %    \end{macrocode}
 % 添加英文版限制
 %    \begin{macrocode}
@@ -5276,8 +5260,8 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@cprosubjecttile{专业类别}
 \def\heu@cdegreetitle{申请学位}
 \def\heu@csupervisortitle{指导教师}
-\def\heu@cassosupervisortitle{校外导师}
-\def\heu@ccosupervisortitle{联合导师}
+\def\heu@cassosupervisortitle{副导师}
+\def\heu@ccosupervisortitle{校外导师}
 \def\heu@creviewertitle{学位论文主审人}
 \def\heu@title@csep{：}
 \def\heu@eauthortitle{Candidate}
@@ -5664,29 +5648,32 @@ delim_1 "\\hspace*{\\fill}"
   \parbox[t][1.2cm][t]{\textwidth}{\quad}
     \parbox[t][6.0cm][t]{\textwidth}{%
   \begin{center}\erhao\heiti\heu@ctitlecover\end{center}
-  \ifheu@subtitle\begin{center}\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\end{center}\fi}
+    \ifheu@subtitle\begin{center}\hspace{-4em}\xiaoer\heiti\pozhehao\heu@csubtitle\end{center}\fi}
     \parbox[t][7.4cm][t]{\textwidth}{
     {\xiaosan
     \setlength{\heu@title@width}{7em}
     \begin{center} \renewcommand{\arraystretch}{1.62} \songti
-    \begin{tabular}{l@{\heu@title@csep}l}
-    {\songti\heu@put@title{\heu@cauthortitle}} &   \heu@cauthor\\
-    {\songti\heu@put@title{\heu@csupervisortitle}} &   \heu@csupervisor\\
-    \ifheu@profdegree%
-      {\songti\heu@put@title{\heu@cassosupervisortitle}} & \heu@cassosupervisor \\
-      {\songti\heu@put@title{\heu@cprodrgreetitle}}    &   \heu@cstudenttype \\
-    \else%
-      {\songti\heu@put@title{\heu@csubjecttitle}}  &   \heu@csubject \\
-    \fi
-    \ifx\heu@creviewer\@empty\else%
-      {\songti\heu@put@title{\heu@creviewertitle}} &   \heu@creviewer
-    \fi
-    \end{tabular} \renewcommand{\arraystretch}{1}
-  \end{center}}}
+      \begin{tabular}{l@{\heu@title@csep}l}
+      {\songti\heu@put@title{\heu@cauthortitle}} &   \heu@cauthor\\
+      {\songti\heu@put@title{\heu@csupervisortitle}} &   \heu@csupervisor\\
+      \ifx\heu@cassosupervisor\@empty\else%
+        {\songti\heu@put@title{\heu@cassosupervisortitle}} &   \heu@cassosupervisor\\
+      \fi
+      \ifheu@profdegree%
+        {\songti\heu@put@title{\heu@ccosupervisortitle}} & \heu@ccosupervisor \\
+        {\songti\heu@put@title{\heu@cprodrgreetitle}}    &   \heu@cstudenttype \\
+      \else%
+        {\songti\heu@put@title{\heu@csubjecttitle}}  &   \heu@csubject \\
+      \fi
+      \ifx\heu@creviewer\@empty\else%
+        {\songti\heu@put@title{\heu@creviewertitle}} &   \heu@creviewer
+      \fi
+      \end{tabular} \renewcommand{\arraystretch}{1}
+    \end{center}}}
     \parbox[t][3.0cm][b]{\textwidth}{
   \begin{center}\kaishu\xiaoer{\heu@cschoolname}\end{center}}
-    {\songti\xiaosan{\heu@cdate}}
-\end{center}
+  {\songti\xiaosan{\heu@cdate}}
+  \end{center}
 }
 
 %    \end{macrocode}
@@ -5720,15 +5707,18 @@ delim_1 "\\hspace*{\\fill}"
     \begin{tabular}{l@{\heu@title@csep}l}
       \textbf{\heu@put@title{\heu@cauthortitle}}    &   \heu@cauthor\\
       \textbf{\heu@put@title{\heu@csupervisortitle}}    &   \heu@csupervisor\\
-    \ifheu@profdegree%
-    \textbf{\heu@put@title{\heu@cassosupervisortitle}}& \heu@cassosupervisor\\
-    \textbf{\heu@put@title{\heu@cprosubjecttile}}   &   \heu@csubject\\
-      \textbf{\heu@put@title{\heu@ccolegetitle}}        &   \heu@caffil\\
-    \else%
-    \textbf{\heu@put@title{\heu@cdegreetitle}}  &   \heu@cdegree\\
-      \textbf{\heu@put@title{\heu@csubjecttitle}}   &   \heu@csubject\\
-      \textbf{\heu@put@title{\heu@caffiltitle}}     &   \heu@caffil\\
-    \fi
+      \ifx\heu@cassosupervisor\@empty\else%
+        \textbf{\heu@put@title{\heu@cassosupervisortitle}} &   \heu@cassosupervisor\\
+      \fi
+      \ifheu@profdegree%
+        \textbf{\heu@put@title{\heu@ccosupervisortitle}}& \heu@ccosupervisor\\
+        \textbf{\heu@put@title{\heu@cprosubjecttile}}   &   \heu@csubject\\
+        \textbf{\heu@put@title{\heu@ccolegetitle}}        &   \heu@caffil\\
+      \else%
+        \textbf{\heu@put@title{\heu@cdegreetitle}}  &   \heu@cdegree\\
+        \textbf{\heu@put@title{\heu@csubjecttitle}}   &   \heu@csubject\\
+        \textbf{\heu@put@title{\heu@caffiltitle}}     &   \heu@caffil\\
+      \fi
       \textbf{\heu@put@title{\heu@csubmitdatatitle}}        &   \heu@csubmitdate\\
       \textbf{\heu@put@title{\heu@coralexdatetitle}}        &   \heu@coralexdate\\
       \textbf{\heu@put@title{\heu@cschoolnametitle}}    &   \heu@cschoolname
@@ -5769,18 +5759,21 @@ delim_1 "\\hspace*{\\fill}"
       \begin{tabular}{@{}r@{~}l@{}}
         \textbf{\heu@eauthortitle\heu@title@esep}       &   \heu@eauthor\\
         \textbf{\heu@esupervisortitle\heu@title@esep}   &   \heu@esupervisor\\
-      \ifheu@profdegree%
-      \textbf{\heu@eassosupervisortitle\heu@title@esep} &   \heu@eassosupervisor\\
-      \textbf{\heu@ecategorytitle\heu@title@esep}   &   \heu@esubject\\
-      \textbf{\heu@eaffiltitle\heu@title@esep}  &   \heu@eaffil\\
-      \else%
-        \textbf{\heu@edegreetitle\heu@title@esep}       &   \heu@edegree\\
-      \textbf{\heu@esubjecttitle\heu@title@esep}        &\heu@esubject\\
-      \fi
-      \textbf{\heu@esubmitdatetitle\heu@title@esep}     &   \heu@esubmitdate\\
-      \textbf{\heu@eoralexdatetitle\heu@title@esep}     &   \heu@eoralexdate\\
-      \textbf{\heu@eschoolnametitle\heu@title@esep} &   \heu@eschoolname
-    \end{tabular}\renewcommand{\arraystretch}{1}}
+        \ifx\heu@eassosupervisor\@empty\else%
+          \textbf{\heu@put@title{\heu@eassosupervisortitle}} &   \heu@eassosupervisor\\
+        \fi
+        \ifheu@profdegree%
+          \textbf{\heu@eassosupervisortitle\heu@title@esep} &   \heu@eassosupervisor\\
+          \textbf{\heu@ecategorytitle\heu@title@esep}   &   \heu@esubject\\
+          \textbf{\heu@eaffiltitle\heu@title@esep}  &   \heu@eaffil\\
+        \else%
+            \textbf{\heu@edegreetitle\heu@title@esep}       &   \heu@edegree\\
+          \textbf{\heu@esubjecttitle\heu@title@esep}        &\heu@esubject\\
+        \fi
+        \textbf{\heu@esubmitdatetitle\heu@title@esep}     &   \heu@esubmitdate\\
+        \textbf{\heu@eoralexdatetitle\heu@title@esep}     &   \heu@eoralexdate\\
+        \textbf{\heu@eschoolnametitle\heu@title@esep} &   \heu@eschoolname
+      \end{tabular}\renewcommand{\arraystretch}{1}}
   \end{center}
 }
 
