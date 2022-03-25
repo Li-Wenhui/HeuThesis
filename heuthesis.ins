@@ -110,6 +110,14 @@ This is the configuration file of the heuthesis package with LaTeX2e.
     \file{examples/book/english/\jobname.sty}{\from{\jobname.dtx}{heuthesis-style}}
 }
 
+\generate{
+    \usepostamble\empty
+    \file{\jobname.bst}{\from{\jobname.dtx}{bst}}
+    \file{examples/book/chinese/\jobname.bst}{\from{\jobname.dtx}{bst}}
+    \file{examples/book/english/\jobname.bst}{\from{\jobname.dtx}{bst}}
+    \file{examples/art/reports/\jobname.bst}{\from{\jobname.dtx}{bst}}
+}
+
 \ifToplevel{%
   \Msg{***********************************************************}
   \Msg{*}
