@@ -1,8 +1,6 @@
 # heuthesis
+
 # 哈尔滨工程大学LaTeX论文模板
-
-
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">heuthesis</span> 由 <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/dustincys/heuthesis" property="cc:attributionName" rel="cc:attributionURL">https://github.com/dustincys/heuthesis</a> 采用 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享 署名-非商业性使用 4.0 国际 许可协议</a>进行许可。<br />基于<a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/dustincys/hithesis" rel="dct:source">https://github.com/dustincys/hithesis</a>上的作品创作。
 
 ## What's heuthesis?
 
@@ -14,13 +12,12 @@ Files/Codes in heuthesis may be distributed and/or modified under the conditions
 Project Public License, either version 1.3a of this license or (at your option)
 any later version. The latest version of this license is in:
 
-http://www.latex-project.org/lppl.txt
+<http://www.latex-project.org/lppl.txt>
 
 and version 1.3a or later is part of all distributions of LaTeX
 version 2004/10/01 or later.
 
 Files/Codes in heuthesis also under the protection of license of [Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](http://creativecommons.org/licenses/by-nc/4.0/).
-
 
 ## heuthesis是什么？
 
@@ -76,9 +73,7 @@ Files/Codes in heuthesis also under the protection of license of [Attribution-No
 - 图书馆提交论文级的电子版
 - ……
 
-
 ## 关于模板的命名和其他说明
-
 
 ### 关于查重
 
@@ -111,30 +106,30 @@ Files/Codes in heuthesis also under the protection of license of [Attribution-No
 1. 生成论文格式文件(第一步要生成 *.cls，*.cfg，*.ist，然后再生成论文)
 
    - 如果是Linux/Mac执行
-	
-			latex heuthesis.ins
-		
+ 
+   latex heuthesis.ins
+  
    - 如果是Windows执行（作者没测试过，如遇问题同上）
-	
-			xelatex heuthesis.ins
+ 
+   xelatex heuthesis.ins
 
    - 如果喜欢玩 make
 
-			make cls
+   make cls
 
 2. 生成好格式后，下一步进入到示例文件夹中
 
-		examples
-		├── art
-		│   └── reports     %本硕博开题、中期报告
-		└── book
-		    ├── chinese     %本硕博毕业论文以及博后出站报告
-		    └── english     %本硕博英文版毕业论文
+  examples
+  ├── art
+  │   └── reports     %本硕博开题、中期报告
+  └── book
+      ├── chinese     %本硕博毕业论文以及博后出站报告
+      └── english     %本硕博英文版毕业论文
 
 2. 生成论文方式
 
    - 手动狙击（源文件更改后每次编译逐行命令输入一轮）
-   		
+     
       - book/chinese 文件夹中
 
               xelatex -shell-escape thesis.tex
@@ -143,16 +138,16 @@ Files/Codes in heuthesis also under the protection of license of [Attribution-No
               xelatex -shell-escape thesis.tex
               splitindex thesis -- -s heuthesis.ist  # 自动生成索引
               xelatex -shell-escape thesis.tex
-            
+
       - book/english 文件夹中
 
               xelatex -shell-escape thesis.tex
               bibtex thesis
               xelatex -shell-escape thesis.tex
               xelatex -shell-escape thesis.tex
-      
+
       - art/{reports}文件夹中
-      
+
               xelatex -shell-escape report.tex
               bibtex report
               xelatex -shell-escape report.tex
