@@ -42,7 +42,8 @@
 \subsection{图题及图中说明}[Note of Figure]
 
 每个图均应有图题（由图序和图名组成），图名在图序之后空一格排写。图序按章编排，如第~1~章第一个插图的图号为“图~1.1”等。
-图题置于图下，硕士论文可只用中文书写，博士论文用中、英文两种文字居中书写，中文在上，要求中文用宋体~5~号字，英文用~Times New Roman 5~号字。有图注或其它说明时应置于图题之上。引用图应注明出处，在图题右上角加引用文献号。
+图题置于图下，硕士论文可只用中文书写，博士论文用中、英文两种文字居中书写，中文在上，要求中文用宋体~5~号字，英文用~Times New Roman 5~号字。
+有图注或其它说明时应置于图题之上。引用图应注明出处，在图题右上角加引用文献号。
 图中若有分图时，分图题置于分图之下或图题之下，分图号用~(a)、(b)等表示。
 
 图中各部分说明应采用中文（引用的外文图除外）或数字项号，各项文字说明置于图题之上（有分图题者，置于分图题之上）。
@@ -59,10 +60,15 @@
 
 \section{单张图片}[Single Figure]
 
-单张图片示例如图\ref{fig:wedding}所示。插入方法为插入浮动图后，在图片位置插入所需图片。一般需要使用段落设置将图形设置为居中，在图形两边插入水平填充也可实现居中。\textbackslash bicaption设置图形引用标识及图形标题，其格式为：
+单张图片示例如图\ref{fig:wedding}所示。插入方法为插入浮动图后，在图片位置插入所需图片。一般需要使用段落设置将图形设置为居中，
+在图形两边插入水平填充也可实现居中。\textbackslash bicaption设置图形引用标识及图形标题，其格式为：
 
 \begin{lstlisting}
-\bicaption[fig:refname]{中文索引图名称}{中文图名称}{Eng_Index}{English Caption}
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=缩放比例]{图片文件名称}
+    \bicaption[fig:refname]{中文索引图名称}{中文图名称}{Eng_Index}{English Caption}
+  \end{figure}
 \end{lstlisting}
 
 引用图形时，需在图题处插入“图\textbackslash ref~\{fig:refname\}”，\LaTeX{}编译器会自动对插图序号进行编排，并用最终图号替换符号引用标识。
@@ -105,7 +111,7 @@
 \end{table}
 
 对于图~\ref{fig:wedding},只使用了\texttt{scale}这一个参数，缩放因子是0.6。
-当然，也可以直接指定图形的宽度和高度。图~\ref{fig:sun}的源代码如下：
+当然，也可以直接指定图形的宽度和高度。例如图~\ref{fig:sun}的源代码如下：
 
 \begin{lstlisting}
   \begin{figure}[htbp]
@@ -134,7 +140,6 @@
     \draw (D) -- ($ (D) ! 3.5 ! (B) $) coordinate [label=below:$F$] (F);
     \draw (D) -- ($ (D) ! 2.5 ! (A) $) coordinate [label=below:$E$] (E);
   \end{tikzpicture}
-
   \bicaption[fig:sun]
   {长标题示例}
   {一个很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的标题示例
@@ -363,6 +368,7 @@ Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中�
     \wuhao \setlist[description]{font=\normalfont}
     \begin{description}
       \item[(a)]a点说明
+      \item[(a)]Note of Point a
     \end{description}
   \end{minipage}
   \hspace{2em}

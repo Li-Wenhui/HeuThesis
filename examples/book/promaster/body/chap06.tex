@@ -140,7 +140,7 @@ $$(\sum_{k=\frac12}^{N^2})$$
 
 数学重音符号通常用来区分同一字母表示的不同变量，输入方法如下（需要调用~\verb|amsmath|~宏包）：
 
-\vspace{0.5em}\noindent\wuhao\begin{tabularx}{\textwidth}{Xc|Xc|Xc}
+{\vspace{0.5em}\noindent\wuhao\begin{tabularx}{\textwidth}{Xc|Xc|Xc}
   \verb|\acute| & $\acute{a}$ & \verb|\mathring|           & $\mathring{a}$           & \verb|\underbrace|          & $\underbrace{a}$          \\
   \verb|\bar|   & $\bar{a}$   & \verb|\overbrace|          & $\overbrace{a}$          & \verb|\underleftarrow|      & $\underleftarrow{a}$      \\
   \verb|\breve| & $\breve{a}$ & \verb|\overleftarrow|      & $\overleftarrow{a}$      & \verb|\underleftrightarrow| & $\underleftrightarrow{a}$ \\
@@ -150,8 +150,9 @@ $$(\sum_{k=\frac12}^{N^2})$$
   \verb|\dot|   & $\dot{a}$   & \verb|\tilde|              & $\tilde{a}$              & \verb|\widehat|             & $\widehat{a}$             \\
   \verb|\grave| & $\grave{a}$ & \verb|\underbar|           & $\underbar{a}$           & \verb|\widetilde|           & $\widetilde{a}$           \\
   \verb|\hat|   & $\hat{a}$
-\end{tabularx}\vspace{0.5em}
-\xiaosi 当需要在字母~$i$~和~$j$~的上方添加重音符号时，为了去掉这两个字母顶上的小点，这两个字母应该分别改用~\verb|\imath|~和~\verb|\jmath|。
+\end{tabularx}\vspace{0.5em}}
+
+当需要在字母~$i$~和~$j$~的上方添加重音符号时，为了去掉这两个字母顶上的小点，这两个字母应该分别改用~\verb|\imath|~和~\verb|\jmath|。
 
 如果遇到某些符号不知道该采用什么命令能输出它时，则可通过~\href{http://detexify.kirelabs.org/classify.html}{Detexify$^2$~网站}来获取符号命令。若用鼠标左键在此网页的方框区域内画出你所要找的符号形状，则会在网页右方列出和你所画符号形状相近的~5~个符号及其相对应的~\LaTeX~输入命令。若所列出的符号中不包括你所要找的符号，还可通过点击“Select from the complete list!”的链接以得分从低到高的顺序列出所有符号及其相对应的~\LaTeX~输入命令。
 
@@ -228,7 +229,7 @@ $f(x) = 3x + 7$
 下面是一个稍微一些复杂的公式：
 
 \begin{equation}
-  {\mu _X}\sigma _X^2\sum\limits_{i = 1}^n {{{({X_i} - \bar X)}^2}} \frac{{x - \mu }}{\sigma }\frac{{{\partial ^2}\Omega }}{{\partial u\partial v}}\mathop{{\int\!\!\!\!\!\int\!\!\!\!\!\int}\mkern-31.2mu \bigodot}\nolimits_{x \in }
+  {\mu _X}\sigma _X^2\sum\limits_{i = 1}^n {{{({X_i} - \bar X)}^2}} \frac{{x - \mu }}{\sigma }\frac{{{\partial ^2}\Omega }}{{\partial u\partial v}}\oiiint\nolimits_{x \in }
   {\bigcup\limits_{i = 1}^n {{X_i}} \frac{{dy}}{{dx}}}
 \end{equation}
 
