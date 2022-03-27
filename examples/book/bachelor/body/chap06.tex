@@ -65,7 +65,8 @@ $\to$转换”，在弹出的对话窗中选中“转换到其它语言（文字
   \subfigure{\label{pdf}}\addtocounter{subfigure}{-2}
   \subfigure[Inline mode equation displayed as .pdf format file derived from word software]{\subfigure[由~word软件生成的~.pdf~格式行内公式]
     {\fbox{\includegraphics[width=0.55\textwidth]{pdf}}}}
-  \bicaption[hangju]{}{由~\LaTeX~和~word~生成的~3~种行内公式屏显效果}{Fig.$\!$}{Three kinds of inline mode equation displayed effects derived from \LaTeX and word}
+  \caption{由~\LaTeX~和~word~生成的~3~种行内公式屏显效果}
+  \label{hangju}
   \vspace{-1em}
 \end{figure}
 这三幅图分别为~\LaTeX~和~word~生成的行内公式屏显效果，从图中可看出，在~\LaTeX~文本含有公式的行内，在正文与公式之间对接工整，行距不变；而在~word~文本含有公式的行内，在正文与公式之间对接不齐，行距变大。因此从这一点来说，
@@ -83,7 +84,8 @@ $\to$转换”，在弹出的对话窗中选中“转换到其它语言（文字
 
 除人工编号外，\LaTeX~各种类型行间公式的标记见表~\ref{eqtag}。
 \begin{table}[htbp]
-  \bicaption[eqtag]{}{各种类型行间公式的标记}{Table$\!$}{Tags for several kinds of displaymath mode equations}
+  \caption{各种类型行间公式的标记}
+  \label{eqtag}
   \vspace{0.5em}\centering\wuhao
   \begin{tabularx}{0.9\textwidth}{cXX}
     \toprule
@@ -140,7 +142,7 @@ $$(\sum_{k=\frac12}^{N^2})$$
 
 数学重音符号通常用来区分同一字母表示的不同变量，输入方法如下（需要调用~\verb|amsmath|~宏包）：
 
-\vspace{0.5em}\noindent\wuhao\begin{tabularx}{\textwidth}{Xc|Xc|Xc}
+{\wuhao\vspace{0.5em}\noindent\begin{tabularx}{\textwidth}{Xc|Xc|Xc}
   \verb|\acute| & $\acute{a}$ & \verb|\mathring|           & $\mathring{a}$           & \verb|\underbrace|          & $\underbrace{a}$          \\
   \verb|\bar|   & $\bar{a}$   & \verb|\overbrace|          & $\overbrace{a}$          & \verb|\underleftarrow|      & $\underleftarrow{a}$      \\
   \verb|\breve| & $\breve{a}$ & \verb|\overleftarrow|      & $\overleftarrow{a}$      & \verb|\underleftrightarrow| & $\underleftrightarrow{a}$ \\
@@ -150,8 +152,9 @@ $$(\sum_{k=\frac12}^{N^2})$$
   \verb|\dot|   & $\dot{a}$   & \verb|\tilde|              & $\tilde{a}$              & \verb|\widehat|             & $\widehat{a}$             \\
   \verb|\grave| & $\grave{a}$ & \verb|\underbar|           & $\underbar{a}$           & \verb|\widetilde|           & $\widetilde{a}$           \\
   \verb|\hat|   & $\hat{a}$
-\end{tabularx}\vspace{0.5em}
-\xiaosi 当需要在字母~$i$~和~$j$~的上方添加重音符号时，为了去掉这两个字母顶上的小点，这两个字母应该分别改用~\verb|\imath|~和~\verb|\jmath|。
+\end{tabularx}\vspace{0.5em}}
+
+当需要在字母~$i$~和~$j$~的上方添加重音符号时，为了去掉这两个字母顶上的小点，这两个字母应该分别改用~\verb|\imath|~和~\verb|\jmath|。
 
 如果遇到某些符号不知道该采用什么命令能输出它时，则可通过~\href{http://detexify.kirelabs.org/classify.html}{Detexify$^2$~网站}来获取符号命令。若用鼠标左键在此网页的方框区域内画出你所要找的符号形状，则会在网页右方列出和你所画符号形状相近的~5~个符号及其相对应的~\LaTeX~输入命令。若所列出的符号中不包括你所要找的符号，还可通过点击“Select from the complete list!”的链接以得分从低到高的顺序列出所有符号及其相对应的~\LaTeX~输入命令。
 
@@ -228,7 +231,7 @@ $f(x) = 3x + 7$
 下面是一个稍微一些复杂的公式：
 
 \begin{equation}
-  {\mu _X}\sigma _X^2\sum\limits_{i = 1}^n {{{({X_i} - \bar X)}^2}} \frac{{x - \mu }}{\sigma }\frac{{{\partial ^2}\Omega }}{{\partial u\partial v}}\mathop{{\int\!\!\!\!\!\int\!\!\!\!\!\int}\mkern-31.2mu \bigodot}\nolimits_{x \in }
+  {\mu _X}\sigma _X^2\sum\limits_{i = 1}^n {{{({X_i} - \bar X)}^2}} \frac{{x - \mu }}{\sigma }\frac{{{\partial ^2}\Omega }}{{\partial u\partial v}}\oiiint\nolimits_{x \in }
   {\bigcup\limits_{i = 1}^n {{X_i}} \frac{{dy}}{{dx}}}
 \end{equation}
 

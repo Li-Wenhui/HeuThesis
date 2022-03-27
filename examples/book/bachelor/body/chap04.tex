@@ -38,9 +38,10 @@
 
 \section{普通表格的绘制方法}[General Table]
 
-表格应具有三线表格式，因此需要调用~booktabs~宏包，其标准格式如表~\ref{table1}~所示。
+表格应具有三线表格式，因此需要调用~booktabs~宏包，其标准格式如表~\ref{tab:table1}~所示。
 \begin{table}[htbp]
-  \bicaption[table1]{}{符合研究生院绘图规范的表格}{Table$\!$}{Table in agreement of the standard from graduate school}
+  \caption{符合研究生院绘图规范的表格}
+  \label{tab:table1}
   \vspace{0.5em}\centering\wuhao
   \begin{tabular}{ccccc}
     \toprule[1.5pt]
@@ -57,7 +58,8 @@
 \vspace{1em}
 \begin{lstlisting}
 \begin{table}[htbp]
-\bicaption[标签名]{}{中文标题}{Table$\!$}{English caption}
+\caption{中文标题}
+\label{标签名}
 \vspace{0.5em}\centering\wuhao
 \begin{tabular}{cc...c}
 \toprule[1.5pt]
@@ -76,14 +78,13 @@
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.9\textwidth{},keepaspectratio]{sun.jpg}
-  \bicaption[fig:sun]{太阳系}{最左侧是太阳，向右依序为水星、金星、地球、火星、
-    木星、土星、天王星与海王星}{Fig.}{Outward from the Sun, the planets
-    are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and
-    Neptune.}
+  \caption{太阳系}
+  \label{fig:sun}
 \end{figure}
 
 \begin{table}[htbp]
-  \bicaption[tab:xingxing]{行星数据表1}{行星数据表}{Tab.}{Planet}
+  \caption{行星数据表1}
+  \label{tab:xingxing}
   \centering
   \vspace{0.2cm}
   \wuhao
@@ -107,7 +108,8 @@
 \vspace{1em}
 \begin{lstlisting}
   \begin{table}[htbp]
-    \bicaption[tab:xingxing]{行星数据表1}{行星数据表}{Tab.}{Planet}
+    \caption{行星数据表1}
+    \label{tab:xingxing}
     \centering
     \vspace{0.2cm}
     \wuhao
@@ -139,12 +141,13 @@ bottom,float page,也就是就这里、页顶、页尾、浮动页 (专门放浮
 被束缚手脚。
 
 \verb|\centering| 用来使表格居
-中； \verb|\bicaption| 命令设置表格标题， \LaTeX{}会自动给
+中； \verb|\caption| 命令设置表格标题， \LaTeX{}会自动给
 浮动环境的标题加上编号。
 
 它的官方使用说明为：
 \begin{lstlisting}
-  \bicaption[label]{ 中文短标题 }{ 中文标题 }{Tab.}{ 英文标题 }
+  \caption{ 标题 }
+  \label{label}
 \end{lstlisting}
 可选参数~label~用来作为交叉引用链接。例如
 表~\ref{tab:xingxing}中的 lable为 tab:xingxing 。这里的标
@@ -180,7 +183,8 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
 因此 \verb|\cmidrule| 的参数是2-3。
 
 \begin{table}[htbp]
-  \bicaption[tab:linux]{不同操作系统下的\LaTeX{}}{ 不同操作系统下的\LaTeX{} }{Tab.}{OS with \LaTeX{}}
+  \caption{不同操作系统下的\LaTeX{}}
+  \label{tab:linux}
   \centering
   \vspace{0.2cm}
   \wuhao
@@ -200,8 +204,8 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
 
 \begin{lstlisting}
   \begin{table}[htbp]
-    \bicaption[tab:linux]{不同操作系统下的\LaTeX{}}{不同操作系统下的\LaTeX{}}
-    {Tab.}{OS with \LaTeX{}}
+    \caption{不同操作系统下的\LaTeX{}}
+    \label{tab:linux}
     \centering
     \vspace{0.2cm}
     \wuhao
@@ -230,7 +234,8 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
 “行数”是指竖向跨的行数，在表~\ref{tab:unix}中是2行，中间有个星号，表示自然宽度。
 
 \begin{table}[htbp]
-  \bicaption[tab:unix]{不同操作系统下的\LaTeX{}}{ 不同操作系统下的\LaTeX{} }{Tab.}{OS with \LaTeX{}}
+  \caption{不同操作系统下的\LaTeX{}}
+  \label{tab:unix}
   \centering
   \vspace{0.2cm}
   \wuhao
@@ -250,8 +255,8 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
 
 \begin{lstlisting}
   \begin{table}[htbp]
-    \bicaption[tab:unix]{不同操作系统下的\LaTeX{}}{不同操作系统下的\LaTeX{}}
-    {Tab.}{OS with \LaTeX{}}
+    \caption{不同操作系统下的\LaTeX{}}
+    \label{tab:unix}
     \centering
     \vspace{0.2cm}
     \wuhao
@@ -292,7 +297,8 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
 
 \begin{table}[htbp]
   \centering
-  \bicaption[tab:wall]{墙上的44句话}{墙上的44句话}{Tab.}{Mikko Kuorinki}
+  \caption{墙上的44句话}
+  \label{tab:wall44}
   \vspace{0.2cm}
   \wuhao
   \begin{tabularx}{0.8\textwidth{}}{lX}
@@ -310,7 +316,8 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
 \begin{lstlisting}
   \begin{table}[htbp]
     \centering
-    \bicaption[tab:figure]{墙上的44句话}{墙上的44句话}{Tab.}{Mikko Kuorinki}
+    \caption{墙上的44句话}
+    \label{tab:wall44}
     \vspace{0.2cm}
     \wuhao
     \begin{tabularx}{0.8\textwidth{}}{lX}
@@ -330,7 +337,9 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
 首先给出这种情况下的一个例子如表~\ref{table3}~所示。
 \begin{table}[htbp]
   \centering
-  \bicaption[table3]{}{最小的三个正整数的英文表示法}{Table$\!$}{The English construction of the smallest three positive integral numbers}\vspace{0.5em}\wuhao
+  \caption{最小的三个正整数的英文表示法}
+  \label{table3}
+  \vspace{0.5em}\wuhao
   \begin{tabularx}{0.7\textwidth}{llX}
     \toprule[1.5pt]
     Value & Name  & Alternate names, and names for sets of the given size                                                                                           \\\midrule[1pt]
@@ -344,7 +353,8 @@ tabular 环境提供了最简单的表格功能。它用 \texttt{\&} 来分列�
 \vspace{1em}
 \begin{lstlisting}
 \begin{table}[htbp]
-\bicaption[标签名]{}{中文标题}{Table$\!$}{English caption}
+\caption{标题}
+\label{标签名}
 \vspace{0.5em}\wuhao
 \begin{tabularx}{\textwidth}{l...X...l}
 \toprule[1.5pt]
@@ -378,7 +388,8 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
 表~\ref{tab:xiexian}。
 
 \begin{table}[htbp]
-  \bicaption[tab:diagbox]{斜线表头}{斜线表头}{Tab.}{Diagbox}
+  \caption{斜线表头}
+  \label{tab:diagbox}
   \centering
   \vspace{0.2cm}
   \wuhao
@@ -394,7 +405,8 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
 
 \begin{lstlisting}
   \begin{table}[htbp]
-    \bicaption[tab:diagbox]{斜线表头}{斜线表头}{Tab.}{Diagbox}
+    \caption{斜线表头}
+    \label{tab:diagbox}
     \centering
     \vspace{0.2cm}
     \wuhao
@@ -410,7 +422,8 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
 \end{lstlisting}
 
 \begin{table}[htbp]
-  \bicaption[tab:xiexian]{斜线表头}{斜线表头}{Tab.}{Diagbox}
+  \caption{斜线表头}
+  \label{tab:xiexian}
   \centering
   \vspace{0.2cm}
   \wuhao
@@ -426,7 +439,8 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
 
 \begin{lstlisting}
   \begin{table}[htbp]
-    \bicaption[tab:xiexian]{斜线表头}{ 斜线表头 }{Tab.}{Diagbox}
+    \caption{斜线表头}
+    \label{tab:xiexian}
     \centering
     \vspace{0.2cm}
     \wuhao
@@ -455,7 +469,8 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
 数\texttt{S}的时候，不是数字的行需要用大括号括起来，不然会造成编译错误。
 
 \begin{table}[htbp]
-  \bicaption[tab:xiaoshu]{行星数据表2}{行星数据表}{Tab.}{Planet}
+  \caption{行星数据表2}
+  \label{tab:xiaoshu}
   \centering
   \vspace{0.2cm}
   \wuhao
@@ -477,7 +492,8 @@ diagbox 是宏包提供的主要命令。它可以带有两个必选参数,表�
 
 \begin{lstlisting}
   \begin{table}[htbp]
-    \bicaption[tab:xiaoshu]{行星数据表}{行星数据表}{Tab.}{Planet}
+    \caption{行星数据表2}
+    \label{tab:xiaoshu}
     \centering
     \vspace{0.2cm}
     \wuhao
@@ -549,7 +565,8 @@ tabularx环境的第1个参数~\verb|{\textwidth}|~设置表格宽度为正文�
   \centering
   \begin{sideways}
     \begin{minipage}{\textheight}
-      \bicaption[table4]{}{不在规范中规定的横版表格}{Table$\!$}{A table style which is not stated in the regulation}
+      \caption{不在规范中规定的横版表格}
+      \label{table4}
       \vspace{0.5em}\centering\wuhao
       \begin{tabular}{ccccc}
         \toprule[1.5pt]
@@ -570,7 +587,9 @@ tabularx环境的第1个参数~\verb|{\textwidth}|~设置表格宽度为正文�
 \begin{figure}[htbp]
   \centering
   \includegraphics[width = 0.6\textwidth]{list}
-  \bicaption[list]{}{罗列环境参数示意图}{Fig.$\!$}{Schematic diagram of list environments}\vspace{-1em}
+  \caption{罗列环境参数示意图}
+  \label{list}
+  \vspace{-1em}
 \end{figure}
 
 通过调用~enumitem~宏包可以很方便地控制罗列环境的布局，
