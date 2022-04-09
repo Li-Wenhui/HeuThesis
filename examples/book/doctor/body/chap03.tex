@@ -33,14 +33,15 @@
 学位论文类型可以是：博士\texttt{doctor}、硕士\texttt{master}和学士\texttt{bachelor}几种类型。
 
 对于专业学位硕士研究生，还需要声明专业学位选项并设置专业学位论文类型，例如：
-~\texttt{\textbackslash documentclass[type = master, profdegree = true, research = applicationResearch]{heuthesisbook}}。
+
+~\texttt{\textbackslash documentclass[type = master, profdegree = true, research = applicationResearch]{heuthesisbook}}
 
 专业学位论文类型分为四类：
 \begin{itemize}
   \item \texttt{productdevelopment}：产品设计
   \item \texttt{projectdplanning}：工程规划
   \item \texttt{projectdesign}：工程设计
-  \item \texttt{applicationResearch}：应用研究
+  \item \texttt{applicationresearch}：应用研究
 \end{itemize}
 
 详细设置方法与选项定义可以参考main.tex文件中的说明。
@@ -68,8 +69,8 @@
 
 正文内容章节可以以chapXX.tex形式为文件名，使得文件名序号即为章
 节序号以便于管理。当然使用其他符合系统文件命名要求的格式进行命名也可以，比如章节名称。
-这些正文内容章节需要依次写入main.tex文件中，格式
-为~\texttt{\textbackslash include{body/texfilename}}。
+这些正文内容章节需要依次写入main.tex文件中，格式为：
+\texttt{\textbackslash include{body/texfilename}}
 
 论文中用到的所有的图片放在figure文件夹中，图片格式可以是~JPG、TIF、PDF、eps~等格式。
 

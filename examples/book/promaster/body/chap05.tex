@@ -67,7 +67,7 @@
   \begin{figure}[htbp]
     \centering
     \includegraphics[scale=缩放比例]{图片文件名称}
-    \bicaption[fig:refname]{中文索引图名称}{中文图名称}{Eng_Index}{English Caption}
+    \bicaption[fig:refname]{中文索引图名称}{中文图名称}{英文图名称}{英文图片标题}
   \end{figure}
 \end{lstlisting}
 
@@ -78,14 +78,14 @@
 \begin{figure}[htbp]
   \centering
   \includegraphics[scale=0.6]{wedding.jpg}
-  \bicaption[fig:wedding]{婚礼}{婚礼}{Fig.}{Wedding}
+  \bicaption[fig:wedding]{}{婚礼}{Fig.}{Wedding}
 \end{figure}
 
 \begin{lstlisting}
   \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.6]{wedding.jpg}
-    \bicaption[fig:wedding]{婚礼}{婚礼}{Fig.}{Wedding}
+    \bicaption[fig:wedding]{}{婚礼}{Fig.}{Wedding}
   \end{figure}
 \end{lstlisting}
 
@@ -173,8 +173,7 @@
     \end{figure}
 \end{lstlisting}
 
-长图题一般没有必要在插图目录中也完整显示，可使用菜单\texttt{Insert -{}-\textgreater{} Short
-Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中已将图表编号两边设置了小的间距，不必再手动加入空格。
+长图题一般没有必要在插图目录中也完整显示，可使用 \cs bicaption 中的中文索引图名称作为插图目录中的短标题。
 
 \section{并排图和子图}[Abreast-picture and Sub-picture example]
 \subsection{双图并列}[Two Figures]
@@ -186,12 +185,12 @@ Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中�
   \begin{minipage}{0.4\textwidth}
     \centering
     \includegraphics[keepaspectratio]{lang.jpg}
-    \bicaption[fig:lang]{新郎}{新郎}{Fig.}{Bridegroom}
+    \bicaption[fig:lang]{}{新郎}{Fig.}{Bridegroom}
   \end{minipage}
   \begin{minipage}{0.4\textwidth}
     \centering
     \includegraphics[keepaspectratio]{niang.jpg}
-    \bicaption[fig:niang]{新娘}{新娘}{Fig.}{Brige}
+    \bicaption[fig:niang]{}{新娘}{Fig.}{Brige}
   \end{minipage}
 \end{figure}
 
@@ -201,12 +200,12 @@ Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中�
     \begin{minipage}{0.4\textwidth}
       \centering
       \includegraphics[keepaspectratio]{lang.jpg}
-      \bicaption[fig:lang]{新郎}{新郎}{Fig.}{Bridegroom}
+      \bicaption[fig:lang]{}{新郎}{Fig.}{Bridegroom}
     \end{minipage}
     \begin{minipage}{0.4\textwidth}
       \centering
       \includegraphics[keepaspectratio]{niang.jpg}
-      \bicaption[fig:niang]{新娘}{新娘}{Fig.}{Brige}
+      \bicaption[fig:niang]{}{新娘}{Fig.}{Brige}
     \end{minipage}
   \end{figure}
 \end{lstlisting}
@@ -285,7 +284,7 @@ Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中�
   \hspace{20pt}
   \subfigure{\label{{fig:1b}}}\addtocounter{subfigure}{-2}
   \subfigure[Girl B]{\subfigure[女孩B]{\includegraphics[keepaspectratio]{ren.jpg}}}
-  \bicaption[fig:judy]{女孩}{女孩}{Fig.}{Judy}
+  \bicaption[fig:judy]{}{女孩}{Fig.}{Judy}
 \end{figure}
 
 \begin{lstlisting}
@@ -300,7 +299,7 @@ Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中�
     \subfigure[Girl B]{\subfigure[女孩B]{
         \includegraphics[keepaspectratio]{ren.jpg}}
     }
-    \bicaption[fig:judy]{女孩}{女孩}{Fig.}{Judy}
+    \bicaption[fig:judy]{}{女孩}{Fig.}{Judy}
   \end{figure}
 \end{lstlisting}
 
