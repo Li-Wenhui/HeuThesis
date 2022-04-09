@@ -15,10 +15,10 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{插图}[Figure]
+\chapter{插图}
 \label{chap05}
 
-\section{研究生院的插图规范}[Requirement of Figure]
+\section{研究生院的插图规范}
 
 图应有自明性。插图应与文字紧密配合，文图相符，内容正确。选图要力求精练，插图、照片应完整清晰。图中文字和数字等字号用宋体~5~号字。
 
@@ -39,7 +39,7 @@
 引用文献图表必须标注出处。
 
 
-\subsection{图题及图中说明}[Note of Figure]
+\subsection{图题及图中说明}
 
 每个图均应有图题（由图序和图名组成），图名在图序之后空一格排写。图序按章编排，如第~1~章第一个插图的图号为“图~1.1”等。
 图题置于图下，硕士论文可只用中文书写，博士论文用中、英文两种文字居中书写，中文在上，要求中文用宋体~5~号字，英文用~Times New Roman 5~号字。
@@ -48,17 +48,17 @@
 
 图中各部分说明应采用中文（引用的外文图除外）或数字项号，各项文字说明置于图题之上（有分图题者，置于分图题之上）。
 
-\subsection{插图编排}[Arrangment of Figure]
+\subsection{插图编排}
 
 插图之前，文中必须有关于本插图的提示，如“见图~1.1”、“如图~1.1~所示”等。插图与其图题为一个整体，不得拆开排写于两页。
 插图处的该页空白不够排写该图整体时，则可将其后文字部分提前排写，将图移到次页。
 
-\section{LaTeX~中推荐使用的图片格式}[Figure Foramt]
+\section{LaTeX~中推荐使用的图片格式}
 
 论文使用的图片都放在figure文件夹中，图片可以是~EPS、JPG、PDF等格式。插图浮动环境是\texttt{figure},基本命
 令是\texttt{includegraphics},而在图片环境中，标题的位置必须位于图片的下方。
 
-\section{单张图片}[Single Figure]
+\section{单张图片}
 
 单张图片示例如图\ref{fig:wedding}所示。插入方法为插入浮动图后，在图片位置插入所需图片。一般需要使用段落设置将图形设置为居中，在图形两边插入水平填充也可实现居中。
 \textbackslash bicaption 和 \textbackslash label 设置图形引用标识及图形标题，其格式为：
@@ -174,7 +174,7 @@
 长图题一般没有必要在插图目录中也完整显示，可使用菜单\texttt{Insert -{}-\textgreater{} Short
 Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中已将图表编号两边设置了小的间距，不必再手动加入空格。
 
-\section{并排图和子图}[Abreast-picture and Sub-picture example]
+\section{并排图和子图}
 \subsection{双图并列}[Two Figures]
 
 并列图示例如图\ref{fig:lang}与图\ref{fig:niang}所示。
@@ -415,7 +415,7 @@ Title} 插入短标题 \verb|\index{ct\@插图\!dbt\@ 短标题} |。模板中�
 
 如果不想让图片浮动到下一章节，那么在此处使用\cs{clearpage}命令。
 
-\section{pgf/TikZ~插图}[pgf/TikZ Figure]
+\section{pgf/TikZ~插图}
 
 pgf/TikZ是一个在tex系统中的画图宏包，除了可以精确的作图外，对于某些不要求精确控制的图形绘制，如：流程图，树图，等等，也提供了简便易用的支持。
 下面这张图片是用TikZ宏包进行绘制的图形，其实现代码为：
@@ -683,5 +683,5 @@ pgf/TikZ不仅可以使用文档内部数据绘图，还可以直接读取外部
 
 更多的关于pgf/TikZ绘图方法请参考相关资料。
 
-\section*{本章小结}[Brief Summary]
+\section*{本章小结}
 插图方法介绍。

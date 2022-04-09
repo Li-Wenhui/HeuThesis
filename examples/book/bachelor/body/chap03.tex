@@ -15,17 +15,17 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{模版使用说明}[Using of the Template]
+\chapter{模版使用说明}
 \label{chap03}
 
-\section{个人信息}[Author Information]
+\section{个人信息}
 
-使用模版的第一步当然是修改您的个人信息。与个人信息有关的内容位
+使用模版的第一步是修改您的个人信息。与个人信息有关的内容位
 于~{/front/cover.tex}~文件中。对照着模版内容改就好了，没有什么难度。填
 写专业、姓名和导师的时候注意添加适当空格，也就是$\sim$字符，以调整对齐方式。
 论文封面日期默认为最后一次编译~main.tex~的日期，论文提交日期和答辩日期需要手工设置。
 
-\section{模版设置}[Setting of Template]
+\section{模版设置}
 
 模板设置包括选择论文的学位类型、学科类型、汉字库和打印方式等，
 这些内容的设置在~main.tex~文件中通过修改~\texttt{\textbackslash documentclass[]}~配置选项实现。
@@ -33,19 +33,20 @@
 学位论文类型可以是：博士\texttt{doctor}、硕士\texttt{master}和学士\texttt{bachelor}几种类型。
 
 对于专业学位硕士研究生，还需要声明专业学位选项并设置专业学位论文类型，例如：
-~\texttt{\textbackslash documentclass[type = master, profdegree = true, research = applicationResearch]{heuthesisbook}}。
+
+~\texttt{\textbackslash documentclass[type = master, profdegree = true, research = applicationResearch]{heuthesisbook}}
 
 专业学位论文类型分为四类：
 \begin{itemize}
   \item \texttt{productdevelopment}：产品设计
   \item \texttt{projectdplanning}：工程规划
   \item \texttt{projectdesign}：工程设计
-  \item \texttt{applicationResearch}：应用研究
+  \item \texttt{applicationresearch}：应用研究
 \end{itemize}
 
 详细设置方法与选项定义可以参考main.tex文件中的说明。
 
-\section{中英文摘要、关键字}[Abstract and Key Word]
+\section{中英文摘要、关键字}
 
 中英文摘要和关键字也位于~{/front/cover.tex}~文件中定义，将相应位置的内容替换成自己的即可。
 
@@ -61,15 +62,15 @@
         末尾同样不加标点。
 \end{itemize}
 
-\section{正文}[Main Thesis Part]
+\section{正文}
 
 正文部分包括了绪论（chap01.tex）、正文内容章节
 （chap02.tex、chap03.tex、chap04.tex、……）等部分，均位于body文件夹中。
 
 正文内容章节可以以chapXX.tex形式为文件名，使得文件名序号即为章
 节序号以便于管理。当然使用其他符合系统文件命名要求的格式进行命名也可以，比如章节名称。
-这些正文内容章节需要依次写入main.tex文件中，格式
-为~\texttt{\textbackslash include{body/texfilename}}。
+这些正文内容章节需要依次写入main.tex文件中，格式为：
+\texttt{\textbackslash include{body/texfilename}}
 
 论文中用到的所有的图片放在figure文件夹中，图片格式可以是~JPG、TIF、PDF、eps~等格式。
 
@@ -86,17 +87,17 @@
 人材料必须引证原著文字。在论文的行文上，要注意语句通顺，达到科技论文所必
 须具备的“正确、准确、明确”的要求。
 
-\section{其他}[Others]
+\section{其他}
 
 除正文之外，结论、致谢等其他内容位于back文件夹中，可根据需要进行修改、增删，
 并根据实际情况对main.tex中的文件包含内容进行调整。
 
-\section{格式设置}[Format]
+\section{格式设置}
 一般来说，采用本模板后不需要另外使用字体、字号、颜色等文字格式设置操作，
 模板会根据内容自动选用合适的格式。但在某些情况下，如果需要特殊设置字体、
 字号与颜色，那么可以使用下面这些方法进行设置。
 
-\subsection{字体设置}[Font Style]
+\subsection{字体设置}
 本模板预定义的汉字字体包括：{\songti 宋体}、{\heiti 黑体}、{\kaishu 楷体}和{\fangsong 仿宋}，
 每种字体还包括正体、斜体、粗体，而且可以实现复合效果，例如：
 
@@ -158,7 +159,7 @@
   }
 \end{flushleft}
 
-\subsection{颜色设置}[Color]
+\subsection{颜色设置}
 
 设置文字颜色的方法为：
 \begin{lstlisting}
@@ -190,5 +191,5 @@
   }
 \end{flushleft}
 
-\section*{本章小结}[Brief summary]
+\section*{本章小结}
 简单介绍模板使用方法和文字格式化方法。
