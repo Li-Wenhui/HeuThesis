@@ -3519,7 +3519,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \begin{macrocode}
 \PassOptionsToPackage{no-math}{fontspec}
 %    \end{macrocode}
-% \pkg{newtx} 更新至 v1.7 版本后与 \pkg{ctex} 宏包冲突, 需要手动引入 \option{nofontspec} 选项. 判断方法为是否存在 v1.7 更新后的新宏包 \pkg{newtx.sty} 
+% \pkg{newtx} 更新至 v1.7 版本后与 \pkg{ctex} 宏包冲突, 需要手动引入 \option{nofontspec} 选项. 判断方法为是否存在 v1.7 更新后的新宏包 \pkg{newtx.sty}
 %    \begin{macrocode}
 \IfFileExists{newtx.sty}{\PassOptionsToPackage{nofontspec}{newtxtext}}{}
 %    \end{macrocode}
@@ -4356,7 +4356,7 @@ delim_1 "\\hspace*{\\fill}"
 \def\heu@stage@opening{开题}
 \def\heu@stage@midterm{中期}
 \def\heu@stage@doctype{报告}
-\def\heu@bachelor@cxuewei{本科}
+\def\heu@bachelor@cxuewei{本科生}
 \def\heu@bachelor@cthesisname{毕业设计（论文）}
 \def\heu@bachelor@cmajortitle{专\hspace{2\ccwd}业}
 \def\heu@bachelor@cstudenttitle{学\hspace{2\ccwd}生}
@@ -5091,6 +5091,7 @@ delim_1 "\\hspace*{\\fill}"
 \heu@def@term{cauthor} %中文作者
 \heu@def@term{csupervisor} %中文导师
 \heu@def@term{cprofessional}%职称
+\heu@def@term{csupervisorcaffil}%导师单位
 \heu@def@term{cassosupervisor} %中文副导师
 \heu@def@term{ccosupervisor}%中文联合导师
 \heu@def@term{creviewer}%论文主审人
@@ -5212,28 +5213,27 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 添加本科开题封皮中title定义
 %    \begin{macrocode}
-\def\heu@bachelor@cxuewei{本科}
+\def\heu@bachelor@cxuewei{本科生}
 \def\heu@bachelor@cthesisname{毕业论文}
-\def\heu@bachelor@cmajortitle{专\hspace{2\ccwd}业}
-\def\heu@bachelor@cstudenttitle{学\hspace{2\ccwd}生}
+\def\heu@bachelor@cstudenttitle{学生姓名}
 \def\heu@bachelor@cstudentidtitle{学\hspace{2\ccwd}号}
-\def\heu@bachelor@cclass{班\hspace{2\ccwd}号}
+\def\heu@bachelor@secretlevel{密\hspace{2\ccwd}级}
+\def\heu@bachelor@ccolegetitle{所在学院}
+\def\heu@bachelor@cmajortitlecov{专业名称}
+\def\heu@bachelor@cmajortitlesec{所在专业}
+\def\heu@bachelor@csupervisortitle{指导教师}
+\def\heu@bachelor@cprofessionaltitle{职称}
+\def\heu@bachelor@cthesistitle{题目}
+\def\heu@bachelor@cdatetitle{日\hspace{2\ccwd}期}
 \def\heu@bachelor@caffiltitle{学院（系）名称}
+\def\heu@bachelor@cupervisoraffiltitle{所在单位}
+\def\heu@bachelor@caffiltitleqd{青岛学院}
+\def\heu@bachelor@caffiltitleya{烟台学院}
 %</bookcfg>
 %    \end{macrocode}
 % 此处添加青岛校区设置
 %    \begin{macrocode}
 %<*bookcfg>
-\def\heu@bachelor@caffiltitleqd{青岛学院}
-\def\heu@bachelor@caffiltitleya{烟台学院}
-\def\heu@bachelor@cstudentidtitle{学号}
-\def\heu@bachelor@cmajortitle{专业名称}
-\def\heu@bachelor@csupervisortitle{指导教师}
-\def\heu@bachelor@cprofessionaltitle{职称}
-\def\heu@bachelor@cthesistitle{题目}
-\def\heu@bachelor@cstudenttitle{学生姓名}
-\def\heu@bachelor@cdatetitle{日\hspace{2\ccwd}期}
-
 \newcommand{\heu@bachelor@teachercomment}{指导教师评语：}
 \newcommand{\heu@bachelor@teachersign}{指导教师签字：}
 \newcommand{\heu@bachelor@checkdate}{检查日期：}
@@ -5442,8 +5442,8 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@first@titlepage@postdoc}{
   {\songti\sihao\renewcommand{\arraystretch}{2}\
     \begin{tabular}{@{}r@{}l@{\hspace{7\ccwd}}r@{}l@{\hspace{3em}}r}
-      \heu@postdoc@classifiedindex&\underline{\makebox[6\ccwd]{\heu@natclassifiedindex}}&\heu@postdoc@secretlevel&\underline{\makebox[6\ccwd]{\heu@statesecrets}}&\\
-      \heu@postdoc@UDC&\underline{\makebox[6\ccwd]{\heu@intclassifiedindex}}&\heu@postdoc@number&\underline{\makebox[6\ccwd]{\heu@cnumber}}&\\
+      \heu@postdoc@classifiedindex & \underline{\makebox[6\ccwd]{\heu@natclassifiedindex}} & \heu@postdoc@secretlevel & \underline{\makebox[6\ccwd]{\heu@statesecrets}} & \\
+      \heu@postdoc@UDC             & \underline{\makebox[6\ccwd]{\heu@intclassifiedindex}} & \heu@postdoc@number      & \underline{\makebox[6\ccwd]{\heu@cnumber}} & \\
     \end{tabular}\renewcommand{\arraystretch}{1}}
   \vspace*{0.5cm}
   \parbox[t][5cm][b]{\textwidth}{\begin{center}\heiti\xiaoer[2]\heu@cschoolname\par
@@ -5465,8 +5465,8 @@ delim_1 "\\hspace*{\\fill}"
     \songti\sihao[2]\renewcommand{\arraystretch}{1.5}
     \begin{center}
       \begin{tabular}{rl}
-        \heu@postdoc@finishdate & \underline{\makebox[6cm]{\heu@cfinishdate}}\\
-        \heu@postdoc@submitdate & \underline{\makebox[6cm]{\heu@csubmitdate\hfill}}\\
+        \heu@postdoc@finishdate & \underline{\makebox[6cm]{\heu@cfinishdate}} \\
+        \heu@postdoc@submitdate & \underline{\makebox[6cm]{\heu@csubmitdate\hfill}} \\
       \end{tabular}\renewcommand{\arraystretch}{1}
     \end{center}
     }
@@ -5507,12 +5507,12 @@ delim_1 "\\hspace*{\\fill}"
     \parbox[t][5cm][t]{\textwidth}{
       \begin{center}\songti\sihao[2]
         \begin{tabularx}{0.6\linewidth}{l@{\heu@postdoc@separator}l}
-          \makebox[9em][s]{\heu@postdoc@authorname} & \heu@cauthor \\
-          \makebox[9em][s]{\heu@postdoc@supervisor} & \heu@csupervisor \\
+          \makebox[9em][s]{\heu@postdoc@authorname}   & \heu@cauthor \\
+          \makebox[9em][s]{\heu@postdoc@supervisor}   & \heu@csupervisor \\
           \makebox[9em][s]{\heu@postdoc@positionname} & \heu@cpositionname \\
-          \makebox[9em][s]{\heu@postdoc@major} & \heu@csubject \\
-          \makebox[9em][s]{\heu@postdoc@startdate} & \heu@cstartdate \\
-          \makebox[9em][s]{\heu@postdoc@enddate} & \heu@cenddate \\
+          \makebox[9em][s]{\heu@postdoc@major}        & \heu@csubject \\
+          \makebox[9em][s]{\heu@postdoc@startdate}    & \heu@cstartdate \\
+          \makebox[9em][s]{\heu@postdoc@enddate}      & \heu@cenddate \\
         \end{tabularx}
       \end{center}
     }
@@ -5551,8 +5551,8 @@ delim_1 "\\hspace*{\\fill}"
     \end{tabular}}\hfill
   {\songti\xiaosi
     \begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
-    \heu@bachelor@cstudentidtitle & \underline{\makebox[2.5cm]{\heu@cstudentid}} & \\
-    \heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &
+    \heu@bachelor@cstudentidtitle & \underline{\makebox[2.5cm]{\heu@cstudentid}}   & \\
+    \heu@bachelor@secretlevel     & \underline{\makebox[2.5cm]{\heu@statesecrets}} &
     \end{tabular}}
   \parbox[t][2.0cm][t]{\textwidth}{\begin{center} \end{center} }
   \parbox[t][1.2cm][t]{\textwidth}{
@@ -5566,10 +5566,10 @@ delim_1 "\\hspace*{\\fill}"
     \setlength{\heu@title@width}{7em}
     \begin{center} \renewcommand{\arraystretch}{1.62} \songti
     \begin{tabular}{l@{\heu@title@csep}l}
-    {\songti\heu@put@title{\heu@bachelor@caffiltitle}} &   \heu@caffil \\
-    {\songti\heu@put@title{\heu@bachelor@cmajortitle}} &   \heu@csubject \\
-    {\songti\heu@put@title{\heu@bachelor@cstudenttitle}}   &   \heu@cauthor\\
-    {\songti\heu@put@title{\heu@bachelor@csupervisortitle}}    &   \heu@csupervisor\quad\heu@cprofessional
+    {\songti\heu@put@title{\heu@bachelor@caffiltitle}}      & \heu@caffil \\
+    {\songti\heu@put@title{\heu@bachelor@cmajortitlecov}}   & \heu@csubject \\
+    {\songti\heu@put@title{\heu@bachelor@cstudenttitle}}    & \heu@cauthor\\
+    {\songti\heu@put@title{\heu@bachelor@csupervisortitle}} & \heu@csupervisor\quad\heu@cprofessional
     \end{tabular} \renewcommand{\arraystretch}{1}
     \end{center}}}
   \parbox[t][1.4cm][t]{\textwidth}{
@@ -5590,8 +5590,8 @@ delim_1 "\\hspace*{\\fill}"
     \end{tabular}}\hfill
   {\songti\xiaosi
     \begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
-    \heu@bachelor@cstudentidtitle & \underline{\makebox[2.5cm]{\heu@cstudentid}} & \\
-    \heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &
+    \heu@bachelor@cstudentidtitle & \underline{\makebox[2.5cm]{\heu@cstudentid}}   & \\
+    \heu@bachelor@secretlevel     & \underline{\makebox[2.5cm]{\heu@statesecrets}} &
     \end{tabular}}
   \vspace*{1.5cm}
   \begin{center}
@@ -5607,14 +5607,15 @@ delim_1 "\\hspace*{\\fill}"
     \setlength{\heu@title@width}{6em}
     \begin{center} \renewcommand{\arraystretch}{1.5} \songti
     \begin{tabular}{l@{\heu@title@csep}l}
-    \textbf{\heu@put@title{\heu@bachelor@cstudenttitle}}      & \heu@cauthor\\
-    \textbf{\heu@put@title{\heu@caffiltitle}}                 & \heu@caffil\\
-    \textbf{\heu@put@title{\heu@bachelor@cmajortitle}}        & \heu@csubject\\
-    \textbf{\heu@put@title{\heu@bachelor@csupervisortitle}}   & \heu@csupervisor\\
-    \textbf{\heu@put@title{\heu@bachelor@cprofessionaltitle}} & \heu@cprofessional\\
-    \textbf{\heu@put@title{\heu@csubmitdatatitle}}          & \heu@csubmitdate\\
-    \textbf{\heu@put@title{\heu@coralexdatetitle}}          & \heu@coralexdate\\
-    \textbf{\heu@put@title{\heu@cschoolnametitle}}          & \heu@cschoolname
+    \textbf{\heu@put@title{\heu@bachelor@cstudenttitle}}        & \heu@cauthor\\
+    \textbf{\heu@put@title{\heu@bachelor@ccolegetitle}}         & \heu@caffil\\
+    \textbf{\heu@put@title{\heu@bachelor@cmajortitlesec}}       & \heu@csubject\\
+    \textbf{\heu@put@title{\heu@bachelor@csupervisortitle}}     & \heu@csupervisor\\
+    \textbf{\heu@put@title{\heu@bachelor@cprofessionaltitle}}   & \heu@cprofessional\\
+    \textbf{\heu@put@title{\heu@bachelor@cupervisoraffiltitle}} & \heu@csupervisorcaffil\\
+    \textbf{\heu@put@title{\heu@csubmitdatatitle}}              & \heu@csubmitdate\\
+    \textbf{\heu@put@title{\heu@coralexdatetitle}}              & \heu@coralexdate\\
+    \textbf{\heu@put@title{\heu@cschoolnametitle}}              & \heu@cschoolname
     \end{tabular} \renewcommand{\arraystretch}{1}
     \end{center}
   }
@@ -5632,13 +5633,13 @@ delim_1 "\\hspace*{\\fill}"
 \begin{center}
   {\songti\xiaosi
     \begin{tabular}{@{\qquad}@{}r@{：}l@{}l@{\qquad}}
-    \heu@natclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@natclassifiedindex}} & \\
+    \heu@natclassifiedindextitle      & \underline{\makebox[2.5cm]{\heu@natclassifiedindex}} & \\
     \heu@internatclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@intclassifiedindex}} &
     \end{tabular}}\hfill
   {\songti\xiaosi
     \begin{tabular}{@{}r@{：}l@{}l@{\qquad}}
-    \heu@secretlevel & \underline{\makebox[2.5cm]{\heu@statesecrets}} &   \\
-    \heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}} &
+    \heu@secretlevel  & \underline{\makebox[2.5cm]{\heu@statesecrets}} & \\
+    \heu@cnumbertitle & \underline{\makebox[2.5cm]{\heu@cnumber}}      &
     \end{tabular}}
 
   \vspace*{2.0cm}
@@ -5654,19 +5655,19 @@ delim_1 "\\hspace*{\\fill}"
     \setlength{\heu@title@width}{7em}
     \begin{center} \renewcommand{\arraystretch}{1.62} \songti
       \begin{tabular}{l@{\heu@title@csep}l}
-      {\songti\heu@put@title{\heu@cauthortitle}} &   \heu@cauthor\\
-      {\songti\heu@put@title{\heu@csupervisortitle}} &   \heu@csupervisor\\
+      {\songti\heu@put@title{\heu@cauthortitle}}           & \heu@cauthor\\
+      {\songti\heu@put@title{\heu@csupervisortitle}}       & \heu@csupervisor\\
       \ifx\heu@cassosupervisor\@empty\else%
-        {\songti\heu@put@title{\heu@cassosupervisortitle}} &   \heu@cassosupervisor\\
+        {\songti\heu@put@title{\heu@cassosupervisortitle}} & \heu@cassosupervisor\\
       \fi
       \ifheu@profdegree%
-        {\songti\heu@put@title{\heu@ccosupervisortitle}} & \heu@ccosupervisor \\
-        {\songti\heu@put@title{\heu@cprodrgreetitle}}    &   \heu@cstudenttype \\
+        {\songti\heu@put@title{\heu@ccosupervisortitle}}   & \heu@ccosupervisor \\
+        {\songti\heu@put@title{\heu@cprodrgreetitle}}      & \heu@cstudenttype \\
       \else%
-        {\songti\heu@put@title{\heu@csubjecttitle}}  &   \heu@csubject \\
+        {\songti\heu@put@title{\heu@csubjecttitle}}        & \heu@csubject \\
       \fi
       \ifx\heu@creviewer\@empty\else%
-        {\songti\heu@put@title{\heu@creviewertitle}} &   \heu@creviewer
+        {\songti\heu@put@title{\heu@creviewertitle}}       & \heu@creviewer
       \fi
       \end{tabular} \renewcommand{\arraystretch}{1}
     \end{center}}}
@@ -5683,7 +5684,7 @@ delim_1 "\\hspace*{\\fill}"
   \begin{center}
     {\songti\xiaosi
       \begin{tabular}{@{\qquad}@{}r@{：}l@{}l@{\qquad}}
-    \heu@natclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@natclassifiedindex}} & \\
+    \heu@natclassifiedindextitle      & \underline{\makebox[2.5cm]{\heu@natclassifiedindex}} & \\
     \heu@internatclassifiedindextitle & \underline{\makebox[2.5cm]{\heu@intclassifiedindex}} &
     \end{tabular}}\hfill
     {\songti\xiaosi
@@ -5705,23 +5706,23 @@ delim_1 "\\hspace*{\\fill}"
       \setlength{\heu@title@width}{6em}
       \begin{center} \renewcommand{\arraystretch}{1.5} \songti
     \begin{tabular}{l@{\heu@title@csep}l}
-      \textbf{\heu@put@title{\heu@cauthortitle}}    &   \heu@cauthor\\
-      \textbf{\heu@put@title{\heu@csupervisortitle}}    &   \heu@csupervisor\\
+      \textbf{\heu@put@title{\heu@cauthortitle}}           & \heu@cauthor\\
+      \textbf{\heu@put@title{\heu@csupervisortitle}}       & \heu@csupervisor\\
       \ifx\heu@cassosupervisor\@empty\else%
-        \textbf{\heu@put@title{\heu@cassosupervisortitle}} &   \heu@cassosupervisor\\
+        \textbf{\heu@put@title{\heu@cassosupervisortitle}} & \heu@cassosupervisor\\
       \fi
       \ifheu@profdegree%
-        \textbf{\heu@put@title{\heu@ccosupervisortitle}}& \heu@ccosupervisor\\
-        \textbf{\heu@put@title{\heu@cprosubjecttile}}   &   \heu@csubject\\
-        \textbf{\heu@put@title{\heu@ccolegetitle}}        &   \heu@caffil\\
+        \textbf{\heu@put@title{\heu@ccosupervisortitle}}   & \heu@ccosupervisor\\
+        \textbf{\heu@put@title{\heu@cprosubjecttile}}      & \heu@csubject\\
+        \textbf{\heu@put@title{\heu@ccolegetitle}}         & \heu@caffil\\
       \else%
-        \textbf{\heu@put@title{\heu@cdegreetitle}}  &   \heu@cdegree\\
-        \textbf{\heu@put@title{\heu@csubjecttitle}}   &   \heu@csubject\\
-        \textbf{\heu@put@title{\heu@caffiltitle}}     &   \heu@caffil\\
+        \textbf{\heu@put@title{\heu@cdegreetitle}}         & \heu@cdegree\\
+        \textbf{\heu@put@title{\heu@csubjecttitle}}        & \heu@csubject\\
+        \textbf{\heu@put@title{\heu@caffiltitle}}          & \heu@caffil\\
       \fi
-      \textbf{\heu@put@title{\heu@csubmitdatatitle}}        &   \heu@csubmitdate\\
-      \textbf{\heu@put@title{\heu@coralexdatetitle}}        &   \heu@coralexdate\\
-      \textbf{\heu@put@title{\heu@cschoolnametitle}}    &   \heu@cschoolname
+      \textbf{\heu@put@title{\heu@csubmitdatatitle}}       & \heu@csubmitdate\\
+      \textbf{\heu@put@title{\heu@coralexdatetitle}}       & \heu@coralexdate\\
+      \textbf{\heu@put@title{\heu@cschoolnametitle}}       & \heu@cschoolname
     \end{tabular} \renewcommand{\arraystretch}{1}
     \end{center} }
   \end{center}
@@ -5757,22 +5758,22 @@ delim_1 "\\hspace*{\\fill}"
     \begin{center}\xiaoer{\ifheu@subtitle\heu@title@esep\heu@esubtitle\fi}\end{center}}
     {\xiaosi\renewcommand{\arraystretch}{1.3}
       \begin{tabular}{@{}r@{~}l@{}}
-        \textbf{\heu@eauthortitle\heu@title@esep}       &   \heu@eauthor\\
-        \textbf{\heu@esupervisortitle\heu@title@esep}   &   \heu@esupervisor\\
+        \textbf{\heu@eauthortitle\heu@title@esep}            & \heu@eauthor\\
+        \textbf{\heu@esupervisortitle\heu@title@esep}        & \heu@esupervisor\\
         \ifx\heu@eassosupervisor\@empty\else%
-          \textbf{\heu@put@title{\heu@eassosupervisortitle}} &   \heu@eassosupervisor\\
+          \textbf{\heu@put@title{\heu@eassosupervisortitle}} & \heu@eassosupervisor\\
         \fi
         \ifheu@profdegree%
-          \textbf{\heu@eassosupervisortitle\heu@title@esep} &   \heu@eassosupervisor\\
-          \textbf{\heu@ecategorytitle\heu@title@esep}   &   \heu@esubject\\
-          \textbf{\heu@eaffiltitle\heu@title@esep}  &   \heu@eaffil\\
+          \textbf{\heu@eassosupervisortitle\heu@title@esep}  & \heu@eassosupervisor\\
+          \textbf{\heu@ecategorytitle\heu@title@esep}        & \heu@esubject\\
+          \textbf{\heu@eaffiltitle\heu@title@esep}           & \heu@eaffil\\
         \else%
-            \textbf{\heu@edegreetitle\heu@title@esep}       &   \heu@edegree\\
-          \textbf{\heu@esubjecttitle\heu@title@esep}        &\heu@esubject\\
+            \textbf{\heu@edegreetitle\heu@title@esep}        & \heu@edegree\\
+          \textbf{\heu@esubjecttitle\heu@title@esep}         & \heu@esubject\\
         \fi
-        \textbf{\heu@esubmitdatetitle\heu@title@esep}     &   \heu@esubmitdate\\
-        \textbf{\heu@eoralexdatetitle\heu@title@esep}     &   \heu@eoralexdate\\
-        \textbf{\heu@eschoolnametitle\heu@title@esep} &   \heu@eschoolname
+        \textbf{\heu@esubmitdatetitle\heu@title@esep}        & \heu@esubmitdate\\
+        \textbf{\heu@eoralexdatetitle\heu@title@esep}        & \heu@eoralexdate\\
+        \textbf{\heu@eschoolnametitle\heu@title@esep}        & \heu@eschoolname
       \end{tabular}\renewcommand{\arraystretch}{1}}
   \end{center}
 }
@@ -6639,7 +6640,7 @@ breaklines=true
 %    \end{macrocode}
 %    \begin{macrocode}
 %<bookcfg|dtx-style>\newcommand{\pozhehao}{——}
-%<bookcfg|dtx-style>\def\heuthesis{\textsc{hi}\-\textsc{Thesis}}
+%<bookcfg|dtx-style>\def\heuthesis{\textsc{Heu}\-\textsc{Thesis}}
 %<bookcfg|dtx-style>\def\heu{哈尔滨工程大学}
 %<bookcfg|dtx-style>\def\PGR{\href{http://yjsy.hrbeu.edu.cn/2017/0327/c11369a113996/page.htm}
 %<bookcfg|dtx-style>{《 \heu 研究生学位论文撰写规范》}}
@@ -6663,4 +6664,3 @@ breaklines=true
 %  TeX-master: t
 %  End:
 % \fi
-
