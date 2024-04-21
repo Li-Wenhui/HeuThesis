@@ -3883,7 +3883,10 @@ delim_1 "\\hspace*{\\fill}"
 %    \begin{macrocode}
 \renewcommand\backmatter{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
-  \@mainmattertrue}
+  \@mainmattertrue
+  \fancyhf{}
+  \pagestyle{heu@titleheadings}
+ }
 %</bookcls>
 %    \end{macrocode}
 % \end{macro}
@@ -5903,7 +5906,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 博后关键字加粗
 %    \begin{macrocode}
-%  \ifheu@openright\cleardoublepage\else\clearpage\fi
+  \ifheu@openright\cleardoublepage\else\clearpage\fi
   \clearpage
 %    \end{macrocode}
 % 摘要不加入目录、不在页眉显示
@@ -6101,42 +6104,93 @@ delim_1 "\\hspace*{\\fill}"
 \newenvironment{conclusions}{%
 \ifheu@openright\cleardoublepage\else\clearpage\fi
 \ifheu@english
-\heu@appendix@chapter*{\heu@conclusion@etitle}
+%\heu@appendix@chapter*{\heu@conclusion@etitle}
+\addcontentsline{toc}{chapter}{\heu@conclusion@etitle}
+\begin{center}
+  ~\\
+  \xiaoer\heiti\heu@conclusion@etitle
+\end{center}\par
 \else
-\heu@appendix@chapter*{\heu@conclusion@ctitle}[\heu@conclusion@etitle]
+%\heu@appendix@chapter*{\heu@conclusion@ctitle}[\heu@conclusion@etitle]
+\addcontentsline{toc}{chapter}{\heu@conclusion@ctitle}
+\begin{center}
+  ~\\
+  \xiaoer\heiti\heu@conclusion@ctitle
+\end{center}\par
 \fi
 }{}
 \newenvironment{acknowledgements}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
   \ifheu@english
-  \heu@appendix@chapter*{\heu@acknowledgement@etitle}
+  %\heu@appendix@chapter*{\heu@acknowledgement@etitle}
+  \addcontentsline{toc}{chapter}{\heu@acknowledgement@etitle}
+  \begin{center}
+    ~\\
+    \xiaoer\heiti\heu@acknowledgement@etitle
+  \end{center}\par
   \else
-  \heu@appendix@chapter*{\heu@acknowledgement@ctitle}[\heu@acknowledgement@etitle]
+  %\heu@appendix@chapter*{\heu@acknowledgement@ctitle}[\heu@acknowledgement@etitle]
+  \addcontentsline{toc}{chapter}{\heu@acknowledgement@ctitle}
+  \begin{center}
+    ~\\
+    \xiaoer\heiti\heu@acknowledgement@ctitle
+  \end{center}\par
   \fi}{}
 
 \newenvironment{correspondingaddr}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
-  \heu@appendix@chapter*{\heu@correspondingaddr@ctitle}}{}
+  %\heu@appendix@chapter*{\heu@correspondingaddr@ctitle}
+  \addcontentsline{toc}{chapter}{\heu@correspondingaddr@ctitle}
+  \begin{center}
+    ~\\
+    \xiaoer\heiti\heu@correspondingaddr@ctitle
+  \end{center}\par
+  }{}
+
 %    \end{macrocode}
 % 博后用到的通讯页面
 %    \begin{macrocode}
 \newenvironment{resume}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
-  \heu@appendix@chapter*{\heu@resume@ctitle}[\heu@resume@etitle]}{}
+  %\heu@appendix@chapter*{\heu@resume@ctitle}[\heu@resume@etitle]
+  \addcontentsline{toc}{chapter}{\heu@resume@ctitle}
+  \begin{center}
+    ~\\
+    \xiaoer\heiti\heu@resume@ctitle
+  \end{center}\par
+  }{}
+
 \newenvironment{publication}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
-  \heu@appendix@chapter*{\heu@publication@ctitle}[\heu@publication@etitle]}{}
+  %\heu@appendix@chapter*{\heu@publication@ctitle}[\heu@publication@etitle]
+  \addcontentsline{toc}{chapter}{\heu@publication@ctitle}
+  \begin{center}
+    ~\\
+    \xiaoer\heiti\heu@publication@ctitle
+  \end{center}\par
+  }{}
 
 \newenvironment{doctorpublication}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
-  \heu@appendix@chapter*{\heu@doctorpublication@ctitle}}{}
+  %\heu@appendix@chapter*{\heu@doctorpublication@ctitle}
+  \addcontentsline{toc}{chapter}{\heu@doctorpublication@ctitle}
+  \begin{center}
+    ~\\
+    \xiaoer\heiti\heu@doctorpublication@ctitle
+  \end{center}\par
+  }{}
 %    \end{macrocode}
 % 此处添加博后用到的博士生发表页面
 % 此处中英文索引的格式设置尽量符合 \PGR\ 中给出的示例的格式。此处间距常数是人工调节的。
 %    \begin{macrocode}
 \newenvironment{ceindex}{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
-  \heu@appendix@chapter*{\indexname}[\heu@index@etitle]
+  %\heu@appendix@chapter*{\indexname}[\heu@index@etitle]
+  \addcontentsline{toc}{chapter}{\indexname}
+  \begin{center}
+    ~\\
+    \xiaoer\heiti\indexname
+  \end{center}\par
   \setlength{\columnsep}{4em}
   \begin{adjustwidth}{2em}{2em}
   \begin{multicols*}{2}}{\end{multicols*}
@@ -6168,7 +6222,12 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\lcite}{\inlinecite}
 \renewenvironment{thebibliography}[1]{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi\phantomsection%
-  \heu@appendix@chapter*{\bibname}[\heu@bibname@etitle]
+  %\heu@appendix@chapter*{\bibname}[\heu@bibname@etitle]
+  \addcontentsline{toc}{chapter}{\bibname}
+  \begin{center}
+    ~\\
+    \xiaoer\heiti\bibname
+  \end{center}\par
   \normalsize
   \list{\@biblabel{\@arabic\c@enumiv}}%
   {\renewcommand{\makelabel}[1]{##1\hfill}
