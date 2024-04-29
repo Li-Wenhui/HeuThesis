@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2021-2022 by LIWenhui <lwh@hrbeu.edu.cn>
+%% Copyright (C) 2021-2024 by LIWenhui <lwh@hrbeu.edu.cn>
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3a

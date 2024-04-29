@@ -47,7 +47,7 @@
 \makecover
 
 %%\authorization               % 使用模板生成的原始原创性与授权声明页
-%%\authorization[auscan.pdf] % 使用签字扫描版的原创性与授权声明页
+\authorization[auscan.pdf] % 使用签字扫描版的原创性与授权声明页
 
 \cleardoublepage   % 控制右开页，与前文连续开页时注释掉
 \makeabstract      % 封面和摘要
@@ -56,10 +56,10 @@
 \tableofcontents   % 论文目录
 
 %%\cleardoublepage % 控制右开页，与前文连续开页时注释掉
-\listoffigures     % 插图目录, 如不需要可用 % 注释掉下面两行
+%%\listoffigures     % 插图目录, 如不需要可用 % 注释掉下面两行
 
 %%\cleardoublepage % 控制右开页，与前文连续开页时注释掉
-\listoftables      % 表格目录, 如不需要可用 % 注释掉下面两行
+%%\listoftables      % 表格目录, 如不需要可用 % 注释掉下面两行
 
 %%----------  论文主体，可以根据需要添加章节 --------------
 \cleardoublepage % 控制右开页，后续论文正文一般采用此格式
@@ -79,10 +79,12 @@
 \bibliographystyle{heuthesis}
 \bibliography{reference}
 
+\include{back/publications} %成果
+
 \include{back/acknowledgements} %致谢
 
 \begin{appendix}%附录
-  \input{back/appendix01} %本科生翻译论文
+%%  \input{back/appendix01} %本科生翻译论文
   \input{back/AppendixA.tex}
 \end{appendix}
 

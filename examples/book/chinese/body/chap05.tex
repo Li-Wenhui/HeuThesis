@@ -227,45 +227,102 @@
   \begin{minipage}{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth]{golfer}
-    \bicaption[golfer2]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
+    \bicaption[fig:golfer2]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
   \end{minipage}
   \centering
   \begin{minipage}{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth]{golfer}
-    \bicaption[golfer3]{}{打高尔夫球的人。注意，这里默认居中}{Fig.$\!$}{The person playing golf. Please note that, it is vertically center aligned by default.}
+    \bicaption[fig:golfer3]{}{打高尔夫球的人。注意，这里默认居中}{Fig.$\!$}{The person playing golf. Please note that, it is vertically center aligned by default.}
   \end{minipage}
 \end{figure}
+
+图~\ref{fig:golfer2}和图~\ref{fig:golfer3}的实现方式如下：
+
+\begin{lstlisting}
+    \begin{figure}[htbp]
+      \centering
+      \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{golfer}
+        \bicaption[fig:golfer2]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
+      \end{minipage}
+      \centering
+      \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{golfer}
+        \bicaption[fig:golfer3]{}{打高尔夫球的人。注意，这里默认居中}{Fig.$\!$}{The person playing golf. Please note that, it is vertically center aligned by default.}
+      \end{minipage}
+    \end{figure}
+\end{lstlisting}
 
 \begin{figure}[htbp]
   \centering
   \begin{minipage}[t]{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth]{golfer}
-    \bicaption[golfer5]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
+    \bicaption[fig:golfer5]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
   \end{minipage}
   \centering
   \begin{minipage}[t]{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth]{golfer}
-    \bicaption[golfer8]{}{打高尔夫球的人。注意，此图是顶部对齐}{Fig.$\!$}{The person playing golf. Please note that, it is vertically top aligned.}
+    \bicaption[fig:golfer8]{}{打高尔夫球的人。注意，此图是顶部对齐}{Fig.$\!$}{The person playing golf. Please note that, it is vertically top aligned.}
   \end{minipage}
 \end{figure}
+
+图~\ref{fig:golfer5}和图~\ref{fig:golfer8}的实现方式如下：
+
+\begin{lstlisting}
+    \begin{figure}[htbp]
+      \centering
+      \begin{minipage}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{golfer}
+        \bicaption[fig:golfer5]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
+      \end{minipage}
+      \centering
+      \begin{minipage}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{golfer}
+        \bicaption[fig:golfer8]{}{打高尔夫球的人。注意，此图是顶部对齐}{Fig.$\!$}{The person playing golf. Please note that, it is vertically top aligned.}
+      \end{minipage}
+    \end{figure}
+\end{lstlisting}
 
 \begin{figure}[htbp]
   \centering
   \begin{minipage}[t]{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth,height=\textwidth]{golfer}
-    \bicaption[golfer9]{}{打高尔夫球的人。注意，此图对齐方式是图片底部对齐}{Fig.$\!$}{The person playing golf. Please note that, it is vertically bottom aligned for figure.}
+    \bicaption[fig:golfer9]{}{打高尔夫球的人。注意，此图对齐方式是图片底部对齐}{Fig.$\!$}{The person playing golf. Please note that, it is vertically bottom aligned for figure.}
   \end{minipage}
   \centering
   \begin{minipage}[t]{0.4\textwidth}
     \centering
     \includegraphics[width=\textwidth]{golfer}
-    \bicaption[golfer6]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
+    \bicaption[fig:golfer6]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
   \end{minipage}
 \end{figure}
+
+图~\ref{fig:golfer9}和图~\ref{fig:golfer6}的实现方式如下：
+
+\begin{lstlisting}
+    \begin{figure}[htbp]
+      \centering
+      \begin{minipage}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,height=\textwidth]{golfer}
+        \bicaption[fig:golfer9]{}{打高尔夫球的人。注意，此图对齐方式是图片底部对齐}{Fig.$\!$}{The person playing golf. Please note that, it is vertically bottom aligned for figure.}
+      \end{minipage}
+      \centering
+      \begin{minipage}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{golfer}
+        \bicaption[fig:golfer6]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf}
+      \end{minipage}
+    \end{figure}
+\end{lstlisting}
 
 \subsection{子图}[Sub Figure]
 
@@ -330,8 +387,36 @@
     \subfigure[The person playing golf. Here, 'hang indent' and 'center last line' are not stipulated in the regulation.]{\subfigure[打高尔夫球的人~4。注意，规范中没有明确规定要悬挂缩进、最后一行居中。]{\includegraphics[width=0.4\textwidth]{golfer}}}
   \end{minipage}
   \vspace{0.2em}
-  \bicaption[golfer4]{}{打高尔夫球的人}{Fig.$\!$}{The person playing gol}
+  \bicaption[fig:golfer4]{}{打高尔夫球的人}{Fig.$\!$}{The person playing gol}
 \end{figure}
+
+这是图~\ref{fig:golfer4}的实现方式：
+
+\begin{lstlisting}
+    \begin{figure}[!h]
+      \setlength{\subfigcapskip}{-1bp}
+      \centering
+      \begin{minipage}{\textwidth}
+        \centering
+        \subfigure{\label{golfer41}}\addtocounter{subfigure}{-2}
+        \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~1]{\includegraphics[width=0.4\textwidth]{golfer}}}
+        \hspace{2em}
+        \subfigure{\label{golfer42}}\addtocounter{subfigure}{-2}
+        \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~2]{\includegraphics[width=0.4\textwidth]{golfer}}}
+      \end{minipage}
+      \centering
+      \begin{minipage}{\textwidth}
+        \centering
+        \subfigure{\label{golfer43}}\addtocounter{subfigure}{-2}
+        \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~3]{\includegraphics[width=0.4\textwidth]{golfer}}}
+        \hspace{2em}
+        \subfigure{\label{golfer44}}\addtocounter{subfigure}{-2}
+        \subfigure[The person playing golf. Here, 'hang indent' and 'center last line' are not stipulated in the regulation.]{\subfigure[打高尔夫球的人~4。注意，规范中没有明确规定要悬挂缩进、最后一行居中。]{\includegraphics[width=0.4\textwidth]{golfer}}}
+      \end{minipage}
+      \vspace{0.2em}
+      \bicaption[fig:golfer4]{}{打高尔夫球的人}{Fig.$\!$}{The person playing gol}
+    \end{figure}
+\end{lstlisting}
 
 \begin{figure}[t]
   \centering
@@ -347,9 +432,31 @@
       \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~2]{\includegraphics[width=0.4\textwidth]{golfer}}}
     \end{minipage}
     \vspace{0.2em}
-    \bicaption[golfer47]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf.}
+    \bicaption[fig:golfer47]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf.}
   \end{minipage}
 \end{figure}
+
+这是图~\ref{fig:golfer47}的实现方式：
+
+\begin{lstlisting}
+    \begin{figure}[t]
+      \centering
+      \begin{minipage}{.7\linewidth}
+        \setlength{\subfigcapskip}{-1bp}
+        \centering
+        \begin{minipage}{\textwidth}
+          \centering
+          \subfigure{\label{golfer45}}\addtocounter{subfigure}{-2}
+          \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~1]{\includegraphics[width=0.4\textwidth]{golfer}}}
+          \hspace{4em}
+          \subfigure{\label{golfer46}}\addtocounter{subfigure}{-2}
+          \subfigure[The person playing golf]{\subfigure[打高尔夫球的人~2]{\includegraphics[width=0.4\textwidth]{golfer}}}
+        \end{minipage}
+        \vspace{0.2em}
+        \bicaption[fig:golfer47]{}{打高尔夫球的人}{Fig.$\!$}{The person playing golf.}
+      \end{minipage}
+    \end{figure}
+\end{lstlisting}
 
 \begin{figure}[t]
   \centering
@@ -360,7 +467,7 @@
       \node at (0.8,0.2) {b)};
     \end{scope}
   \end{tikzpicture}
-  \bicaption[golfer0]{}{打高尔夫球球的人（硕士论文双语题注）}{Fig.$\!$}{The person playing golf (Master thesis)}
+  \bicaption[fig:golfer0]{}{打高尔夫球球的人（硕士论文双语题注）}{Fig.$\!$}{The person playing golf (Master thesis)}
   \vskip -0.4em
   \hspace{2em}
   \begin{minipage}[t]{0.3\textwidth}
@@ -380,6 +487,38 @@
   \end{minipage}
 \end{figure}
 
+这是图~\ref{fig:golfer0}的实现方式：
+
+\begin{lstlisting}
+    \begin{figure}[t]
+      \centering
+      \begin{tikzpicture}
+        \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.3\textwidth]{golfer}};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+          \node at (0.3,0.5) {a)};
+          \node at (0.8,0.2) {b)};
+        \end{scope}
+      \end{tikzpicture}
+      \bicaption[fig:golfer0]{}{打高尔夫球球的人（硕士论文双语题注）}{Fig.$\!$}{The person playing golf (Master thesis)}
+      \vskip -0.4em
+      \hspace{2em}
+      \begin{minipage}[t]{0.3\textwidth}
+        \wuhao \setlist[description]{font=\normalfont}
+        \begin{description}
+          \item[(a)]a点说明
+          \item[(a)]Note of Point a
+        \end{description}
+      \end{minipage}
+      \hspace{2em}
+      \begin{minipage}[t]{0.3\textwidth}
+        \wuhao \setlist[description]{font=\normalfont}
+        \begin{description}
+          \item[(b)]b点说明
+          \item[(b)]Note of Point b
+        \end{description}
+      \end{minipage}
+    \end{figure}
+\end{lstlisting}
 
 \begin{figure}[!h]
   \centering
@@ -393,10 +532,31 @@
       \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
       \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
       \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
-      \bicaption[golfer7]{}{打高尔夫球的人（多图组合）}{Fig.$\!$}{The person playing golf (Many pictures arrange)}
+      \bicaption[fig:golfer7]{}{打高尔夫球的人（多图组合）}{Fig.$\!$}{The person playing golf (Many pictures arrange)}
     \end{minipage}
   \end{sideways}
 \end{figure}
+
+这是图~\ref{fig:golfer7}的实现方式：
+
+\begin{lstlisting}
+    \begin{figure}[!h]
+      \centering
+      \begin{sideways}
+        \begin{minipage}{\textheight}
+          \centering
+          \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+          \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+          \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+          \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+          \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+          \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+          \fbox{\includegraphics[width=0.2\textwidth]{golfer}}
+          \bicaption[fig:golfer7]{}{打高尔夫球的人（多图组合）}{Fig.$\!$}{The person playing golf (Many pictures arrange)}
+        \end{minipage}
+      \end{sideways}
+    \end{figure}
+\end{lstlisting}
 
 \clearpage
 
