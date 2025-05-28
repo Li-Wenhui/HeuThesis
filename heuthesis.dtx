@@ -4222,9 +4222,9 @@ delim_1 "\\hspace*{\\fill}"
 \predisplaypenalty=0  %公式之前可以换页，公式出现在页面顶部
 \postdisplaypenalty=0
 %    \end{macrocode}
-% 设置公式编号方式为 X.n
+% 设置公式编号方式为 X-n
 %    \begin{macrocode}
-\renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter.\fi\@arabic\c@equation}
+\renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter-\fi\@arabic\c@equation}
 %    \end{macrocode}
 % 设置公式前后随意断页
 % 公式距前后文的距离由 4 个参数控制，参见 \cs{normalsize} 的定义。
