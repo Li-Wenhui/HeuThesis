@@ -3467,6 +3467,10 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \begin{macrocode}
 \DeclareBoolOption[false]{openright}
 %    \end{macrocode}
+% 空白页是否无页眉页脚（默认否）。
+%    \begin{macrocode}
+\DeclareBoolOption[false]{pageempty}
+%    \end{macrocode}
 % 是否为提交图书馆电子版。
 %    \begin{macrocode}
 \DeclareBoolOption[false]{library}
@@ -3803,8 +3807,7 @@ delim_1 "\\hspace*{\\fill}"
 %
 % \subsubsection{页面选项}
 % \begin{macro}{\cleardoublepage}
-% 对于 \textsl{openright} 选项，必须保证章首页右开，且如果前章末页无内容须
-% 清空其页眉页脚。
+% 对于 \textsl{openright} 选项，必须保证章首页右开。
 % 如果\textsl{library}为真，则强制设置\textsl{openright}为真。
 %    \begin{macrocode}
 %<*bookcls>
@@ -3830,11 +3833,13 @@ delim_1 "\\hspace*{\\fill}"
 \makeglossaries
 \fi
 \ifheu@library\heu@openrightfalse\else\relax\fi
-\let\heu@cleardoublepage\cleardoublepage
-\newcommand{\heu@clearemptydoublepage}{%
-  \clearpage{\pagestyle{heu@empty}\heu@cleardoublepage}
-}
-\let\cleardoublepage\heu@clearemptydoublepage
+\ifheu@pageempty
+  \let\heu@cleardoublepage\cleardoublepage
+  \newcommand{\heu@clearemptydoublepage}{%
+    \clearpage{\pagestyle{heu@empty}\heu@cleardoublepage}
+  }
+  \let\cleardoublepage\heu@clearemptydoublepage
+\fi
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\frontmatter}
@@ -4041,7 +4046,7 @@ delim_1 "\\hspace*{\\fill}"
     \fancyhead[C]{\wuhao[0]\leftmark}
     \fancyfoot[C]{\wuhao\thepage}
     \renewcommand{\headrule}{
-      \vskip 0.5mm
+      \vskip 0.6mm
       \hrule\@height0.5mm\@width\headwidth
       \vskip 0.3mm
       \hrule\@height0.8mm\@width\headwidth
@@ -4092,10 +4097,10 @@ delim_1 "\\hspace*{\\fill}"
     \fi
     \fancyfoot[C]{\wuhao\thepage}
     \renewcommand{\headrule}{
-    \vskip 1.634877pt
-    \hrule\@height1.329787pt\@width\headwidth
-    \vskip 0.797872pt
-    \hrule\@height2.127659pt\@width\headwidth
+    \vskip 0.6mm
+    \hrule\@height0.5mm\@width\headwidth
+    \vskip 0.3mm
+    \hrule\@height0.8mm\@width\headwidth
     }
   \fi
   \renewcommand{\footrulewidth}{0pt}
@@ -4147,10 +4152,10 @@ delim_1 "\\hspace*{\\fill}"
   \renewcommand{\headrulewidth}{0pt}  % 页眉线粗细
   \renewcommand{\footrulewidth}{0pt}  % 页脚线粗细
   \renewcommand{\headrule}{
-    \vskip 1.634877pt
-    \hrule\@height1.329787pt\@width\headwidth
-    \vskip 0.797872pt
-    \hrule\@height2.127659pt\@width\headwidth
+    \vskip 0.6mm
+    \hrule\@height0.5mm\@width\headwidth
+    \vskip 0.3mm
+    \hrule\@height0.8mm\@width\headwidth
   }
 }
 \AtBeginDocument{%
@@ -4425,7 +4430,7 @@ delim_1 "\\hspace*{\\fill}"
 }
 \newcommand{\heu@harbin@bachelor@schoolbottommark}{
    \begin{center}
-     \songti\xiaoer\textbf{哈尔滨工程大学教务处制}
+     \songti\xiaoer\textbf{哈尔滨工程大学本科生院制}
    \end{center}
 }
 \newcommand{\heu@doctor@midterm@note}{
@@ -5364,7 +5369,7 @@ delim_1 "\\hspace*{\\fill}"
 }
 \newcommand{\heu@harbin@bachelor@schoolbottommark}{
    \begin{center}
-     \songti\xiaoer\textbf{哈尔滨工程大学教务处制}
+     \songti\xiaoer\textbf{哈尔滨工程大学本科生院制}
    \end{center}
 }
 
