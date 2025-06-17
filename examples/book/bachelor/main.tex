@@ -34,6 +34,8 @@
 %   ，电子版要求非右翻页且无空白页。如果想DIY（或身不由己DIY）在什么地方右
 %   翻页，将这个选项设置为false，然后在目标位置添加`\cleardoublepage`命令即
 %   可。
+% pageempty=true|false
+%   含义：空白页是否无页眉页脚（默认否）。
 % engtoc=true|false
 %   含义：是否需要添加英文目录
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -83,9 +85,9 @@
 
 \include{back/acknowledgements} %致谢
 
-\begin{appendix}%附录
+%% \begin{appendix}%附录
 %%  \input{back/appendix01} %本科生翻译论文
-  \input{back/AppendixA.tex}
-\end{appendix}
+%%   \input{back/AppendixA.tex}
+%% \end{appendix}
 
 \end{document}
