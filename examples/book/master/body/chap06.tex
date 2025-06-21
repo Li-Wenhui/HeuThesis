@@ -190,6 +190,36 @@ $$(\sum_{k=\frac12}^{N^2})$$
   宇宙大爆炸是一种爆炸。
 \end{conjecture}
 
+\section{公式符号说明}[Equation Symbols Description]
+
+公式中符号的含义和计量单位应注释在公式的下面。每条注释应另行
+书写，移行时，与其开始写文字的位置对齐。可以使用表格方式实现公式符号说明代格式对齐。
+例如：
+
+\begin{equation}
+  f = \frac{1}{2\pi\sqrt{LC}}
+\end{equation}
+
+\begin{tabular}{lll}
+式中： & $f$ & \cndash 频率，MHz \\
+       & $L$ & \cndash 电感量，H \\
+       & $C$ & \cndash 电容量，pF 
+\end{tabular}
+
+上述公式和符号说明的实现方式为：
+
+\begin{lstlisting}
+  \begin{equation}
+    f = \frac{1}{2\pi\sqrt{LC}}
+  \end{equation}
+
+  \begin{tabular}{lll}
+  式中： & $f$ & \cndash 频率，MHz \\
+         & $L$ & \cndash 电感量，H \\
+         & $C$ & \cndash 电容量，pF 
+  \end{tabular}
+\end{lstlisting}
+
 \section{数学公式排版示例}[Equation Demo]
 
 下面是采用~\LaTeX~实现的几个简单的数学公式排版。
@@ -218,7 +248,7 @@ $f(x) = 3x + 7$
 \end{theorem}
 
 \begin{proof}
-  {\upshape\kaishu 这是推论
+  {\upshape\kaishu 这是证明
     \begin{equation}
       \textcolor[rgb]{0.00,0.00,1.00}{
       I'_{{\rm{total}}} = \sum\limits_{i = 1}^n
