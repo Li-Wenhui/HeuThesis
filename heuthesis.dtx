@@ -86,7 +86,7 @@
 % \noindent
 % \begin{enumerate}
 % \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内容。
-% \item 本模板为作者根据 \heu 教务处颁发的 \UGR ，\heu 研究生院颁发的 \PGR
+% \item 本模板为作者根据 \heu 本科生院颁发的 \UGR ，\heu 研究生院颁发的 \PGR
 % 编写而成，为 \heu 学学生撰写毕业论文使用。
 % \item \heu 教务处和研究生院只提供毕业论文写作指南，不提供官方模板，
 % 也未授权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格
@@ -118,6 +118,16 @@
 % 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者根据
 % 第~\ref{sec:howtoask} 节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
 % 码的贡献。
+%
+% \subsection*{文档记号的说明}
+% 本文采用不同字体表示不同内容。无衬线字体表示宏包名称，如
+% \pkg{xeCJK} 宏包、\cls{heuhesisbook} 文档类等；等宽字体表示代码或
+% 文件名，如 \cs{heusetup} 命令、
+% \file{thesis.tex} 等；带有尖括号的楷体（或西文斜体）表示命令参数，
+% 如 \option{模板选项}、\option{English title} 等。在使用时，参数两侧
+% 的尖括号不必输入。示例代码进行了语法高亮处理，以方便阅读。
+% 在用户手册中，带有\textcolor{violet}{紫色}侧边线的为 \LaTeX{} 代码，
+% 而带有\textcolor{purple}{红色}侧边线的则为命令行代码，请注意区分。
 %
 % \note[注意：]{模板的作用在于减少论文写作过程中格式调整的时间。前提是遵守模板的
 % 用法，否则即便用了 \heuthesis\ 也难以保证输出的论文符合学校规范。}
@@ -1005,10 +1015,6 @@ FUNCTION {cap.th.en}                    {"th"}
 FUNCTION {cap.space}                    {" "}
 FUNCTION {cap.period}                   {"\@. "}
 FUNCTION {cap.comma}                    {"\@, "}
-%    \end{macrocode}
-% 似乎GBT2005冒号前面不需要有空格，此处删除
-% \changes{v3.0.14}{2020/12/22}{似乎GBT2005冒号前面不需要有空格，此处删除}
-%    \begin{macrocode}
 FUNCTION {cap.colon}                    {"\textnormal{: }"}
 FUNCTION {cap.double.slash}             {" //\thinspace{}"}
 FUNCTION {cap.dash}                     {"\textnormal{-}"}
@@ -2117,7 +2123,7 @@ FUNCTION {output.number} {                        % void Entry::output_number(in
 FUNCTION {output.report.number} {                 % void Entry::output_report_number(int required) {
   'required :=                                    %   this.required = required;
   number empty$ not {                             %   if (! empty(this.number)) {
-        cap.colon write$                              %     write(cap_colon);
+    cap.colon write$                              %     write(cap_colon);
     number format.report.number write$            %     write(format_report_number(this.number));
   } {                                             %   } else {
     required {                                    %     if (required == 1) {
@@ -2386,10 +2392,6 @@ FUNCTION {masterthesis} {                         % void Entry::masterthesis() {
   thesis.impl                                     %   thesis_impl();
 }                                                 % }
                                                   %
-%    \end{macrocode}
-% 此处添加mastersthesis Entry
-% \changes{v3.0.1}{2020/06/06}{此处添加mastersthesis Entry}
-%    \begin{macrocode}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                   %
 FUNCTION {mastersthesis} {                        % void Entry::mastersthesis() {
@@ -2995,11 +2997,9 @@ EXECUTE {end.bib}                                 %   end_bib();
 \RequirePackage{amsmath}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 \RequirePackage{amssymb}
-%\RequirePackage[defaultsups]{newtxtext}
 \ifheu@newtxmath
 \RequirePackage{newtxmath}
 \fi
-\RequirePackage{times}
 \RequirePackage{graphicx}
 \RequirePackage{pdfpages}
 \includepdfset{fitpaper=true}
@@ -3016,7 +3016,6 @@ EXECUTE {end.bib}                                 %   end_bib();
   \RequirePackage{pifont}
 \fi
 \RequirePackage{xeCJKfntef}
-%\IfFileExists{newtx.sty}{\PassOptionsToPackage{nofontspec}{newtxtext}}{}
 \RequirePackage{diagbox}
 \RequirePackage{longtable}
 \RequirePackage{booktabs}
@@ -3034,12 +3033,7 @@ EXECUTE {end.bib}                                 %   end_bib();
   pdfborder=0 0 0}
 \urlstyle{same}
 
-\ifheu@debug
-\RequirePackage[showframe]{geometry}
-\else
 \RequirePackage{geometry}
-\fi
-
 \geometry{
   a4paper,
   hcentering,
@@ -3422,6 +3416,19 @@ EXECUTE {end.bib}                                 %   end_bib();
   \heu@zijvwordfalse
   \expandafter\csname heu@zijv#1true\endcsname}
 %    \end{macrocode}
+%
+% 设置中文参考文献中相邻两个标号使用逗号“,”还是短线“-”。
+%    \begin{macrocode}
+\newif\ifheu@citetwocomma
+\newif\ifheu@citetwoendash
+\heu@citetwoendashtrue
+\define@key{heu}{citetwo}{%
+  \heu@citetwocommafalse
+  \heu@citetwoendashfalse
+  \expandafter\csname heu@citetwo#1true\endcsname
+}
+%    \end{macrocode}
+%
 % 目录中英文是否用 Arial 字体（默认关闭）。
 %    \begin{macrocode}
 \DeclareBoolOption[false]{arialtoc}
@@ -3522,10 +3529,6 @@ EXECUTE {end.bib}                                 %   end_bib();
 % 为 CMR。其他引擎下没有这个问题，这一行会被无视。
 %    \begin{macrocode}
 \PassOptionsToPackage{no-math}{fontspec}
-%    \end{macrocode}
-% \pkg{newtx} 更新至 v1.7 版本后与 \pkg{ctex} 宏包冲突, 需要手动引入 \option{nofontspec} 选项. 判断方法为是否存在 v1.7 更新后的新宏包 \pkg{newtx.sty}
-%    \begin{macrocode}
-%\IfFileExists{newtx.sty}{\PassOptionsToPackage{nofontspec}{newtxtext}}{}
 %    \end{macrocode}
 % 载入单双面打印设置，默认本、硕、博均采用双面打印。
 %    \begin{macrocode}
@@ -3632,41 +3635,56 @@ EXECUTE {end.bib}                                 %   end_bib();
 %    \begin{macrocode}
 \RequirePackage{amsmath}
 %    \end{macrocode}
+%
 % 定理类环境宏包，其中 \pkg{amsmath} 选项用来兼容 \AmSTeX\ 的宏包
 %    \begin{macrocode}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 \RequirePackage{amssymb}
 %    \end{macrocode}
-% \pkg{newtx} 设置 Times New Roman，Helvetica。
+%
+% 设置默认英文字体.
 %    \begin{macrocode}
-%\RequirePackage[defaultsups]{newtxtext}
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
 %    \end{macrocode}
-% 添加数学字体开关
+%
+% 单独使用 \pkg{newtxmath} 宏包改变数学字体时，会使 \texttt{operators}，\cs{mathrm}，\cs{mathit}，\cs{mathbf} 命令使用 CM 字体，根据 \href{https://github.com/sjtug/SJTUThesis/blob/b164d0f5b3087ed86c1038b5a85014b47a92c6f2/texmf/tex/latex/sjtuthesis/fd/sjtu-math-font-termes.def#L52-L65}{SJTUThesis 的字体设置} 进行调整
 %    \begin{macrocode}
 \ifheu@newtxmath
-\RequirePackage{newtxmath}
+  \let\oldencodingdefault\encodingdefault
+  \let\oldrmdefault\rmdefault
+  \let\oldsfdefault\sfdefault
+  \let\oldttdefault\ttdefault
+  \def\encodingdefault{T1}
+  \renewcommand{\rmdefault}{ntxtlf}
+  \renewcommand{\sfdefault}{qhv}
+  \renewcommand{\ttdefault}{ntxtt}
+  \RequirePackage{newtxmath}
+  \let\encodingdefault\oldencodingdefault
+  \let\rmdefault\oldrmdefault
+  \let\sfdefault\oldsfdefault
+  \let\ttdefault\oldttdefault
 \fi
 %    \end{macrocode}
-% \pkg{newtx} 的 Mono 字体虽然很好看，但在论文中不常见。学校虽未要求 Mono 字体，
-% 还是选择常见的 Times New Roman 字体。由于比较新的实现 \TeX\ Gyre Cursor 会修
-% 改\cs{bfdefault}，导致中文加粗出问题，所以选用标准 \pkg{times}。
-%    \begin{macrocode}
-\RequirePackage{times}
-%    \end{macrocode}
+%
 % 图形支持宏包。
 %    \begin{macrocode}
 \RequirePackage{graphicx}
 %    \end{macrocode}
+%
 % \pkg{pdfpages} 宏包便于我们插入扫描后的授权页和声明页 PDF 文档。
 %    \begin{macrocode}
 \RequirePackage{pdfpages}
 \includepdfset{fitpaper=true}
 %    \end{macrocode}
+%
 % 更好的列表环境。
 %    \begin{macrocode}
 \RequirePackage{enumitem}       %使用enumitem宏包,改变列表项的格式
 \RequirePackage{environ}
 %    \end{macrocode}
+%
 % 禁止 \LaTeX 自动调整多余的页面底部空白，并保持脚注仍然在底部。
 % 脚注按页编号。
 %    \begin{macrocode}
@@ -3684,25 +3702,36 @@ EXECUTE {end.bib}                                 %   end_bib();
   \RequirePackage{pifont}
 \fi
 %    \end{macrocode}
+%
 % 利用 \pkg{xeCJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免
 % \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
 %    \begin{macrocode}
 \RequirePackage{xeCJKfntef}
 %    \end{macrocode}
-
+%
 % 表格控制
 %    \begin{macrocode}
 \RequirePackage{diagbox}
 \RequirePackage{longtable}
 %    \end{macrocode}
+%
 % 使用三线表：\cs{toprule}，\cs{midrule}，\cs{bottomrule}。
 %    \begin{macrocode}
 \RequirePackage{booktabs}
 %    \end{macrocode}
+%
+% 重定义 \pkg{booktabs} 宏包的默认线宽，绘制三线表时不再需要显式设置，以实现更好的内容与格式分离
+%    \begin{macrocode}
+\heavyrulewidth=1.5pt
+\lightrulewidth=1pt
+\cmidrulewidth=0.5pt
+%    \end{macrocode}
+%
 % 参考文献引用宏包。
 %    \begin{macrocode}
 % \RequirePackage[sort&compress]{natbib}
 %    \end{macrocode}
+%
 % 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码。
 %    \begin{macrocode}
 \RequirePackage{hyperref}
@@ -3724,6 +3753,18 @@ EXECUTE {end.bib}                                 %   end_bib();
 % 引用文献标准GBT2015
 %    \begin{macrocode}
 \RequirePackage[sort&compress]{gbt7714}
+\ifheu@citetwocomma 
+  \patchcmd{\NAT@citexnum}{\def@NAT@last@yr{-\NAT@penalty}}
+  {%
+    \ifx\NAT@last@yr\relax
+    \def@NAT@last@yr{\@citea}%
+    \else
+    \def@NAT@last@yr{-\NAT@penalty}%
+    \fi
+  }%
+  {\typeout{Use comma between neighboring citations}}%
+  {\ClassError{heuhesisbook}{fail to patch \NAT@citexnum}{}}%
+\fi
 %    \end{macrocode}
 %
 % \subsection{页面设置}
@@ -3780,7 +3821,8 @@ EXECUTE {end.bib}                                 %   end_bib();
 \RequirePackage{subfigure}%支持子图 %centerlast 设置最后一行是否居中
 \RequirePackage[subfigure]{ccaption} %支持双语标题
 %    \end{macrocode}
-%    中英文索引包。
+%
+% 中英文索引包。
 %    \begin{macrocode}
 \RequirePackage[makeindex]{splitidx}
 \newindex[]{china}
@@ -3814,7 +3856,7 @@ delim_1 "\\hspace*{\\fill}"
 \ifheu@english
 \RequirePackage[xindy,order=letter]{glossaries-extra}
 \newglossarystyle{engstyle}{%
-  \glossarystyle{long}%
+  \setglossarystyle{long}%
   \renewenvironment{theglossary}%
   {\vspace{-\intextsep}\centering\begin{longtable}{@{\hskip 1cm}p{3.5cm}p{\glsdescwidth}}}%
      {\end{longtable}}}
@@ -4179,11 +4221,13 @@ delim_1 "\\hspace*{\\fill}"
   space=auto,
   autoindent=true}
 %    \end{macrocode}
+%
 % 利用 \pkg{enumitem} 命令调整默认列表环境间的距离，以符合中文习惯。
 %    \begin{macrocode}
 \setlist{nosep}
 %</bookcls>
 %    \end{macrocode}
+%
 % \subsubsection{脚注}
 % \label{sec:footnote}
 % 脚注符合中文习惯，数字带圈。
@@ -4701,6 +4745,7 @@ delim_1 "\\hspace*{\\fill}"
     \or\def\CJK@today{\CJK@todaybig}
   \fi}
 %    \end{macrocode}
+%
 % 按照word示范要求，此处使用阿拉伯数字
 %    \begin{macrocode}
 \cdate{\ifheu@bachelor\CJK@todaysmall\else\CJK@todaysmall@short\fi}
@@ -4963,9 +5008,6 @@ delim_1 "\\hspace*{\\fill}"
 %    节名称也即目录中名称，页眉中名称，书签中的名称。o: 可选内容，没有就默认是正
 %    文章节，如果有，则是英文目录中显示的内容。
 %    \begin{macro}{\chapter}
-%    \begin{macro}{\section}
-%    \begin{macro}{\subsection}
-%    \begin{macro}{\subsubsection}
 %    \begin{macrocode}
 \let\heu@chapter\chapter
 \RenewDocumentCommand{\chapter}{s o m o}{%
@@ -4995,7 +5037,10 @@ delim_1 "\\hspace*{\\fill}"
     }
   }
 }
-
+%    \end{macrocode}
+%    \end{macro}
+%    \begin{macro}{\section}
+%    \begin{macrocode}
 \let\heu@section\section
 \RenewDocumentCommand\section{s o m o}{
   \IfBooleanTF{#1}%
@@ -5019,7 +5064,10 @@ delim_1 "\\hspace*{\\fill}"
     }
   }
 }
-
+%    \end{macrocode}
+%    \end{macro}
+%    \begin{macro}{\subsection}
+%    \begin{macrocode}
 \let\heu@subsection\subsection
 \RenewDocumentCommand\subsection{s o m o}{
   \IfBooleanTF{#1}%
@@ -5044,7 +5092,10 @@ delim_1 "\\hspace*{\\fill}"
     }
   }
 }
-
+%    \end{macrocode}
+%    \end{macro}
+%    \begin{macro}{\subsubsection}
+%    \begin{macrocode}
 \let\heu@subsubsection\subsubsection
 \RenewDocumentCommand\subsubsection{s o m o}{
   \IfBooleanTF{#1}%
@@ -5070,9 +5121,6 @@ delim_1 "\\hspace*{\\fill}"
   }
 }
 %    \end{macrocode}
-%    \end{macro}
-%    \end{macro}
-%    \end{macro}
 %    \end{macro}
 %
 % \subsubsection{定义封面}
@@ -6046,6 +6094,7 @@ delim_1 "\\hspace*{\\fill}"
 \renewcommand*\l@subsection{\@dottedtocline{2}{2em}{2.5em}}
 \renewcommand*\l@subsubsection{\@dottedtocline{3}{3\ccwd}{3.1em}}
 %    \end{macrocode}
+%
 % 英文目录格式。
 %    \begin{macrocode}
 \def\@dotsep{0.75}           % 定义英文目录的点间距
@@ -6059,7 +6108,9 @@ delim_1 "\\hspace*{\\fill}"
 \def\engcontentsname{\bfseries Contents}
 \newcommand\tableofengcontents{
 %    \end{macrocode}
-%    此处添加英文目录的章标题格式，默认细点
+%
+% 此处添加英文目录的章标题格式，默认细点
+% \changes{v1.0.05}{2017/09/18}{矫正英文目录缩进与中文目录一致的bug}
 %    \begin{macrocode}
   \def\l@chapter{\@dottedtocline{0}{0em}{5em}}%控制英文目录： 细点\@dottedtocline  粗点\@dottedtoclinebold
   \@restonecolfalse
@@ -6068,18 +6119,21 @@ delim_1 "\\hspace*{\\fill}"
     \@mkboth{%
   \engcontentsname}{\engcontentsname}}
 %    \end{macrocode}
+%
 % 此处临时更改一下对齐方式。\CTeX\ 似乎无法应对双语目录。
 %    \begin{macrocode}
   \@starttoc{toe}%
   \if@restonecol\twocolumn\fi}
 \def\@dotsep{0.75}           % 定义英文目录的点间距
 %    \end{macrocode}
+%
 % 目录中附录的章号格式。
 %    \begin{macrocode}
 \ctexset{%
   appendix/number=\ifheu@bachelor\arabic{chapter}\else\Alph{chapter}\fi,
 }
 %    \end{macrocode}
+%
 % 设置附录、结论、参考文献等格式。
 %    \begin{macrocode}
 \let\heu@appendix\appendix
@@ -6330,9 +6384,7 @@ delim_1 "\\hspace*{\\fill}"
 % 图形和表格的控制旋转
 \RequirePackage{rotating}
 
-% 算法的宏包，注意宏包兼容性，先后顺序为float、hyperref、algorithm(2e)，否则无法
-% 生成算法列表。我校算法混乱问题详见heuthesis文档。各个实验室设置具体方法详见
-% heuthesis文档或者示例中给出的地址。
+% 算法的宏包，注意宏包兼容性，先后顺序为float、hyperref、algorithm(2e)，否则无法生成算法列表。
 \RequirePackage[algoruled,linesnumbered,algochapter]{algorithm2e}
 \SetAlCapSty{}
 \newcommand{\foocaption}[1]{ \def\@algocf@pre@plainruled{\hrule height1.5pt depth0pt\kern\interspacetitleruled #1 \kern\interspacealgoruled\hrule height1pt depth0pt\kern\interspacetitleruled} }
@@ -6588,14 +6640,22 @@ breaklines=true
 %    \end{macrocode}
 % 默认字体为fandol
 %    \begin{macrocode}
-\RequirePackage[UTF8,scheme=chinese,fontset=fandol]{ctex}
-\RequirePackage{newpxtext}
-\RequirePackage{newpxmath}
+\RequirePackage[UTF8,scheme=chinese,fontset=windows]{ctex}
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+
 \RequirePackage[
   top=2.5cm, bottom=2.5cm,
   left=4cm, right=2cm,
   headsep=3mm]{geometry}
 \RequirePackage{array,longtable,booktabs}
+%    \end{macrocode}
+% 重定义 \pkg{booktabs} 宏包的默认线宽，绘制三线表时不再需要显式设置，以实现更好的内容与格式分离
+%    \begin{macrocode}
+\heavyrulewidth=1.5pt
+\lightrulewidth=1pt
+\cmidrulewidth=0.5pt
 \RequirePackage{listings}
 \RequirePackage{fancyhdr}
 \RequirePackage{xcolor}
