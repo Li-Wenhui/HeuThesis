@@ -59,6 +59,8 @@
    - 如果是Windows执行（作者没测试过，如遇问题同上）
 
    xelatex heuthesis.ins
+   
+   也可以使用 build.bat 批处理文件快速编译文档模板。
 
    - 如果喜欢玩 make
 
