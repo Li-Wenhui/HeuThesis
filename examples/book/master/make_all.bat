@@ -1,6 +1,14 @@
+@echo make thesis......
+xelatex main.tex
+bibtex main
+xelatex main.tex
+xelatex main.tex
+
+@echo make cover......
 xelatex spine.tex
 xelatex a3cover.tex
-xelatex all.tex
+xelatex thesis.tex
 
-del /S *.aux *.bbl *.blg *.out *.thm *.toc *.lof *.fen *.toe *.lot *.ten *.log *.bak *.loa
+@echo clean......
+del /S *.idx *.ind *.ilg *.thm *.toe *.aux *.bbl *.blg *.out *.toc *.lof *.fen *.lot *.ten *.log *.bak *.loa *.glo
 exit
