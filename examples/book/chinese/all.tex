@@ -1,0 +1,25 @@
+% !TEX TS-program = XeLaTeX
+% !TEX encoding = UTF-8 Unicode
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  哈尔滨工程大学本硕博论文 XeLaTeX 模版 —— A3封面
+%
+%  版本：1.0.0
+%  最后更新：
+%  修改者：Leo LiWenhui lwh@hrbeu.edu.cn
+%  修订者：
+%  编译环境1：Ubuntu + TeXLive 2021
+%  编译环境2：Windows+ TeXLive 2021
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper]{article}
+\usepackage{pdfpages}
+\begin{document}
+
+\includepdf[pages={1-2}]{main.pdf} 
+\includepdf[pages={1-2}]{spine.pdf}
+\includepdf[pages={3-}]{main.pdf} 
+
+\end{document}

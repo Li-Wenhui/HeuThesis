@@ -1,7 +1,4 @@
-% !Mode:: "TeX:UTF-8"
-
-\chapter[哈尔滨工程大学研究生学位论文规范]{哈尔滨工程大学研究生学
-  位论文\protect\\规范}[Harbin Engineering University Postgraduate Dissertation Writing Specifications]
+\appendix{A}{哈尔滨工程大学研究生学位论文规范}
 
 \section{引言}[Introduction]
 
@@ -26,7 +23,116 @@
 
 \subsection{论文结构及各部分要求}[Struct Required]
 
-请参见“附录F学位论文结构图”
+学位论文结构主要包括三部分：前文、正文和后文。其中后文包括附录和结尾等部分可根据实际情况决定是否需要。
+
+\[
+  \text{论文结构}
+  \begin{cases}
+    \text{前文} \\
+    \text{正文} \\
+    \text{后文}
+    \begin{cases}
+      \text{附录} \\
+      \text{结尾}
+    \end{cases}
+  \end{cases}
+\]
+
+前文部分主要由封面、扉页、摘要、目录等部分组成，本、硕、搏的论文格式要求略有不同，需要根据实际情况进行配置和定义。
+
+\[
+  \text{前文}
+  \begin{cases}
+    \text{封面}           \\
+    \text{扉页（中、英文）}     \\
+    \text{论文原创性声明}      \\
+    \text{摘要及关键词（中、英文）} \\
+    \text{目录}           \\
+    \text{图表清单（必要时）}
+  \end{cases}
+\]
+
+正文部分是学位论文的主体，一般第一章是绪论，从第二章开始是论文的具体研究研究内容，可根据情况定义若干章、节和小节等标题。
+正文后面部分还包括结论、参考文献、致谢等，根据学位论文类型的不同，所要求的内容也不完全相同，可以根据实际要求进行修改、调整。
+
+\[
+  \text{正文}
+  \begin{cases}
+    \text{绪论（引言）1}               \\
+    \text{研究内容\qquad\qquad}
+    \begin{cases}
+      \text{\quad2}              \\
+      \text{\quad3\qquad}
+      \begin{cases}
+        \text{\quad3.1}           \\
+        \text{\quad3.2}           \\
+        \text{\quad3.3\quad}
+        \begin{cases}
+          \text{\quad3.3.1}   \\
+          \text{\quad3.3.2\quad}
+          \begin{cases}
+            \text{\quad3.3.2.1} \\
+            \text{\quad3.3.2.2} \\
+            \text{\quad3.3.2.3} \\
+            \text{\quad.}       \\
+            \text{\quad.}       \\
+            \text{\quad.}       \\
+          \end{cases} \\
+          \text{\quad3.3.3}   \\
+          \text{\quad.}       \\
+          \text{\quad.}       \\
+          \text{\quad.}
+        \end{cases} \\
+        \text{\quad3.4}           \\
+        \text{\quad.}             \\
+        \text{\quad.}             \\
+        \text{\quad.}
+      \end{cases} \\
+      \text{\quad4}              \\
+      \text{\quad.}              \\
+      \text{\quad.}              \\
+      \text{\quad.}
+    \end{cases}   \\
+    \text{结论}                    \\
+    \text{参考文献}                  \\
+    \text{攻读ＸＸ学位期间发表的论文和取得的科研成果} \\
+    \text{致谢}                    \\
+    \text{个人简历（仅对在职人员和在职研究生要求）}  \\
+  \end{cases}
+\]
+
+后文不是学位论文必须要求的内容，根据实际情况可以将实验数据、程序代码、流程图、公式推导等不宜放入论文正文但又是论文工作不可或缺的内容作为附录放到论文正文后。
+
+所有附录内容可以放在一个~tex~文件中，也可以每个附录定义一个 ~tex~文件。
+
+\[
+  \text{附录部分（必要时）}
+  \begin{cases}
+    \text{附录A}                 \\
+    \text{附录B}
+    \begin{cases}
+      \text{B.1}
+      \begin{cases}
+        \text{B.1.1} \\
+        \text{b.1.2}
+      \end{cases} \\
+      \text{B.2}
+    \end{cases} \\
+    \text{附录C}                 \\
+    \text{......}
+  \end{cases}
+\]
+
+结尾部分是非必须的，必要时可以加入。
+
+\[
+  \text{结尾部分（可以没有）}
+  \begin{cases}
+    \text{索引} \\
+    \text{其他} \\
+    \text{......}
+  \end{cases}
+\]
 
 \subsubsection{前置部分}[Front Parts]
 
@@ -122,7 +228,6 @@ d.作者所在单位 \quad 本校学生填所在院（系），同等学力申�
 绪论（引言）简要说明研究工作的目的、范围、相关领域的前人工作和知识空白、理论基础和分析、研究设想、研究方法和实验设计、预期结果和意义等。
 
 \subsection{正文}[Main Body]
-
 
 \subsubsection{编码}[Index No]
 
@@ -357,9 +462,7 @@ b.获专利名称 \quad 专利号 \quad 专利所在国家和专利类别 \quad 
 
 \subsection{封面}[Cover]
 
-
 \subsection{扉页（内封）}[Second Page]
-
 
 \subsection{摘要及关键词}[Abstract and Key Words]
 
@@ -372,10 +475,3 @@ b.获专利名称 \quad 专利号 \quad 专利所在国家和专利类别 \quad 
 硕士学位论文的封面采用“绿丝棉”纸，博士学位论文封面均采用“莱妮纹”纸（克重：200gsm，颜色：银灰色）。
 
 书脊处应印刷论文题目及“哈尔滨工程大学 \underline{\hspace{1em}} 士学位论文”（\underline{\hspace{1em}} 为“博”或“硕”）字样，字体用适当字号的宋体字。
-
-
-
-% Local Variables:
-% TeX-master: "../thesis"
-% TeX-engine: xetex
-% End:

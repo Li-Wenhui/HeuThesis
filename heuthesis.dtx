@@ -14,7 +14,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{heuthesis.dtx}[2021/12/06 1.0.0 Harbin Engineering University Thesis Template]
+\ProvidesFile{heuthesis.dtx}[2026/02/19 1.0.4 Harbin Engineering University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -115,9 +115,8 @@
 %
 % 本模板是基于哈尔滨工业大学学位论文模板 \textsc{hi}\-\textsc{Thesis} 修改而来。
 %
-% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者根据
-% 第~\ref{sec:howtoask} 节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
-% 码的贡献。
+% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档，
+% 有兴趣者都可以参与完善此手册，也非常欢迎对代码的贡献。
 %
 % \subsection*{文档记号的说明}
 % 本文采用不同字体表示不同内容。无衬线字体表示宏包名称，如
@@ -920,8 +919,8 @@
 %
 % \subsection{基本信息}
 %
-% \changes{v1.0.0}{2021/11/11}{移植自hitThesis论文模板}
-% \changes{v1.0.1}{2021/12/07}{删除文献格式定义，texlive已包含GBT7714-2015}
+% \changes{v1.0.2}{2021/11/11}{移植自hitThesis论文模板}
+% \changes{v1.0.3}{2021/12/07}{删除文献格式定义，texlive已包含GBT7714-2015}
 %    \begin{macrocode}
 %<*bst>
 ENTRY                                             % class Entry {
@@ -6110,7 +6109,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 %
 % 此处添加英文目录的章标题格式，默认细点
-% \changes{v1.0.05}{2017/09/18}{矫正英文目录缩进与中文目录一致的bug}
+% \changes{v1.0.1}{2017/09/18}{矫正英文目录缩进与中文目录一致的bug}
 %    \begin{macrocode}
   \def\l@chapter{\@dottedtocline{0}{0em}{5em}}%控制英文目录： 细点\@dottedtocline  粗点\@dottedtoclinebold
   \@restonecolfalse
@@ -6135,19 +6134,30 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 %
 % 设置附录、结论、参考文献等格式。
+% \changes{v1.0.4}{2026/02/20}{修改附录格式}
 %    \begin{macrocode}
 \let\heu@appendix\appendix
-\renewenvironment{appendix}{%
-  \let\title\heu@appendix@title
-  \heu@appendix
-  \ifheu@bachelor\renewcommand{\thechapter}{\arabic{chapter}}\fi
-  }{%
+\renewenvironment{appendix}[2]{%
+\heu@appendix
+\ifheu@bachelor\renewcommand{\thechapter}{\arabic{chapter}}\fi
+\ifheu@openright\cleardoublepage\else\clearpage\fi
+\renewcommand{\thechapter}{#1} % 修改附录序号
+\ifheu@english
+\addcontentsline{toc}{chapter}{\heu@appendix@etitle #1 ~ #2}
+\begin{center}
+  ~\\
+  \xiaoer\heiti\heu@appendix@etitle #1 ~ #2
+\end{center}\par
+\else
+\addcontentsline{toc}{chapter}{\heu@appendix@ctitle #1 ~ #2}
+\begin{center}
+  ~\\
+  \xiaoer\heiti\heu@appendix@ctitle #1 ~ #2
+\end{center}\par
+\fi}{%
   \let\title\@gobble}
 \let\title\@gobble
-\newcommand{\heu@appendix@title}[1]{%
-  \begin{center}
-    \bfseries\xiaosi #1
-  \end{center}}
+
 \newlist{translationbib}{enumerate}{1}
 \setlist[translationbib]{label=[\arabic*],align=left,nosep,itemsep=6bp,
   leftmargin=10mm,labelsep=!,before=\vspace{0.5\baselineskip}\wuhao[1.3]}

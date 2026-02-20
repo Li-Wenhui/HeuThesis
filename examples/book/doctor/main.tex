@@ -11,7 +11,7 @@
 %                  https://gitee.com/liwenhui/heuthesis
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[type=doctor,fontset=windows]{heuthesisbook}
+\documentclass[type=doctor,openright=true,fontset=windows]{heuthesisbook}
 % 此处选项中不要有空格
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 必填选项
@@ -83,8 +83,10 @@
 \include{back/acknowledgements} %致谢
 \include{back/resume}          % 个人简介
 
-\begin{appendix}%附录
-  \input{back/AppendixA.tex}
-\end{appendix}
+\include{back/AppendixA}  % 附录A
+\include{back/AppendixB}  % 附录B
+\include{back/AppendixC}  % 附录C
+\include{back/AppendixD}  % 附录D
+\include{back/AppendixE}  % 附录E
 
 \end{document}

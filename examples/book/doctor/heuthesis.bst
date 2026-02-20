@@ -1,5 +1,5 @@
 %%
-%% This is file `heuthesis.bst',
+%% This is file `examples/book/doctor/heuthesis.bst',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2021-2022 by LIWenhui <lwh@hrbeu.edu.cn>
+%% Copyright (C) 2021-2026 by LIWenhui <lwh@hrbeu.edu.cn>
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3a
@@ -1217,7 +1217,7 @@ FUNCTION {output.number} {                        % void Entry::output_number(in
 FUNCTION {output.report.number} {                 % void Entry::output_report_number(int required) {
   'required :=                                    %   this.required = required;
   number empty$ not {                             %   if (! empty(this.number)) {
-        cap.colon write$                              %     write(cap_colon);
+    cap.colon write$                              %     write(cap_colon);
     number format.report.number write$            %     write(format_report_number(this.number));
   } {                                             %   } else {
     required {                                    %     if (required == 1) {
