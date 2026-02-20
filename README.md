@@ -86,19 +86,19 @@
 
       - book/xxxx 文件夹中
 
-              xelatex -shell-escape thesis.tex
-              bibtex thesis
-              xelatex -shell-escape thesis.tex
-              xelatex -shell-escape thesis.tex
-              splitindex thesis -- -s heuthesis.ist  # 自动生成索引
-              xelatex -shell-escape thesis.tex
+              xelatex -shell-escape main.tex
+              bibtex main
+              xelatex -shell-escape main.tex
+              xelatex -shell-escape main.tex
+              splitindex main -- -s heuthesis.ist  # 自动生成索引
+              xelatex -shell-escape main.tex
 
       - book/english 文件夹中
 
-              xelatex -shell-escape thesis.tex
-              bibtex thesis
-              xelatex -shell-escape thesis.tex
-              xelatex -shell-escape thesis.tex
+              xelatex -shell-escape main.tex
+              bibtex main
+              xelatex -shell-escape main.tex
+              xelatex -shell-escape main.tex
 
       - art/{reports}文件夹中
 
@@ -107,13 +107,10 @@
               xelatex -shell-escape report.tex
               xelatex -shell-escape report.tex
 
-   - 半自动处理（源文件更改后每次编译敲一次）
+   - 半自动处理（命令行批处理）
 
-            make thesis
-
-   - 全自动处理（只需要输入一次命令，源文件更改后自动识别更改自动编译）
-
-            latexmk
+            build      # 仅生成主文件
+            build_all  # 生成封面、书籍、主文件并合成
 
 3. 生成文档
 
