@@ -10,5 +10,5 @@ xelatex a3cover.tex
 xelatex thesis.tex
 
 @echo clean......
-del /S *.idx *.ind *.ilg *.thm *.toe *.aux *.bbl *.blg *.out *.toc *.lof *.fen *.lot *.ten *.log *.bak *.loa *.glo
+del /S *.idx *.ind *.ilg *.thm *.toe *.aux *.bbl *.blg *.out *.toc *.lof *.fen *.lot *.ten *.log *.bak *.loa *.glo *.ist
 exit

@@ -4,5 +4,5 @@ bibtex main
 xelatex main.tex
 xelatex main.tex
 
-del /S *.idx *.ind *.ilg *.thm *.toe *.aux *.bbl *.blg *.out *.toc *.lof *.fen *.lot *.ten *.log *.bak *.loa *.glo
+del /S *.aux *.bbl *.blg *.out *.thm *.toc *.lof *.fen *.toe *.lot *.ten *.log *.bak *.loa *.glo *.idx *.ist
 exit

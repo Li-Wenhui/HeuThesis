@@ -1,64 +1,46 @@
-# Makefile for heuthesis dissertation
+TEXCMD  = xelatex
+BIBCMD  = bibtex
+MAINTEX = main
+SPINE   = spine
+COVER   = a3cover
+TARGET  = thesis
 
-# Compiling method: latexmk/xelatex
-METHOD = xelatex
-# Set opts for latexmk if you use it
-LATEXMKOPTS = -xelatex
-# Basename of thesis
-THESISMAIN = main
-PACKAGE = heuthesis
+.PHONY : all clean
 
-THESISCONTENTS=$(THESISMAIN).tex front/*.tex body/*.tex back/*.tex $(FIGURES)
-# NOTE: update this to reflect your local file types.
-FIGURES=$(wildcard figures/*.eps figures/*.pdf)
-BIBFILE=*.bib
-CLSFILES=$(PACKAGE)book.cls $(PACKAGE)book.cfg $(PACKAGE).ist $(PACKAGE).sty *.bst
+empty:
+	@echo Compiling Tex ...
+	$(TEXCMD) -shell-escape $(MAINTEX).tex
+	$(BIBCMD)  $(MAINTEX)
+	$(TEXCMD) -shell-escape $(MAINTEX).tex
+	$(TEXCMD) -shell-escape $(MAINTEX).tex
+	@echo Done. Build main completed......
 
-# make deletion work on Windows
-ifdef SystemRoot
-	RM = del /Q
-else
-	RM = rm -f
-endif
-
-.PHONY: clean cleanall thesis
-
-thesis: $(THESISMAIN).pdf
-
-ifeq ($(METHOD),latexmk)
-
-$(THESISMAIN).pdf: $(CLSFILES)
-	$(METHOD) $(LATEXMKOPTS) $(THESISMAIN)
-
-else ifeq ($(METHOD),xelatex)
-
-$(THESISMAIN).idx: $(THESISMAIN).bbl
-	$(METHOD) $(THESISMAIN)
-	$(METHOD) $(THESISMAIN)
-
-$(THESISMAIN)_china.idx : $(CLSFILES) $(THESISMAIN).bbl $(THESISMAIN).idx
-	splitindex $(THESISMAIN) -- -s $(PACKAGE).ist  # 自动生成索引
-
-$(THESISMAIN)_english.ind $(THESISMAIN)_china.ind $(THESISMAIN)_english.idx : $(THESISMAIN)_china.idx
-
-$(THESISMAIN).pdf: $(CLSFILES) $(THESISCONTENTS) $(THESISMAIN)_china.ind $(THESISMAIN)_china.idx $(THESISMAIN)_english.ind $(THESISMAIN)_english.idx $(THESISMAIN).bbl
-	$(METHOD) $(THESISMAIN)
-	splitindex $(THESISMAIN) -- -s $(PACKAGE).ist  # 自动生成索引
-	$(METHOD) $(THESISMAIN)
-
-$(THESISMAIN).bbl: $(BIBFILE)
-	$(METHOD) $(THESISMAIN)
-	-bibtex $(THESISMAIN)
-	$(RM) $(THESISMAIN).pdf
-
-else
-$(error Unknown METHOD: $(METHOD))
-
-endif
+all:
+	@echo Compiling Tex ...
+	$(TEXCMD) -shell-escape $(MAINTEX).tex
+	$(BIBCMD)  $(MAINTEX)
+	$(TEXCMD) -shell-escape $(MAINTEX).tex
+	$(TEXCMD) -shell-escape $(MAINTEX).tex
+	$(TEXCMD) -shell-escape  $(SPINE).tex
+	$(TEXCMD) -shell-escape  $(COVER).tex
+	$(TEXCMD) -shell-escape  $(TARGET).tex
+	@echo Done. Starting the browser......
 
 clean:
-	latexmk -c $(THESISMAIN)
-	-@$(RM) *~ *.idx *.ind *.ilg *.thm *.toe *.bbl
-
-cleanall: clean
-	-@$(RM) $(THESISMAIN).pdf
+	@echo Cleaning up ...
+	-find -name '*.aux' -exec rm -f {} \;
+	-find -name '*.bak' -exec rm -f {} \;
+	-find -name '*.dvi' -exec rm -f {} \;
+	-find -name '*~' -exec rm -f {} \;
+	-find -name '#*#' -exec rm -f {} \;
+	-find -name 'semantic.cache' -exec rm -f {} \;
+	-find -name '*.log' -exec rm -f {} \;
+	-rm -f *.bbl *.blg *.log *.out *.ps *.thm *.toc *.toe *.lof *.lot *.ist
+	-rm -f *.loa *.aen *.fen *.ten *.prv *.html *.css *.scm *.hlog *.glo *.idx
+	-rm -f _region_.tex
+	-rm -f -rf auto
+	-rm -rf ./body/auto
+	-rm -rf ./reference/auto
+	-rm -rf ./setup/auto
+	-rm -rf ./preface/auto
+	@echo All done.
