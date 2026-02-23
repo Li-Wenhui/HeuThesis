@@ -1,46 +1,79 @@
-TEXCMD  = xelatex
-BIBCMD  = bibtex
-MAINTEX = main
-SPINE   = spine
-COVER   = a3cover
-TARGET  = thesis
+# =============================================================
+#                 LaTeX Makefile
+# =============================================================
+# Usage:
+#   make           - 完全编译
+#   make clean     - 清理辅助文件
+#   make cleanall  - 清理PDF及所有辅助文件
+#   make build     - 编译并清理辅助文件
+#   make rebuild   - 重新编译并清理辅助文件
+#   make help      - 显示帮助
+# =============================================================
 
-.PHONY : all clean
+# 定义编译器及编译参数
+TEXCMD = xelatex -interaction=nonstopmode -halt-on-error
+BIBCMD = bibtex
 
-empty:
-	@echo Compiling Tex ...
-	$(TEXCMD) -shell-escape $(MAINTEX).tex
-	$(BIBCMD)  $(MAINTEX)
-	$(TEXCMD) -shell-escape $(MAINTEX).tex
-	$(TEXCMD) -shell-escape $(MAINTEX).tex
-	@echo Done. Build main completed......
+# 定义需要清理的辅助文件扩展名
+AUX_FILES = *.acn *.acr *.alg *.aux *.bak *.bbl *.bcf *.blg *.brf *.cut *.dvi *.exa *.fen *.fls *.glg *.glo *.gls *.idx *.ilg *.ind *.ist *.lof *.log *.lot *.nav *.snm *.out *.thm *.ten *.loa *.toc *.toe *.vrb *.xdv *.fdb_latexmk *.run.xml *.synctex.gz
 
-all:
-	@echo Compiling Tex ...
-	$(TEXCMD) -shell-escape $(MAINTEX).tex
-	$(BIBCMD)  $(MAINTEX)
-	$(TEXCMD) -shell-escape $(MAINTEX).tex
-	$(TEXCMD) -shell-escape $(MAINTEX).tex
-	$(TEXCMD) -shell-escape  $(SPINE).tex
-	$(TEXCMD) -shell-escape  $(COVER).tex
-	$(TEXCMD) -shell-escape  $(TARGET).tex
-	@echo Done. Starting the browser......
+# 获取当前目录下所有 .tex 文件（排除带空格的文件名）
+SPINE     = spine
+COVER     = a3cover
+TARGET    = thesis
+MAIN_TEX  = main
+MAIN_PDF  = $(MAIN_TEX).pdf
+TEX_FILES = $(wildcard *.tex) $(wildcard back/*.tex) $(wildcard body/*.tex) $(wildcard front/*.tex)
+BIB_FILES = $(wildcard *.bib)
 
+# 默认目标：编译所有 .tex 文件
+all:  $(TARGET)
+	@echo "编译完成！"
+
+# 模式规则：xeLaTeX → BibTeX → xeLaTeX → xeLaTeX
+ $(TARGET): $(TEX_FILES) $(BIB_FILES)
+	@echo "正在进行第一遍编译..."
+	$(TEXCMD) $(MAIN_TEX)
+	@echo "正在进行参考文献编译..."
+	$(BIBCMD) $(MAIN_TEX)
+	@echo "正在进行第二次编译确保，交叉引用正确..."
+	$(TEXCMD) $(MAIN_TEX)
+	@echo "正在进行第三次编译，确保所有引用稳定..."
+	$(TEXCMD) $(MAIN_TEX)
+	@echo "正在生成目标文件..."
+	$(TEXCMD) $(SPINE)
+	$(TEXCMD) $(COVER)
+	$(TEXCMD) $(TARGET)
+
+# 清理所有辅助文件
 clean:
-	@echo Cleaning up ...
-	-find -name '*.aux' -exec rm -f {} \;
-	-find -name '*.bak' -exec rm -f {} \;
-	-find -name '*.dvi' -exec rm -f {} \;
-	-find -name '*~' -exec rm -f {} \;
-	-find -name '#*#' -exec rm -f {} \;
-	-find -name 'semantic.cache' -exec rm -f {} \;
-	-find -name '*.log' -exec rm -f {} \;
-	-rm -f *.bbl *.blg *.log *.out *.ps *.thm *.toc *.toe *.lof *.lot *.ist
-	-rm -f *.loa *.aen *.fen *.ten *.prv *.html *.css *.scm *.hlog *.glo *.idx
-	-rm -f _region_.tex
-	-rm -f -rf auto
-	-rm -rf ./body/auto
-	-rm -rf ./reference/auto
-	-rm -rf ./setup/auto
-	-rm -rf ./preface/auto
-	@echo All done.
+	@echo "正在清理辅助文件..."
+	@rm -f $(AUX_FILES)
+	@echo "清理完成！"
+
+# 清理PDF及所有辅助文件
+cleanall: 
+	@echo "正在清理文件..."
+	@rm -f $(AUX_FILES)
+	@rm -f $(MAIN_PDF)
+	@rm -f $(SPINE).pdf
+	@rm -f $(COVER).pdf
+	@rm -f $(TARGET).pdf
+	@echo "清理完成！"
+
+# 编译并清理（常用目标）
+build: all clean
+
+# 重新编译并清理
+rebuild: cleanall all clean
+
+help:
+	@echo "Usage:"
+	@echo "make          - 完全编译"
+	@echo "make clean    - 清理辅助文件"
+	@echo "make cleanall - 清理PDF及所有辅助文件"
+	@echo "make build    - 编译并清理辅助文件"
+	@echo "make rebuild  - 重新编译并清理辅助文件"
+	@echo "make help     - 显示帮助"
+	
+.PHONY: all clean cleanall build rebuild 

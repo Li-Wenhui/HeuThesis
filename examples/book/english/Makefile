@@ -18,32 +18,25 @@ BIBCMD = bibtex
 AUX_FILES = *.acn *.acr *.alg *.aux *.bak *.bbl *.bcf *.blg *.brf *.cut *.dvi *.exa *.fen *.fls *.glg *.glo *.gls *.idx *.ilg *.ind *.ist *.lof *.log *.lot *.nav *.snm *.out *.thm *.ten *.loa *.toc *.toe *.vrb *.xdv *.fdb_latexmk *.run.xml *.synctex.gz
 
 # 获取当前目录下所有 .tex 文件（排除带空格的文件名）
-SPINE     = spine
-COVER     = a3cover
-TARGET    = thesis
 MAIN_TEX  = main
 MAIN_PDF  = $(MAIN_TEX).pdf
-TEX_FILES = $(wildcard *.tex) $(wildcard back/*.tex) $(wildcard body/*.tex) $(wildcard front/*.tex)
+TEX_FILES = $(wildcard *.tex) $(wildcard chapter/*.tex)
 BIB_FILES = $(wildcard *.bib)
 
 # 默认目标：编译所有 .tex 文件
-all:  $(TARGET)
+all:  $(MAIN_PDF)
 	@echo "编译完成！"
 
 # 模式规则：xeLaTeX → BibTeX → xeLaTeX → xeLaTeX
- $(TARGET): $(TEX_FILES) $(BIB_FILES)
+ $(MAIN_PDF): $(TEX_FILES) $(BIB_FILES)
 	@echo "正在进行第一遍编译..."
 	$(TEXCMD) $(MAIN_TEX)
 	@echo "正在进行参考文献编译..."
 	$(BIBCMD) $(MAIN_TEX)
-	@echo "正在进行第二次编译确保，交叉引用正确..."
+	@echo "正在进行第二次编译..."
 	$(TEXCMD) $(MAIN_TEX)
-	@echo "正在进行第三次编译，确保所有引用稳定..."
+	@echo "正在进行第三次编译..."
 	$(TEXCMD) $(MAIN_TEX)
-	@echo "正在生成目标文件..."
-	$(TEXCMD) $(SPINE)
-	$(TEXCMD) $(COVER)
-	$(TEXCMD) $(TARGET)
 
 # 清理所有辅助文件
 clean:
@@ -56,9 +49,6 @@ cleanall:
 	@echo "正在清理文件..."
 	@rm -f $(AUX_FILES)
 	@rm -f $(MAIN_PDF)
-	@rm -f $(SPINE).pdf
-	@rm -f $(COVER).pdf
-	@rm -f $(TARGET).pdf
 	@echo "清理完成！"
 
 # 编译并清理（常用目标）
@@ -71,9 +61,9 @@ help:
 	@echo "Usage:"
 	@echo "make          - 完全编译"
 	@echo "make clean    - 清理辅助文件"
-	@echo "make cleanall - 清理PDF及所有辅助文件"
+	@echo "make rmpdf    - 清理PDF及所有辅助文件"
 	@echo "make build    - 编译并清理辅助文件"
 	@echo "make rebuild  - 重新编译并清理辅助文件"
 	@echo "make help     - 显示帮助"
 	
-.PHONY: all clean cleanall build rebuild 
+.PHONY: all cleanall rmpdf build rebuild 
