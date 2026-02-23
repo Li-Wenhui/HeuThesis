@@ -41,13 +41,19 @@ all:  $(MAIN_PDF)
 # 清理所有辅助文件
 clean:
 	@echo "正在清理辅助文件..."
-	@rm -f $(AUX_FILES)
+	@for pattern in $(AUX_FILES); do \
+		#@echo "正在删除 $$pattern 文件:"; \
+		find . -type f -name "$$pattern" ! -path "./$(EXCLUDE_DIRS)/*" -print -delete || true; \
+	done
 	@echo "清理完成！"
 
 # 清理PDF及所有辅助文件
 cleanall: 
 	@echo "正在清理文件..."
-	@rm -f $(AUX_FILES)
+	@for pattern in $(AUX_FILES); do \
+		#@echo "正在删除 $$pattern 文件:"; \
+		find . -type f -name "$$pattern" ! -path "./$(EXCLUDE_DIRS)/*" -print -delete || true; \
+	done
 	@rm -f $(MAIN_PDF)
 	@echo "清理完成！"
 
