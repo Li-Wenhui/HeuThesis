@@ -519,6 +519,15 @@
 % }
 % \end{latex}
 %
+% \subsubsection{原创性与授权声明}
+% \DescribeMacro{\authorization}
+% 原创性与授权声明页中的签名和日期是需要手写。% 模板中提供了未签名的空白论文原创性与授权声明页
+% \file{auscan(empty).pdf}和示例签名后的文件 \file{auscan.pdf}，可以先打印空白页后进行签字，
+% 并使用签字后的扫描版文件对 \file{auscan.pdf} 进行替换，并使用带参数的 \cs{authorization} 指令插入该扫描文件。
+%\begin{latex}
+% \authorization[auscan.pdf]
+%\end{latex}
+%
 % \subsubsection{摘要}
 % \myentry{摘要正文}
 % \DescribeEnv{cabstract}
@@ -555,7 +564,6 @@
 % 所以这里使用 \cs{vspace}，具体见实现细节中的描述。
 % \begin{latex}
 % \begin{denotation}
-% \begin{table}[h]%此处最好是h
 % \caption{国际单位制中具有专门名称的导出单位}
 % \vspace{0.5em}\centering\wuhao
 % \begin{tabular}{ccccc}
@@ -901,15 +909,6 @@
 % 工作经历：
 % \end{resume}
 % \end{latex}
-%
-% \subsubsection{授权}
-% \DescribeMacro{\authorization}
-% 授权页中的签名和日期是需要手写，不需要人工干预。
-% 模板中提供了未签名的空白论文原创性声明和授权页 \file{auscan(empty).pdf}和示例签名后的文件
-% \file{auscan.pdf}，可以使用签字后的扫描版文件进行替换。
-%\begin{latex}
-% \authorization[auscan.pdf]
-%\end{latex}
 %
 % \subsection{其它}
 % 模板的配置文件 \file{heuthesisbook.cfg} 中定义了很多固定词汇，一般无须修改。如果有特殊需求，
