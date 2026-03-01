@@ -25,11 +25,10 @@ dist
 *.fdb_latexmk
 *.fls
 *.doc
-*.pdf
 *.toe
 *.xdv
 *.zip
-/2.硕士论文撰写格式相关文件/
+/参考文件/
 /GPATH
 /GRTAGS
 /GTAGS
