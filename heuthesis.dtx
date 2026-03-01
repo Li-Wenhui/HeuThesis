@@ -14,7 +14,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{heuthesis.dtx}[2026/02/19 1.0.4 Harbin Engineering University Thesis Template]
+\ProvidesFile{heuthesis.dtx}[2026/03/01 1.0.5 Harbin Engineering University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -295,7 +295,11 @@
 % 例文档，具体内容可以参考模板附带的 \file{main.tex}。
 %
 % \lstinputlisting[style=lstStyleLaTeX]{examples/book/english/main.tex}
-% \lstinputlisting[style=lstStyleLaTeX]{examples/book/chinese/main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{examples/book/bachelor/main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{examples/book/master/main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{examples/book/promaster/main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{examples/book/doctor/main.tex}
+% \lstinputlisting[style=lstStyleLaTeX]{examples/book/postdoc/main.tex}
 %
 % \subsection{论文选项}
 % \label{sec:option}
@@ -488,15 +492,15 @@
 % \subsubsection{学生类型}
 % \myentry{学生类型}
 % \DescribeMacro{profdegree}
-% \DescribeMacro{research}
+% \DescribeMacro{researchtype}
 % \DescribeMacro{cstudenttype}
 % \DescribeMacro{estudenttype}
 % 非全日制或专业学位申请者（profdegree=true），如：
 % 同等学力人员、工程硕士、工商管理硕士、
 % 高级管理人员工商管理硕士、公共管理硕士、中职教师、高校教师等，
 % 具体要求按照入学的培养计划中学科自行填写，具体名称不是本文档范畴。
-% 同时根据专业学位论文扉页格式要求，还需要通过 research 参数设置论文研究类型。
-% profdegree 和 research 通过模板选项设置。cstudenttype 和 estudenttype 在
+% 同时根据专业学位论文扉页格式要求，还需要通过 researchtype 参数设置论文研究类型。
+% profdegree 和 researchtype 通过模板选项设置。cstudenttype 和 estudenttype 在
 % 封面定义文件 \file{back/cover.tex} 文件中通过 \cs{heusetup} 设置。
 % \begin{latex}
 % \heusetup{
@@ -2883,7 +2887,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 \newif\ifheu@projectdplanning
 \newif\ifheu@projectdesign
 \newif\ifheu@applicationresearch
-\define@key{heu}{research}{%
+\define@key{heu}{researchtype}{%
   \heu@productdevelopmentfalse
   \heu@projectdplanningfalse
   \heu@projectdesignfalse
@@ -2949,8 +2953,8 @@ EXECUTE {end.bib}                                 %   end_bib();
 \ifheu@applicationresearch\relax\else
 \ClassError{heuthesisartplus}%
 {
-  \MessageBreak Please specify research type in option:
-  \MessageBreak research=[productdevelopment | projectdplanning | projectdesign | applicationresearch]
+  \MessageBreak Please specify researchtype in option:
+  \MessageBreak researchtype=[productdevelopment | projectdplanning | projectdesign | applicationresearch]
 }
 \fi
 \fi
@@ -2982,7 +2986,6 @@ EXECUTE {end.bib}                                 %   end_bib();
   \PassOptionsToClass{fontset=\heu@fontset}{ctexart}
 }%
 \LoadClass[a4paper,UTF8,zihao=-4,scheme=plain]{ctexart}
-
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifxetex}
@@ -3356,7 +3359,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 \newif\ifheu@projectdplanning
 \newif\ifheu@projectdesign
 \newif\ifheu@applicationresearch
-\define@key{heu}{research}{%
+\define@key{heu}{researchtype}{%
   \heu@productdevelopmentfalse
   \heu@projectdplanningfalse
   \heu@projectdesignfalse
@@ -3604,8 +3607,8 @@ EXECUTE {end.bib}                                 %   end_bib();
     \ifheu@projectdesign\relax\else
       \ifheu@applicationresearch\relax\else
         \ClassError{heuthesisartplus}%
-        { Please specify research type in option:\MessageBreak
-          research=[productdevelopment | projectdplanning | projectdesign | applicationresearch]
+        { Please specify researchtype in option:\MessageBreak
+          researchtype=[productdevelopment | projectdplanning | projectdesign | applicationresearch]
         }{}
       \fi
     \fi
@@ -5426,25 +5429,20 @@ delim_1 "\\hspace*{\\fill}"
 \item 报告统一用A4纸打印。
 \end{enumerate}
 }
-
+%  \end{macrocode}
+%  \changes{v1.0.5}{2026/03/01}{根据2026.02.28哈尔滨工程大学最新要求修改原创型声明和授权使用声明}
+%  \begin{macrocode}
 \newcommand{\heu@authorizationtext}{%
-本人完全了解学校保护知识产权的有关规定，即研究生在校攻读学位期间论文工作的知识产权属于 \heu@cschoolname 。
-\heu@cschoolname 有权保留并向国家有关部门或机构送交论文的复印件。
-本人允许 \heu@cschoolname 将论文的部分或全部内容编入有关数据库进行检索，可采用影印、缩印或扫描等复制手段保存和汇编本学位论文，
-可以公布论文的全部内容。同时本人保证毕业后结合学位论文研究课题再撰写的论文一律注明作者第一署名单位为 \heu@cschoolname 。
-涉密学位论文待解密后适用本声明。
+{\wuhao 本人完全了解学校保护知识产权的有关规定，即研究生在校攻读学位期间论文工作的知识产权属于 \heu@cschoolname 。 \heu@cschoolname 有权保留并向国家有关部门或机构送交论文的复印件。本人允许 \heu@cschoolname 将论文的部分或全部内容编入有关数据库进行检索，可采用影印、缩印或扫描等复制手段保存和汇编本学位论文，可以公布论文的全部内容。同时本人保证毕业后结合学位论文研究课题再撰写的论文一律注明作者第一署名单位为 \heu@cschoolname 。涉密学位论文待解密后适用本声明。}
 
-本论文（{\wuhao\Square}在授予学位后即可\hspace{0.75\ccwd}{\wuhao\Square}在授予学位12个月后\hspace{0.75\ccwd}{\wuhao\Square}解密后）由 \heu@cschoolname 送交有关部门进行保存、汇编等。}
+{\wuhao 本论文（{\xiaoliu{\Square}} 在授予学位后即可 \hspace{0.1em} {\xiaoliu{\Square}} 在授予学位24个月（含）后 \hspace{0.1em} {\xiaoliu{\Square}} 全部内容在授予学位 \underline{\hspace{1.5em}} 个月后【限填24个月以上，须学校审批】\hspace{0.1em} {\xiaoliu{\Square}} 部分内容在授予学位 \underline{\hspace{1.5em}} 个月后【须学校审批】\hspace{0.1em} {\xiaoliu{\Square}} 解密后）由 \heu@cschoolname 送交有关部门进行保存汇编、公布使用等。}}
+
 \newcommand{\heu@declarename@bachelor}{\heu@cschoolname 本科毕业设计（论文）原创性声明}
 \newcommand{\heu@authorizationtext@bachelor}{%
-本人郑重声明：在\heu@cschoolname 攻读学士学位期间，所提交的毕业设计（论文）《\heu@ctitle》，是本人在导师指导下独立进行研究工作所取得的成果。
-对本文的研究工作做出重要贡献的个人和集体，均已在文中以明确方式注明，其它未注明部分不包含他人已发表或撰写过的研究成果，
-不存在购买、由他人代写、剽窃和伪造数据等作假行为。本人完全意识到本声明的法律结果由本人承担。}
+{\wuhao 本人郑重声明：在\heu@cschoolname 攻读学士学位期间，所提交的毕业设计（论文）《\heu@ctitle》，是本人在导师指导下独立进行研究工作所取得的成果。对本文的研究工作做出重要贡献的个人和集体，均已在文中以明确方式注明，其它未注明部分不包含他人已发表或撰写过的研究成果，不存在购买、由他人代写、剽窃和伪造数据等作假行为。本人完全意识到本声明的法律结果由本人承担。}}
 \newcommand{\heu@declarename}{学位论文原创性声明}
 \newcommand{\heu@declaretext}{%
-本人郑重声明：本论文的所有工作，是在导师的指导下，由作者本人独立完成的。有关观点、方法、数据和文献的引用已在文中指出，并与参考文献相对应。
-除文中已注明引用的内容外，本论文不包含任何其他个人或集体已经公开发表的作品成果。
-对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果由本人承担。}
+{\wuhao 本人郑重声明：本论文的所有工作，是在导师的指导下，由作者本人独立完成的。有关观点、方法、数据和文献的引用已在文中指出，并与参考文献相对应。本论文在撰写过程中，所有由人工智能技术辅助生成的内容，作者均已明确标注，并对其真实性、准确性及合规性承担最终责任。论文中所有研究设计、数据分析、核心观点、结论及创新性研究成果均为作者独立思考完成，不存在将人工智能技术或工具标注为作者或完成人的情况。除文中已注明引用的内容外，本论文不包含任何其他个人或集体已经公开发表的作品成果。对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果由本人承担。}}
 
 \ifheu@english
 \newcommand{\heu@publication@ctitle}{Author's Publications}
@@ -5460,7 +5458,7 @@ delim_1 "\\hspace*{\\fill}"
 % 博后和英文版附录title
 %    \begin{macrocode}
 
-\newcommand{\heu@datefill}{\hspace{2.5em}年\hspace{1.5em}月\hspace{1.5em}日}
+\newcommand{\heu@datefill}{\hspace{3.0em}年\hspace{1.5em}月\hspace{1.5em}日}
 \newcommand{\heu@publication@etitle}{Papers published in the period of Ph.D. education}
 \def\heu@index@etitle{Index}
 \def\heu@motto{大工至善，大学至臻}
@@ -5863,59 +5861,59 @@ delim_1 "\\hspace*{\\fill}"
   \cleardoublepage}
 %    \end{macrocode}
 %    生成独创性声明和授权签字页。
+%    \changes{v1.0.5}{2026/03/01}{根据2026.02.28哈尔滨工程大学最新要求修改原创型声明和授权使用声明}
 %    \begin{macrocode}
 \def\heu@authorization@other{%
-        \ifheu@openright\cleardoublepage\else\clearpage\fi
-        %  \heu@appendix@chapter*{\heu@authorization@ctitle}[\heu@authorization@etitle]
-        %  \xiaosi[1.5]\vspace{\baselineskip}
-        \begin{center}
-                \quad\\
-                \quad\\
-                \xiaoer\heiti\heu@cschoolname\\%
-                \vspace{0.25\baselineskip}%
-                \heu@declarename
-        \end{center}
-        \vspace{0.5\baselineskip}
-        \par\heu@declaretext
-        \vspace{\baselineskip}
-        \par\hspace{20em}\heu@authorsig
-        \vspace{0.5\baselineskip}
-        \par\hspace{20em}\heu@frontdate\heu@datefill
-        \vspace{\baselineskip}
-        \begin{center}
-                \xiaoer\heiti\heu@cschoolname\\%
-                \vspace{0.25\baselineskip}%
-                \heu@authorizationtitle
-        \end{center}
-        \vspace{0.5\baselineskip}
-        \par\heu@authorizationtext
-        \vspace{\baselineskip}
-        \par\hspace{4em}\heu@authorsig\hspace{10em}\heu@teachersig
-        \vspace{0.5\baselineskip}
-        \par\hspace{4em}\heu@frontdate\heu@datefill\hspace{8em}\heu@datefill}
+  \ifheu@openright\cleardoublepage\else\clearpage\fi
+  %  \heu@appendix@chapter*{\heu@authorization@ctitle}[\heu@authorization@etitle]
+  %  \xiaosi[1.5]\vspace{\baselineskip}
+  \begin{center}
+      \quad\\
+      \xiaoer\heiti\heu@cschoolname\\%
+      \vspace{0.25\baselineskip}%
+      \heu@declarename
+  \end{center}
+  \vspace{0.25\baselineskip}
+  \par\heu@declaretext
+  \vspace{\baselineskip}
+  \par\hspace{23em}{\wuhao \heu@authorsig}
+  \vspace{0.25\baselineskip}
+  \par\hspace{23em}{\wuhao \heu@frontdate\heu@datefill}
+  \vspace{\baselineskip}
+  \begin{center}
+      \xiaoer\heiti\heu@cschoolname\\%
+      \vspace{0.25\baselineskip}%
+      \heu@authorizationtitle
+  \end{center}
+  \vspace{0.25\baselineskip}
+  \par\heu@authorizationtext
+  \vspace{\baselineskip}
+  \par\hspace{0em}{\wuhao \heu@authorsig} \hspace{17em} {\wuhao \heu@teachersig}
+  \vspace{0.5\baselineskip}
+  \par\hspace{0em}{\wuhao \heu@frontdate\heu@datefill} \hspace{12.5em}{\wuhao \heu@frontdate\heu@datefill}}
 \def\heu@authorization@bachelor{%
-        \ifheu@openright\cleardoublepage\else\clearpage\fi
-        \heu@appendix@chapter*{\heu@declarename@bachelor}
-        \heu@authorizationtext@bachelor
-        \vspace{2\baselineskip}
-        \par\hspace{6em}\heu@authorsig\hfill\heu@frontdate\heu@datefill}
+  \ifheu@openright\cleardoublepage\else\clearpage\fi
+  \heu@appendix@chapter*{\heu@declarename@bachelor}
+  \heu@authorizationtext@bachelor
+  \vspace{\baselineskip}
+  \par\hspace{6em}\heu@authorsig\hfill\heu@frontdate\heu@datefill}
 \NewDocumentCommand{\authorization}{o}{%
-        \IfNoValueTF{#1}{%
-                \thispagestyle{empty}%
-                % 本科不需要原创性和授权页，删掉
-                %\ifheu@bachelor\heu@authorization@bachelor\else\heu@authorization@other\fi
-                \heu@authorization@other
-        }{%
-                \ifheu@openright\cleardoublepage\else\clearpage\fi%
-                \includepdf[fitpaper=true,pagecommand={%
-                        \thispagestyle{empty}%
-                        % 原创性和授权页不加到目录
-                        %\phantomsection\addcontentsline{toc}{chapter}{\ifheu@bachelor\heu@declarename@bachelor\else\heu@authorization@ctitle\fi}%
-                        %\ifheu@doctor%
-                        %  \addcontentsline{toe}{chapter}{\texorpdfstring{\bfseries \heu@authorization@etitle}{\heu@authorization@etitle}}%
-                        %\fi%
-                }]{#1}%
-        }%
+  \IfNoValueTF{#1}{%
+      \thispagestyle{empty}%
+      % 本科不需要原创性和授权页，删掉
+      %\ifheu@bachelor\heu@authorization@bachelor\else\heu@authorization@other\fi
+      \heu@authorization@other
+  }{%
+      \ifheu@openright\cleardoublepage\else\clearpage\fi%
+      \includepdf[fitpaper=true,pagecommand={%
+          \thispagestyle{empty}%
+          % 原创性和授权页不加到目录
+          %\phantomsection\addcontentsline{toc}{chapter}{\ifheu@bachelor\heu@declarename@bachelor\else\heu@authorization@ctitle\fi}%
+          %\ifheu@doctor%
+          %  \addcontentsline{toe}{chapter}{\texorpdfstring{\bfseries \heu@authorization@etitle}{\heu@authorization@etitle}}%
+          %\fi%
+      }]{#1}%
+  }%
 }
 %    \end{macrocode}
 %    生成摘要和关键字。

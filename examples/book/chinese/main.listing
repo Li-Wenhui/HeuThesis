@@ -1,4 +1,0 @@
-\begin{tikzshow}
-\draw (0,0) circle [x radius=12pt, y radius=6pt];
-\draw (2,0) circle [radius=0.5cm];
-\end{tikzshow}

@@ -82,7 +82,7 @@ This is the configuration file of the heuthesis package with LaTeX2e.
 %%  ├── art
 %%  │      └── reports
 %%  └── book
-%%          ├── chinese
+%%          ├── bachelor
 %%          ├── doctor
 %%          ├── master
 %%          ├── postdoc
@@ -91,7 +91,6 @@ This is the configuration file of the heuthesis package with LaTeX2e.
 
 \generate{
     \file{\jobname book.cls}{\from{\jobname.dtx}{bookcls}}
-    \file{examples/book/chinese/\jobname book.cls}{\from{\jobname.dtx}{bookcls}}
     \file{examples/book/english/\jobname book.cls}{\from{\jobname.dtx}{bookcls}}
     \file{examples/book/bachelor/\jobname book.cls}{\from{\jobname.dtx}{bookcls}}
     \file{examples/book/master/\jobname book.cls}{\from{\jobname.dtx}{bookcls}}
@@ -102,7 +101,6 @@ This is the configuration file of the heuthesis package with LaTeX2e.
     \file{examples/art/reports/\jobname art.cls}{\from{\jobname.dtx}{artcls}}
     \usepreamble\cfgpreamble
     \file{\jobname book.cfg}{\from{\jobname.dtx}{bookcfg}}
-    \file{examples/book/chinese/\jobname book.cfg}{\from{\jobname.dtx}{bookcfg}}
     \file{examples/book/english/\jobname book.cfg}{\from{\jobname.dtx}{bookcfg}}
     \file{examples/book/bachelor/\jobname book.cfg}{\from{\jobname.dtx}{bookcfg}}
     \file{examples/book/master/\jobname book.cfg}{\from{\jobname.dtx}{bookcfg}}
@@ -113,7 +111,6 @@ This is the configuration file of the heuthesis package with LaTeX2e.
     \file{examples/art/reports/\jobname art.cfg}{\from{\jobname.dtx}{artcfg}}
     \usepreamble\istpreamble
     \file{\jobname.ist}{\from{\jobname.dtx}{ist}}
-    \file{examples/book/chinese/\jobname.ist}{\from{\jobname.dtx}{ist}}
     \file{examples/book/english/\jobname.ist}{\from{\jobname.dtx}{ist}}
     \file{examples/book/bachelor/\jobname.ist}{\from{\jobname.dtx}{ist}}
     \file{examples/book/master/\jobname.ist}{\from{\jobname.dtx}{ist}}
@@ -123,7 +120,6 @@ This is the configuration file of the heuthesis package with LaTeX2e.
    \usepreamble\defaultpreamble\usepostamble\defaultpostamble
     \file{dtx-style.sty}{\from{\jobname.dtx}{dtx-style}}
     \file{\jobname.sty}{\from{\jobname.dtx}{heuthesis-style}}
-    \file{examples/book/chinese/\jobname.sty}{\from{\jobname.dtx}{heuthesis-style}}
     \file{examples/book/english/\jobname.sty}{\from{\jobname.dtx}{heuthesis-style}}
     \file{examples/book/bachelor/\jobname.sty}{\from{\jobname.dtx}{heuthesis-style}}
     \file{examples/book/master/\jobname.sty}{\from{\jobname.dtx}{heuthesis-style}}
@@ -135,7 +131,6 @@ This is the configuration file of the heuthesis package with LaTeX2e.
 \generate{
     \usepostamble\empty
     \file{\jobname.bst}{\from{\jobname.dtx}{bst}}
-    \file{examples/book/chinese/\jobname.bst}{\from{\jobname.dtx}{bst}}
     \file{examples/book/english/\jobname.bst}{\from{\jobname.dtx}{bst}}
     \file{examples/book/bachelor/\jobname.bst}{\from{\jobname.dtx}{bst}}
     \file{examples/book/master/\jobname.bst}{\from{\jobname.dtx}{bst}}

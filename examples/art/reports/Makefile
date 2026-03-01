@@ -17,7 +17,7 @@ TEXCMD = latexmk -xelatex -interaction=nonstopmode -halt-on-error
 AUX_FILES = *.acn *.acr *.alg *.aux *.bak *.bbl *.bcf *.blg *.brf *.cut *.dvi *.exa *.fen *.fls *.glg *.glo *.gls *.idx *.ilg *.ind *.ist *.lof *.log *.lot *.nav *.snm *.out *.thm *.ten *.loa *.toc *.toe *.vrb *.xdv *.fdb_latexmk *.run.xml *.synctex.gz
 
 # 定义排除的目录(可选)
-EXCLUDE_DIRS = 
+EXCLUDE_DIRS = .git/
 
 # 获取当前目录下所有 .tex 文件（排除带空格的文件名）
 MAIN_TEX  = report
