@@ -54,7 +54,7 @@ endif
 
 clean:
 	latexmk -c $(PACKAGE).dtx
-	-@$(RM) *~ *.idx *.ind *.ilg *.thm *.toe *.bbl
+	-@$(RM) *~ *.ind *.ilg *.thm *.toe *.bbl
 
 cleanall: clean
 	-@$(RM) $(PACKAGE).pdf
