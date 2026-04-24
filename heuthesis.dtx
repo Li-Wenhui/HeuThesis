@@ -3063,9 +3063,11 @@ EXECUTE {end.bib}                                 %   end_bib();
 \RequirePackage[below]{placeins}% 允许上一个section的浮动图形出现在下一个section的开始部分,还提供\FloatBarrier命令,使所有未处理的浮动图形立即被处理
 \RequirePackage{flafter}        % 使得所有浮动体不能被放置在其浮动环境之前，以免浮动体在引述它的文本之前出现.
 \RequirePackage{multirow}       % 使用Multirow宏包，使得表格可以合并多个row格
-\RequirePackage{subfigure}      % 支持子图 %centerlast 设置最后一行是否居中
-\RequirePackage[subfigure]{ccaption} % 支持双语标题
-\RequirePackage{xltxtra}
+%    \end{macrocode}
+% \changes{v1.0.6}{2026/04/24}{使用subcaption宏包替代过时的subfigure宏包}
+%    \begin{macrocode}
+\RequirePackage{subcaption}
+\RequirePackage{fontspec}
 
 \renewcommand\normalsize{%
   \@setfontsize\normalsize{12bp}{20.50398bp}%
@@ -3842,7 +3844,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 %    排版logo。
 %    \begin{macrocode}
-%<bookcls>\RequirePackage{xltxtra}
+%<bookcls>\RequirePackage{fontspec}
 %    \end{macrocode}
 %
 % \subsection{主文档格式}
