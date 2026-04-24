@@ -74,9 +74,9 @@
 以本模版为例，在 Windows 下使用 WinEdt 的编译过程是这样的：
 \begin{enumerate}
   \item[(1)] 打开main.tex文件；
-  \item[(2)] 先点击WinEdt工具栏上的\XeLaTeX{}按钮(可能在Acrobat Reader按钮的下拉菜单中)；
-  \item[(3)] 再点击WinEdt工具栏上的Bib\TeX{}按钮；
-  \item[(4)] 再点击WinEdt工具栏上的\XeLaTeX{}按钮两到三遍；
+  \item[(2)] 先点击WinEdt工具栏上的 Xe\LaTeX{}按钮(可能在Acrobat Reader按钮的下拉菜单中)；
+  \item[(3)] 再点击WinEdt工具栏上的 Bib\TeX{}按钮；
+  \item[(4)] 再点击WinEdt工具栏上的 Xe\LaTeX{}按钮两到三遍；
   \item[(5)] 最后点击WinEdt工具栏上的Acrobat Reader按钮就可以看到输出的PDF文档了。
 \end{enumerate}
 
@@ -84,15 +84,15 @@
 
 \subsection{安装配置}
 
-首先的工作是安装一个合适的 \XeTeX{}编译系统。这个问题
-并不难解决，现在主流的 \LaTeX{}编译系统均已经包含了对 \XeTeX{}的支持（包
+首先的工作是安装一个合适的 Xe\TeX{}编译系统。这个问题
+并不难解决，现在主流的 \LaTeX{}编译系统均已经包含了对 Xe\TeX{}的支持（包
 括 xeCJK 中文宏包），并不需要自己额外再进行安装。在Linux下推荐使
 用 \TeX{}Live ，目前最新版本为 \TeX{}Live 2022。下面以在 Ubuntu 下的本地安装为
 例，简要的说明 \TeX{}Live 的安装及配置过程，高玩们请主动绕行：
 
 \begin{enumerate}
-  \item[(1)] 下载 \TeX{}live 2022 镜像，点击\href{https://tug.org/texlive/}{这里}进    入 \TeX{}live 2022 网站选择需要下载的安装文件或文档。
-  \item[(2)] 安装 perl-tk 包，以便使用图形界面进行安装。在终端中输入命    令\texttt{sudo apt-get install perl-tk}；
+  \item[(1)] 下载 \TeX{}live 2022 镜像，点击\href{https://tug.org/texlive/}{这里}进入 \TeX{}live 2022 网站选择需要下载的安装文件或文档。
+  \item[(2)] 安装 perl-tk 包，以便使用图形界面进行安装。在终端中输入命令\texttt{sudo apt-get install perl-tk}；
   \item[(3)] 挂载下载好的iso镜像，\texttt{sudo mkdir /mnt/texlive}（在~{/mnt}~下创建texlive文件夹），\texttt{sudo mount -o loop texlive2022.iso  /mnt/texlive}（挂载texlive2022.iso）。进入~/mnt/texlive~目录，输入命令~\texttt{sudo ./install-tl -gui}~之后出现图形界面。之后的操作就比较简单了，可以去掉不用的语言包以节省磁盘空间，注意选择最后一项 Create symlinks in system directories ，让安装程序自动创建语法链接。确定安装，耐心等待进度条到头；
   \item[(4)] 配置环境变量。在终端中输入~\texttt{sudo gedit /etc/bash.bashrc}，在此文件末尾添加
 \end{enumerate}
@@ -128,17 +128,15 @@
 TeXStudio 软件进行 tex 文件编辑。
 
 \subsection{生成论文}
-\label{sec:generate-thesis}
 
-在安装并配置好编译环境之后，接下来的工作就是如何编译 \XeLaTeX{} 文件，生成
+在安装并配置好编译环境之后，接下来的工作就是如何编译 Xe\LaTeX{} 文件，生成
 所需的 PDF 文档了。
 
 任何文本编辑工具都可以用来编写论文，当然 Linux 下也有很多免费的集成编辑工具可以使用。
 
 本节介绍几种常见的生成论文的方法。用户可根据自己的情况选择。
 
-\subsubsection{\XeLaTeX}
-\label{sec:xelatex}
+\subsubsection{XeLaTeX}
 
 很多用户对 \LaTeX\ 命令执行的次数不太清楚。一个基本的原则是多次运行 \LaTeX\ 命
 令直至不再出现警告。下面给出生成示例文档的详细过程（\texttt{\#} 开头的行为注
@@ -166,7 +164,6 @@ TeXStudio 软件进行 tex 文件编辑。
 \end{lstlisting}
 
 \subsubsection{latexmk}
-\label{sec:latexmk}
 
 \texttt{latexmk} 命令支持全自动生成 \LaTeX\ 编写的文档，并且支持使用不同的工具
 链来进行生成，它会自动运行多次工具直到交叉引用都被解决。下面给出了一个用
@@ -177,19 +174,16 @@ TeXStudio 软件进行 tex 文件编辑。
 \end{lstlisting}
 
 \subsubsection{make}
-\label{sec:make}
 
 上面使用 \texttt{xelatex} 生成论文的方法虽然不复杂，但是每次都输入还是非常罗嗦，所以 \heuthesis\
 提供了一个 \texttt{Makefile}，可以通过在命令行环境下执行一次 make 完成论文生成这些工作。
 
 \subsubsection{buidl.bat}
-\label{sec:build}
 
 示例文件夹中也包含了 \texttt{build.bat} 批处理文件，在 \texttt{Windows} 环境下可以
 直接使用改批处理文件生成最终 \texttt{PDF} 格式的论文 \texttt{main.pdf}。
 
 \subsection{原创性和授权声明}
-\label{sec:generate-auth}
 
 按学校论文规范要求，硕士和博士论文扉页后应有论文原创性和授权声明签字页（本科生毕业设计不需要）。
 该页可以使用两种方式实现：
@@ -206,7 +200,6 @@ TeXStudio 软件进行 tex 文件编辑。
 模板目录中已包含空白论文原创性和授权声明文件 auscan.pdf，可以在生成论文前使用签字后扫描的pdf文件进行替换，也可以指定其他符合系统要求的文件名称。
 
 \subsection{生成封面}
-\label{sec:generate-cover}
 
 模板还提供了用于生成论文 \texttt{A3} 页面的封面定义文档。用户可根据自己的情况选择。
 
