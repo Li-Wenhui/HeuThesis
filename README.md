@@ -113,7 +113,7 @@
    - 半自动处理（命令行批处理）
 
             build      # 仅生成主文件 main.pdf
-            build_all  # 生成封面、书籍、主文件并合成 thesis.pdf
+            build_all  # 生成A3论文封面、书脊、主文件并合成为 thesis.pdf
             
     - make
     
