@@ -12,9 +12,11 @@
 %
 % \fi
 %
+%  \changes{v1.0.1}{2021/05/16}{移植自hitThesis论文模板}
+% 
 % \iffalse
 %<*driver>
-\ProvidesFile{heuthesis.dtx}[2026/03/01 1.0.5 Harbin Engineering University Thesis Template]
+\ProvidesFile{heuthesis.dtx}[2026/05/08 1.0.5 Harbin Engineering University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -922,8 +924,7 @@
 %
 % \subsection{基本信息}
 %
-% \changes{v1.0.2}{2021/11/11}{移植自hitThesis论文模板}
-% \changes{v1.0.3}{2021/12/07}{删除文献格式定义，texlive已包含GBT7714-2015}
+% \changes{v1.0.2}{2021/12/07}{删除文献格式定义，texlive已包含GBT7714-2015}
 %    \begin{macrocode}
 %<*bst>
 ENTRY                                             % class Entry {
@@ -3064,7 +3065,7 @@ EXECUTE {end.bib}                                 %   end_bib();
 \RequirePackage{flafter}        % 使得所有浮动体不能被放置在其浮动环境之前，以免浮动体在引述它的文本之前出现.
 \RequirePackage{multirow}       % 使用Multirow宏包，使得表格可以合并多个row格
 %    \end{macrocode}
-% \changes{v1.0.6}{2026/04/24}{使用subcaption宏包替代过时的subfigure宏包}
+% \changes{v1.0.4}{2026/04/24}{使用subcaption宏包替代过时的subfigure宏包}
 %    \begin{macrocode}
 \RequirePackage{subcaption}
 \RequirePackage{fontspec}
@@ -5407,7 +5408,7 @@ delim_1 "\\hspace*{\\fill}"
      \songti\sanhao\textbf{研究生院制}
    \end{center}
    \begin{center}
-     \songti\sanhao\textbf{二〇一四年九月}
+     \songti\sanhao\textbf{二〇二六年二月}
    \end{center}
 }
 \newcommand{\heu@harbin@bachelor@schoolbottommark}{
@@ -5430,9 +5431,9 @@ delim_1 "\\hspace*{\\fill}"
 \item 报告统一用A4纸打印。
 \end{enumerate}
 }
-%  \end{macrocode}
-%  \changes{v1.0.5}{2026/03/01}{根据2026.02.28哈尔滨工程大学最新要求修改原创型声明和授权使用声明}
-%  \begin{macrocode}
+%    \end{macrocode}
+%   \changes{v1.0.5}{2026/03/01}{根据2026.02.28哈尔滨工程大学最新要求修改原创型声明和授权使用声明}
+%    \begin{macrocode}
 \newcommand{\heu@authorizationtext}{%
 {\wuhao 本人完全了解学校保护知识产权的有关规定，即研究生在校攻读学位期间论文工作的知识产权属于 \heu@cschoolname 。 \heu@cschoolname 有权保留并向国家有关部门或机构送交论文的复印件。本人允许 \heu@cschoolname 将论文的部分或全部内容编入有关数据库进行检索，可采用影印、缩印或扫描等复制手段保存和汇编本学位论文，可以公布论文的全部内容。同时本人保证毕业后结合学位论文研究课题再撰写的论文一律注明作者第一署名单位为 \heu@cschoolname 。涉密学位论文待解密后适用本声明。}
 
@@ -5862,7 +5863,6 @@ delim_1 "\\hspace*{\\fill}"
   \cleardoublepage}
 %    \end{macrocode}
 %    生成独创性声明和授权签字页。
-%    \changes{v1.0.5}{2026/03/01}{根据2026.02.28哈尔滨工程大学最新要求修改原创型声明和授权使用声明}
 %    \begin{macrocode}
 \def\heu@authorization@other{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
@@ -6106,9 +6106,7 @@ delim_1 "\\hspace*{\\fill}"
 \def\engcontentsname{\bfseries Contents}
 \newcommand\tableofengcontents{
 %    \end{macrocode}
-%
 % 此处添加英文目录的章标题格式，默认细点
-% \changes{v1.0.1}{2017/09/18}{矫正英文目录缩进与中文目录一致的bug}
 %    \begin{macrocode}
   \def\l@chapter{\@dottedtocline{0}{0em}{5em}}%控制英文目录： 细点\@dottedtocline  粗点\@dottedtoclinebold
   \@restonecolfalse
@@ -6133,7 +6131,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 %
 % 设置附录、结论、参考文献等格式。
-% \changes{v1.0.4}{2026/02/20}{修改附录格式}
+% \changes{v1.0.3}{2026/02/20}{修改附录格式}
 %    \begin{macrocode}
 \let\heu@appendix\appendix
 \renewenvironment{appendix}[2]{%
@@ -6420,10 +6418,16 @@ delim_1 "\\hspace*{\\fill}"
     \hskip .5\algomargin%
     \parbox[t]{\hsize}{\centering\algocf@captiontext{#1}{#2}}%
   \addtolength{\hsize}{-\algomargin}%
-}
-\newcommand{\AlgoBiCaption}[2]{%直接取出自定义的中英文标题条目加入到真正的\caption 中
-   \caption[#1]{\protect\setlength{\baselineskip}{1.5em}#1 \protect \\ Algo.\thealgocf~#2} % \algoencaption{#2}
-   \addcontentsline{aen}{algoen}{\protect\numberline{\thealgoen}{#2}}
+}  
+\newcommand{\AlgoBiCaption}[2]{%
+  \begingroup
+    \setlength{\baselineskip}{1.5em}%
+    \caption[#1]{#1 \\ \textit{Algo.}\,\thealgocf~#2}%
+  \endgroup
+  % 注意：addcontentsline 可能需要根据实际的 .aen 文件定义来调整
+  \ifdefined\thealgoen
+    \addcontentsline{aen}{algoen}{\protect\numberline{\thealgoen}{#2}}%
+  \fi
 }
 
 % 排版源码所使用的环境可以有两种。listings和minted
