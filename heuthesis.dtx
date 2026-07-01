@@ -5212,7 +5212,7 @@ EXECUTE {end.bib}
 %<bookcfg>\ProvidesFile{heuthesisbook.cfg}
 %<artcfg>\ProvidesFile{heuthesisart.cfg}
 %<heuthesis-style>\ProvidesPackage{heuthesis}
-%<artcls|bookcls|bookcfg|artcfg|heuthesis-style>[2021/05/06 3.0.15 Harbin Engineering University Thesis Template]
+%<artcls|bookcls|bookcfg|artcfg|heuthesis-style>[2026/05/08 1.0.5 Harbin Engineering University Thesis Template]
 %<*artcls>
 \RequirePackage{ifthen}
 \RequirePackage{kvoptions}
@@ -5280,7 +5280,9 @@ EXECUTE {end.bib}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexart}}
 
 \ProcessKeyvalOptions*
-\PassOptionsToPackage{no-math}{fontspec}
+\ifxetex
+  \PassOptionsToPackage{no-math}{fontspec}
+\fi
 
 \ifheu@bachelor\relax\else
 \ifheu@master\relax\else
@@ -5298,7 +5300,7 @@ EXECUTE {end.bib}
 \ifheu@projectdplanning\relax\else
 \ifheu@projectdesign\relax\else
 \ifheu@applicationresearch\relax\else
-\ClassError{heuthesisartplus}%
+\ClassError{heuthesisart}%
 {
   \MessageBreak Please specify researchtype in option:
   \MessageBreak researchtype=[productdevelopment | projectdplanning | projectdesign | applicationresearch]
@@ -5879,7 +5881,9 @@ EXECUTE {end.bib}
 % 给 \pkg{fontspec} 宏包 \option{no-math} 选项，避免部分数学符号字体自动调整
 % 为 CMR。其他引擎下没有这个问题，这一行会被无视。
 %    \begin{macrocode}
-\PassOptionsToPackage{no-math}{fontspec}
+\ifxetex
+  \PassOptionsToPackage{no-math}{fontspec}
+\fi
 %    \end{macrocode}
 % 载入单双面打印设置，默认本、硕、博均采用双面打印。
 %    \begin{macrocode}
@@ -5955,7 +5959,7 @@ EXECUTE {end.bib}
   \ifheu@projectdplanning\relax\else
     \ifheu@projectdesign\relax\else
       \ifheu@applicationresearch\relax\else
-        \ClassError{heuthesisartplus}%
+        \ClassError{heuthesisart}%
         { Please specify researchtype in option:\MessageBreak
           researchtype=[productdevelopment | projectdplanning | projectdesign | applicationresearch]
         }{}
@@ -7809,6 +7813,12 @@ delim_1 "\\hspace*{\\fill}"
 
 \newcommand{\heu@datefill}{\hspace{3.0em}年\hspace{1.5em}月\hspace{1.5em}日}
 \newcommand{\heu@publication@etitle}{Papers published in the period of Ph.D. education}
+
+% 提供默认值，防止宏未定义报错
+\providecommand{\heu@cschoolname}{哈尔滨工程大学}
+\providecommand{\heu@cxuewei}{博士}
+\providecommand{\heu@ctitle}{论文标题}
+
 \def\heu@index@etitle{Index}
 \def\heu@motto{大工至善，大学至臻}
 \def\heu@cbraceleft{（}
