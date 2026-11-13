@@ -91,13 +91,13 @@ FUNCTION {load.config}
   "byentry" 'control.cite.lang :=  % byentry / chinese / english / macro
   #0 'control.year.before.title :=
   "period" 'control.name.year.delim :=  % comma / period
-  #1 'control.sentence.case.title :=
-  #1 'control.sentence.case.booktitle :=
+  #0 'control.sentence.case.title :=
+  #0 'control.sentence.case.booktitle :=
   #0 'control.sentence.case.journal :=
   #0 'control.capitalize.subtitle :=
   #0 'control.link.title :=
   #1 'control.article.title :=
-  #0 'control.patent.country :=
+  #1 'control.patent.country :=
   #1 'control.entry.type.id :=
   #0 'control.space.before.type.id :=
   #1 'control.entry.medium.id :=
@@ -109,7 +109,7 @@ FUNCTION {load.config}
   #0 'control.journal.dots :=
   #0 'control.link.journal :=
   #0 'control.bold.volume :=
-  #0 'control.unknown.publisher :=
+  #1 'control.unknown.publisher :=
   #1 'control.space.before.pages :=
   #1 'control.page.ranges :=
   "-" 'control.page.range.delim :=
@@ -118,7 +118,7 @@ FUNCTION {load.config}
   #1 'control.doi :=
   #0 'control.cstr :=
   #0 'control.eprint :=
-  #0 'control.note :=
+  #1 'control.note :=
   #1 'control.end.dot :=
   #1 'control.warn.empty.field :=
 }
@@ -1401,6 +1401,10 @@ FUNCTION {set.entry.lang}
   if$
   "l" change.case$
   's :=
+  s #1 #2 substring$ "zh" =
+    { "chinese" 's := }
+    'skip$
+  if$
   s empty$
     { check.entry.lang }
     { s "english" = s "american" = or s "british" = or
@@ -1740,7 +1744,7 @@ FUNCTION {warn.empty.field}
 
 FUNCTION {format.anonymous}
 {
-  ""
+  bbl.anonymous
 }
 
 FUNCTION {format.authors}
@@ -2115,7 +2119,7 @@ FUNCTION {format.bvolume}
     { "" }
     { volume is.number
         { entry.lang lang.zh =
-            { "第" volume tie.or.space.connect " 卷" * }
+            { "第" volume * "卷" * }
             { entry.lang lang.ko =
                 { "제" volume tie.or.space.connect " 권" * }
                 { "v." volume * }
@@ -2917,6 +2921,14 @@ FUNCTION {check.electronic}
           if$
         }
         { "\url{" url * "}" * 'entry.url := }
+      if$
+    }
+    'skip$
+  if$
+  entry.eprint empty$
+    { eprint empty$
+        'skip$
+        { eprint 'entry.eprint := }
       if$
     }
     'skip$
@@ -4153,6 +4165,7 @@ FUNCTION {presort}
   sort.label *
   #1 entry.max$ substring$
   'sort.key$ :=
+  sort.key$ 'sort.label :=
 }
 
 STRINGS { longest.label last.label next.extra last.extra.label }
@@ -4298,3 +4311,4 @@ ITERATE {call.type$}
 EXECUTE {end.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

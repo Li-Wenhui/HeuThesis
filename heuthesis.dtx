@@ -13,10 +13,11 @@
 % \fi
 %
 %  \changes{v1.0.1}{2021/05/16}{移植自hitThesis论文模板}
+%  \changes{v1.0.6}{2026/11/13}{修复选项取值校验、附录与后文锚点/书签、参考文献中文语言判定等问题}
 % 
 % \iffalse
 %<*driver>
-\ProvidesFile{heuthesis.dtx}[2026/05/08 1.0.5 Harbin Engineering University Thesis Template]
+\ProvidesFile{heuthesis.dtx}[2026/11/13 1.0.6 Harbin Engineering University Thesis Template]
 \documentclass{ltxdoc}
 \usepackage{dtx-style}
 
@@ -122,7 +123,7 @@
 %
 % \subsection*{文档记号的说明}
 % 本文采用不同字体表示不同内容。无衬线字体表示宏包名称，如
-% \pkg{xeCJK} 宏包、\cls{heuhesisbook} 文档类等；等宽字体表示代码或
+% \pkg{xeCJK} 宏包、\cls{heuthesisbook} 文档类等；等宽字体表示代码或
 % 文件名，如 \cs{heusetup} 命令、
 % \file{thesis.tex} 等；带有尖括号的楷体（或西文斜体）表示命令参数，
 % 如 \option{模板选项}、\option{English title} 等。在使用时，参数两侧
@@ -161,7 +162,7 @@
 % front/ & 正文之前内容\\
 % body/ & 正文内容\\
 % back/ & 正文之后内容\\
-% data/ & TiZk绘图数据文件\\
+% data/ & TikZ 绘图数据文件\\
 % figures/ & 插图图片路径\\
 % heuthesis.sty & 为示例文档加载其它宏包\\\midrule
 % Makefile & Makefile\\
@@ -256,11 +257,11 @@
 % 贝 \file{heuthesisbook.cls}，\file{heuthesisbook.cfg} 和
 % \file{heuthesis.ist}，免去上面命令的执行。
 %
-% \subsubsection{buidl.bat}
+% \subsubsection{build.bat}
 % \label{sec:build}
 %
 % 示例文件夹中也包含了 \file{build.bat} 批处理文件，在 \texttt{Windows} 环境下可以
-% 直接使用改批处理文件生成最终 \texttt{PDF} 格式的论文 \file{main.pdf}。
+% 直接使用该批处理文件生成最终 \texttt{PDF} 格式的论文 \file{main.pdf}。
 %
 % \subsection{生成封面}
 % \label{sec:generate-cover}
@@ -503,7 +504,7 @@
 % 具体要求按照入学的培养计划中学科自行填写，具体名称不是本文档范畴。
 % 同时根据专业学位论文扉页格式要求，还需要通过 researchtype 参数设置论文研究类型。
 % profdegree 和 researchtype 通过模板选项设置。cstudenttype 和 estudenttype 在
-% 封面定义文件 \file{back/cover.tex} 文件中通过 \cs{heusetup} 设置。
+% 封面定义文件 \file{front/cover.tex} 文件中通过 \cs{heusetup} 设置。
 % \begin{latex}
 % \heusetup{
 %   cstudenttype={工程硕士},
@@ -561,7 +562,7 @@
 % \subsubsection{符号对照表}
 % \DescribeEnv{denotation}
 % 主要符号表环境，单独在文件 \file{front/denotation.tex} 中。
-% 跟据 \PGR\ 示例中要求，我校符号表是table环境，示例文件如下，
+% 根据 \PGR\ 示例中要求，我校符号表是table环境，示例文件如下，
 % 由于我校要求博士论文图表标题是双语，所以任何对单个标题的全局格式调整都会影响到双语标题，
 % 所以这里使用 \cs{vspace}，具体见实现细节中的描述。
 % \begin{latex}
@@ -588,9 +589,9 @@
 % 哈尔滨工程大学博士毕业论文要求使用中英双语图题、表题，这增加了维护难度。
 % 因为现有唯一的方法是在已有的图题或表题的基础上再添加一行英语图题或表题。
 % 两个题之间的距离具体多少不在\PGR\ 中要求。目前的方法是用户手动调节该距离。
-% 关于图题\PGR\ 和\UGR\ 只规定了居中，并没有规定居中对其。然而评审老师很多喜欢居
-% 中且居中对齐。模板默认选项是居中且居中对齐，如果不喜欢居中对齐，那么需要在
-% \file{main.tex} 的文档类选项中设置选项 capcenterlast=false。
+% 关于图题\PGR\ 和\UGR\ 只规定了居中，并没有规定居中对齐。然而评审老师很多喜欢居
+% 中且居中对齐。模板默认居中书写但不强制最后一行居中（capcenterlast=false）；如果
+% 希望最后一行也居中，在 \file{main.tex} 的文档类选项中设置 capcenterlast=true。
 % 详细方法见前文的介绍。
 % \begin{heurgu}
 % 每个图均应有图题（由图序和图名组成），图题不宜有标点符号，图名在图序之后空1个
@@ -806,7 +807,7 @@
 % \subsection{后文}
 %
 % \subsubsection{结论}
-% \DescribeEnv{conclusion}
+% \DescribeEnv{conclusions}
 % 结论之后为后文内容。
 % \begin{latex}
 % \begin{conclusions}
@@ -829,12 +830,12 @@
 %
 % \subsubsection{附录}
 % \DescribeEnv{appendix}
-% 所有的附录都插到这里来。因为附录会更改默认的 chapter 属性，而后面的{\heiti 个人简
-%   历}又需要恢复，所以实现为环境可以保证全局的属性不受影响。
+% 附录用 \cs{appendix}\marg{编号}\marg{题名} 开始（也可写成
+% \texttt{\string\begin\{appendix\}\marg{编号}\marg{题名}}），编号只写字母，如 \texttt{A}。
+% 模板会自动重置图、表、公式计数器，并生成目录项和 PDF 书签。
 % \begin{latex}
-% \begin{appendix}
-% \input{back/appA.tex}
-% \end{appendix}
+% \appendix{A}{相关标准}
+% \input{back/AppendixA.tex}
 % \end{latex}
 %
 % \subsubsection{所发表文章}
@@ -881,14 +882,14 @@
 % 手工添加索引的方法不推荐，模板中将去除该功能。
 %
 % \subsubsection{致谢声明}
-% \DescribeEnv{acknowledgement}
+% \DescribeEnv{acknowledgements}
 % 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦！
 %
 % \begin{latex}
-% \begin{acknowledgement}
+% \begin{acknowledgements}
 %   …
 %   感谢\heu\LaTeX\ 论文模板\heuthesis\ !
-% \end{acknowledgement}
+% \end{acknowledgements}
 % \end{latex}
 %
 %
@@ -998,13 +999,13 @@ FUNCTION {load.config}
   "byentry" 'control.cite.lang :=  % byentry / chinese / english / macro
   #0 'control.year.before.title :=
   "period" 'control.name.year.delim :=  % comma / period
-  #1 'control.sentence.case.title :=
-  #1 'control.sentence.case.booktitle :=
+  #0 'control.sentence.case.title :=
+  #0 'control.sentence.case.booktitle :=
   #0 'control.sentence.case.journal :=
   #0 'control.capitalize.subtitle :=
   #0 'control.link.title :=
   #1 'control.article.title :=
-  #0 'control.patent.country :=
+  #1 'control.patent.country :=
   #1 'control.entry.type.id :=
   #0 'control.space.before.type.id :=
   #1 'control.entry.medium.id :=
@@ -1016,7 +1017,7 @@ FUNCTION {load.config}
   #0 'control.journal.dots :=
   #0 'control.link.journal :=
   #0 'control.bold.volume :=
-  #0 'control.unknown.publisher :=
+  #1 'control.unknown.publisher :=
   #1 'control.space.before.pages :=
   #1 'control.page.ranges :=
   "-" 'control.page.range.delim :=
@@ -1025,7 +1026,7 @@ FUNCTION {load.config}
   #1 'control.doi :=
   #0 'control.cstr :=
   #0 'control.eprint :=
-  #0 'control.note :=
+  #1 'control.note :=
   #1 'control.end.dot :=
   #1 'control.warn.empty.field :=
 }
@@ -2308,6 +2309,10 @@ FUNCTION {set.entry.lang}
   if$
   "l" change.case$
   's :=
+  s #1 #2 substring$ "zh" =
+    { "chinese" 's := }
+    'skip$
+  if$
   s empty$
     { check.entry.lang }
     { s "english" = s "american" = or s "british" = or
@@ -2647,7 +2652,7 @@ FUNCTION {warn.empty.field}
 
 FUNCTION {format.anonymous}
 {
-  ""
+  bbl.anonymous
 }
 
 FUNCTION {format.authors}
@@ -3022,7 +3027,7 @@ FUNCTION {format.bvolume}
     { "" }
     { volume is.number
         { entry.lang lang.zh =
-            { "第" volume tie.or.space.connect " 卷" * }
+            { "第" volume * "卷" * }
             { entry.lang lang.ko =
                 { "제" volume tie.or.space.connect " 권" * }
                 { "v." volume * }
@@ -3824,6 +3829,14 @@ FUNCTION {check.electronic}
           if$
         }
         { "\url{" url * "}" * 'entry.url := }
+      if$
+    }
+    'skip$
+  if$
+  entry.eprint empty$
+    { eprint empty$
+        'skip$
+        { eprint 'entry.eprint := }
       if$
     }
     'skip$
@@ -5060,6 +5073,7 @@ FUNCTION {presort}
   sort.label *
   #1 entry.max$ substring$
   'sort.key$ :=
+  sort.key$ 'sort.label :=
 }
 
 STRINGS { longest.label last.label next.extra last.extra.label }
@@ -5212,10 +5226,11 @@ EXECUTE {end.bib}
 %<bookcfg>\ProvidesFile{heuthesisbook.cfg}
 %<artcfg>\ProvidesFile{heuthesisart.cfg}
 %<heuthesis-style>\ProvidesPackage{heuthesis}
-%<artcls|bookcls|bookcfg|artcfg|heuthesis-style>[2026/05/08 1.0.5 Harbin Engineering University Thesis Template]
+%<artcls|bookcls|bookcfg|artcfg|heuthesis-style>[2026/11/13 1.0.6 Harbin Engineering University Thesis Template]
 %<*artcls>
 \RequirePackage{ifthen}
 \RequirePackage{kvoptions}
+\RequirePackage{ifxetex}
 \SetupKeyvalOptions{
   family=heu,
   prefix=heu@,
@@ -5228,18 +5243,31 @@ EXECUTE {end.bib}
   \heu@bachelorfalse
   \heu@masterfalse
   \heu@doctorfalse
-  \expandafter\csname heu@#1true\endcsname}
+  \ifcsname heu@#1true\endcsname
+    \expandafter\csname heu@#1true\endcsname
+  \else
+    \ClassError{heuthesis}{Unknown thesis type `#1'}%
+      {Valid values: bachelor, master, doctor}%
+  \fi}
 
 \newif\ifheu@productdevelopment
 \newif\ifheu@projectdplanning
 \newif\ifheu@projectdesign
 \newif\ifheu@applicationresearch
-\define@key{heu}{researchtype}{%
+\define@key{heu}{researchtype}{\heu@set@researchtype{#1}}
+\def\heu@set@researchtype#1{%
   \heu@productdevelopmentfalse
   \heu@projectdplanningfalse
   \heu@projectdesignfalse
   \heu@applicationresearchfalse
-  \expandafter\csname heu@#1true\endcsname}
+  \ifcsname heu@#1true\endcsname
+    \expandafter\csname heu@#1true\endcsname
+  \else
+    \ClassError{heuthesis}{Unknown researchtype `#1'}%
+      {Valid values: productdevelopment, projectdplanning, projectdesign,
+       applicationresearch}%
+    \heu@applicationresearchtrue
+  \fi}
 \ifheu@productdevelopment\relax\else
 \ifheu@projectdplanning\relax\else
 \ifheu@projectdesign\relax\else
@@ -5255,7 +5283,12 @@ EXECUTE {end.bib}
   \heu@qingdaofalse
   \heu@yantaifalse
   \heu@harbinfalse
-  \expandafter\csname heu@#1true\endcsname}
+  \ifcsname heu@#1true\endcsname
+    \expandafter\csname heu@#1true\endcsname
+  \else
+    \ClassError{heuthesis}{Unknown campus `#1'}%
+      {Valid values: harbin, qingdao, yantai}%
+  \fi}
 \ifheu@yantai\relax\else
 \ifheu@qingdao\relax\else
 \heu@harbintrue
@@ -5267,10 +5300,15 @@ EXECUTE {end.bib}
 \define@key{heu}{stage}{%
   \heu@openingfalse
   \heu@midtermfalse
-  \expandafter\csname heu@#1true\endcsname}
+  \ifcsname heu@#1true\endcsname
+    \expandafter\csname heu@#1true\endcsname
+  \else
+    \ClassError{heuthesis}{Unknown stage `#1'}%
+      {Valid values: opening, midterm}%
+  \fi}
 
 \DeclareBoolOption[true]{raggedbottom}
-\DeclareBoolOption[false]{pifootnote}
+\DeclareBoolOption[true]{pifootnote}
 \DeclareBoolOption[false]{debug}
 \DeclareBoolOption[true]{toc}
 \DeclareBoolOption[true]{newtxmath}
@@ -5484,7 +5522,7 @@ EXECUTE {end.bib}
 
 \def\heu@def@term#1{%
   \define@key{heu}{#1}{\csname #1\endcsname{##1}}
-  \expandafter\gdef\csname #1\endcsname##1{%
+  \expandafter\long\expandafter\gdef\csname #1\endcsname##1{%
     \expandafter\gdef\csname heu@#1\endcsname{##1}}
   \csname #1\endcsname{}}
 
@@ -5568,6 +5606,7 @@ EXECUTE {end.bib}
      \heu@yantai@schoolbottommark
    \fi
    \fi
+   \fi
 }
 
 \newcommand{\heu@report@titlepage@bachelor}{
@@ -5647,8 +5686,9 @@ EXECUTE {end.bib}
     \heu@report@backpage@bachelor
 }
 
+\def\heu@inline@sep{，}
 \newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
-\newcommand\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{\heu@inline@sep}}
+\def\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{\heu@inline@sep}}
 
 \citestyle{numerical}
 \DeclareRobustCommand\inlinecite{\@inlinecite}
@@ -5676,8 +5716,10 @@ EXECUTE {end.bib}
 {\def\@noitemerr
   {\@latex@warning{Empty `thebibliography' environment}}%
 \endlist\frenchspacing}
-\AtEndOfClass{\input{heuthesisart.cfg}}
-\AtEndOfClass{\sloppy}
+\AtEndOfClass{\InputIfFileExists{heuthesisart.cfg}{}{%
+  \ClassError{heuthesisart}{heuthesisart.cfg not found}%
+    {Run `xelatex heuthesis.ins' first}}}
+\AtEndOfClass{\setlength{\emergencystretch}{3em}}
 %</artcls>
 %    \end{macrocode}
 % \subsection{定义选项}
@@ -5689,6 +5731,7 @@ EXECUTE {end.bib}
 %    \begin{macrocode}
 \RequirePackage{ifthen}
 \RequirePackage{kvoptions}
+\RequirePackage{ifxetex}
 \SetupKeyvalOptions{
   family=heu,
   prefix=heu@,
@@ -5702,7 +5745,12 @@ EXECUTE {end.bib}
   \heu@masterfalse
   \heu@doctorfalse
   \heu@postdocfalse
-  \expandafter\csname heu@#1true\endcsname}
+  \ifcsname heu@#1true\endcsname
+    \expandafter\csname heu@#1true\endcsname
+  \else
+    \ClassError{heuthesis}{Unknown thesis type `#1'}%
+      {Valid values: bachelor, master, doctor, postdoc}%
+  \fi}
 %    \end{macrocode}
 % 此处设置专业学位论文研究类型，没有明确给出时默认为{\bf 应用研究}型。
 %    \begin{macrocode}
@@ -5710,12 +5758,20 @@ EXECUTE {end.bib}
 \newif\ifheu@projectdplanning
 \newif\ifheu@projectdesign
 \newif\ifheu@applicationresearch
-\define@key{heu}{researchtype}{%
+\define@key{heu}{researchtype}{\heu@set@researchtype{#1}}
+\def\heu@set@researchtype#1{%
   \heu@productdevelopmentfalse
   \heu@projectdplanningfalse
   \heu@projectdesignfalse
   \heu@applicationresearchfalse
-  \expandafter\csname heu@#1true\endcsname}
+  \ifcsname heu@#1true\endcsname
+    \expandafter\csname heu@#1true\endcsname
+  \else
+    \ClassError{heuthesis}{Unknown researchtype `#1'}%
+      {Valid values: productdevelopment, projectdplanning, projectdesign,
+       applicationresearch}%
+    \heu@applicationresearchtrue
+  \fi}
 \ifheu@productdevelopment\relax\else
 \ifheu@projectdplanning\relax\else
 \ifheu@projectdesign\relax\else
@@ -5733,7 +5789,12 @@ EXECUTE {end.bib}
   \heu@qingdaofalse
   \heu@yantaifalse
   \heu@harbinfalse
-  \expandafter\csname heu@#1true\endcsname}
+  \ifcsname heu@#1true\endcsname
+    \expandafter\csname heu@#1true\endcsname
+  \else
+    \ClassError{heuthesis}{Unknown campus `#1'}%
+      {Valid values: harbin, qingdao, yantai}%
+  \fi}
 \ifheu@yantai\relax\else
 \ifheu@qingdao\relax\else
 \heu@harbintrue
@@ -5751,14 +5812,8 @@ EXECUTE {end.bib}
 \ifheu@english\relax\else
 \heu@chinesetrue
 \fi
-\newif\ifheu@geometrynewone
-\newif\ifheu@geometrynewtwo
-\newif\ifheu@geometrynewno
 \define@key{heu}{newgeometry}{%
-  \heu@geometrynewonefalse
-  \heu@geometrynewtwofalse
-  \heu@geometrynewnofalse
-  \expandafter\csname heu@geometrynew#1true\endcsname}
+  \ClassWarning{heuthesis}{Option `newgeometry' is obsolete and ignored}}
 %    \end{macrocode}
 % 设置字距选项，因为word和规范不一致
 %    \begin{macrocode}
@@ -5767,7 +5822,12 @@ EXECUTE {end.bib}
 \define@key{heu}{zijv}{%
   \heu@zijvregufalse
   \heu@zijvwordfalse
-  \expandafter\csname heu@zijv#1true\endcsname}
+  \ifcsname heu@zijv#1true\endcsname
+    \expandafter\csname heu@zijv#1true\endcsname
+  \else
+    \ClassError{heuthesis}{Unknown zijv `#1'}%
+      {Valid values: regu, word}%
+  \fi}
 %    \end{macrocode}
 %
 % 设置中文参考文献中相邻两个标号使用逗号“,”还是短线“-”。
@@ -5778,8 +5838,12 @@ EXECUTE {end.bib}
 \define@key{heu}{citetwo}{%
   \heu@citetwocommafalse
   \heu@citetwoendashfalse
-  \expandafter\csname heu@citetwo#1true\endcsname
-}
+  \ifcsname heu@citetwo#1true\endcsname
+    \expandafter\csname heu@citetwo#1true\endcsname
+  \else
+    \ClassError{heuthesis}{Unknown citetwo `#1'}%
+      {Valid values: comma, endash}%
+  \fi}
 %    \end{macrocode}
 %
 % 目录中英文是否用 Arial 字体（默认关闭）。
@@ -5815,7 +5879,7 @@ EXECUTE {end.bib}
 %    \begin{macrocode}
 \DeclareBoolOption[false]{profdegree}
 %    \end{macrocode}
-% 是否有子标题（默认是）。
+% 是否有子标题（默认否）。
 %    \begin{macrocode}
 \DeclareBoolOption[false]{subtitle}
 %    \end{macrocode}
@@ -5827,19 +5891,19 @@ EXECUTE {end.bib}
 %    \begin{macrocode}
 \DeclareBoolOption[false]{openright}
 %    \end{macrocode}
-% 空白页是否无页眉页脚（默认否）。
+% 空白页是否无页眉页脚（默认是）。
 %    \begin{macrocode}
-\DeclareBoolOption[false]{pageempty}
+\DeclareBoolOption[true]{pageempty}
 %    \end{macrocode}
 % 是否为提交图书馆电子版。
 %    \begin{macrocode}
 \DeclareBoolOption[false]{library}
 %    \end{macrocode}
-% 图题和标题最后一行是否居中对其（默认是，非规范要求）。
+% 图题和标题最后一行是否居中对齐（默认否，非规范要求）。
 %    \begin{macrocode}
 \DeclareBoolOption[false]{capcenterlast}
 %    \end{macrocode}
-% 子图图题和标题最后一行是否居中对其（默认是，非规范要求）。
+% 子图图题和标题最后一行是否居中对齐（默认否，非规范要求）。
 %    \begin{macrocode}
 \DeclareBoolOption[false]{subcapcenterlast}
 %    \end{macrocode}
@@ -5945,13 +6009,7 @@ EXECUTE {end.bib}
 %    \end{macrocode}
 % 重新设置geometry的默认选项
 %    \begin{macrocode}
-\ifheu@geometrynewone\relax\else
-\ifheu@geometrynewtwo\relax\else
-\ifheu@geometrynewno\relax\else
-\heu@geometrynewtwotrue
-\fi
-\fi
-\fi
+%    \end{macrocode}
 % 设置专业学位论文类型
 %    \begin{macrocode}
 \ifheu@profdegree{
@@ -5959,7 +6017,7 @@ EXECUTE {end.bib}
   \ifheu@projectdplanning\relax\else
     \ifheu@projectdesign\relax\else
       \ifheu@applicationresearch\relax\else
-        \ClassError{heuthesisart}%
+        \ClassError{heuthesisbook}%
         { Please specify researchtype in option:\MessageBreak
           researchtype=[productdevelopment | projectdplanning | projectdesign | applicationresearch]
         }{}
@@ -5999,9 +6057,15 @@ EXECUTE {end.bib}
 %
 % 设置默认英文字体.
 %    \begin{macrocode}
-\setmainfont{Times New Roman}
-\setsansfont{Arial}
-\setmonofont{Courier New}
+\IfFontExistsTF{Times New Roman}
+  {\setmainfont{Times New Roman}}
+  {\setmainfont{TeX Gyre Termes}}
+\IfFontExistsTF{Arial}
+  {\setsansfont{Arial}}
+  {\setsansfont{TeX Gyre Heros}}
+\IfFontExistsTF{Courier New}
+  {\setmonofont{Courier New}}
+  {\setmonofont{TeX Gyre Cursor}}
 %    \end{macrocode}
 %
 % 单独使用 \pkg{newtxmath} 宏包改变数学字体时，会使 \texttt{operators}，\cs{mathrm}，\cs{mathit}，\cs{mathbf} 命令使用 CM 字体，根据 \href{https://github.com/sjtug/SJTUThesis/blob/b164d0f5b3087ed86c1038b5a85014b47a92c6f2/texmf/tex/latex/sjtuthesis/fd/sjtu-math-font-termes.def#L52-L65}{SJTUThesis 的字体设置} 进行调整
@@ -6087,7 +6151,25 @@ EXECUTE {end.bib}
 % \RequirePackage[sort&compress]{natbib}
 %    \end{macrocode}
 %
-% 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码。
+% 引用文献标准GBT2015
+%    \begin{macrocode}
+\RequirePackage[sort&compress,numbers]{natbib}
+\RequirePackage[sort&compress]{gbt7714}
+\ifheu@citetwocomma 
+  \patchcmd{\NAT@citexnum}{\def@NAT@last@yr{-\NAT@penalty}}
+  {%
+    \ifx\NAT@last@yr\relax
+    \def@NAT@last@yr{\@citea}%
+    \else
+    \def@NAT@last@yr{-\NAT@penalty}%
+    \fi
+  }%
+  {\typeout{Use comma between neighboring citations}}%
+  {\ClassError{heuthesisbook}{fail to patch \NAT@citexnum}{}}%
+\fi
+%    \end{macrocode}
+%
+% 生成有书签的 pdf 及其开关（放在 natbib 之后加载，避免与 natbib 冲突）。
 %    \begin{macrocode}
 \RequirePackage{hyperref}
 \hypersetup{%
@@ -6100,26 +6182,7 @@ EXECUTE {end.bib}
   colorlinks=false,
   plainpages=false,
   pdfborder=0 0 0}
-%    \end{macrocode}
-% 设置 url 样式，与上下文一致
-%    \begin{macrocode}
 \urlstyle{same}
-%    \end{macrocode}
-% 引用文献标准GBT2015
-%    \begin{macrocode}
-\RequirePackage[sort&compress]{gbt7714}
-\ifheu@citetwocomma 
-  \patchcmd{\NAT@citexnum}{\def@NAT@last@yr{-\NAT@penalty}}
-  {%
-    \ifx\NAT@last@yr\relax
-    \def@NAT@last@yr{\@citea}%
-    \else
-    \def@NAT@last@yr{-\NAT@penalty}%
-    \fi
-  }%
-  {\typeout{Use comma between neighboring citations}}%
-  {\ClassError{heuhesisbook}{fail to patch \NAT@citexnum}{}}%
-\fi
 %    \end{macrocode}
 %
 % \subsection{页面设置}
@@ -6127,7 +6190,8 @@ EXECUTE {end.bib}
 % 这部分是根据 \heu 研院函〔2010〕26 号《关于调整研究生学位论文版面大小的通知》的规定：
 % “版面一律改成 A4 纸页边距上、下设置为 28mm，左、右设置为 25mm，页眉、页脚设置为 20mm。
 % 装订时上、下、右各切除 3mm，学位论文成品版面大小为 207mm*291mm”要求设置。
-% 论文尺寸为 207x291mm，版芯尺寸 140x220mm，版心距左边 25mm，距右边 20mm，距上下边各 20mm。
+% 论文尺寸为 207x291mm，版心 160x241mm（左右边距 25mm、上下边距 28mm），
+% 装订裁切后再得到成品尺寸。
 % 这里只设置版心尺寸和版心距左边距尺寸，其他尺寸由装订裁切进行控制。
 %    \begin{macrocode}
 \ifheu@debug\RequirePackage[showframe]{geometry}\else\RequirePackage{geometry}\fi
@@ -6205,7 +6269,7 @@ delim_1 "\\hspace*{\\fill}"
 % \subsubsection{页面选项}
 % \begin{macro}{\cleardoublepage}
 % 对于 \textsl{openright} 选项，必须保证章首页右开。
-% 如果\textsl{library}为真，则强制设置\textsl{openright}为真。
+% 如果\textsl{library}为真，则强制设置\textsl{openright}为假（去掉所有空白页）。
 %    \begin{macrocode}
 %<*bookcls>
 \ifheu@english
@@ -6230,13 +6294,17 @@ delim_1 "\\hspace*{\\fill}"
 \makeglossaries
 \fi
 \ifheu@library\heu@openrightfalse\else\relax\fi
-\ifheu@pageempty
-  \let\heu@cleardoublepage\cleardoublepage
-  \newcommand{\heu@clearemptydoublepage}{%
-    \clearpage{\pagestyle{heu@empty}\heu@cleardoublepage}
-  }
-  \let\cleardoublepage\heu@clearemptydoublepage
-\fi
+\newcommand{\heu@clearemptydoublepage}{%
+  \clearpage
+  \if@twoside
+    \ifodd\c@page\else
+      \hbox{}%
+      \ifheu@pageempty\thispagestyle{heu@empty}\fi
+      \newpage
+      \if@twocolumn\hbox{}\newpage\fi
+    \fi
+  \fi}
+\let\cleardoublepage\heu@clearemptydoublepage
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\frontmatter}
@@ -6276,6 +6344,7 @@ delim_1 "\\hspace*{\\fill}"
   \fi%
   \@mainmattertrue
   \pagenumbering{arabic}
+  \def\theHpage{\thepage}%
   \pagestyle{heu@headings}
 }
 %    \end{macrocode}
@@ -6285,7 +6354,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \begin{macrocode}
 \renewcommand\backmatter{%
   \ifheu@openright\cleardoublepage\else\clearpage\fi
-  \@mainmattertrue
+  \@mainmatterfalse
   \fancyhf{}
   \pagestyle{heu@titleheadings}
  }
@@ -6656,7 +6725,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 修改 \cs{tagform} 会影响 \cs{eqref}。
 %    \begin{macrocode}
-\renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
+\renewcommand{\eqref}[1]{\textup{\tagform@{\ref{#1}}}}
 %</bookcls>
 %    \end{macrocode}
 % 定理标题使用黑体，正文使用宋体，冒号隔开。
@@ -6877,7 +6946,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \begin{macrocode}
 \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter.\arabic{figure}}}
 \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter.\arabic{table}}}
-\g@addto@macro\appendix{\renewcommand*{\theequation}{\thechapter.\arabic{equation}}}
+\g@addto@macro\appendix{\renewcommand*{\theequation}{\thechapter-\arabic{equation}}}
 \renewcommand{\textfraction}{0.15}
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\bottomfraction}{0.65}
@@ -7021,7 +7090,7 @@ delim_1 "\\hspace*{\\fill}"
 \theoremsymbol{$\square$}
 \setlength{\theorempreskipamount}{0pt}
 \setlength{\theorempostskipamount}{-2pt}
-\setlength{\parindent}{2em}
+\setlength{\parindent}{2\ccwd}
 \arraycolsep=1.6pt
 %</bookcls>
 %    \end{macrocode}
@@ -7484,7 +7553,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \begin{macrocode}
 \def\heu@def@term#1{%
   \define@key{heu}{#1}{\csname #1\endcsname{##1}}
-  \expandafter\gdef\csname #1\endcsname##1{%
+  \expandafter\long\expandafter\gdef\csname #1\endcsname##1{%
     \expandafter\gdef\csname heu@#1\endcsname{##1}}
   \csname #1\endcsname{}}
 
@@ -7737,36 +7806,6 @@ delim_1 "\\hspace*{\\fill}"
 \newcommand{\heu@denotation@ctitle}{物理量名称及符号表}
 \newcommand{\heu@denotation@etitle}{List of physical quantity and symbol}
 \newcommand{\heu@authorizationtitle}{学位论文授权使用声明}
-
-\newcommand{\heu@qingdao@schoolbottommark}{
-   \begin{center}
-     \songti\sanhao\textbf{哈工程（青岛）制}
-   \end{center}
-   \begin{center}
-     \songti\sanhao\textbf{二〇二〇年三月}
-   \end{center}
-}
-\newcommand{\heu@yantai@schoolbottommark}{
-    \begin{center}
-        \songti\sanhao\textbf{哈工程（烟台）制}
-    \end{center}
-    \begin{center}
-        \songti\sanhao\textbf{二〇二〇年三月}
-    \end{center}
-}
-\newcommand{\heu@harbin@schoolbottommark}{
-   \begin{center}
-     \songti\sanhao\textbf{研究生院制}
-   \end{center}
-   \begin{center}
-     \songti\sanhao\textbf{二〇二六年二月}
-   \end{center}
-}
-\newcommand{\heu@harbin@bachelor@schoolbottommark}{
-   \begin{center}
-     \songti\xiaoer\textbf{哈尔滨工程大学本科生院制}
-   \end{center}
-}
 
 \newcommand{\heu@doctor@midterm@note}{
 \thispagestyle{empty}
@@ -8168,7 +8207,7 @@ delim_1 "\\hspace*{\\fill}"
           \textbf{\heu@put@title{\heu@eassosupervisortitle}} & \heu@eassosupervisor\\
         \fi
         \ifheu@profdegree%
-          \textbf{\heu@eassosupervisortitle\heu@title@esep}  & \heu@eassosupervisor\\
+          \textbf{\heu@ecosupervisortitle\heu@title@esep}     & \heu@ecosupervisor\\
           \textbf{\heu@ecategorytitle\heu@title@esep}        & \heu@esubject\\
           \textbf{\heu@eaffiltitle\heu@title@esep}           & \heu@eaffil\\
         \else%
@@ -8188,6 +8227,7 @@ delim_1 "\\hspace*{\\fill}"
 \def\makecover{
   \phantomsection
   \pdfbookmark[0]{\heu@ctitle}{ctitle}
+  \def\theHpage{cover-\thepage}%
   \xiaosi[1]%
   \begin{titlepage}
     \ifheu@yantai
@@ -8258,9 +8298,7 @@ delim_1 "\\hspace*{\\fill}"
 \NewDocumentCommand{\authorization}{o}{%
   \IfNoValueTF{#1}{%
       \thispagestyle{empty}%
-      % 本科不需要原创性和授权页，删掉
-      %\ifheu@bachelor\heu@authorization@bachelor\else\heu@authorization@other\fi
-      \heu@authorization@other
+      \ifheu@bachelor\heu@authorization@bachelor\else\heu@authorization@other\fi
   }{%
       \ifheu@openright\cleardoublepage\else\clearpage\fi%
       \includepdf[fitpaper=true,pagecommand={%
@@ -8295,6 +8333,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \begin{macrocode}
 %  \heu@appendix@chapter*{\cabstractcname}[\cabstractename]
   \pagestyle{heu@titleheadings}
+  \def\theHpage{\thepage}%
   \pagenumbering{Roman}
   \begin{center}
     ~\\
@@ -8354,7 +8393,7 @@ delim_1 "\\hspace*{\\fill}"
 %    \begin{macrocode}
 
 \renewcommand\listoffigures{\heu@listof{figure}{\listfigureename}}
-\renewcommand*\l@figure{\addvspace{6bp}\@dottedtocline{1}{0em}{4em}}
+\renewcommand*\l@figure{\addvspace{6bp}\@dottedtocline{1}{0em}{5em}}
 \renewcommand\listoftables{\heu@listof{table}{\listtableename}}
 \let\l@table\l@figure
 \def\ext@equation{loe}
@@ -8374,7 +8413,7 @@ delim_1 "\\hspace*{\\fill}"
 \renewcommand\tableofcontents{%
 \ifheu@openright\cleardoublepage\else\clearpage\fi
 \phantomsection
-\markboth{\contentsname}{ccontent}
+\markboth{\contentsname}{}
 %    \end{macrocode}
 % 工程大学论文要求：目录中的目录位置是空白。
 %    \begin{macrocode}
@@ -8411,7 +8450,7 @@ delim_1 "\\hspace*{\\fill}"
 \ifheu@arialtoc
   \def\heu@toc@font{\sffamily}
 \fi
-\def\@pnumwidth{4em}%规定中的提前悬挂
+\def\@pnumwidth{4em}%规定中的提前悬挂（book.cls 中定义为宏，不能 \setlength）
 \def\@tocrmarg{\@pnumwidth}
 \def\@dotsep{1}
 %    \end{macrocode}
@@ -8465,18 +8504,15 @@ delim_1 "\\hspace*{\\fill}"
 %    \end{macrocode}
 % 此处添加英文目录的章标题格式，默认细点
 %    \begin{macrocode}
+  \begingroup
   \def\l@chapter{\@dottedtocline{0}{0em}{5em}}%控制英文目录： 细点\@dottedtocline  粗点\@dottedtoclinebold
   \@restonecolfalse
-  \chapter*{\engcontentsname  %chapter*上移一行，避免在toc中出现。
-  \pdfbookmark[0]{Contents}{econtent}
-    \@mkboth{%
-  \engcontentsname}{\engcontentsname}}
-%    \end{macrocode}
-%
-% 此处临时更改一下对齐方式。\CTeX\ 似乎无法应对双语目录。
-%    \begin{macrocode}
+  \chapter*{\engcontentsname}%chapter*上移一行，避免在toc中出现。
+  \pdfbookmark[0]{Contents}{econtent}%
+  \markboth{\engcontentsname}{\engcontentsname}%
   \@starttoc{toe}%
-  \if@restonecol\twocolumn\fi}
+  \if@restonecol\twocolumn\fi
+  \endgroup}
 \def\@dotsep{0.75}           % 定义英文目录的点间距
 %    \end{macrocode}
 %
@@ -8491,122 +8527,71 @@ delim_1 "\\hspace*{\\fill}"
 % \changes{v1.0.3}{2026/02/20}{修改附录格式}
 %    \begin{macrocode}
 \let\heu@appendix\appendix
-\renewenvironment{appendix}[2]{%
-\heu@appendix
-\ifheu@bachelor\renewcommand{\thechapter}{\arabic{chapter}}\fi
-\ifheu@openright\cleardoublepage\else\clearpage\fi
-\renewcommand{\thechapter}{#1} % 修改附录序号
-\ifheu@english
-\addcontentsline{toc}{chapter}{\heu@appendix@etitle #1 ~ #2}
-\begin{center}
-  ~\\
-  \xiaoer\heiti\heu@appendix@etitle #1 ~ #2
-\end{center}\par
-\else
-\addcontentsline{toc}{chapter}{\heu@appendix@ctitle #1 ~ #2}
-\begin{center}
-  ~\\
-  \xiaoer\heiti\heu@appendix@ctitle #1 ~ #2
-\end{center}\par
-\fi}{%
-  \let\title\@gobble}
-\let\title\@gobble
+% 统一的“后文/附录”标题：分页 + 锚点 + 目录（hyperref 会据此生成书签）+ 页眉 + 居中标题
+\newcommand{\heu@backmatter@heading}[1]{%
+  \ifheu@openright\cleardoublepage\else\clearpage\fi
+  \phantomsection
+  \markboth{#1}{}%
+  \addcontentsline{toc}{chapter}{#1}%
+  \begin{center}
+    ~\\
+    \xiaoer\heiti #1
+  \end{center}\par}
+% 用法：\appendix{A}{相关标准}，或 \begin{appendix}{A}{相关标准}...\end{appendix}
+\RenewDocumentCommand{\appendix}{m m}{%
+  \heu@appendix
+  \renewcommand{\thechapter}{#1}%
+  \renewcommand{\theHchapter}{#1}%
+  \refstepcounter{chapter}%
+  \setcounter{figure}{\z@}%
+  \setcounter{table}{\z@}%
+  \setcounter{equation}{\z@}%
+  \ifheu@english
+    \heu@backmatter@heading{\heu@appendix@etitle\space #1\space #2}%
+  \else
+    \heu@backmatter@heading{\heu@appendix@ctitle\space #1\space #2}%
+  \fi}
+\def\endappendix{}
 
 \newlist{translationbib}{enumerate}{1}
 \setlist[translationbib]{label=[\arabic*],align=left,nosep,itemsep=6bp,
   leftmargin=10mm,labelsep=!,before=\vspace{0.5\baselineskip}\wuhao[1.3]}
 
 \newenvironment{conclusions}{%
-\ifheu@openright\cleardoublepage\else\clearpage\fi
-\ifheu@english
-%\heu@appendix@chapter*{\heu@conclusion@etitle}
-\addcontentsline{toc}{chapter}{\heu@conclusion@etitle}
-\begin{center}
-  ~\\
-  \xiaoer\heiti\heu@conclusion@etitle
-\end{center}\par
-\else
-%\heu@appendix@chapter*{\heu@conclusion@ctitle}[\heu@conclusion@etitle]
-\addcontentsline{toc}{chapter}{\heu@conclusion@ctitle}
-\begin{center}
-  ~\\
-  \xiaoer\heiti\heu@conclusion@ctitle
-\end{center}\par
-\fi}{}
+  \ifheu@english
+    \heu@backmatter@heading{\heu@conclusion@etitle}%
+  \else
+    \heu@backmatter@heading{\heu@conclusion@ctitle}%
+  \fi}{}
 
 \newenvironment{acknowledgements}{%
-  \ifheu@openright\cleardoublepage\else\clearpage\fi
   \ifheu@english
-  %\heu@appendix@chapter*{\heu@acknowledgement@etitle}
-  \addcontentsline{toc}{chapter}{\heu@acknowledgement@etitle}
-  \begin{center}
-    ~\\
-    \xiaoer\heiti\heu@acknowledgement@etitle
-  \end{center}\par
+    \heu@backmatter@heading{\heu@acknowledgement@etitle}%
   \else
-  %\heu@appendix@chapter*{\heu@acknowledgement@ctitle}[\heu@acknowledgement@etitle]
-  \addcontentsline{toc}{chapter}{\heu@acknowledgement@ctitle}
-  \begin{center}
-    ~\\
-    \xiaoer\heiti\heu@acknowledgement@ctitle
-  \end{center}\par
+    \heu@backmatter@heading{\heu@acknowledgement@ctitle}%
   \fi}{}
 
 \newenvironment{correspondingaddr}{%
-  \ifheu@openright\cleardoublepage\else\clearpage\fi
-  %\heu@appendix@chapter*{\heu@correspondingaddr@ctitle}
-  \addcontentsline{toc}{chapter}{\heu@correspondingaddr@ctitle}
-  \begin{center}
-    ~\\
-    \xiaoer\heiti\heu@correspondingaddr@ctitle
-  \end{center}\par
-  }{}
+  \heu@backmatter@heading{\heu@correspondingaddr@ctitle}}{}
 
 %    \end{macrocode}
 % 博后用到的通讯页面
 %    \begin{macrocode}
 \newenvironment{resume}{%
-  \ifheu@openright\cleardoublepage\else\clearpage\fi
-  %\heu@appendix@chapter*{\heu@resume@ctitle}[\heu@resume@etitle]
-  \addcontentsline{toc}{chapter}{\heu@resume@ctitle}
-  \begin{center}
-    ~\\
-    \xiaoer\heiti\heu@resume@ctitle
-  \end{center}\par
-  }{}
+  \heu@backmatter@heading{\heu@resume@ctitle}}{}
 
 \newenvironment{publication}{%
-  \ifheu@openright\cleardoublepage\else\clearpage\fi
-  %\heu@appendix@chapter*{\heu@publication@ctitle}[\heu@publication@etitle]
-  \addcontentsline{toc}{chapter}{\heu@publication@ctitle}
-  \begin{center}
-    ~\\
-    \xiaoer\heiti\heu@publication@ctitle
-  \end{center}\par
-  }{}
+  \heu@backmatter@heading{\heu@publication@ctitle}}{}
 
 \newenvironment{doctorpublication}{%
-  \ifheu@openright\cleardoublepage\else\clearpage\fi
-  %\heu@appendix@chapter*{\heu@doctorpublication@ctitle}
-  \addcontentsline{toc}{chapter}{\heu@doctorpublication@ctitle}
-  \begin{center}
-    ~\\
-    \xiaoer\heiti\heu@doctorpublication@ctitle
-  \end{center}\par
-  }{}
+  \heu@backmatter@heading{\heu@doctorpublication@ctitle}}{}
  
 %    \end{macrocode}
 % 此处添加博后用到的博士生发表页面
 % 此处中英文索引的格式设置尽量符合 \PGR\ 中给出的示例的格式。此处间距常数是人工调节的。
 %    \begin{macrocode}
 \newenvironment{ceindex}{%
-  \ifheu@openright\cleardoublepage\else\clearpage\fi
-  %\heu@appendix@chapter*{\indexname}[\heu@index@etitle]
-  \addcontentsline{toc}{chapter}{\indexname}
-  \begin{center}
-    ~\\
-    \xiaoer\heiti\indexname
-  \end{center}\par
+  \heu@backmatter@heading{\indexname}%
   \setlength{\columnsep}{4em}
   \begin{adjustwidth}{2em}{2em}
   \begin{multicols*}{2}}{\end{multicols*}
@@ -8630,20 +8615,16 @@ delim_1 "\\hspace*{\\fill}"
   font=\wuhao\rm,
 }
 
+\def\heu@inline@sep{，}
 \newcommand\bibstyle@numerical{\bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+\def\bibstyle@inline{\bibpunct{[}{]}{,}{n}{,}{\heu@inline@sep}}
 \citestyle{numerical}
 \DeclareRobustCommand\inlinecite{\@inlinecite}
 \def\@inlinecite#1{\begingroup\citestyle{inline}\let\@cite\NAT@citenum\citep{#1}\endgroup}
 \let\onlinecite\inlinecite
 \newcommand{\lcite}{\inlinecite}
 \renewenvironment{thebibliography}[1]{%
-  \ifheu@openright\cleardoublepage\else\clearpage\fi\phantomsection%
-  %\heu@appendix@chapter*{\bibname}[\heu@bibname@etitle]
-  \addcontentsline{toc}{chapter}{\bibname}
-  \begin{center}
-    ~\\
-    \xiaoer\heiti\bibname
-  \end{center}\par
+  \heu@backmatter@heading{\bibname}%
   \normalsize
   \list{\@biblabel{\@arabic\c@enumiv}}%
   {\renewcommand{\makelabel}[1]{##1\hfill}
@@ -8682,7 +8663,8 @@ delim_1 "\\hspace*{\\fill}"
   \@ifnum{\NAT@ctype=\z@}{%
     \if*#2*\else\textsuperscript{#2}\fi
   }{}%
-}{}{}
+}{\ClassWarning{heuthesisbook}{Failed to patch \string\NAT@citexnum;
+  the comment of numeric citations may be misplaced}}{}
 \renewcommand\NAT@citesuper[3]{\ifNAT@swa
   \if*#2*\else#2\NAT@spacechar\fi
 \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close\if*#3*\else#3\fi}%
@@ -8693,7 +8675,8 @@ delim_1 "\\hspace*{\\fill}"
 }{%
   \if\relax\NAT@date\relax\else\NAT@@close\fi
   \if*#2*\else\textsuperscript{#2}\fi
-}{}{}
+}{\ClassWarning{heuthesisbook}{Failed to patch \string\NAT@citex;
+  the comment of textual citations may be misplaced}}{}
 \renewcommand\NAT@cite%
     [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
         #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi\endgroup}
@@ -8704,8 +8687,10 @@ delim_1 "\\hspace*{\\fill}"
 % 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改。
 %    \begin{macrocode}
 %<*bookcls>
-\AtEndOfClass{\input{heuthesisbook.cfg}}
-\AtEndOfClass{\sloppy}
+\AtEndOfClass{\InputIfFileExists{heuthesisbook.cfg}{}{%
+  \ClassError{heuthesisbook}{heuthesisbook.cfg not found}%
+    {Run `xelatex heuthesis.ins' first}}}
+\AtEndOfClass{\setlength{\emergencystretch}{3em}}
 %</bookcls>
 %    \end{macrocode}
 % \iffalse
@@ -8815,7 +8800,7 @@ breaklines=true
 \def\gscnas{\glspl{scna}\sindex[china]{ti!体细胞拷贝数变异}\sindex[english]{Somatic copy number alternation}\ignorespaces}
 
 % tikz做图宏宏包
-\usepackage{tikz}
+\RequirePackage{tikz}
 \RequirePackage{pgfplots}
 \usetikzlibrary{patterns}
 
@@ -8896,7 +8881,7 @@ breaklines=true
     definecolor,color,textcolor,colorbox,fcolorbox,
     % hyperref
     hyperref,autoref,href,url,nolinkurl,
-  　　% Graph & Table
+    % Graph & Table
     includegraphics,graphicspath,scalebox,rotatebox,animategraphics,
     newcolumntype,arraybackslash,multirow,captionsetup,
     thead,multirowcell,makecell,Xhline,Xcline,diagbox,
@@ -8914,7 +8899,7 @@ breaklines=true
     setlist,
     % Listings & tcolorbox
     lstdefinelanguage,lstdefinestyle,lstset,lstnewenvironment,
-    tcbuselibrary,newtcblisting,newtcbox,DeclareTCBListing
+    tcbuselibrary,newtcblisting,newtcbox,DeclareTCBListing,
     % citation & index: natbib, imakeidx
     setcitestyle,printindex,
     % Other packages
@@ -9011,10 +8996,16 @@ breaklines=true
 %    \end{macrocode}
 % 默认字体为fandol
 %    \begin{macrocode}
-\RequirePackage[UTF8,scheme=chinese,fontset=windows]{ctex}
-\setmainfont{Times New Roman}
-\setsansfont{Arial}
-\setmonofont{Courier New}
+\RequirePackage[UTF8,scheme=chinese]{ctex}
+\IfFontExistsTF{Times New Roman}
+  {\setmainfont{Times New Roman}}
+  {\setmainfont{TeX Gyre Termes}}
+\IfFontExistsTF{Arial}
+  {\setsansfont{Arial}}
+  {\setsansfont{TeX Gyre Heros}}
+\IfFontExistsTF{Courier New}
+  {\setmonofont{Courier New}}
+  {\setmonofont{TeX Gyre Cursor}}
 
 \RequirePackage[
   top=2.5cm, bottom=2.5cm,
@@ -9134,7 +9125,8 @@ breaklines=true
 %<bookcfg|dtx-style>{《 \heu 研究生学位论文撰写规范》}}
 %<bookcfg|dtx-style>\def\UGR{\href{http://ugs.hrbeu.edu.cn/main.htm}
 %<bookcfg|dtx-style>{《 \heu 本科生毕业论文撰写规范》}}
-%<bookcfg>\def\heu@inline@sep{，}
+%<bookcfg>
+
 %<*dtx-style>
   \NewDocumentEnvironment{heurgu}{o o}
   { \IfNoValueTF{#1}{\PGR,\UGR}{#1}\IfNoValueF{#2}{#2中}%
